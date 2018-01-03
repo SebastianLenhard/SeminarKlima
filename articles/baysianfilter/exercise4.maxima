@@ -1,0 +1,23 @@
+P: sigma^2 * matrix(
+	[ 1  , a          , a^2          , a^3           ],
+	[ a  , a^2+1      , a*(a^2+1)    , a^2*(a^2+1)   ],
+	[ a^2, a*(a^2+1)  , a^4+a^2+1    , a*(a^4+a^2+1) ],
+	[ a^3, a^2*(a^2+1), a*(a^4+a^2+1), a^6+a^4+a^2+1 ]
+);
+
+H : matrix([ 0, 1, 0, 0 ], [ 0, 0, 1, 0 ])$
+
+R : matrix( [ tau^2, 0 ], [ 0, tau^2 ] )$
+
+K: P.transpose(H).invert(R + H.P.transpose(H));
+Pstar: (diagmatrix(4,1) - K.H).P$
+Pstar: ratsimp(expand(Pstar));
+
+v1: Pstar[1][1]$
+v3: Pstar[3][3]$
+
+ratsimp(expand(v1));
+tex(ratsimp(expand(v1)));
+
+ratsimp(expand(v3));
+tex(ratsimp(expand(v3)));
