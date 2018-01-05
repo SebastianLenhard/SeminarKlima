@@ -17,8 +17,11 @@ images:
 CHAPTERS = 								\
 	chapters/part1.tex						\
 	chapters/assim.tex						\
+	chapters/dgl.tex						\
 	chapters/elnino.tex						\
 	chapters/thc.tex						\
+	chapters/wuk.tex						\
+	chapters/zonen.tex
 
 SKRIPTFILES = vorwort.tex uebersicht.tex \
 	$(CHAPTERS) \
