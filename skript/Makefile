@@ -15,6 +15,10 @@ images:
 	done
 
 CHAPTERS = 								\
+	chapters/part1.tex						\
+	chapters/assim.tex						\
+	chapters/elnino.tex						\
+	chapters/thc.tex						\
 
 SKRIPTFILES = vorwort.tex uebersicht.tex \
 	$(CHAPTERS) \
