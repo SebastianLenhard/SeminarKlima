@@ -19,6 +19,7 @@ CHAPTERS = 								\
 	chapters/assim.tex						\
 	chapters/dgl.tex						\
 	chapters/elnino.tex						\
+	chapters/fourier.tex						\
 	chapters/thc.tex						\
 	chapters/wuk.tex						\
 	chapters/zonen.tex
