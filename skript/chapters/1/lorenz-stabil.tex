@@ -1,0 +1,74 @@
+%
+% lorenz-stabil.tex -- Stabilität der Atmosphäre
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\usepackage{ifthen}
+\usepackage{color}
+\usetikzlibrary{arrows,intersections}
+\begin{document}
+
+\def\paket{
+\fill[color=blue!20] (-0.25,-0.25)--(0.25,-0.25)--(0.25,0.25)--(-0.25,0.25)--cycle;
+\draw[color=blue] (-0.25,-0.25)--(0.25,-0.25)--(0.25,0.25)--(-0.25,0.25)--cycle;
+}
+
+\definecolor{darkgreen}{RGB}{0,128,0}
+
+\newboolean{gradient}
+
+\def\graphik{
+
+\ifthenelse{\boolean{gradient}}{
+\draw[color=red] (2.5,0)--(-2.5,5);
+\draw[->,color=blue] (-0.55,3.5)--(-0.55,4.2);
+\node at (-0.55,4.2) [left] {\color{blue}$F$};
+\draw[->,color=blue] (1.55,0.5)--(1.55,-0.2);
+\node at (1.55,-0.2) [right] {\color{blue} $F$};
+}{
+\draw[color=red] (1.5,0)--(-1.,5);
+\draw[->,color=blue] (-0.55,3.5)--(-0.55,2.8);
+\node at (-0.55,2.8) [left] {\color{blue}$F$};
+\draw[->,color=blue] (1.55,0.5)--(1.55,1.2);
+\node at (1.55,1.2) [right] {\color{blue} $F$};
+}
+
+\draw[->] (-3,0)--(3,0) coordinate[label={$T$}];
+\draw[->] (-1,-0.1)--(-1,5.1) coordinate[label={left:$y$}];
+
+
+% rectangle around (0.5,2)
+\begin{scope}[xshift = 0.5cm, yshift = 2cm]
+\paket
+\end{scope}
+
+\begin{scope}[xshift = -0.55cm, yshift = 3.5cm]
+\paket
+\end{scope}
+
+\begin{scope}[xshift = 1.55cm, yshift = 0.5cm]
+\paket
+\end{scope}
+
+\draw[->,line width=1.5pt,color=darkgreen] (0.5,2)--(-0.55,3.5);
+\draw[->,line width=1.5pt,color=darkgreen] (0.5,2)--(1.55,0.5);
+\fill[color=darkgreen] (0.5,2) circle[radius=0.1];
+}
+
+\begin{tikzpicture}[thick, >= latex]
+
+\setboolean{gradient}{false}
+\graphik
+\setboolean{gradient}{true}
+\begin{scope}[xshift = 7cm]
+\graphik
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

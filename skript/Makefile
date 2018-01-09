@@ -22,7 +22,9 @@ CHAPTERS = 								\
 	chapters/fourier.tex						\
 	chapters/thc.tex						\
 	chapters/wuk.tex						\
-	chapters/zonen.tex
+	chapters/zonen.tex						\
+	chapters/1/hydrodynamik.tex					\
+	chapters/1/lorenz.tex
 
 SKRIPTFILES = vorwort.tex uebersicht.tex \
 	$(CHAPTERS) \
@@ -35,7 +37,7 @@ TEXFILES = $(SKRIPTFILES) \
 
 BLXFILES = \
 	skript.bbl \
-#	skript1-blx.bbl \
+	skript1-blx.bbl \
 # 	skript2-blx.bbl skript3-blx.bbl skript4-blx.bbl skript5-blx.bbl \
 #	skript6-blx.bbl skript7-blx.bbl skript8-blx.bbl skript9-blx.bbl
 
