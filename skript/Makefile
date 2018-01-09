@@ -22,9 +22,10 @@ CHAPTERS = 								\
 	chapters/fourier.tex						\
 	chapters/thc.tex						\
 	chapters/wuk.tex						\
+	chapters/fluiddynamik.tex					\
 	chapters/zonen.tex						\
-	chapters/1/hydrodynamik.tex					\
-	chapters/1/lorenz.tex
+	chapters/2/hydrodynamik.tex					\
+	chapters/2/lorenz.tex
 
 SKRIPTFILES = vorwort.tex uebersicht.tex \
 	$(CHAPTERS) \
