@@ -1,0 +1,53 @@
+%
+% konvektion.tex
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\usepackage{ifthen}
+\usepackage{color}
+\usetikzlibrary{arrows,intersections}
+\usetikzlibrary{math}
+\begin{document}
+
+\tikzmath{
+function zelle(\p,\s){
+	real \x, \y;
+	\x = cos(\p);
+	\y = sin(\p);
+	real \r, \t, \tneu, \d;
+	\d = 1;
+	\r = acos(\s);
+	\t = \r;
+	int \i;
+	real \w;
+	\w = 57.2958;
+	\t = \t + \w * (cos(\t*\x)*cos(\t*\y) - \s) / (\x*sin(\t*\x)*cos(\t*\y)+\y*cos(\t*\x)*sin(\t*\y));
+	\t = \t + \w * (cos(\t*\x)*cos(\t*\y) - \s) / (\x*sin(\t*\x)*cos(\t*\y)+\y*cos(\t*\x)*sin(\t*\y));
+	\t = \t + \w * (cos(\t*\x)*cos(\t*\y) - \s) / (\x*sin(\t*\x)*cos(\t*\y)+\y*cos(\t*\x)*sin(\t*\y));
+	\t = \t + \w * (cos(\t*\x)*cos(\t*\y) - \s) / (\x*sin(\t*\x)*cos(\t*\y)+\y*cos(\t*\x)*sin(\t*\y));
+	return \t / 90;
+};
+}
+
+\begin{tikzpicture}[thick, >= latex]
+
+\draw[->] (-5.5,-5)--(5.5,-5) coordinate[label={above:$x$}];
+\draw[line width=0.3pt] (-5.5,0)--(5.5,0);
+\draw (-5.5,5)--(5.5,5);
+\draw[->] (-5,-5.5)--(-5,5.5) coordinate[label={right:$y$}];
+\draw[line width=0.3pt] (0,-5.5)--(0,5.5);
+\draw (5,-5.5)--(5,5.5);
+
+\def\s{0.9}
+\foreach \s in {0.1,0.2,...,0.9}{
+\draw[domain=0:360,samples=360,color=red,line width=1.2pt] plot ({\x}:{5 * zelle(\x,\s)});
+}
+
+\end{tikzpicture}
+\end{document}
+

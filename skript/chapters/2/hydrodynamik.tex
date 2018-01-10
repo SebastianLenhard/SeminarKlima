@@ -683,7 +683,7 @@ Wir berechnen die Divergenz der einzelnen Terme:
 
 In einem inkompressiblen Fluid ist $\nabla\cdot\vec{v}=0$, dann fällt
 der zweite Term weg.
-Die Strömungsgleichung eines inkompressiblen fluids erhält damit die
+Die Strömungsgleichung eines inkompressiblen Fluids erhält damit die
 einfache Form
 \begin{equation}
 \frac{\partial\vec{v}}{\partial t}
@@ -700,7 +700,7 @@ die klassische Navier-Stokes Gleichung.
 
 \subsection{Boussinesq-Approximation}
 
-\subsection{Zweidimensionale Strömung}
+\subsection{Inkompressible zweidimensionale Strömung}
 Die Kontinuitätsgleichung
 und die Navier-Stokes-Gleichung gelten auch für eine zweidimensionale
 Strömung.
@@ -1222,8 +1222,55 @@ Mit dieser Definition wird die Bewegungsgleichung
 \nabla\times\vec b
 + \nabla\times\biggl(\frac1{\varrho}\nabla\cdot\bm{\tau}\biggr)
 -\frac{\partial(\psi,\Delta\psi)}{\partial(x,y)}.
+\label{skript:psidgl}
 \end{equation}
 Im Falle der Boussinesq-Näherung kommt noch ein Term für den
 Auftrieb hinzu.
 
 \subsubsection{Spannungen und Stromfunktion}
+Für eine newtonsche Flüssigkeit haben wir in 
+\eqref{skript:inkompressibel newtonsch}
+bereits den Spannungstensor durch den Druck und die Spannungen
+ausgedrückt.
+Aus der Bewegungsgleichung für die Geschwindigkeit haben wir die
+Differentialgleichung \eqref{skript:psidgl} erhalten, indem
+wir den Operator $\nabla\times\mathstrut$ angewendet haben.
+Wir müssen jetzt also 
+\[
+\nabla\times\biggl(\frac1{\varrho}(\nabla p-\nu\Delta\vec{v})\biggr)
+=
+\frac{1}{\varrho}
+\biggl(
+\nabla\times\nabla p
+-
+\nu \nabla\times\Delta\vec{v}
+\biggr)
+=
+\frac1{\varrho}
+\biggl(
+\frac{\partial}{\partial x}\frac{\partial p}{\partial y}
+-
+\frac{\partial}{\partial y}\frac{\partial p}{\partial x}
+-\nu\Delta\nabla\times\vec{v}
+\biggr)
+\]
+berechnen.
+Der erste Term fällt weg, weil es auf die Reihenfolge der zweiten
+Ableitungen nicht ankommt.
+Im zweiten Term haben wir angekommen, dass $\nu$ nicht vom Ort
+abhängigt.
+Dies ist genau genommen nicht richtig, da $\nu$ zum Beispiel
+stark von der Temperatur abhängt, die ebenfalls nicht konstant sein
+muss.
+Der zweite Term in der Klammer ist natürlich einfach
+$\nu\Delta\zeta=-\nu\Delta^2\psi$.
+Damit bekommen wir die Bewegungsgleichung für $\psi$ in der Form
+\begin{equation}
+\frac{\partial \Delta \psi}{\partial t}
+=
+\nabla\times\vec b
++\frac{\nu}{\varrho}\Delta^2\psi
+-\frac{\partial(\psi,\Delta\psi)}{\partial(x,y)}.
+\label{skript:psidgl2}
+\end{equation}
+

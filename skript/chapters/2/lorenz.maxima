@@ -1,0 +1,42 @@
+/*
+ * lorenz.maxima
+ *
+ * (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+ */
+
+psi: X(t) * sin(a*x) * sin(y);
+theta: Y(t) * cos(a*x) * sin(y) - Z(t) * sin(2*y);
+
+DeltaPsi: diff(diff(psi, x), x) + diff(diff(psi, y), y);
+Delta2Psi: diff(diff(DeltaPsi, x), x) + diff(diff(DeltaPsi, y), y);
+DeltaTheta: diff(diff(theta, x), x) + diff(diff(theta, y), y);
+
+JpsiDeltaPsi: diff(psi,x) * diff(DeltaPsi, y) - diff(psi, y) * diff(DeltaPsi, x);
+expand(JpsiDeltaPsi);
+JpsiTheta: diff(psi,x) * diff(theta, y) - diff(psi,y) * diff(theta, x);
+
+dgl1: diff(DeltaPsi,t) - nu * Delta2Psi - c * diff(theta, x) + JpsiDeltaPsi;
+dgl1: expand(dgl1);
+dgl1: ratsubst(1, sin(a*x)*sin(y), dgl1);
+dglX: ratsimp(dgl1);
+
+dgl2: diff(theta, t) - kappa * DeltaTheta - (T_0/%pi) * diff(psi, x)
+	+ JpsiTheta;
+dgl2: expand(ratsimp(dgl2));
+dgl2: ratsubst(1-sin(a*x)^2, cos(a*x)^2, dgl2);
+dgl2: ratsubst(-sin(y)/2+sin(3*y)/2, sin(y)*cos(2*y), dgl2);
+dgl2: expand(ratsubst(A, cos(a*x)*sin(y), dgl2));
+dgl2: expand(ratsubst(B, sin(2*y), dgl2));
+dgl2: expand(ratsubst(B/2, cos(y)*sin(y), dgl2));
+dgl2: expand(ratsubst(0, cos(a*x)*sin(3*y), dgl2));
+
+dglY: dgl2, A=1, B=0;
+expand(dglY);
+
+dglZ: dgl2, A=0, B=1;
+expand(dglZ);
+
+dglX;
+dglY;
+dglZ;
+
