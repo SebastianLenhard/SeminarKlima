@@ -467,6 +467,7 @@ Sie lauten
 -\nabla\cdot(\varrho\vec{v}\vec{v})
 + \varrho\vec{b}
 + \nabla\cdot \bm{\tau}.
+\label{skript:navier-stokes1}
 \end{equation}
 Dies ist die {\em Navier-Stokes Gleichung}.
 \index{Navier-Stokes Gleichung}
@@ -573,16 +574,16 @@ Definition~\ref{skript:definition divergenz} ist
 =
 \nabla p.
 \]
-
 Damit wird die Bewegungsgleichung 
-\[
-\frac{\partial \varrho\vec{v}}
+\begin{equation}
+\frac{\partial \varrho\vec{v}}{\partial t}
 =
 -\nabla\cdot(\varrho\vec{v}\vec{v})
 +\varrho\vec b
 -\nabla p
 +\nabla\cdot\bm{\sigma}
-\]
+\label{skript:navier-stokes2}
+\end{equation}
 Die Scherkräfte sind in einem newtonschen Fluid proportional zu
 den Schergeschwindigkeiten.
 Man kann zeigen (siehe \cite[p.~172]{skript:kaperengler}), dass $\bm{\sigma}$
@@ -620,7 +621,7 @@ von $\bm{\sigma}$ verschwindet.
 Die Divergenz $\nabla\cdot\bm{\sigma}$ von $\bm{\sigma}$ kann damit explizit
 durch die Geschwindigkeit ausgedrückt werden.
 Wir berechnen die Divergenz der einzelnen Terme:
-\begin{align*}
+\begin{align}
 (\nabla\cdot\bm{\varepsilon})_x
 &=
 \sum_i\frac{\partial \varepsilon_{ix}}{\partial i}
@@ -640,12 +641,14 @@ Wir berechnen die Divergenz der einzelnen Terme:
 (\nabla\cdot\vec{v})
 +
 \frac12\Delta v_x
+\notag
 \\
 \nabla\cdot\bm{\varepsilon}
 &=
 \frac12\nabla(\nabla\cdot\vec{v})
 +
 \frac12\Delta\vec{v}
+\notag
 \\
 (\nabla\cdot(\nabla\cdot\vec{v})E)_x
 &=
@@ -654,10 +657,12 @@ Wir berechnen die Divergenz der einzelnen Terme:
 \sum_i \frac{\partial}{\partial i} (\nabla\cdot\vec{v}\delta_{xi})
 =
 \frac{\partial}{\partial x}(\nabla\cdot\vec{v})
+\notag
 \\
 \nabla\cdot(\nabla\cdot\vec{v})E)
 &=
 \nabla(\nabla\cdot\vec v)
+\notag
 \\
 \intertext{und erhalten so für die Divergenz von $\bm{\sigma}$:}
 \nabla\cdot\bm{\sigma}
@@ -679,10 +684,12 @@ Wir berechnen die Divergenz der einzelnen Terme:
 &=
 \nu\Delta\vec{v}
 +\frac{\nu}3\nabla(\nabla\cdot\vec{v}).
-\end{align*}
+\label{skript:sigmadiv}
+\end{align}
 
+\subsubsection{Inkompressible Strömung}
 In einem inkompressiblen Fluid ist $\nabla\cdot\vec{v}=0$, dann fällt
-der zweite Term weg.
+der zweite Term in \eqref{skript:sigmadiv} weg.
 Die Strömungsgleichung eines inkompressiblen Fluids erhält damit die
 einfache Form
 \begin{equation}
@@ -697,8 +704,90 @@ einfache Form
 die klassische Navier-Stokes Gleichung.
 
 \subsection{Zustandsgleichungen}
+Die Dichte hängt vor allem auch von der Temperatur ab.
+In den Ozeanen ändert die Dichte des Wassers mit dem Salzgehalt.
+Eine vollständige Beschreibung der Strömung in Ozeanen oder der
+Atmosphäre muss daher auch noch weitere Variablen modellieren.
+In Kapitel~\ref{chapter:wetter und klima} haben wir bereits auf die
+Wärmeleitungsgleichungen hingewiesen.
+
+Die Felder $T$, $p$ und $\varrho$ sind bei einem idealen Gas miteinander
+durch die Zustandsgleichung
+\[
+p=\varrho T R_s
+\]
+mit der spezifischen Gaskonstante $R_s$ verbunden.
+Für den Zusammenhang von Dichte, Temperatur und Salzgehalt gibt
+es jedoch kein derart einfaches Modell.
+Eine weitere Kopplung zwischen der Temepratur und der
+Strömung entsteht durch die Viskosität $\nu$, die sehr stark
+von der Temperatur abhängt.
+Auch dafür gibt es keine einfachen Modell.
+
+In vielen Fällen schwanken die physikalischen Grössen nur geringfügig
+um einen Mittelwert.
+Zum Beispiel hängt die Dichte $\varrho$ von Meerwasser sowohl von
+der Temperatur $T$ als auch vom Salzgehalt $h$ ab, die Dichte ist
+also eine Funktion $\varrho(T,h)$.
+Wir können $\varrho$ als Taylorreihe um die mittlere Temperatur $T_0$
+und den mittleren Salzgehalt $h_0$ entwickeln:
+\[
+\varrho(T,h)
+=
+\varrho_0 -\alpha(T-T_0) + \beta(h-h_0).
+\]
+In Klimamodellen betrachten wir typischerweise nur kleine Abweichungen
+von Mittelwerten, so dass ein solches Modell sehr erfolgreich sein kann.
 
 \subsection{Boussinesq-Approximation}
+Die Strömung in der Erdatmosphäre kann offensichtlich nicht als
+inkompressibel betrachtet werden, die Dichte ist offenbar nicht
+konstant.
+Der Zustand der Atmosphäre weicht jedoch nur wenig einem mittleren
+Dichteprofil $\varrho_0$ ab, welches im wesentlich durch das Temperaturprofil
+festgelegt ist.
+Im Normalzustand nimmt die Temperatur der Atmosphäre ziemlich genau
+linear ab bis zur Höhe der Thermopause.
+Auf die horizontale Komponente der Strömung hat eine Abweichung des
+Temperaturprofils kaum einen Einfluss, denn andere Terme der
+Navier-Stokes-Gleichung
+\eqref{skript:navier-stokes2}
+sind bedeutender.
+Für die vertikale Bewegung ist der Term der äusseren Kräfte,
+nämlich die Schwerkraft, dominant.
+Wir können dies berücksichtigen, indem wir die Erdbeschleunigung
+$g$ durch
+\begin{equation}
+g\frac{\varrho}{\varrho_0}
+\label{skript:boussinesq}
+\end{equation}
+ersetzen.
+Diese Approximation ist bekannt als die Boussinesq-Approximation.
+Für unsere Zwecke hier brauchen wir nicht mehr als \eqref{skript:boussinesq}.
+Dies wird bei der Herleitung der Lorenz-Gleichung in Abschnitt
+\ref{section:lorenz-modell} benötigt.
+Für die vollständigen Boussinesq-Gleichungen siehe \cite{skript:kaperengler}.
+
+%In der Navier-Stokes-Gleichung können wir die horizontale Bewegung
+%von der vertikalen vollständig trennen.
+%Wir schreiben dazu
+%\[
+%\vec{u}
+%=
+%\begin{pmatrix}v_x\\v_y\end{pmatrix},
+%\qquad
+%w=v_z.
+%\]
+%Ausser in den für den Auftrieb wesentlichen Termen (Druck und äussere Kräfte)
+%betrachten wir die Dichte als konstant.
+%Die Kontinuitätsgleichung wird daher zu
+%\[
+%\nabla\cdot\vec{u}\frac{\partial w}{\partial z} = 0.
+%\]
+%Dies besagt, dass die Quellen des horizontalen Strömungsfeldes 
+%durch die Vertikalströmung gespeist werden.
+%Die horizontale Bewegungsgleichung bleibt bis auf den Druckterm
+%erhalten.
 
 \subsection{Inkompressible zweidimensionale Strömung}
 Die Kontinuitätsgleichung
