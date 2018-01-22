@@ -24,6 +24,9 @@ CHAPTERS = 								\
 	chapters/fourier.tex						\
 	chapters/thc.tex						\
 	chapters/wuk.tex						\
+	chapters/1/klima.tex						\
+	chapters/1/physik.tex						\
+	chapters/1/anforderungen.tex					\
 	chapters/fluiddynamik.tex					\
 	chapters/zonen.tex						\
 	chapters/2/hydrodynamik.tex					\
