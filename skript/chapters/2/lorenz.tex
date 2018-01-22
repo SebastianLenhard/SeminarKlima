@@ -319,8 +319,11 @@ Wir schreiben
 \[
 Nu
 =
+\def\arraystretch{1.9}
 \begin{pmatrix}
+\displaystyle
 -\frac{\partial(\psi,\Delta\psi)}{\partial(x,y)}\\
+\displaystyle
 -\frac{\partial(\psi,\vartheta)}{\partial(x,y)}
 \end{pmatrix}.
 \]
@@ -329,13 +332,36 @@ Damit haben wir das Differentialgleichungssystem in der Form
 \frac{\partial}{\partial t}Du
 =
 Au+Nu
+\label{skript:allgemeinesmodell}
 \end{equation}
 mit den linearen Operatoren $D$ und $A$ und dem nichtlinearen Operator
 $N$ schreiben.
 
+Die allgemeine Form \eqref{skript:allgemeinesmodell} eines Klimamodells
+ermöglicht uns, das Klimavorhersageproblem in dem etwas allgemeineren
+Rahmen der Vorhersage für ein beliebiges nichtlineares dynamisches
+System zu studieren.
+Zwar ist \eqref{skript:allgemeinesmodell} immer noch ein partielles
+Differentialgleichungssystem und die Operatororen $D$, $A$ und $N$
+sind partielle Differentialoperatoren.
+Wenn es aber gelingt, die Funktionen zu diskretisieren und durch
+Vektoren in einem endlichdimensionalen Vektorraum zu ersetzen, dann
+werden $D$ und $A$ zu linearen Abbildungen, die durch Matrizen beschrieben
+werden können, und $N$ wird zu einer nichtlinearen Funktion auf einem
+endlichdimensionalen Vektorraum.
+Das Klimamodell wird also zu einer nichtlinearen gewöhnlichen
+Differentialgleichung in einem endlichdimensionalen Raum.
+Solche Differentialgleichungen sind im Detail studiert worden und ihre
+Eigenschaften sind sehr gut verstanden.
+In Kapitel~\ref{chapter:dgl} werden wir einen Teil der gut ausgebauten
+Theorie zusammenfassen.
+Den Weg von \eqref{skript:allgemeinesmodell} zu einer gewöhnlichen
+Differentialgleichung in nur drei Dimensionen soll im folgenden 
+Abschnitt~\ref{subsection:umwandlung} vorgeführt werden.
+
 % XXX Diskussion des unendlichdimensionalen dynamischen Systems
 
-\subsection{Umwandlung in ein gewöhnliches Differentialgleichungssystem}
+\subsection{Umwandlung in ein gewöhnliches Differentialgleichungssystem\label{subsection:umwandlung}}
 \begin{figure}
 \centering
 \includegraphics{chapters/2/konvektion.pdf}
