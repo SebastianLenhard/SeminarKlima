@@ -151,7 +151,7 @@ Der vektorielle Operator
 \[
 \nabla
 =
-\arraystretch{1.3}
+\def\arraystretch{1.3}
 \begin{pmatrix}
 \frac{\partial}{\partial x}\\
 \frac{\partial}{\partial y}\\
@@ -163,7 +163,7 @@ Der Vektor
 \[
 \nabla f
 =
-\arraystretch{1.3}
+\def\arraystretch{1.3}
 \begin{pmatrix}
 \frac{\partial f}{\partial x}\\
 \frac{\partial f}{\partial y}\\
@@ -218,7 +218,7 @@ werden und als Konvektionsströmung aufsteigen.
 Andererseits kann Wasser an der Oberfläche verdampft werden damit die
 latente Wärme in die Atmosphäre übergehen.
 Man nennt diese Mechanismen auch turbulente Flüsse
-(\cite[S.~70]{skript:wiefunktioniertdas}).
+\cite[S.~70]{skript:wiefunktioniertdas}.
 
 Der Wassergehalt der Luft kann höchstens einige wenige Prozente betragen.
 Zwar ist die Wärmespeicherung durch Verdunstung über 2000 mal effizienter,
@@ -227,8 +227,8 @@ doch nicht einen derart grossen Teil des Energietransports von der
 Oberfläche in die Atmosphäre.
 In der Tat finden etwa 30\% des Energietransports von der Erdkruste
 in die Atmosphäre durch turbulente Flüsse statt, davon etwa
-7\% durch Konvektion und 23\% durch latente Wärme.
-(\cite[S.~70]{skript:wiefunktioniertdas}).
+7\% durch Konvektion und 23\% durch latente Wärme
+\cite[S.~70]{skript:wiefunktioniertdas}.
 Höhere Temperaturen begünstigen die Verdunstung und verschieben diesen
 Anteil zugunsten der latenten Wärme.
 Man darf also davon ausgehen, dass höhere Oberflächentemperaturen
@@ -243,8 +243,221 @@ extremen Wetterphänomenen muss es also den Wassergehalt der
 Atmosphäre modellieren.
 
 \subsection{Strahlung}
+Der bedeutendste Energietransportmechanismus in der Atmosphäre ist
+die Strahlung.
+In diesem Abschnitt stellen wir die Strahlungsgesetze zusammen und
+studieren die Strahlungsbilanz der Atmosphären.
+
+\subsubsection{Schwarzkörperstrahlung}
+\index{schwarzer Körper}%
+Die Strahlung der Sonne wie auch der Erde kann als Strahlung eines
+schwarzen Körpers modelliert werden.
+Ein schwarzer Körper ist ein idealisierter Körper, der alle auftretende
+Strahlung absorbieren kann.
+Er befindet sich im thermischen Gleichgewicht mit dem Strahlungsfeld,
+seine Strahlung hängt daher nur von der Temperatur ab.
+
+\subsubsection{Stefan-Boltzmann-Gesetz}
+Das {\em Stefan-Bolzmann-Gesetz} gibt Auskunft darüber, wieviel
+\index{Stefan-Boltzmann-Gesetz}
+Energie insgesamt von einem schwarzen Körper abgestrahlt wird.
+Die gesamte Strahlung hängt natürlich von der Oberfläche $A$ des Strahlers ab,
+aber die Strahlungsleistung pro Flächeneinheit hängtnur noch von der
+Temperatur ist.
+Die gesamte Strahlungsleistung ist
+\begin{equation}
+P=\sigma AT^4
+\qquad \text{mit}\qquad
+\sigma=5.670367\cdot10^{-8}\frac{\text{W}}{\text{m}^2\text{K}^4}.
+\label{skript:stefon-boltzmann}
+\end{equation}
+
+Die Strahlung der Sonne nimmt dem Quadrat der Entfernung ab.
+Von der Strahlungsleistung $\sigma T^4$ pro Flächeneinheit der
+Sonnenoberfläche bleibt in der Entfernung der Erde die Leistung
+\begin{equation}
+P_{\earth}
+=
+\sigma T^4\cdot \biggl(\frac{R_{\astrosun}}{a_{\earth}}\biggr)^2
+\label{skript:solarkonstante}
+\end{equation}
+übrig,
+wobei $R_{\astrosun}=6.957\cdot 10^8\text{m}$ der Radius der Sonne ist und
+$a_{\earth}=1.496\cdot 10^{11}\text{m}$ die mittlere Entfernung der Erde
+von der Sonne.
+Setzt man diese Werte und die Temperatur $T=5778\text{K}$ in die Gleichung
+\eqref{skript:solarkonstante}
+ein, erhält man
+\begin{align*}
+P_{\earth}
+&=
+1366.8 \text{W}/\text{m}^2,
+\end{align*}
+auch bekannt als die {\em Solarkonstante}.
+\index{Solarkonstante}
+
+\subsubsection{Wiensches Verschiebungsgesetz}
+Die Strahlungsleistung ist nicht über alle Wellenlängen gleichmässig
+verteilt.
+\index{Wiensches Verschiebungsgesetz}
+Das {\em Wiensche Verschiebungsgesetz} besagt, dass die maximale
+Strahlungsleistung bei einer Wellenlänge abgestrahlt wird,
+die umgekehrt proportional zur Temperatur ist:
+\begin{equation}
+\lambda_{\text{max}}
+=
+\frac{b}{T}
+\qquad\text{mit}\qquad
+b=2.897\cdot10^{-3}\text{m}\cdot\text{K}.
+\end{equation}
+Für die Oberfläche der Sonne mit $T=5778\text{K}$ findet man die
+Wellenlänge
+$\lambda_{\text{max}}=5\cdot10^{-7}\text{m} = 500\text{nm}$,
+dies entspricht grünem Licht.
+Die Strahlung der Erde mit ihrer mittleren Temperatur von 287\,K
+hat dagegen ihr Maximum bei $\lambda_{\text{max}}=10\,\mu\text{m}$,
+also im Infrarotbereich.
+
+\subsubsection{Strahlung und Reflektion in der Atmosphäre}
+Die Intensität in Abhängigkeit von der Wellenlänge wird durch das Plancksche
+Strahlungsgesetz
+\begin{equation}
+E(\lambda,T)
+=
+\frac{2\pi hc^2}{\lambda^5}\frac{1}{e^{\frac{hc}{\lambda kT}}-1}
+\end{equation}
+pro Flächeneinheit des Strahlers und pro Wellenlängeneinheit.
+\begin{figure}
+\centering
+\includegraphics{chapters/1/planck.pdf}
+\caption{Plancksches Strahlungsgesetz für die Sonne
+\label{skript:planck-kurve}}
+\end{figure}
+
+\subsubsection{Strahlungsbilanz}
+\begin{figure}
+\centering
+\includegraphics{chapters/1/vergleich.pdf}
+\caption{Strahlung der Sonne (rot) und der Erde (blau).
+Das Maximum der Strahlung der Sonne ist im sichtbaren Bereich,
+das Maximum der Wärmestrahlung der Erde im Infraroten.
+\label{skript:strahlung-sonne-erde}}
+\end{figure}%
+In Abbildung~\ref{skript:strahlung-sonne-erde} sind die Planckschen
+Strahlungskurve für die Sonne und Erde dargestellt.
+Die rote Kurve zeigt die spektrale Strahlungsleistung, die von der
+Sonne auf den Querschnitt $\pi R_{\earth}^2$ der Erde eingestrahlt wird,
+also
+\[
+E(\lambda,T_{\astrosun}) \cdot 2\pi R_{\earth}^2
+\cdot
+\biggl(\frac{R_{\astrosun}}{a_{\earth}}\biggr)^2
+\]
+mit $T_{\astrosun}=5778\text{K}$.
+Die dunkelblaue Kurve zeigt das Ausstrahlungsspektrum der ganzen Erde mit
+einer Temperatur von $T=279\text{K}$, also
+\[
+E(\lambda,T_{\earth})\cdot 4\pi R_{\earth}^2.
+\]
+Die Fläche unter der Kurve ist ein Mass für die gesamte Energie.
+Offenbar halten sich Einstrahlung und Ausstrahlung die Waage.
+
+Die Einstrahlung kann sich zum Beispiel dann verändern, wenn 
+mehr Strahlung reflektiert wird.
+Die Ausstrahlung verändert sich, wenn die Atmosphäre für infrarote
+Strahlung grösser wird.
+Wir die Atmosphäre durch erhöhte $text{CO}_2$-Konzentration für
+infrarote Strahlung undurchsichtiger, dann sinkt die Ausstrahlung
+der Erde.
+Damit wieder ein Gleichgewicht entsteht, muss die Temperatur der
+Erde sich erhöhen, damit die Ausstrahlung ebenfalls höher wird
+(obere hellblaue Kurve).
+Sinkt der Gehalt an Treibhausgasen, wird die Atmosphäre transparenter
+für Wärmestrahlung.
+Ein Gleichgewicht ist möglich bei tieferer Temperatur (untere
+hellblaue Kurve).
+
 
 \subsection{Erdrotation und Zirkulation}
+\subsubsection{Coriolis-Effekt}
+\subsubsection{Globale Zirkulation}
+\subsubsection{Äquatorialzone}
 
 \subsection{Periodische Einflüsse}
+Das Klimasystem ist einer Reihe von sich periodisch verändernden 
+Einflüssen ausgesetzt.
+Viele dieser Einflüsse erscheinen auf den ersten Blick geringfügig
+und damit vernachlässigbar.
+Doch wenn ein solcher periodischer Einfluss mit einer Frequenz auftritt,
+der einer Eigenfrequenz des Klimasystems entspricht, dann kann sich 
+in Folge eines Resonanzeffektes über längere Zeit ein bedeutender 
+Einfluss auf das Klima manifestieren.
+Es ist daher wichtig, auch kleine Einflüsse zu kennen und insbesondere
+alle Aspekte des Klimasystems zu modellieren, die eine Eigenfrequenz
+in der Nähe ihrer Anregungsfrequenzen haben.
+
+\subsubsection{Sonnenfleckenzyklus}
+Die Strahlung der Sonne ist nicht konstant.
+Wie bei jedem Stern dieser Klasse nehmen Durchmesser und Temperatur der
+Sonne über die Jahrmillionen in dem Mass zu, dass neben der Fusion
+von Wasserstoff zu Helium auch noch Fusionsprozesse schwerer Elemente
+eine Rolle zu spielen beginnen.
+Dieser sehr langfristige Einfluss ist jedoch nur wesentlich für
+den Vergleich von Klimamodellen mit Daten über das Klima auf der sehr
+jungen Erde.
+
+Für kurzfristige Prognosen von Bedeutung sind dagegen die Schwankungen
+der Sonnenaktivität.
+Die Zahl der Sonnenflecken ist ein leicht zu messender Indikator
+dafür, für den Aufzeichnung seit dem 17.~Jahrhundert existieren.
+Die Sonnenfleckenzahl schwankt mit einer Periode von etwa elf Jahren.
+Die daraus resultierende Änderung der Einstrahlung ist jedoch nur 0.07\%,
+so dass die Sonnenaktivität nicht für den Klimawandel verantwortlich
+gemacht werden kann. 
+Die schwankende Sonnenaktivität muss jedoch bei der Validierung
+von Klimamodellen berücksichtigt werden.
+
+\subsubsection{Bahnänderungen der Erde}
+Nach Kepler bewegen sich die Planeten auf Ellipsen,
+in deren einem Brennpunkt die Sonne steht.
+Die keplerschen Gesetze der Planetenbahnen können aus dem Newtonschen 
+Gravitationsgesetz hergeleitet werden
+\cite[\S 6]{skript:joos}.
+Die Bahnelemente beschreiben die Ebene, in der sich der Planet bewegt,
+die Richtung und der Zeitpunkt der grössten Annäherung an die Sonne und
+die Exzentrizität der Ellipse.
+
+Es trifft exakt jedoch nur dann zu, wenn keine anderen Kräfte auf den
+Planeten wirken als die Anziehungskraft der Sonne.
+Newtons Gravitationsgesetzt besagt jedoch, dass auch alle anderen
+Planeten durch ihre Schwerkraft auf die Erde einwirken.
+Dies äussert sich darin, dass die Bahnelemente, sich mit der Zeit
+ändern.
+Diese langsame Veränderung der Bahnelemente war schon Newton bekannt,
+er hat daraus geschlossen, dass das Sonnensystem mit der Zeit völlig
+zerfallen würde.
+Genauere Untersuchungen und numerische Rechnungen zeigen jedoch, dass
+unser Sonnensystem über lange Zeit stabil ist.
+Die Exzentrizität zum Beispiel der Erdbahn kann sich tatsächlich verändern,
+aber über längere Zeit wird die Veränderung auch wieder rückgängig
+gemacht.
+
+Veränderungen der Erdbahn, insbesondere der Exzentrizität, oder der
+Neigung der Erdachse zur Bahn äussern sich darin, dass die Einstrahlung
+über das Jahr stärker oder weniger stark schwankt oder auch im Mittel
+grösser oder kleiner wird.
+Dadurch können sich die Temperaturunterschiede zwischen den Polgebieten und
+äquatorialen Breiten verändern und damit die Intensität des Wettergeschehens
+beeinflusst werden.
+Ein langfristiges Klimamodell muss also auch diese Änderungen
+modellieren.
+
+Es stellt sich allerdings heraus, dass diese Veränderungen sehr viel
+langfristiger sind als der die meisten Klimapolitiker interessierenden
+Zeitraum von wenigen Jahrhunderten.
+Die Berücksichtigung dieser Effekte dient daher vor allem dazu die
+Klima-Modelle mit der Klimageschichte der Erde zu vergleichung und
+damit zu validieren.
+In Kapitel~\ref{chapter:fourier} wird gezeigt, wie periodische Einflüsse
+modelliert und mit Hilfe der Fourier-Theorie analysiert werden können.
 
