@@ -8,6 +8,8 @@ BILDER = lorenz-definition.pdf lorenz-stabil.pdf drehmoment.pdf \
 
 all:	$(BILDER)
 
+images:	$(BILDER)
+
 lorenz-definition.pdf:	lorenz-definition.tex
 	pdflatex lorenz-definition.tex
 

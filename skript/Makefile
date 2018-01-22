@@ -8,6 +8,8 @@ all:	skript.pdf
 #SUBDIRECTORIES = chapters uebungsaufgaben 
 SUBDIRECTORIES = chapters
 
+.PHONY:	images
+
 images:
 	for d in $(SUBDIRECTORIES); \
 	do \

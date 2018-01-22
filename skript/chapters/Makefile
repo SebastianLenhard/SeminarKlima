@@ -5,8 +5,14 @@
 #
 all:	images
 
+.PHONY:	images
+
 images:
-	-test -d 3d && ( cd 3d; make images )
-	-test -d tikz && ( cd tikz; make images )
-	-test -d mp && ( cd mp; make images )
+	for d in 2 3d tikz mp;						\
+	do								\
+		if [ -d $${d} -a -f $${d}/Makefile ];			\
+		then							\
+			(cd $${d}; make images);			\
+		fi;							\
+	done
 
