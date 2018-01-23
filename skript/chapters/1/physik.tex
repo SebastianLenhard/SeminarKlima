@@ -333,6 +333,55 @@ pro Flächeneinheit des Strahlers und pro Wellenlängeneinheit.
 \caption{Plancksches Strahlungsgesetz für die Sonne
 \label{skript:planck-kurve}}
 \end{figure}
+\index{Plancksches Strahlungsgesetz}
+\index{Strahlungsgesetz,Plancksches}
+Die Strahlungsdichte in Abhängigkeit von der Wellenlänge ist in
+Abbildung~\ref{skript:planck-kurve} dargestellt.
+Die gesamte Strahlungsleistung ist das Integral
+\[
+P
+=
+\int_{0}^\infty E(\lambda,T)\,d\lambda
+=
+\int_{0}^\infty 
+\frac{2\pi hc^2}{\lambda^5}\frac{d\lambda}{e^{\frac{hc}{\lambda kT}}-1}.
+\]
+
+\subsubsection{Einstrahlungswinkel}
+Warum ist es in den Tropen wärmer als in gemässigten Breiten oder
+an den Polen?
+Die Sonne strahlt doch überall mit der gleichen Intensität.
+
+Der Unterschied ist natürlich der Einstrahlungswinkel.
+Der Ausdruck \eqref{skript:solarkonstante} für $P_{\earth}$ 
+beschreibt die Strahlungsleistung pro Flächeneinheit, doch diese
+Flächeneinheit wird senkrecht auf die Ausbreitungsrichtung der
+Strahlung gemessen.
+In gemässigten Breiten und an den Polen fällt die Strahlung 
+in viel kleinerem Winkel auf die Erdoberfläche.
+Die einfallende Energie verteilt sich daher auf eine grössere
+Fläche.
+Ist $\alpha$ der Winkel zwischen der Vertikalen und der Strahlungsrichtung,
+dann ist die auf einer Erdoberfläche einfallende Strahlungsdichte nur
+noch $P_{\earth}\cdot\cos\alpha$.
+
+\begin{figure}
+\centering
+\includegraphics{chapters/1/einfall.pdf}
+\caption{Einfluss des Einstrahlungswinkels auf die pro Flächeneinheit
+der Erdoberfläche einfallende Strahlungsleistung.
+Ein Strahlenbündel mit Querschnitt $q$, welches im Winkel
+$\alpha$ zur Vertikalen einfällt, bedeckt die Fläche $q/\cos\alpha$
+auf der Erdoberfläche
+\label{skript:einfallswinkel}}
+\end{figure}
+Man beachte aber, dass in den graphischen Darstellungen des
+Strahlungsspektrums eine logarithmische $\lambda$-Skala
+verwendet wird.
+Bei grossen Wellenlängen (``rechts'') wird die Kurve also in Wahrheit
+viel stärker ausgedehnt.
+Will man die Flächeninhalte unter den Kurven vergleichen, muss man
+die veritkale Achse mit dem Faktor $\lambda$ skalieren.
 
 \subsubsection{Strahlungsbilanz}
 \begin{figure}
@@ -366,7 +415,7 @@ Die Einstrahlung kann sich zum Beispiel dann verändern, wenn
 mehr Strahlung reflektiert wird.
 Die Ausstrahlung verändert sich, wenn die Atmosphäre für infrarote
 Strahlung grösser wird.
-Wir die Atmosphäre durch erhöhte $text{CO}_2$-Konzentration für
+Wir die Atmosphäre durch erhöhte $\text{CO}_2$-Konzentration für
 infrarote Strahlung undurchsichtiger, dann sinkt die Ausstrahlung
 der Erde.
 Damit wieder ein Gleichgewicht entsteht, muss die Temperatur der
@@ -376,10 +425,31 @@ Sinkt der Gehalt an Treibhausgasen, wird die Atmosphäre transparenter
 für Wärmestrahlung.
 Ein Gleichgewicht ist möglich bei tieferer Temperatur (untere
 hellblaue Kurve).
+Diese Abhängigkeit der Temperatur von der Transparenz der
+Atmosphäre für Wärmestrahlung ist bekannt als der {\em Treibhauseffekt}.
+\index{Treibhauseffekt}
 
+\subsubsection{Tatsächliches Strahlungspektrum}
+\begin{figure}
+\centering
+\includegraphics[width=0.5\hsize]{chapters/1/Solar_spectrum_en.png}
+\caption{Tatsächliches Spektrum der Sonnenstrahlung mit (rot) und
+ohne (gelb) atmosphärische Absorbtion im Vergleich mit dem Spektrum
+der Schwarzkörperstrahlung.
+\label{skript:strahlungsspektrum}}
+\end{figure}
+In Abbildung~\ref{skript:strahlungsspektrum} ist das tatsächlich gemessene
+Strahlungsspektrum der Sonne dargestellt.
+Es fällt auf, dass Wasserdampf und $\text{CO}_2$  für bedeutende
+Absorbtionsbänder verantwortlich ist, während im sichtbaren bereich
+die Absorbtion sehr gleichmässig ist.
 
 \subsection{Erdrotation und Zirkulation}
+Die Einstrahlung ist naturgemäss am grössten am Äquator, während am 
+
 \subsubsection{Coriolis-Effekt}
+\index{Coriolis-Kraft}%
+\index{Coriolis-Effekt}%
 \subsubsection{Globale Zirkulation}
 \subsubsection{Äquatorialzone}
 
@@ -397,6 +467,8 @@ alle Aspekte des Klimasystems zu modellieren, die eine Eigenfrequenz
 in der Nähe ihrer Anregungsfrequenzen haben.
 
 \subsubsection{Sonnenfleckenzyklus}
+\index{Sonnenflecken}%
+\index{Sonnenfleckenzyklus}%
 Die Strahlung der Sonne ist nicht konstant.
 Wie bei jedem Stern dieser Klasse nehmen Durchmesser und Temperatur der
 Sonne über die Jahrmillionen in dem Mass zu, dass neben der Fusion
@@ -408,6 +480,7 @@ jungen Erde.
 
 Für kurzfristige Prognosen von Bedeutung sind dagegen die Schwankungen
 der Sonnenaktivität.
+\index{Sonnenaktivität}%
 Die Zahl der Sonnenflecken ist ein leicht zu messender Indikator
 dafür, für den Aufzeichnung seit dem 17.~Jahrhundert existieren.
 Die Sonnenfleckenzahl schwankt mit einer Periode von etwa elf Jahren.
@@ -418,14 +491,18 @@ Die schwankende Sonnenaktivität muss jedoch bei der Validierung
 von Klimamodellen berücksichtigt werden.
 
 \subsubsection{Bahnänderungen der Erde}
+\index{Bahnänderungen}%
 Nach Kepler bewegen sich die Planeten auf Ellipsen,
 in deren einem Brennpunkt die Sonne steht.
 Die keplerschen Gesetze der Planetenbahnen können aus dem Newtonschen 
 Gravitationsgesetz hergeleitet werden
 \cite[\S 6]{skript:joos}.
+\index{Bahnelemente}%
+\index{Keplersche Gesetze}
 Die Bahnelemente beschreiben die Ebene, in der sich der Planet bewegt,
 die Richtung und der Zeitpunkt der grössten Annäherung an die Sonne und
 die Exzentrizität der Ellipse.
+\index{Exzentrizität}%
 
 Es trifft exakt jedoch nur dann zu, wenn keine anderen Kräfte auf den
 Planeten wirken als die Anziehungskraft der Sonne.
@@ -446,6 +523,7 @@ Veränderungen der Erdbahn, insbesondere der Exzentrizität, oder der
 Neigung der Erdachse zur Bahn äussern sich darin, dass die Einstrahlung
 über das Jahr stärker oder weniger stark schwankt oder auch im Mittel
 grösser oder kleiner wird.
+\index{Neigung der Erdachse}%
 Dadurch können sich die Temperaturunterschiede zwischen den Polgebieten und
 äquatorialen Breiten verändern und damit die Intensität des Wettergeschehens
 beeinflusst werden.

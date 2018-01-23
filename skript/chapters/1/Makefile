@@ -3,7 +3,7 @@
 #
 # (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
 #
-images:	planck.pdf vergleich.pdf
+images:	planck.pdf vergleich.pdf einfall.pdf
 
 plot.tex:	planck.m
 	octave planck.m
@@ -17,3 +17,5 @@ vplot.tex:	vergleich.m
 vergleich.pdf:	vergleich.tex vplot.tex
 	pdflatex vergleich.tex
 
+einfall.pdf:	einfall.tex
+	pdflatex einfall.tex
