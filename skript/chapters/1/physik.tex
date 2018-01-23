@@ -346,13 +346,20 @@ P
 \int_{0}^\infty 
 \frac{2\pi hc^2}{\lambda^5}\frac{d\lambda}{e^{\frac{hc}{\lambda kT}}-1}.
 \]
+Man beachte aber, dass in den graphischen Darstellungen des
+Strahlungsspektrums eine logarithmische $\lambda$-Skala
+verwendet wird.
+Bei grossen Wellenlängen (``rechts'') wird die Kurve also in Wahrheit
+viel stärker ausgedehnt.
+Will man die Flächeninhalte unter den Kurven vergleichen, muss man
+die veritkale Achse mit dem Faktor $\lambda$ skalieren.
 
 \subsubsection{Einstrahlungswinkel}
 Warum ist es in den Tropen wärmer als in gemässigten Breiten oder
 an den Polen?
 Die Sonne strahlt doch überall mit der gleichen Intensität.
 
-Der Unterschied ist natürlich der Einstrahlungswinkel.
+Der Unterschied stammt natürlich vom Einstrahlungswinkel.
 Der Ausdruck \eqref{skript:solarkonstante} für $P_{\earth}$ 
 beschreibt die Strahlungsleistung pro Flächeneinheit, doch diese
 Flächeneinheit wird senkrecht auf die Ausbreitungsrichtung der
@@ -375,13 +382,6 @@ $\alpha$ zur Vertikalen einfällt, bedeckt die Fläche $q/\cos\alpha$
 auf der Erdoberfläche
 \label{skript:einfallswinkel}}
 \end{figure}
-Man beachte aber, dass in den graphischen Darstellungen des
-Strahlungsspektrums eine logarithmische $\lambda$-Skala
-verwendet wird.
-Bei grossen Wellenlängen (``rechts'') wird die Kurve also in Wahrheit
-viel stärker ausgedehnt.
-Will man die Flächeninhalte unter den Kurven vergleichen, muss man
-die veritkale Achse mit dem Faktor $\lambda$ skalieren.
 
 \subsubsection{Strahlungsbilanz}
 \begin{figure}
@@ -445,13 +445,294 @@ Absorbtionsbänder verantwortlich ist, während im sichtbaren bereich
 die Absorbtion sehr gleichmässig ist.
 
 \subsection{Erdrotation und Zirkulation}
-Die Einstrahlung ist naturgemäss am grössten am Äquator, während am 
+Die Einstrahlung ist naturgemäss am grössten am Äquator, während an
+den Polen die Ausstrahlung überwiegt.
+Dies führt dazu, dass die Temperatur an den Polen tiefer ist.
+Der Temperaturunterschied bedeutet aber auch, dass Prozesse in
+der Atmosphäre Energie aus niedrigen Breiten zu den Polen
+transportieren.
+Die Temperaturunterschiede sind jedoch zu klein dafür, dass Wärmeleitung
+den Transport bewerkstelligen könnte.
+Die Energie muss daher durch Advektion (S.~\pageref{skript:advektion})
+unterstützt von latenter Wärme transportiert werden.
+Um den Energiehaushalt des globalen Klimasystems zu verstehen, muss
+man daher die globalen Strömungen in der Atmosphäre aber auch in
+den Ozeanen verstehen.
+
+In Kapitel~\ref{chapter:fluiddynamik} werden die Grundgleichungen
+der Fluiddynamik besprochen.
+In diesem Abschnitt beschränken wir uns auf eine qualitative
+Diskussion der global Zirkulation.
+Die globale Zirkulation unterscheidet sich von Strömungen, die 
+in technischen Anwendungen üblicherweise studiert werden dadurch,
+dass sie zwar im allgemeinen langsamer ist, dafür aber ein viel grössers
+Volumen und grössere Distanzen umfasst.
+Die Windsysteme, die für die Wetterphänomene verantwortlich sind,
+haben typische Abmessungen von hunderten oder sogar tausenden von
+Kilometern.
+
+\subsubsection{Druckunterschiede und Euler-Wind}
+Windströmungen in der Atmosphäre werden von Druckunterschieden
+hervorgerufen.
+Die Sonnenstrahlung erwärmt die Erdoberfläche und mittelbar die
+Atmosphäre.
+Die warme Luft hat geringere Dichte und steigt daher auf.
+Damit nimmt die Kraft ab, die die Luft auf darunterliegenden
+Schichten ausüben kann, es entsteht ein Unterdruck.
+Man nennt eine Luftströmung, die nur durch Druckunterschiede
+unter Vernachlässigung von Coriolskraft, Zentrifugalkraft und
+Reibung entsteht den {\em Euler-Wind}.
+\index{Euler-Wind}
+Lokale Wind-Systeme wie Land-See-Wind oder Berg-Tal-Wind sind von
+dieser Art.
 
 \subsubsection{Coriolis-Effekt}
 \index{Coriolis-Kraft}%
 \index{Coriolis-Effekt}%
+Die Erde dreht sich in 23 Stunden 56 Minuten und 4.091 Sekunden
+oder 
+einmal um sich selber.
+Die Drehung kann mit dem Winkelgeschwindigkeitsvektor
+$\vec{\Omega}$
+beschreiben werden, der die Richtung der Erdachse vom Süd- zum Nordpol
+hat und als Länge die Winkelgeschwindigkeit
+\[
+\omega
+=
+|\vec{\Omega}|
+=
+\frac{2\pi}{86164.091\,\text{s}}.
+\]
+Ein Körper, der sich relativ zu einem mit der Erde verbundenen
+Koordinatensystem mit der Geschwindigkeit $\vec{v}$ bewegt,
+erlebt eine durch die Drehung verursachte Beschleunigung
+\[
+\vec{a} = -2\vec{\Omega}\times\vec{v}.
+\]
+Ein Flugzeug, welches mit 880\,km/h über den Nordpol fliegt,
+erfährt dort die Beschleunigung 
+\[
+|\vec{a}|
+=
+\biggl|
+-2
+\cdot
+\frac{2\pi}{86164.091\,\text{s}}
+\cdot
+244.44\frac{\text{m}}{\text{s}}
+\biggr|
+=
+0.01782\frac{\text{m}}{\text{s}^2}.
+\]
+Diese Beschleunigung ist viel zu klein, dass sie einen wesentlichen
+Einfluss auf die Bahn eines Flugzeugs haben könnte.
+Der Luftwiderstand und die von den Steuerflächen des Flugzeugs erzeugten
+Kräfte und die daraus resultierenden Beschleunigungen sind
+um Grössenordnungen grösser.
+In der freien Atmosphäre wirkt auf die Luft jedoch nur die Druckkraft,
+so dass die Coriolis-Beschleunigung einen dominanten Einfluss bekommt.
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[scale=1, >= latex]
+\node at (0,0) {
+\includegraphics[width=\hsize]{chapters/1/betaplane.jpg}
+};
+%\node at (0,0) {$\bullet$};
+%\node at (1,0) {$\bullet$};
+%\node at (-1,0) {$\bullet$};
+%\node at (0,1) {$\bullet$};
+%\node at (0,-1) {$\bullet$};
+\node at (-0.3,-2.7) {$B$};
+\node at (5.1,-2.7) {$U$};
+\node at (1.4,2.9) {$V$};
+\node at (-0.6,4.1) {$\vec{\Omega}$};
+\node at (-3,0.6) {$\vec{n}$};
+\node at (2.3,1.4) {$\vec{v}$};
+\node at (4.5,1) {$-2\vec{\Omega}\times\vec{v}$};
+\node at (6,-0.5) {$(-2\vec{\Omega}\times\vec{v})_{\|}$};
+\end{tikzpicture}
+\caption{$\beta$-Ebene: Koordinatensystem in der Tangentialgebene an die Kugel
+im Punkt $B$ mit Achsen $U$ parallel zu Breitenkreisen und $V$ parallel
+zu Längenkreisen.
+Die Normale der Tangentialebene ist $\vec{n}$.
+Ebenfalls eingezeichnet die Coriolis-Beschleunigung
+$-2\vec{\Omega}\times\vec{v}$ zur Geschwindigkeit $\vec{v}$ und
+die Komponente $(-2\vec{\Omega}\times\vec{v})_{\|}$ parallel
+zur Tangentialebene.
+\label{skript:betaplane}}
+\end{figure}
+Die grossräumige Strömung in der Erdoberfläche ist im Wesentlichen 
+parallel zur Erdoberfläche.
+Daher interessiert für die Beschreibung der Wirkung des Coriolis-Effekts
+vor allem die Komponente der Beschleunigung parallel zur Erdoberfläche 
+interessant.
+In einem Punkt $B$ der Erdoberfläche verwenden wir daher ein
+Koordinatensystem in der Tangentialebene so, dass die $x$-Achse tangential
+zum Breitenkreis in $B$ ist und die $y$-Achse tangential zum Längenkreis
+(Abbildung~\ref{skript:betaplane}).
+Die tangentiale Geschwindigkeit wird in diesem Koordinatensystem durch die
+Komponenten $u$ in $U$-Richtung und $v$ in $V$-Richtung beschrieben.
+
+Wir berechnen die Coriolis-Beschleunigung in diesem Koordinatensystem.
+Für einen Geschwindigkeitsvektor $\vec{v}$ parallel zu $V$ hat das
+Vektorprodukt $\vec{\Omega}\times V$ bereits die Richtung $U$,
+er muss also nicht mehr in die Tangentialebene projiziert werden.
+Der Winkel zwischen $\vec{\Omega}$ und $V$ ist die geographischen Breite
+$\alpha$.
+Die Coriolis-Beschleunigung ist daher $2\omega \sin(\alpha)u\cdot V$.
+
+Für einen Geschwindigkeitsvektor $\vec{v}$ parallel zu $U$ steht
+das Vektorprodukt $-2\vec{\Omega}\times\vec{v}$ senkrecht auf 
+der Erdachse.
+Da $U$ und $\vec{\Omega}$ senkrecht stehen ist der Betrag der 
+Coriolis-Beschleunigung
+\[
+|\text{$-2\vec{\Omega}\times\vec{v}$}|
+=
+2\omega u.
+\]
+\begin{figure}
+\centering
+\begin{tikzpicture}[scale=1, >= latex, thick]
+\draw[->] (0,-4.5)--(0,4.5) coordinate[label={$z$}];
+\draw (0,0) circle[radius=4];
+\def\a{70}
+\coordinate (B) at ({-4*sin(\a)},{4*cos(\a)});
+\node at (B) [above left] {$B$};
+\coordinate (C) at ({-4*sin(\a)},{4*cos(\a)+3});
+\coordinate (D) at ({-4*sin(\a) - 3},{4*cos(\a)});
+\coordinate (E) at ({-4*sin(\a) + 10 * cos(\a)},{4*cos(\a) + 10 * sin(\a)});
+\coordinate (F) at ({-4*sin(\a) - 10 * cos(\a)},{4*cos(\a) - 10 * sin(\a)});
+\def\l{-3*cos(\a)}
+\coordinate (G) at ({-4*sin(\a) + \l*cos(\a)},{4*cos(\a) + \l*sin(\a)});
+\draw[line width=0.1] (D)--(G);
+\draw (0,0)--(B);
+\draw (-4.5,0)--(4.5,0);
+\node at (-0.8,0) [above left] {$\alpha$};
+\draw[->,line width=1.5pt] (B)--(C) coordinate[label={above left:$\vec{\Omega}$}];
+\draw[->] (B)--(D) coordinate[label={above:$-2\vec{\Omega}\times\vec{v}$}];
+\begin{scope}
+\clip (-7,-4.5) rectangle (4.5,5);
+\draw (E)--(F);
+\end{scope}
+\draw[color=red,line width=1.7pt,->] (B)--(G);
+\fill[color=red] (B) circle[radius=0.09];
+\end{tikzpicture}
+\caption{Berechnung der Coriolis-Beschleunigung für einen
+Geschwindigkeitsvektor in $U$-Richtung.
+\label{skript:U-coriolis}}
+\end{figure}%
+Aus Abbildung~\ref{skript:U-coriolis} kann man ablesen,
+dass die Komponente der Coriolis-Beschleunigung parallel
+zur Tangentialebene $2\omega u\sin(\alpha)$ ist.
+
+Setzen wir die beiden Resultate zusammen finden wir, dass die
+Coriolis-Beschleunigung im $U$-$V$-Koordinatensystem
+\begin{equation}
+\underbrace{
+2\omega
+\sin\alpha}_{\displaystyle=f}
+\begin{pmatrix}
+v\\
+-u
+\end{pmatrix}
+\end{equation}
+ist.
+Die Coriolis-Beschleunigung ist proportional zu $f=2\omega\sin\alpha$, auch
+bekannt als der {\em Coriolis-Parameter}.
+\index{Coriolis-Parameter}
+Das Koordinatensystem in der Tangentialebene im Punkt $B$ heisst auch
+die {\em $\beta$-Ebene}.
+\index{$\beta$-Ebene}
+
 \subsubsection{Globale Zirkulation}
+Die 
+
 \subsubsection{Äquatorialzone}
+Nahe am Äquator ist die geographische Breite $\alpha$ klein und
+damit auch der Coriolis-Parameter $f$.
+Die Strömung in Äquatornähe ist daher praktisch unbeeinflusst 
+vom Coriolis-Effekt.
+Entlang des Äquators kann die Luft oder das Meer also
+unbeeinflusst durch die Coriolis-Beschleunigung strömen.
+
+Mit Hilfe der $\beta$-Ebene können wir jetzt aber auch modellhaft 
+die Bewegung eines Massepunktes in Äquatornähe berechnen.
+Wenn die Coriolis-Beschleunigung der einzige Einfluss ist, dann
+\begin{equation}
+\frac{d}{dt}
+\begin{pmatrix}u\\v\end{pmatrix}
+=
+f\begin{pmatrix}v\\-u\end{pmatrix}.
+\end{equation}
+Der Coriolis-Parameter $f=2\omega\sin\alpha$ ist proportional
+zur geographischen Breite.
+Für nicht zu grosse geographische Breiten können wir $\sin\alpha$ durch
+die $y$-Koordinate erstzen.
+Wir müssen also die Differentialgleichung
+\begin{equation}
+\frac{d}{dt}
+\begin{pmatrix}x\\y\\u\\v\end{pmatrix}
+=
+\begin{pmatrix}
+u\\v\\fyv\\-fyu
+\end{pmatrix}.
+\label{skript:coriolis-dgl}
+\end{equation}
+lösen.
+Die Gestalt der Lösungskurven hängt von der Anfangsgeschwindigkeit und
+vom Parameter $f$ ab.
+Für $f=0$ fällt die Coriolis-Beschleunigung ganz weg, in diesem
+Fall sind die Lösungskurven Geraden.
+
+\begin{figure}
+\centering
+\includegraphics{chapters/1/stream.pdf}
+\caption{
+Lösungen der Differentialgleichung ausgehend vom Punkt $(0,4)$
+mit Anfangsgeschwindigkeit $|\vec{v}|=1$ und $f=0.26$.
+Die Bahnkurven sind immer nach rechts gekrümmt und bleiben in der
+oberen Halbebene.
+\label{skript:stream-graph}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{chapters/1/cross.pdf}
+\caption{
+Lösungen der Differentialgleichung ausgehend vom Punkt $(0,4)$
+mit Anfangsgeschwindigkeit $|\vec{v}|=1$ und $f=0.22$.
+Einzelne Bahnkurven kreuzen die $x$-Achse und krümmen sich in der unteren
+Halbeben dann links.
+\label{skript:cross-graph}}
+\end{figure}
+
+Um einen Überblick über die möglichen Lösungskurven zu erhalten, berechnen
+wir numerisch die vom Punkt $(0,4)$ ausgehenden Lösungskurven 
+der Differentialgleichung~\ref{skript:coriolis-dgl}.
+Je grösser $f$ ist, desto stärker gekrümmt sind die Lösungskurven.
+Solange die Kurven in der oberen Halbebene $y>0$ liegen sind die Kurven
+nach rechts gekrümmt.
+Für genügend grosses $f$ bleiben alle Kurven in der oberen
+Halbebene wie in Abbildung~\ref{skript:stream-graph}, unabhängig
+von der Richtung der Anfangsgeschwindigkeit.
+Für kleinere Werte von $f$ wie in Abbildung~\ref{skript:cross-graph}
+gelangen einzelne Bahnkurven in die untere Halbebene wo die Krümmung
+der Kurve von rechts auf links kehrt.
+
+Man beachte, dass diese Bahnkurven nicht Stromlinien einer Strömung sind,
+da sich diese nicht kreuzen können.
+Dieses einfache Modell ist also nicht geeignet, die tatsächliche Bewegung
+der Luftmassen darzustellen, dazu müssen wir die Gleichungen
+der Fluiddynamik in Kapitel~\ref{chapter:fluiddynamik}.
+
+\subsubsection{Meeresströmungen}
+Meeresströmungen leisten einen bedeutenden Beitrag zum Klima, weil sie
+dank der hohen Wärmekapazität von Wasser auch bei kleiner
+Strömungsgeschwindigkeit und sehr viel kleinerem bewegtem Volumen als
+bei den atmosphärischen Strömungen eine grosse Energiemenge transportieren
+können.
 
 \subsection{Periodische Einflüsse}
 Das Klimasystem ist einer Reihe von sich periodisch verändernden 

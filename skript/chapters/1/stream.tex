@@ -1,0 +1,31 @@
+%
+% stream.tex
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{txfonts}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\usetikzlibrary{arrows,intersections}
+\begin{document}
+\begin{tikzpicture}[thick, >= latex]
+
+\begin{scope}
+\clip (-6,0) rectangle (2.5,6);
+
+\input{streamsupper.tex}
+
+
+\end{scope}
+
+\draw[->] (-6,0)--(3,0) coordinate[label={above:$x$}];
+\draw[->] (0,-0.1)--(0,6) coordinate[label={right:$y$}];
+
+\fill[color=red] (0,4) circle[radius=0.1];
+
+\end{tikzpicture}
+\end{document}
+
