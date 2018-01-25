@@ -383,6 +383,46 @@ auf der Erdoberfläche
 \label{skript:einfallswinkel}}
 \end{figure}
 
+\subsubsection{Albedo}
+\begin{table}
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Material&Albedo\\
+\hline
+Frischer Schnee&0.8 -- 0.9\\
+Wolken         &0.6 -- 0.9\\
+Wüste          &0.3\\
+Rasen          &0.18--0.23\\
+Wald           &0.05--0.18\\
+Wasserfläche   &0.05--0.22 (winkelabhängig)\\
+Erde           &0.306 \\
+Mond           &0.11 \\
+\hline
+\end{tabular}
+\caption{Albedo verschiedner Oberflächen und Himmelskörper
+(aus \cite{skript:albeod})
+\label{skript:albedotabelle}}
+\end{table}
+Die Strahlung der Erde ist nicht allein die Schwarzkörperstrahlung
+der Erde.
+Sie ist überlagert von der Strahlung, die vom Erdboden oder von
+Wolken reflektiert wird.
+Die {\em Albedo} ist der Anteil der reflektierten Strahlung, also ein
+Wert zwischen $0$ und $1$.
+\index{Albedo}
+Tabelle~\ref{skript:albedotabelle} stellt einige interessante
+Albedo-Werte von verschiedenen Oberflächen zusammen.
+
+Die Albedo hat eine direkte Auswirkung auf das Klima, umgekehrt
+hängt die Albedo aber auch vom Klima ab.
+Nimmt die Bewölkung zu, steigt die Albedo, es erreicht weniger 
+Strahlung die Erdoberfläche.
+Schneefall erhöht ebenfalls die Albedo.
+Umgekehrt reduziert das Abschmelzen der Polkappen oder der
+Schneedecke in Permafrostgebieten die Albedo, so dass mehr Strahlung
+von der Erdoberfläche absorbiert wird.
+
 \subsubsection{Strahlungsbilanz}
 \begin{figure}
 \centering
@@ -647,7 +687,51 @@ die {\em $\beta$-Ebene}.
 \index{$\beta$-Ebene}
 
 \subsubsection{Globale Zirkulation}
-Die 
+Die bisher besprochenen Prinzipien sollten uns ermöglichen, die
+global Zirkulation qualitativ zu beschreiben.
+Veränderungen der globalen Zirkulation erfolgen erst über mehrere Tage.
+Es ist daher gerechtfertigt, die täglichen Schwankungen der
+Einstrahlung infolge der Erdrotation durch eine mittlere
+Einstrahlung zu ersetzen.
+Die Bedingungen für die globale Zirkulation sind daher rotationssymmetrisch
+um die Erdachse.
+Wir suchen daher nach einem globalen Strömungsmuster, welches ebenfalls
+rotationssymmetrisch ist.
+
+\begin{figure}
+\centering
+\includegraphics[width=\hsize]{chapters/1/Earth_Global_Circulation_-_en.png}
+\caption{Global Zirkulation der Erde
+\label{skript:globalezirkulation}}
+\end{figure}
+
+Die grösste Einstrahlung erfolgt am Äquator, erwärmt die Luft und
+lässt sie aufsteigen.
+Der entstehenden Unterdruck in Äquatornähe erzeugt eine 
+Ausgleichsströmung in Bodennähe.
+Die aufsteigende Luft kann nicht beliebig hoch aufsteigen und weicht
+daher in grosser Höhe in Richtung der Pole aus.
+Die Höhenströmung nach Norden wird von der Coriolis-Beschleunigung nach
+rechts abgelenkt, sie kann also nicht beliebig weit nach Norden
+strömen, bevor sie wieder absinkt.
+Es entsteht je eine geschlossene Konvektionszelle wie in
+Abbildung~\ref{skript:globalezirkulation}, die sogenannte
+Hadley-Zelle \cite{skript:hadley}.
+
+Im Anschluss an die Hadley-Zellen entstehen auf Grund des gleichen
+Mechanismus weitere Zellen.
+Die Breite der Zellen hängt offenbar von der Stärke des Coriolis-Effektes ab.
+Auf einem Planeten mit grösserer Rotationsgeschwindigkeit erwartet man
+vergleichsweise schmalere Zellen.
+\begin{figure}
+\centering
+\includegraphics[width=\hsize]{chapters/1/Jupiter_on_25_February_2017_node_full_image_2.jpg}
+\caption{Jupiter mit Wolkenbändern, Aufnahme von Damian Peach
+\cite{skript:jupiter}
+\label{skript:jupiterzirkulation}}
+\end{figure}
+Dies ist genau was man am Beispiel der globalen Strömung auf dem
+Jupiter in Abbildung~\ref{skript:jupiterzirkulation} beobachten kann.
 
 \subsubsection{Äquatorialzone}
 Nahe am Äquator ist die geographische Breite $\alpha$ klein und
