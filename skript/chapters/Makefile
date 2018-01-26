@@ -8,7 +8,7 @@ all:	images
 .PHONY:	images
 
 images:
-	for d in 2 3d tikz mp;						\
+	for d in 1 2 3d tikz mp;					\
 	do								\
 		if [ -d $${d} -a -f $${d}/Makefile ];			\
 		then							\

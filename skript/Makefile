@@ -30,7 +30,10 @@ CHAPTERS = 								\
 	chapters/fluiddynamik.tex					\
 	chapters/zonen.tex						\
 	chapters/2/hydrodynamik.tex					\
-	chapters/2/lorenz.tex
+	chapters/2/lorenz.tex						\
+	chapters/4/salinitaet.tex					\
+	chapters/4/box.tex						\
+	chapters/4/dimensionslos.tex
 
 SKRIPTFILES = vorwort.tex uebersicht.tex \
 	$(CHAPTERS) \
