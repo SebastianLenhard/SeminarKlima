@@ -3,10 +3,13 @@
 #
 # (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
 #
-IMAGES = 
+IMAGES = boxmodell.pdf
 
 all:	images
 
 images:	$(IMAGES)
 
+
+boxmodell.pdf:	boxmodell.tex
+	pdflatex boxmodell.tex
 
