@@ -170,7 +170,8 @@ Je nach dem Wert von $\lambda$ hat die dimensionslose Differentialgleichung
 \eqref{skript:thc:dimensionslos} bis zu drei Gleichgewichtslösungen.
 
 Für Werte von $\lambda$ zwischen $0$ und $0.25$ gibt es drei verschiedene
-Werte $x$, die die Gleichung \eqref{skript:thc:lambdagl} erfüllen.
+Werte $x$, die die Gleichung \eqref{skript:thc:lambdagl} erfüllen
+(Abbildung~\ref{skript:thc:drei}).
 Für $x\le 1$  ist $1-x\ge 0$ und damit muss $x$ die 
 Gleichung $(1-x)x=\lambda$ erfüllen, für $x\ge 1$ ist es die Gleichung
 $(x-1)x=\lambda$.
@@ -201,8 +202,15 @@ Für $\lambda > 0.25$ hat die linke Gleichung keine Lösung.
 Für $\lambda < 0$ ist die Lösung mit dem positiven Zeichen der linken
 Gleichung ausgeschlossen.
 
+\begin{figure}
+\centering
+\includegraphics{chapters/4/ein.pdf}
+\caption{Lösungen im Fall $\lambda > \frac14$: der einzige
+Gleichgewichtspunkt $x_3$ ist stabil.
+\label{skript:thc:ein}}
+\end{figure}%
 Wir berechnen die Lösung der Differentialgleichung für einen gegebenen
-Wert von $\lambda$.
+Wert von $\lambda$ (Abbildung~\ref{skript:thc:ein}).
 Für $\lambda >\frac14$ gibt es nur einen Gleichgewichtspunkt, wir 
 nennen ihn $x_3$.
 Falls $x(\tau)<x_3$, dann ist
@@ -225,9 +233,16 @@ nehmen monoton zu und konvergieren von unten gegen $x_3$.
 Die Gleichgewichtslösung $x(\tau)=x_3$ ist also eine stabile Lösung,
 alle anderen Lösungen konvergieren gegen diese Lösung.
 
-
+\begin{figure}
+\centering
+\includegraphics{chapters/4/drei.pdf}
+\caption{Lösungen im Fall $0\le \lambda\le\frac14$: die beiden
+Gleichgewichtspunkte $x_1$ und $x_3$ sind stabil, $x_2$ ist instabil.
+\label{skript:thc:drei}}
+\end{figure}%
 Für $0<\lambda<\frac14$ seien
-$x_1$, $x_2$ und $x_3$ die drei Gleichgewichtspunkte.
+$x_1$, $x_2$ und $x_3$ die drei Gleichgewichtspunkte
+(Abbildung~/ref{skript:thc:drei}).
 Wir untersuchen wieder die Vorzeichen von $dx/d\tau$. 
 Für $x$-Werten zwischen $x_1$ und $x_2$ und für $x$-Werte grösser
 als $x_3$ ist die Ableitung positiv, die Lösungen konvergieren monoton
@@ -237,22 +252,6 @@ dagegen monoton wachsend gegen $x_1$ bzw.~$x_3$.
 Die Gleichgewichtslösung $x_2$ ist daher nicht stabil,
 die Gleichgewichtslösungen $x_1$ und $x_3$ sind dagegen stabil.
 
-\begin{figure}
-\centering
-\includegraphics{chapters/4/drei.pdf}
-\caption{Lösungen im Fall $0\le \lambda\le\frac14$: die beiden
-Gleichgewichtspunkte $x_1$ und $x_3$ sind stabil, $x_2$ ist instabil.
-\label{skript:thc:drei}}
-\end{figure}
-
-\begin{figure}
-\centering
-\includegraphics{chapters/4/ein.pdf}
-\caption{Lösungen im Fall $\lambda > \frac14$: der einzige
-Gleichgewichtspunkt $x_3$ ist stabil.
-\label{skript:thc:ein}}
-\end{figure}
-
 \subsection{Bifurkation}
 \begin{figure}
 \centering
@@ -261,6 +260,62 @@ Gleichgewichtspunkt $x_3$ ist stabil.
 \eqref{skript:thc:lambdagl}
 \label{skript:thc:bifurkation}}
 \end{figure}
+Für Parameterwerte $\lambda < \frac14$ gibt es drei mögliche
+Gleichgewichtspunkte, für $\lambda>\frac14$ jedoch nur noch einen.
+Wir möchten untersuchen, wie sich die Lösung verhält, wenn der
+Parameter langsam verändert wird.
+Dies ist in Abbildung~\ref{skript:thc:bifurkation} dargestellt.
+
+Sei jetzt also zunächst $\lambda <\frac14$.
+Wir betrachten also eine Lösung, die in Nähe von
+\[
+x_1(\lambda)=\frac12-\sqrt{\frac14-\lambda}
+\]
+beginnt.
+Vergrössern wir $\lambda$, verschiebt sich der Gleichgewichtspunkt
+$x_1(\lambda)$ ebenfalls nach oben.
+Da $x_1(\lambda)$ aber ein stabiler Gleichgewichtspunkt ist, wird die
+Lösung gegen den neuen Gleichgewichtspunkt konvergieren.
+Das gleiche passiert auch, wenn die Lösung in der Nähe von
+\[
+x_3(\lambda)=\frac12+\sqrt{\frac14+\lambda}
+\]
+beginnt.
+Bei einer Vergrösserung folgt das System den roten Kurven in
+Abbildung~\ref{skript:thc:bifurkation}.
+
+Wenn jetzt aber der Parameter $\lambda$ die Schwelle $\frac14$
+überschreitet, dann wird die Lösung zum einzigen verbleibenden
+stabilen Gleichgewichtspunkt $x_3(\lambda)$ konvergieren.
+Die Lösung springt also vom Punkt $S$ zum Punkt $P$ auf dem oberen roten Ast
+in Abbildung~\ref{skript:thc:bifurkation}.
+
+Wenn man den Parameter $\lambda$ wieder verkleinert, dann wird
+eine Lösung in der Nähe von $x_3(\lambda)$ wieder gegen
+$x_3(\lambda)$ konvergieren.
+Es ist aber nicht mehr möglich, dass die Lösung gegen $x_1(\lambda)$
+konvergiert, da nach Abbildung~\ref{skript:thc:drei} nur Lösungen,
+die bei $x$-Werten $<x_2$ beginnen, gegen $x_1(\lambda)$ konvergieren
+können.
+
+Dieses einfache Modell der thermohalinen Zirkulation hat also die
+überraschende Eigenschaft, dass das System beim Überschreiten des
+kritischen Wertes $\lambda=\frac14$ in einen Zustand kippt, aus dem
+es nicht mehr zurück kommen kann.
+Wegen
+\[
+\lambda
+=
+\frac{\beta H}{\alpha^2k\Delta\bar T\,|\Delta\bar T|}
+\]
+kann dies passieren wenn entweder der Betrag des virtuellen Salzflusses 
+$H$ ansteigt oder die Temperaturanomaliedifferenz $\Delta\bar T$
+klein wird.
+Eine Klimaerwärmung könnte zum Beispiel die Verdunstung im Gebiet $2$
+erhöhen, den virtuellen Salzfluss erhöhen und damit das System
+in den Zustand mit einer wesentlich grösseren Anomaliedifferenz
+$\Delta\bar S$ kippen lassen.
+
 
 
 
