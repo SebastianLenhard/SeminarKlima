@@ -302,6 +302,76 @@ q = k(\alpha\Delta\bar T-\beta \Delta\bar S).
 \label{skript:thc:fluss-delta-anomalie}
 \end{equation}
 
+\subsection{Differenzgleichungen}
+Wir können die Anomaliegleichungen \eqref{skript:thc:anomaliegleichungen}
+noch etwas weiter umformen und die einzelnen Anomalien vollständig durch
+die Differenzen ersetzen.
+Die Differenzen und Summen der Gleichungen sind
+\begin{equation}
+\begin{aligned}
+\frac{d\Delta\bar T}{dt}
+&=
+c(2T^*-\Delta\bar T)-2|q|\Delta\bar T
+&&\qquad&
+\frac{d\bar T_0}{dt}
+&=
+-c\bar T_0
+\\
+\frac{d\Delta\bar S}{dt}
+&=
+2H+d(2S^*-\Delta\bar S) - 2|q|\Delta\bar S
+&&\qquad&
+\frac{d\bar S_0}{dt}
+&=
+-d\bar S_0.
+\end{aligned}
+\label{skript:thc:differenzgleichungen}
+\end{equation}
+Die Gleichungen rechts drücken aus, dass die mittleren Anomalien
+exponentiell gegen $0$ gehen.
+Die linken Gleichungen beschreiben die Zeitentwicklung der Differenz
+der Anomalien.
+Man beachte, dass $q$ ebenfalls von den Anomalie-Differenzen abhängt.
+
+\subsection{Zeitkonstanten}
+\label{skript:thc:zeitkonstanten}
+Der Koeffizienten $c$ beschreibt, wie schnell der Temperaturausgleich
+durch Wärmeleitung oder turbulente Durchmischung erfolgt.
+Der Koeffizient $d$ beschreibt, wie schnell der Salinitätsausgleich
+durch Durchmischung und Diffusion stattfinden kann.
+Je grösser diese Koeffizienten, desto schneller erfolgt der Prozess.
+In den rechten Gleichungen von \eqref{skript:thc:differenzgleichungen}
+ist dies ganz offensichtlich.
+Vernachlässigen wir für den Moment den Einfluss der Zirkulation,
+was wir durch $k=0$ im Ausdruck für $q$ beschreiben können, dann
+sehen wir, dass die Differenzgleichungen beide von der Form
+einer linearen inhomogenen Differentialgleichung
+\[
+\frac{d\Delta X}{dt}
+=
+X^* -cX
+\]
+sind, wobei $X^*$ eine Konstante ist.
+Die Lösung der Gleichung ist
+\[
+X(t) = \frac{X^*}{c} + C_0 e^{-ct}
+\]
+mit einer Konstanten $C_0$, die aus den Anfangsbedingungen zu
+bestimmen ist.
+Die Terme $T^*$, $S^*$ und $H$ verschieben also nur die Lösung,
+die Differenzen $\Delta\bar T$ und $\Delta\bar S$ streben exponentiell
+wie $e^{-ct}$ bzw.~$e^{-dt}$ gegen diese Gleichgewichtswerte.
+
+Die Grössen $1/c$ und $1/d$ haben die Dimension einer Zeit, wir nennen
+sie die {\em Zeitkonstanten} des Prozesses, den $c$ bzw.~$d$ beschreiben.
+\index{Zeitkonstante}
+Ist zum Beispiel die Zeitkonstante $1/c$ der Temperatur sehr viel kleiner
+als die Zeitkonstanten $1/d$ der Salinität, dann bedeutet dies, dass
+sich die Temperaturdifferenzen sehr viel schneller ausgleichen als die
+Salinitätsdifferenzen.
+Für die langfristige Entwicklung der Zirkulation ist in diesem Fall
+die Salinitätsentwicklung ausschlaggebend, die Temperaturfunktionen
+können durch kosntante ersetzt werden.
 
 
 

@@ -3,8 +3,8 @@
 #
 # (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
 #
-IMAGES = boxmodell.pdf
-
+IMAGES = boxmodell.pdf rhs.pdf ein.pdf drei.pdf bi.pdf
+ 
 all:	images
 
 images:	$(IMAGES)
@@ -12,4 +12,16 @@ images:	$(IMAGES)
 
 boxmodell.pdf:	boxmodell.tex
 	pdflatex boxmodell.tex
+
+rhs.pdf:	rhs.tex
+	pdflatex rhs.tex
+
+ein.pdf:	ein.tex
+	pdflatex ein.tex
+
+drei.pdf:	drei.tex
+	pdflatex drei.tex
+
+bi.pdf:	bi.tex
+	pdflatex bi.tex
 
