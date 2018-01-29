@@ -35,7 +35,7 @@ CHAPTERS = 								\
 	chapters/4/box.tex						\
 	chapters/4/dimensionslos.tex
 
-SKRIPTFILES = vorwort.tex uebersicht.tex \
+SKRIPTFILES = teilnehmer.tex vorwort.tex uebersicht.tex \
 	$(CHAPTERS) \
 	references.bib
 
