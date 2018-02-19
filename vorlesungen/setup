@@ -1,0 +1,27 @@
+#! /bin/bash
+#
+# setup -- prepare a new presentation
+#
+if [ $# -lt 2 ]
+then
+	echo "not enough arguments"
+	echo "usage:"
+	echo "./setup <name> <directory>"
+	exit 1
+fi
+
+presentation=${1}
+directory=${2}
+
+mkdir ${directory}
+
+cp 00_template/common.tex ${directory}
+
+sed -e "s/xxx/${presentation}/g" 00_template/Makefile > ${directory}/Makefile
+for file in xxx.tex xxx-presentation.tex xxx-handout.tex
+do
+	target=`echo ${file} | sed -e "s/xxx/${presentation}/g"`
+	sed -e "s/xxx/${presentation}/g" 00_template/${file} \
+		> ${directory}/${target}
+done
+

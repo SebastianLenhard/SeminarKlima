@@ -1,0 +1,12 @@
+Neue Präsentation anlegen:
+
+    bash setup <name> <verzeichnis>
+
+Also zum Beispiel
+
+    bash setup vektorprodukt 08_vektorprodukt
+
+erzeugt eine neue Präsentation im Verzeichnis 08_vektorprodukt mit
+Name vektorprodukt-presentation.pdf bzw vektorprodukt-handout.pdf
+
+
