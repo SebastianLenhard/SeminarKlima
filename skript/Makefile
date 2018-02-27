@@ -35,9 +35,55 @@ CHAPTERS = 								\
 	chapters/4/box.tex						\
 	chapters/4/dimensionslos.tex
 
+PAPERDIRS = eis extrem lorenz planeten thermohalin vegetation		\
+	verzoegert lorenz2 kalman learning
+
+PAPERFILES =								\
+	eis/main.tex							\
+	eis/references.bib						\
+	eis/packages.tex						\
+	eis/Makefile							\
+	extrem/main.tex							\
+	extrem/references.bib						\
+	extrem/packages.tex						\
+	extrem/Makefile							\
+	lorenz/main.tex							\
+	lorenz/references.bib						\
+	lorenz/packages.tex						\
+	lorenz/Makefile							\
+	planeten/main.tex						\
+	planeten/references.bib						\
+	planeten/packages.tex						\
+	planeten/Makefile						\
+	thermohalin/main.tex						\
+	thermohalin/references.bib					\
+	thermohalin/packages.tex					\
+	thermohalin/Makefile						\
+	vegetation/main.tex						\
+	vegetation/references.bib					\
+	vegetation/packages.tex						\
+	vegetation/Makefile						\
+	verzoegert/main.tex						\
+	verzoegert/references.bib					\
+	verzoegert/packages.tex						\
+	verzoegert/Makefile						\
+	lorenz2/main.tex						\
+	lorenz2/references.bib						\
+	lorenz2/packages.tex						\
+	lorenz2/Makefile						\
+	kalman/main.tex							\
+	kalman/references.bib						\
+	kalman/packages.tex						\
+	kalman/Makefile							\
+	learning/main.tex						\
+	learning/references.bib						\
+	learning/packages.tex						\
+	learning/Makefile
+
 SKRIPTFILES = teilnehmer.tex vorwort.tex uebersicht.tex \
 	$(CHAPTERS) \
-	references.bib
+	references.bib \
+	$(PAPERFILES)
 
 THEMA_FILES = 								\
 

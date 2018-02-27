@@ -69,6 +69,7 @@
 \usepackage{gensymb}
 \usepackage{mathtools}
 
+
 % Matlab
 \usepackage{listings}
 \usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
@@ -182,6 +183,19 @@
 \usepackage{caption}
 \usepackage[mode=buildnew]{standalone}
 \usepackage[backend=bibtex]{biblatex}
+
+% additional packages
+\input{eis/packages.tex}
+\input{extrem/packages.tex}
+\input{kalman/packages.tex}
+\input{learning/packages.tex}
+\input{lorenz/packages.tex}
+\input{lorenz2/packages.tex}
+\input{planeten/packages.tex}
+\input{thermohalin/packages.tex}
+\input{vegetation/packages.tex}
+\input{verzoegert/packages.tex}
+
 % workaround for biblatex bug
 \makeatletter
 \def\blx@maxline{77}
@@ -367,15 +381,17 @@ Hochschule f"ur Technik, Rapperswil, 2018
 \lhead{Anwendungen}
 \input{uebersicht.tex}
 \def\chapterauthor#1{{\large #1}\bigskip\bigskip}
-% Artikel
-%\input{kugel/main.tex}
-%\input{minimal/main.tex}
-%\input{zeitreisen/main.tex}
-%\input{gps/main.tex}
-%\input{cmb/main.tex}
-%\input{klima/main.tex}
-%\input{adaptiv/main.tex}
-%\input{cluster/main.tex}
+% Artikeverzoegert
+\input{eis/main.tex}
+\input{extrem/main.tex}
+\input{kalman/main.tex}
+\input{learning/main.tex}
+\input{lorenz/main.tex}
+\input{lorenz2/main.tex}
+\input{planeten/main.tex}
+\input{thermohalin/main.tex}
+\input{vegetation/main.tex}
+\input{verzoegert/main.tex}
 \vfill
 \pagebreak
 \ifodd\value{page}\else\null\clearpage\fi
