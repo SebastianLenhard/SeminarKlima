@@ -69,6 +69,7 @@
 \usepackage{gensymb}
 \usepackage{mathtools}
 
+
 % Matlab
 \usepackage{listings}
 \usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
@@ -182,20 +183,35 @@
 \usepackage{caption}
 \usepackage[mode=buildnew]{standalone}
 \usepackage[backend=bibtex]{biblatex}
+
+% additional packages
+\input{eis/packages.tex}
+\input{extrem/packages.tex}
+\input{kalman/packages.tex}
+\input{learning/packages.tex}
+\input{lorenz/packages.tex}
+\input{lorenz2/packages.tex}
+\input{planeten/packages.tex}
+\input{thermohalin/packages.tex}
+\input{vegetation/packages.tex}
+\input{verzoegert/packages.tex}
+
 % workaround for biblatex bug
 \makeatletter
 \def\blx@maxline{77}
 \makeatother
 \addbibresource{references.bib}
 % Bibresources für jeden einzelnen Artikel
-%\addbibresource{adaptiv/main.bib}
-%\addbibresource{cluster/main.bib}
-%\addbibresource{cmb/main.bib}
-%\addbibresource{gps/main.bib}
-%\addbibresource{klima/main.bib}
-%\addbibresource{kugel/main.bib}
-%\addbibresource{minimal/main.bib}
-%\addbibresource{zeitreisen/main.bib}
+%\addbibresource{eis/references.bib}
+%\addbibresource{extrem/references.bib}
+%\addbibresource{kalman/references.bib}
+%\addbibresource{learning/references.bib}
+%\addbibresource{lorenz/references.bib}
+%\addbibresource{lorenz2/references.bib}
+%\addbibresource{planeten/references.bib}
+%\addbibresource{thermohalin/references.bib}
+%\addbibresource{vegetation/references.bib}
+%\addbibresource{verzoegert/references.bib}
 \AtEndDocument{\clearpage\ifodd\value{page}\else\null\clearpage\fi}
 \makeindex
 %\pgfplotsset{compat=1.12}
@@ -367,15 +383,17 @@ Hochschule f"ur Technik, Rapperswil, 2018
 \lhead{Anwendungen}
 \input{uebersicht.tex}
 \def\chapterauthor#1{{\large #1}\bigskip\bigskip}
-% Artikel
-%\input{kugel/main.tex}
-%\input{minimal/main.tex}
-%\input{zeitreisen/main.tex}
-%\input{gps/main.tex}
-%\input{cmb/main.tex}
-%\input{klima/main.tex}
-%\input{adaptiv/main.tex}
-%\input{cluster/main.tex}
+% Artikeverzoegert
+\input{eis/main.tex}
+\input{extrem/main.tex}
+\input{kalman/main.tex}
+\input{learning/main.tex}
+\input{lorenz/main.tex}
+\input{lorenz2/main.tex}
+\input{planeten/main.tex}
+\input{thermohalin/main.tex}
+\input{vegetation/main.tex}
+\input{verzoegert/main.tex}
 \vfill
 \pagebreak
 \ifodd\value{page}\else\null\clearpage\fi
