@@ -1,14 +1,14 @@
 #
 # Makefile -- xxx
 #
-# (c) 2017 Prof Dr Andreas Müller, Hochschule Rapperswil
+# (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
 #
-all:	xxx-handout.pdf xxx-presentation.pdf
+all:	xxx-handout.pdf SeminarKlima-yyy-xxx-presentation.pdf
 
-SOURCES = common.tex xxx.tex
+SOURCES = common.tex slides.tex
 
-xxx-presentation.pdf:	xxx-presentation.tex $(SOURCES)
-	pdflatex xxx-presentation.tex
+SeminarKlima-yyy-xxx-presentation.pdf:	SeminarKlima-yyy-xxx-presentation.tex $(SOURCES)
+	pdflatex SeminarKlima-yyy-xxx-presentation.tex
 
 xxx-handout.pdf:	xxx-handout.tex $(SOURCES)
 	pdflatex xxx-handout.tex

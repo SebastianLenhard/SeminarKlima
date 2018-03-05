@@ -6,22 +6,22 @@ if [ $# -lt 2 ]
 then
 	echo "not enough arguments"
 	echo "usage:"
-	echo "./setup <name> <directory>"
+	echo "./setup <name> <number>"
 	exit 1
 fi
 
 presentation=${1}
-directory=${2}
+number=${2}
+directory=${number}_${presentation}
 
 mkdir ${directory}
 
 cp 00_template/common.tex ${directory}
+cp 00_template/slides.tex ${directory}
+cp 00_template/handout.tex \
+	${directory}/${presentation}-handout.tex
+cp 00_template/presentation.tex \
+	${directory}/SeminarKlima-${number}-${presentation}-presentation.tex
 
-sed -e "s/xxx/${presentation}/g" 00_template/Makefile > ${directory}/Makefile
-for file in xxx.tex xxx-presentation.tex xxx-handout.tex
-do
-	target=`echo ${file} | sed -e "s/xxx/${presentation}/g"`
-	sed -e "s/xxx/${presentation}/g" 00_template/${file} \
-		> ${directory}/${target}
-done
+sed -e "s/xxx/${presentation}/g" -e "s/yyy/${number}/g" 00_template/Makefile > ${directory}/Makefile
 
