@@ -15,10 +15,8 @@
 \begin{tikzpicture}[>=latex,thick]
 
 \def\w{6.5}
-\def\h{4}
-
-%\draw[line width=0.1pt] ({-\w},{-\h})--({\w},{-\h})--({\w},{\h})--({-\w},{\h})
-%	--cycle;
+\def\h{4.2}
+\def\s{0.12}
 
 \tikzmath {
 	real \xupper, \xlower, \l;
@@ -48,9 +46,9 @@
 	\xmiddle = (\xupper + \xmax)/2;
 }
 
-\draw[->,color=blue] ({\l},{\xupper})--({\l},{\xmiddle-0.1});
+\draw[->,color=blue] ({\l},{\xupper})--({\l},{\xmiddle-\s});
 \draw[color=blue] ({\l},{\xmiddle})--({\l},{\xmax});
-\draw[->,color=red] ({-\l},{-\xupper})--({-\l},{-\xmiddle+0.1});
+\draw[->,color=red] ({-\l},{-\xupper})--({-\l},{-\xmiddle+\s});
 \draw[color=red] ({-\l},{-\xmiddle})--({-\l},{-\xmax});
 
 \fill ({\l},{\xmax}) circle[radius=0.05];
@@ -82,16 +80,16 @@
 		\xlower = \x;
 	}
 
-	\draw[->,color=red] ({\l},{\xupper})--({\l},{(\xupper+\h)/2+0.1});
+	\draw[->,color=red] ({\l},{\xupper})--({\l},{(\xupper+\h)/2+\s});
 	\draw[color=red] ({\l},{(\xupper+\h)/2})--({\l},{\h});
 
-	\draw[->,color=blue] ({\l},{\xupper})--({\l},{(\xupper+\xmiddle)/2-0.1});
+	\draw[->,color=blue] ({\l},{\xupper})--({\l},{(\xupper+\xmiddle)/2-\s});
 	\draw[color=blue] ({\l},{(\xupper+\xmiddle)/2})--({\l},{\xmiddle});
 
-	\draw[->,color=red] ({\l},{\xlower})--({\l},{(\xlower+\xmiddle)/2+0.1});
+	\draw[->,color=red] ({\l},{\xlower})--({\l},{(\xlower+\xmiddle)/2+\s});
 	\draw[color=red] ({\l},{(\xlower+\xmiddle)/2})--({\l},{\xmiddle});
 
-	\draw[->,color=blue] ({\l},{\xlower})--({\l},{(\xlower-\h)/2-0.1});
+	\draw[->,color=blue] ({\l},{\xlower})--({\l},{(\xlower-\h)/2-\s});
 	\draw[color=blue] ({\l},{(\xlower-\h)/2})--({\l},{-\h});
 }
 
@@ -105,14 +103,22 @@
 		\x = \x - ((\x*\x - 9) * \x - 3 * \l) / (3*\x*\x - 9);
 		\x = \x - ((\x*\x - 9) * \x - 3 * \l) / (3*\x*\x - 9);
 		\xupper = \x;
+		real \xoben, \xunten;
+		\xoben = (\xupper - sqrt(3)) / 2;
+		\xunten = (-sqrt(3) - \h) / 2;
 	}
-	\draw[->,color=blue] ({\l},{\xupper})--({\l},{(\xupper-\h)/2-0.1});
-	\draw[color=blue] ({\l},{(\xupper-\h)/2})--({\l},{-\h});
-	\draw[->,color=red] ({-\l},{-\xupper})--({-\l},{-(\xupper-\h)/2+0.1});
-	\draw[color=red] ({-\l},{-(\xupper-\h)/2})--({-\l},{\h});
-	\draw[->,color=red] ({\l},{\xupper})--({\l},{(\xupper+\h)/2+0.1});
+	\draw[->,color=blue] ({\l},{\xupper})--({\l},{\xoben-\s});
+	\draw[->,color=blue] ({\l},{\xoben})--({\l},{\xunten-\s});
+	\draw[color=blue] ({\l},{\xunten})--({\l},{-\h});
+
+	\draw[->,color=red] ({\l},{\xupper})--({\l},{(\xupper+\h)/2+\s});
 	\draw[color=red] ({\l},{(\xupper+\h)/2})--({\l},{\h});
-	\draw[->,color=blue] ({-\l},{-\xupper})--({-\l},{-(\xupper+\h)/2-0.1});
+
+	\draw[->,color=red] ({-\l},{-\xupper})--({-\l},{-\xoben+\s});
+	\draw[->,color=red] ({-\l},{-\xoben})--({-\l},{-\xunten+\s});
+	\draw[color=red] ({-\l},{-\xunten})--({-\l},{\h});
+
+	\draw[->,color=blue] ({-\l},{-\xupper})--({-\l},{-(\xupper+\h)/2-\s});
 	\draw[color=blue] ({-\l},{-(\xupper+\h)/2})--({-\l},{-\h});
 }
 
@@ -123,9 +129,18 @@
 
 \end{scope}
 
-
 \draw[->] ({-\w-0.2},0)--({\w+0.2},0) coordinate[label=$\lambda$];
 \draw[->] (0,{-\h-0.2})--(0,{\h+0.2}) coordinate[label={right:$x$}];
+
+\foreach \l in {-6,-5,-4,-3,-2,-1,1,2,3,4,5,6}{
+	\draw ({\l},{-\s})--({\l},\s);
+	\node at ({\l},0) [below] {$\l$};
+}
+
+\foreach \x in {-4,-3,-2,-1,1,2,3,4}{
+	\draw ({-\s},{\x})--(\s,{\x});
+	\node at (0,{\x}) [left] {$\x$};
+}
 
 \end{tikzpicture}
 

@@ -3,7 +3,7 @@
 #
 # (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
 #
-all:	pitchfork.pdf saddle-node.pdf lin1.pdf trans.pdf kubisch.pdf
+all:	pitchfork.pdf saddle-node.pdf lin1.pdf trans.pdf kubisch.pdf grad4.pdf
 
 pitchfork.pdf:	pitchfork.tex
 	pdflatex pitchfork.tex
@@ -19,3 +19,6 @@ trans.pdf:	trans.tex
 
 kubisch.pdf:	kubisch.tex
 	pdflatex kubisch.tex
+
+grad4.pdf:	grad4.tex
+	pdflatex grad4.tex

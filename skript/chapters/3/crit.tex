@@ -232,9 +232,49 @@ die Differentialgleichung
 \begin{equation}
 \frac{dx}{dt}
 =
-x^3 - 4x - \lambda.
+\frac13(x^3 - 9x) - \lambda.
 \label{skript:dgl:kubisch}
 \end{equation}
+Die Gleichgewichtslösungen sind die Nullstellen der kubischen Gleichung
+\[
+f(x,\lambda)
+=
+x^3-9x-3\lambda=0.
+\]
+Diese sind für beliebiges $\lambda$ nicht so leicht zu finden.
+Für $\lambda=0$ sind die kritischen Punkte $0$ und $\pm 3$.
+DIe Funktion $f(x)$ hat lokale Minima bei den $\pm\sqrt{3}$ mit
+Funktionswerten $\pm2\sqrt{3}$.
+Daher gibt es im Interval $(-2\sqrt{3},2\sqrt{3})$ drei 
+Gleichgewichtslösungen, ausserhalb jedoch jeweils nur eine.
+
+Das zugehörige Phasendiargramm ist in Abbildung~\ref{skript:dgl:kubischfig}
+dargestellt.
+Die Gleichgewichslösungen oben und unten auf der S-Kurve sind instabil,
+nur der Ast zwischen den beiden lokalen Extrema von $f(x)$ besteht
+aus stabilen Gleichgewichtslösungen.
+
+Wächst der Parameter $\lambda$ über den kritischen Wert $2\sqrt{3}$
+hinaus, gibt es keinen stabilen Gleichgewichtszustand mehr, das System
+divergiert nach $-\infty$. 
+Analog strebt das System gegen $+\infty$ wenn der Parameter den Werte
+$-2\sqrt{3}$ unterschreitet.
+
+Die Differentialgleichung 
+\begin{equation}
+\frac{dx}{dt}
+=
+-f(x,\lambda)
+\label{skript:dgl:kubisch2}
+\end{equation}
+hat die gleichen Gleichgewichtslösungen wie \eqref{skript:dgl:kubisch},
+jedoch sind die stabilen Gleichgewichtslösungen von \eqref{skript:dgl:kubisch}
+instabile Gleichgewichtslösungen von \eqref{skript:dgl:kubisch2}.
+Beim Anstieg des Parameters $\lambda$ über den Wert $2\sqrt{3}$
+springt das System, falls es sich im unteren Gleichtszustand befand,
+in den oberen.
+Sinkt der Wert von $\lambda$ wieder unter $2\sqrt{3}$ wird, bleibt
+es jedoch auf dem oberen Gleichgewichtspunkt.
 
 \section{Stabilität}
 \rhead{Stabilität}

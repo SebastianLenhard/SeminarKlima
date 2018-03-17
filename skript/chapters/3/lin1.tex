@@ -15,6 +15,7 @@
 \begin{tikzpicture}[>=latex,thick]
 
 \def\l{3}
+\def\s{0.12}
 
 \fill[color=red!10] ({-\l},{-\l})--({\l},{\l})--({-\l},{\l})--cycle;
 \fill[color=blue!10] ({-\l},{-\l})--({\l},{-\l})--({\l},{\l})--cycle;
@@ -28,9 +29,9 @@
 
 \foreach \x in {\lfirst,\lsecond,...,\llast}{
         \draw[color=red] ({\x},{(\x+2*\l)/3-0.2})--({\x},{\l});
-        \draw[->,color=red] ({\x,\x})--({\x},{(\x+2*\l)/3});
-        \draw[color=blue] ({\x},{-\l})--({\x},{(\x-2*\l)/3+0.2});
-        \draw[->,color=blue] ({\x},{\x})--({\x},{(\x-2*\l)/3});
+        \draw[->,color=red] ({\x,\x})--({\x},{(\x+2*\l)/3+\s});
+        \draw[->,color=blue] ({\x},{\x})--({\x},{(\x-2*\l)/3-\s});
+        \draw[color=blue] ({\x},{-\l})--({\x},{(\x-2*\l)/3});
 }
 
 \draw ({-\l},{-\l})--({\l},{\l});
@@ -44,10 +45,10 @@
 \fill[color=blue!10] ({-\l},{\l})--({\l},{-\l})--({\l},{\l})--cycle;
 
 \foreach \x in {\lfirst,\lsecond,...,\llast}{
-        \draw[->,color=red] ({\x},{-\l})--({\x},{(-\x-2*\l)/3});
-        \draw[color=red] ({\x},{(-\x-2*\l)/3-0.2})--({\x},{-\x});
-        \draw[->,color=blue] ({\x},{\l})--({\x},{(-\x+2*\l)/3});
-        \draw[color=blue] ({\x},{(-\x+2*\l)/3+0.2})--({\x},{-\x});
+        \draw[->,color=red] ({\x},{-\l})--({\x},{(-\x-2*\l)/3+\s});
+        \draw[color=red] ({\x},{(-\x-2*\l)/3})--({\x},{-\x});
+        \draw[->,color=blue] ({\x},{\l})--({\x},{(-\x+2*\l)/3-\s});
+        \draw[color=blue] ({\x},{(-\x+2*\l)/3})--({\x},{-\x});
 }
 
 \draw ({-\l},{\l})--({\l},{-\l});
