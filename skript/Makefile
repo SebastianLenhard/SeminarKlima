@@ -31,6 +31,7 @@ CHAPTERS = 								\
 	chapters/zonen.tex						\
 	chapters/2/hydrodynamik.tex					\
 	chapters/2/lorenz.tex						\
+	chapters/3/crit.tex						\
 	chapters/4/salinitaet.tex					\
 	chapters/4/box.tex						\
 	chapters/4/dimensionslos.tex
