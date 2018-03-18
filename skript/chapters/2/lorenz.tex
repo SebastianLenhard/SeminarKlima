@@ -581,8 +581,8 @@ dann erhalten wir das Differentialgleichungssystem
 %                     d                          a X(t) Y(t)
 %(%o28)             - -- (Z(t)) - 4 kappa Z(t) + -----------
 %                     dt                              2
-
-\begin{align*}
+\begin{equation}
+\begin{aligned}
 \dot X(t)
 &=
 -\nu(a^2+1)X(t)
@@ -598,6 +598,73 @@ dann erhalten wir das Differentialgleichungssystem
 &=
 -4\kappa Z(t)
 +\frac{a}{2}X(t)Y(t)
-\end{align*}
+\end{aligned}
+\label{skript:lorenz:dim}
+\end{equation}
 für die Koeffizientenfunktionen $X(t)$, $Y(t)$ und $Z(t)$.
+
+\subsection{Dimensionslose Schreibweise}
+Die Form \eqref{skript:lorenz:dim} der Lorenz-Gleichungen ist für eine
+Diskussion der Lösungen nicht besonders gut geeignet.
+Die komplizierte Form der Koeffizienten erschwert den Überblick.
+Ein übersichtlicheres System erhält man, wenn man die folgenden
+Ersetzungen vornimmt:
+\begin{align*}
+x
+&=
+\frac{a}{\kappa(a^2+1)\sqrt{2}}
+\,
+X,
+\\
+y
+&=
+\frac{a^2 c}{\kappa \nu (a^2+1)\sqrt{2}}
+\,
+Y,
+\\
+z
+&=
+\frac{a^2c}{\kappa\nu(a^2+1)^3}
+\,
+Z,\qquad\text{und}
+\\
+t'
+&=
+\kappa (a^2+1)\, t.
+\end{align*}
+Damit werden die Differentialgleichungen zu
+\begin{align*}
+\dot x &= -\sigma x + \sigma y\\
+\dot y &= \varrho x - y - x z\\
+\dot z &= -\beta z + x y
+\end{align*}
+mit den Konstanten
+\begin{align*}
+\sigma
+&=
+\frac{\nu}{\kappa},
+&
+\varrho
+&=
+\frac{a^2cT_0}{\kappa\nu\pi(a^2+1)^3},
+&&\text{und}&
+\beta
+&=
+\frac{4}{a^2 +1}.
+\end{align*}
+Es stellt sich heraus, dass gewisse Lösungen dieser Differentialgleichung
+chaotisches Verhalten zeigen.
+Damit sind der Verhersagbarkeit von Wetterphänomenen bereits prinzipielle
+Grenzen gesetzt.
+Dies besagt aber nicht, dass sich das Klima nicht vorhersagen lässt,
+sondern nur, dass das Lorenzmodell nicht dazu geeignet ist, den
+Wärmetransport durch Konvektion in der Atmosphäre über längere Zeit
+zu modellieren.
+Die in Kapitel~\ref{chapter:zonenmodelle} dargestellten Modelle sind
+dazu durchaus in der Lage.
+
+
+
+
+
 

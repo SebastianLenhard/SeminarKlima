@@ -53,6 +53,10 @@ PAPERFILES =								\
 	lorenz/references.bib						\
 	lorenz/packages.tex						\
 	lorenz/Makefile							\
+	neigung/main.tex						\
+	neigung/references.bib						\
+	neigung/packages.tex						\
+	neigung/Makefile						\
 	planeten/main.tex						\
 	planeten/references.bib						\
 	planeten/packages.tex						\
