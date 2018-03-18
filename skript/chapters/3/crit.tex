@@ -11,6 +11,7 @@ der Form
 \frac{dx}{dt} = f(x)
 \label{skript:dgl:gleichung}
 \end{equation}
+aus
 mit einer Funktion $f\colon \mathbb R^n \to \mathbb R^n$.
 Die Funktion $f$ wird im Allgemeinen von weiteren Parametern abhängen
 wie zum Beispiel dem $\text{CO}_2$-Gehalt der Atmosphäre oder der Salinität
@@ -55,7 +56,92 @@ Parametervektor bewegen.
 Besonders interessant für die Diskussion des Klimawandels sind
 Fälle, wo Gleichgewichtslösungen sich sprunghaft ändern.
 
-\section{Bifurkationen eindimensionaler Systeme}
+\subsection{Stabilität}
+Wir betrachten eine Gleichgewichtslösung $x(t)=x_0$ der Differentialgleichung
+\eqref{skript:dgl:gleichung}.
+\begin{definition}
+Die Gleichgewichtslösung $x(t)=x_0$ heisst stabil, wenn eine Lösung zu
+einer Anfangsbedingung $\bar x_0$, die $|x_0-\bar x_0|<\varepsilon$
+erfüllt, für alle Zeiten nahe bei $x_0$ bleibt, also
+$|\bar x(t)- x_0|<\varepsilon$.
+\end{definition}
+
+\begin{beispiel}
+Wir betrachten die Differentialgleichung
+\[
+\frac{dx}{dt} = ax.
+\]
+Sie hat die Gleichgewichtslösung $x(t)=0$.
+Eine Lösung, die die Anfangsbedingung $x(0)=\varepsilon$ erfüllt, 
+ist $x(t)=\varepsilon e^{at}$, denn
+\[
+\frac{d}{dt}
+\varepsilon e^{at}
+=
+a\varepsilon e^{at}.
+\]
+Wenn $a>0$, dann wächst die Lösung exponentiell an, die Gleichgewichtslösung 
+ist als nicht stabil.
+Für $a<0$ dagegen nimmt $x(t)=\varepsilon e^{at}$ exponentiell schnell ab,
+die Gleichgewichtslösung ist stabil.
+\end{beispiel}
+
+Für eindimensionale Systeme ist Stabilität besonders einfach zu
+diskutieren, wir tun dies im Rahmen der Diskussion der wichtigsten
+Bifurkationstypen in Abschnitt~\ref{section:bifurkation-eindim}.
+
+\subsection{Zeitumkehr}
+Wir gehen wieder von der autonomen
+Differentialgleichung~\eqref{skript:dgl:gleichung}
+mit der Lösung $x(t)$ mit Anfangsbedingung $x_0$ aus.
+Ersetzen wir $t$ durch $-s$, erhalten wir die autonome Differentialgleichung
+\begin{equation}
+-\frac{dx}{ds}
+=
+f(x),
+\end{equation}
+mit der gleichen Anfangsbedingung.
+Die Funktion $s\mapsto x(-s)$ ist eine Lösung.
+
+Die Zeitumkehr verändert den Stabilitätscharakter einer Gleichgewichtslösung.
+Ist $x_0$ eine stabile Gleichgewichtslösung, dann nehmen Lösungen mit
+Anfangsbedingungen in der Nähe von $x_0$ nicht weiter zu, sondern
+höchstens ab.
+Es ist also möglich, dass die Lösung nach Zeitumkehr instabil wird.
+
+Bei zweidimensionalen Systemen ist es aber durchaus möglich, eine
+Gleichgewichtslösung in beiden Zeitrichtungen instabil sind.
+Als Beispiel betrachten wir das zweidimensionale Differentialgleichungssystem
+\begin{equation}
+\frac{d}{dt}
+\begin{pmatrix}x\\y\end{pmatrix}
+=
+\begin{pmatrix}1&0\\0&-1\end{pmatrix}
+\begin{pmatrix}x\\y\end{pmatrix}.
+\end{equation}
+Sie hat die beiden Lösungen
+\begin{align*}
+x_1(t)&=
+\varepsilon \begin{pmatrix}e^t\\0\end{pmatrix}
+&&\text{und}&
+x_2(t)
+&=
+\varepsilon \begin{pmatrix}0\\e^{-t}\end{pmatrix}
+\end{align*}
+zu den Anfangsbedingungen
+\begin{align*}
+x_1(0)&=\begin{pmatrix}\varepsilon\\0\end{pmatrix}
+&&\text{und}&
+x_2(0)&=\begin{pmatrix}0\\\varepsilon\end{pmatrix}.
+\end{align*}
+Die Lösung $x_1(t)$ wächst für $t>0$ exponentiell an, die Gleichgewichtslösung
+$x(t)=0$ kann also für $t>0$ nicht stabil sein.
+Für $t\to-\infty$ nimmt $x_1(t)$ exponentiell ab, aber trotzdem ist
+die Nulllösung nicht stabil, dann die Lösung $x_2(t)$ nimmt für 
+$t\to-\infty$ exponentiell zu.
+
+\section{Bifurkationen eindimensionaler Systeme
+\label{section:bifurkation-eindim}}
 \rhead{Bifurkationen}
 In diesem Abschnitt betrachten wir eindimensionale Differentialgleichung
 \begin{equation}
@@ -80,7 +166,7 @@ a_{10}x + a_{01}\lambda
 a_{20}x^2 + a_{11}x\lambda + a_{02}\lambda^2 + \dots
 \end{equation}
 entwickeln.
-Die verschiedenen Bifurkationen lassen sich charakterisierung durch
+Die verschiedenen Bifurkationen lassen sich charakterisieren durch
 die führenden Terme in dieser Entwicklung.
 Insbesondere können wir verlangen, dass der führende Term für $\lambda$
 immer linear in $\lambda$ sein soll.
@@ -125,6 +211,7 @@ Die Gleichgewichtslösung $x_0=-\lambda$ ist stabil.
 Dieses Beispiel zeigt, dass interessante Bifurkationsereignisse
 erst dann auftreten, wenn der führende Term in $x$ der Taylor-Entwicklung
 von $f$ von höherer als linearer Ordnung ist.
+
 
 \subsection{Sattel-Knoten-Bifurkation}
 \begin{figure}
@@ -276,6 +363,4 @@ in den oberen.
 Sinkt der Wert von $\lambda$ wieder unter $2\sqrt{3}$ wird, bleibt
 es jedoch auf dem oberen Gleichgewichtspunkt.
 
-\section{Stabilität}
-\rhead{Stabilität}
 
