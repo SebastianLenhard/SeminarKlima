@@ -1,0 +1,92 @@
+%
+% bi.tex -- Phasendiagramm für thermohaline Zirkulation
+%
+% (c) 2018 Prof Dr Andreas Müller
+%
+\begin{tikzpicture}[>=latex,thick]
+
+\def\xs{16}
+\def\ys{5}
+
+\fill[color=red!10] (0,0) rectangle (6.2,6.2);
+
+\fill[color=darkgreen!10] (0,0)--(0,6.2)--(-1.5,6.2)--(-1.5,0)--cycle;
+\draw[color=darkgreen] (-1.5,\ys)--(0,\ys);
+
+\begin{scope}
+\clip (0,0) rectangle (6.2,6.2);
+\fill[color=blue!10,domain=1:1.3,samples=100]
+	plot ({\xs*\x*(\x-1)},{\ys*\x})--(0,6.2)--cycle;
+\draw[domain=1:1.5,samples=100] plot ({\xs*\x*(\x-1)},{\ys*\x});
+
+\fill[color=blue!10,domain=0:1,samples=100]
+	plot ({\xs*\x*(1-\x)},{\ys*\x})--cycle;
+\draw[domain=0:1,samples=100] plot ({\xs*\x*(1-\x)},{\ys*\x});
+
+\end{scope}
+
+\draw[->] (-0.5,0)--(6.5,0) coordinate[label={$\lambda$}];
+\draw[->] (0,-0.5)--(0,6.5) coordinate[label={right:$x$}];
+
+\def\arrow#1#2#3#4{
+	\tikzmath{
+		real \a, \as;
+		\a = (#2 + #3) / 2;
+		\as = \a + 0.02 * (#3 - #2) / abs(#3 - #2);
+	}
+	\draw[->,color=#4] ({\xs*#1},{\ys*#2})--({\xs*#1},{\ys*\as});
+	\draw[color=#4] ({\xs*#1},{\ys*\a})--({\xs*#1},{\ys*#3});
+}
+
+\foreach \ll in {0.25,0.75,...,3.75}{
+	\tikzmath{
+		real \l;
+		\l = \ll / \xs;
+		real \xbottom, \xtop, \xmiddle;
+		\xbottom = 0.5 - sqrt(0.25 - \l);
+		\xmiddle = 0.5 + sqrt(0.25 - \l);
+		\xtop = 0.5 + sqrt(0.25 + \l);
+		real \t;
+		\t = 6.2 / \ys;
+	}
+	\arrow{\l}{0}{\xbottom}{red}
+	\arrow{\l}{\xmiddle}{\xbottom}{blue}
+	\arrow{\l}{\xmiddle}{\xtop}{red}
+	\arrow{\l}{\t}{\xtop}{blue}
+}
+
+\begin{scope}
+\clip (0,0) rectangle (6.2,6.2);
+\foreach \ll in {4.25,4.75,...,5.75}{
+	\tikzmath{
+		real \l;
+		\l = \ll / \xs;
+		real \xbottom, \xtop, \xmiddle;
+		\xtop = 0.5 + sqrt(0.25 + \l);
+	}
+	\pgfmathparse{\ll/\xs}
+	\edef\l{\pgfmathresult}
+	\arrow{\l}{0}{\xtop}{red}
+}
+\draw[domain=1:1.5,samples=100] plot ({\xs*\x*(\x-1)},{\ys*\x});
+\draw[domain=0:1,samples=100] plot ({\xs*\x*(1-\x)},{\ys*\x});
+
+\end{scope}
+
+\draw ({\xs*0.25},0.1)--({\xs*0.25},-0.1);
+\node at ({\xs*0.25},0) [below] {$\frac14$};
+\draw[line width=0.1pt] ({\xs * 0.25},0)--({\xs*0.25},6.2);
+
+\node[color=darkgreen] at (-0.2,{\ys*0.5}) [left] {$q < 0$};
+\node[color=darkgreen] at (-0.2,{(\ys+6.2)/2}) [left] {$q > 0$};
+\draw[color=darkgreen] (-1.5,\ys)--(6.2,\ys);
+
+\draw[color=red,line width=1.4pt]
+	({\xs*0.25},{\ys*0.5})--({\xs*0.25},{\ys*(1+sqrt(2))/2});
+\fill[color=red] ({\xs*0.25},{\ys*0.5}) circle[radius=0.07];
+\fill[color=red] ({\xs*0.25},{\ys*(1+sqrt(2))/2}) circle[radius=0.07];
+
+\draw (-0.1,\ys)--(0.1,\ys);
+\node at (0,\ys) [below left] {$1$};
+
+\end{tikzpicture}
