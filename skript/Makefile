@@ -31,6 +31,8 @@ CHAPTERS = 								\
 	chapters/zonen.tex						\
 	chapters/2/hydrodynamik.tex					\
 	chapters/2/lorenz.tex						\
+	chapters/3/crit.tex						\
+	chapters/3/dgl.tex						\
 	chapters/4/salinitaet.tex					\
 	chapters/4/box.tex						\
 	chapters/4/dimensionslos.tex
@@ -51,6 +53,10 @@ PAPERFILES =								\
 	lorenz/references.bib						\
 	lorenz/packages.tex						\
 	lorenz/Makefile							\
+	neigung/main.tex						\
+	neigung/references.bib						\
+	neigung/packages.tex						\
+	neigung/Makefile						\
 	planeten/main.tex						\
 	planeten/references.bib						\
 	planeten/packages.tex						\

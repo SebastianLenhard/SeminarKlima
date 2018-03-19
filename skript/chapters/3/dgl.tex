@@ -1,0 +1,136 @@
+%
+% dgl.tex
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\section{Grundlagen}
+\rhead{Grundlagen}
+Eine Differentialgleichung ist eine Beziehung zwischen einer Funktion und
+ihren Ableitungen.
+Wir betrachten Funktionen der Zeit $t$ mit Werten in $\mathbb R^n$
+und schreiben sie $x(t)$.
+Sei $f$ eine Funktion
+\[
+f\colon \mathbb R^n\times \mathbb R \to \mathbb R^n: (x,t) \mapsto f(x,t).
+\]
+
+\begin{definition}
+Eine Funktion $x(t)$ heisst Lösung der Differentialgleichung
+\begin{equation}
+\frac{dx}{dt} = f(x,t)
+\label{skript:dgl:dgldef}
+\end{equation}
+zur Anfangsbedingung $x_0$, wenn gilt $x(0)=x_0$ und
+\[
+\frac{dx}{dt} = f(x(t),t)
+\]
+für alle $t>0$.
+\end{definition}
+
+Unter einigermassen milden Bedingungen an die Funktion $f(x,t)$ ist
+sichergestellt, dass eine Differentialgleichung immer eine Lösung hat.
+
+\subsection{Autonome Differentialgleichungen}
+Wenn die Funktion $f$ von der Zeit abhängt, wird es im allgemeinen
+keine konstanten Lösungen geben.
+Für die Klimadiskussion sind wir allerdings daran interessiert, ob
+ein Modell Lösungen hat, die sich mit der Zeit nicht ändern.
+Solche Lösungen zeigen uns, dass wir alle kurzfristigen
+Schwankungen, die wir dem Wetter zuordnen würden, ausgemittelt haben.
+
+\begin{definition}
+Eine Differentialgleichung der Form~\eqref{skript:dgl:dgldef}
+heisst {\em autonom},
+\index{autonom}%
+wenn die Funktion $f$ nicht von der Zeit abhängt.
+Eine autonome Differentialgleichung kann als
+\[
+\frac{dx}{dt} = f(x)
+\]
+geschrieben werden.
+\end{definition}
+
+Die Forderung, dass die Differentialgleichung autonom sein soll, ist
+allerdings auf triviale Art zu erfüllen, indem man zu einer neuen
+unabhängigen Variablen übergeht und die bisherige Zeitvariable 
+als letzte Komponente der Funktion $x(t)$ hinzufügt.
+Wir schreiben die Lösungsfunktionen als
+\begin{align*}
+x(t)
+&=
+\begin{pmatrix}
+x_1(t) \\ \vdots \\x_n(t)
+\end{pmatrix}
+&&\text{und erweitern dies zu}&
+\bar x(s)
+=
+\begin{pmatrix}
+x_1(s) \\ \vdots \\ x_n(s) \\ s
+\end{pmatrix}
+\in\mathbb R^{n+1}.
+\end{align*}
+Die rechte Seite der Differentialgleichung, also die Funktion $f(x,t)$
+schreiben wir
+\begin{align*}
+f(x,t)
+&=
+f(x_1,\dots,x_n,t)
+&&\text{mit Anfangsbedingung}&
+x_0
+&=
+\begin{pmatrix} x_{01} \\ \vdots \\ x_{0n} \end{pmatrix}
+\\
+\intertext{und erweitern dies nun zu einer Funktion $\bar f$ für eine
+autonome Differentialgleichung für $\bar x$}
+\bar f(\bar x)
+&=
+\begin{pmatrix}
+f_1(\bar x_1,\dots,\bar x_n,\bar x_{n+1})\\
+\vdots\\
+f_n(\bar x_1,\dots,\bar x_n,\bar x_{n+1})\\
+1
+\end{pmatrix}
+&&\text{mit Anfangsbedingung}&
+\bar x_0
+&=
+\begin{pmatrix} x_{01} \\ \vdots \\ x_{0n} \\ 0\end{pmatrix}.
+\end{align*}
+Die Differentialgleichung für $\bar x$ ist
+\begin{equation}
+\frac{d\bar x}{ds}
+=
+\bar f(\bar x),
+\label{skript:dgl:autodgl}
+\end{equation}
+dies ist offensichtlich eine autonome Differentialgleichung.
+Die letzte Komponenten von \eqref{skript:dgl:autodgl} ist die
+Differentialgleichung für $\bar x_{n+1}$
+\[
+\frac{d\bar x_{n+1}}{ds} = 1
+\]
+mit der Anfangsbedingung $x_{n+1}(0)=0$, sie hat die Lösung
+$\bar x_{n+1}(s)=s$.
+Die Koordinate $\bar x_{n+1}$ ist also nichts anderes als die
+ursprüngliche Zeitkoordinate.
+Aus der Lösung $\bar x(s)$ der autonomen Differentialgleichung
+kann die Lösung der ursprünglichen Differentialgleichung gewonnen
+werden, indem man einfach die letzte Koordinate weglässt:
+\[
+x(t)
+=
+\begin{pmatrix}
+\bar x_1(t) \\ \vdots \\ \bar x_n(t)
+\end{pmatrix}.
+\]
+Der Übergang zur autonomen Differentialgleichung erhöht die Dimension
+des Vektors.
+Dadurch wird die Diskussion kritischer Punkte und Gleichgewichtslösungen
+leider nicht vereinfacht.
+Statt eine Differentialgleichung nachträglich autonom zu machen
+ist daher im allgemeinen anzustreben, dass sie von vornherein
+autonom ist.
+In den nachfolgenden Beispielen gehen wir daher immer von autonomen
+Differentialgleichungssystemen aus.
+
+
+
