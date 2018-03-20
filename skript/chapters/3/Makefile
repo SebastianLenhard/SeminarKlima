@@ -3,7 +3,12 @@
 #
 # (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
 #
-all:	pitchfork.pdf saddle-node.pdf lin1.pdf trans.pdf kubisch.pdf grad4.pdf
+BILDER = pitchfork.pdf saddle-node.pdf lin1.pdf trans.pdf kubisch.pdf \
+	 grad4.pdf
+
+all:	$(BILDER)
+
+images:	$(BILDER)
 
 pitchfork.pdf:	pitchfork.tex
 	pdflatex pitchfork.tex
