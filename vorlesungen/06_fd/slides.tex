@@ -6,6 +6,7 @@
 \theoremstyle{definition}
 \newtheorem{idee}{Idee}
 \newtheorem{plan}{Plan}
+\newtheorem{prob}{Problem}
 \newtheorem{kont}{Kontinuitätsgleichung}
 \newtheorem{impulserhaltung}{Impulserhaltung}
 \newtheorem{ink}{Kompressibilität bewirkt}
@@ -16,6 +17,8 @@
 \newtheorem{navier}{Navier-Stokes-Gleichung}
 \newtheorem{beisp}{Beispiel: Lorenz-Modell}
 \newtheorem{anomalie}{Anomalie}
+\newtheorem{lin}{Linearisierung}
+\newtheorem{vort}{Vorticity}
 
 \begin{document}
 
@@ -310,6 +313,32 @@ Reduktion von zwei Funktionen $v_x,v_y$ auf eine: $\psi$.
 \end{frame}
 
 %
+% Vorticity
+%
+\begin{frame}
+\frametitle{Vorticity}
+\begin{idee}
+Noch einmal mehr ableiten, Konstanten eliminieren
+\end{idee}
+\begin{vort}
+Ausmass der Drehung des Vektorfeldes:
+\[
+\nabla\times\vec v
+=
+\frac{\partial v_y}{\partial x} - \frac{\partial v_x}{\partial y}
+\]
+\end{vort}
+Für $\psi$:
+\[
+\nabla\times \vec v = \nabla\times J\nabla\cdot \psi
+=
+\Delta \psi
+\]
+Die partielle Differentialgleichung $\Delta \psi = f$ hat man ``gut im Griff''
+
+\end{frame}
+
+%
 % Anomalie
 %
 \begin{frame}
@@ -358,6 +387,93 @@ T_0\biggl(1-\frac{y}{h_0}\biggr)
 }
 \end{column}
 \end{columns}
+\end{frame}
+
+%
+% Allgemeine Strömungsgleichung
+%
+\begin{frame}
+\frametitle{Allgemeine Gleichung}
+\begin{align*}
+\frac{\partial \Delta \psi}{\partial t}
+&=
+\nu \Delta \psi + c\frac{\partial \vartheta}{\partial x}
+-\frac{\partial(\psi,\Delta\psi)}{\partial(x,y)}
+\\
+\frac{\partial \vartheta}{\partial t}
+&=
+\kappa\Delta \vartheta
++
+\frac{T_0}{h_0}\frac{\partial \psi}{\partial x}
+-\frac{\partial(\psi,\vartheta)}{\partial(x,y)}
+\end{align*}
+$\psi=0$, $\vartheta=0$ ist die ``Ruhelösung'', gesucht sind
+davon abweichende Lösungen
+\begin{lin}
+\vspace{-10pt}
+\begin{align*}
+\frac{\partial \Delta \psi}{\partial t}
+&=
+\nu \Delta \psi + c\frac{\partial \vartheta}{\partial x}
+%-\frac{\partial(\psi,\Delta\psi)}{\partial(x,y)}
+\\
+\frac{\partial \vartheta}{\partial t}
+&=
+\kappa\Delta \vartheta
++
+\frac{T_0}{h_0}\frac{\partial \psi}{\partial x}
+%-\frac{\partial(\psi,\vartheta)}{\partial(x,y)}
+\end{align*}
+\vspace{-10pt}
+\end{lin}
+\begin{prob}
+$\psi$ und $\vartheta$ sind immer noch funktionen ($\infty$-dimensional),
+wir brauchen etwas endlichdimensionales.
+\end{prob}
+\end{frame}
+
+\begin{frame}
+\frametitle{Abstraktes Klimamodell}
+\begin{align*}
+\frac{\partial}{\partial t}
+D
+\begin{pmatrix}\psi\\\vartheta\end{pmatrix}
+&=
+A
+\begin{pmatrix}\psi\\\vartheta\end{pmatrix}
++
+N
+\begin{pmatrix}\psi\\\vartheta\end{pmatrix}
+\\
+\frac{\partial}{\partial t}Du&=Au+N(u)
+\end{align*}
+mit folgenden Abkürzungen
+\begin{align*}
+u
+&=
+\begin{pmatrix}
+\psi\\\vartheta
+\end{pmatrix}
+&
+D
+&=
+\begin{pmatrix}
+\Delta&0\\0&1
+\end{pmatrix}
+&
+A
+&=
+\begin{pmatrix}
+\nu\Delta&c\frac{\partial}{\partial x}\\
+\frac{T_0}{h_0}\frac{\partial}{\partial x}&\kappa\Delta
+\end{pmatrix}
+\end{align*}
+\begin{itemize}
+\item
+Nullvektor ist Lösung
+\item
+Linearisierung erhält man durch Weglassen von $N$
+\end{itemize}
 \end{frame}
 
 \end{document}

@@ -23,7 +23,7 @@ function derivative = lorenz(x, t)
 	derivative(3,1) = zdot;
 endfunction
 
-x0 = zeros(3,1)
+x0 = zeros(3,1);
 x0(1,1) = 3;
 x0(2,1) = 15;
 x0(3,1) = 1;
@@ -40,43 +40,21 @@ function jac = jacobian(x, t)
 		-sigma,	  sigma,     0;
 		rho-x(3),    -1, -x(1);
 		x(2),      x(1), -Beta;
-	]
+	];
 endfunction
 
 function Derivative = Lorenz(X, t)
 	Derivative = zeros(12,1);
 	x = X(1:3,1);
 	Derivative(1:3,1) = lorenz(x, t);
-	J = [
-		 X(4),  X(5),  X(6);
-		 X(7),  X(8),  X(9);
-		X(10), X(11), X(12);
-	];
+	J = reshape(X(4:12), 3, 3)';
 	F = jacobian(x, t) * J;
-	F
-	Derivative( 4,1) = F(1,1);
-	Derivative( 5,1) = F(1,2);
-	Derivative( 6,1) = F(1,3);
-	Derivative( 7,1) = F(2,1);
-	Derivative( 8,1) = F(2,2);
-	Derivative( 9,1) = F(2,3);
-	Derivative(10,1) = F(3,1);
-	Derivative(11,1) = F(3,2);
-	Derivative(12,1) = F(3,3);
+	Derivative(4:12,1) = reshape(F, 9, 1);
 endfunction
 
 D0 = zeros(12, 1);
 D0(1:3,1) = x0;
-D0( 4,1) = 1;
-D0( 5,1) = 0;
-D0( 6,1) = 0;
-D0( 7,1) = 0;
-D0( 8,1) = 1;
-D0( 9,1) = 0;
-D0(10,1) = 0;
-D0(11,1) = 0;
-D0(12,1) = 1;
-D0
+D0(4:12,1) = reshape(eye(3), 9, 1);
 
 [X, istate, msg] = lsode(@Lorenz, D0, t)
 
