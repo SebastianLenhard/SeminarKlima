@@ -1,0 +1,261 @@
+%
+% slides.tex -- slides
+%
+% (c) 2017 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\theoremstyle{definition}
+\newtheorem{trigopol}{Trigonometrische Polynome}
+\newtheorem{fourier}{Fourier-Reihe}
+\newtheorem{leastsquares}{Kleinste Quadrate}
+\newtheorem{loesung}{Lösung}
+\newtheorem{geometrie}{Schwerpunkt}
+\newtheorem{produkte}{Produkte}
+
+\begin{document}
+
+\setlength{\abovedisplayskip}{3pt}
+\setlength{\belowdisplayskip}{3pt}
+
+\ifthenelse{\boolean{presentation}}{
+\begin{frame}
+\titlepage
+\end{frame}
+}{}
+
+%
+% Idee von Fourier
+%
+\begin{frame}
+\frametitle{Die Idee von Fourier}
+\begin{trigopol}
+Ein trigonometrisches Polynom ist eine Funktion der Form
+\begin{align*}
+f(t)
+&=
+\frac{a_0}2 + a_1\cos t+b_1\sin t + a_2\cos 2t + b_2\sin 2t + \dots + a_n\cos nt+b_n\sin nt
+\\
+&=
+\frac{a_0}2 + \sum_{k=1}^n \bigl( a_k \cos kt + b_k\sin kt\bigr)
+\end{align*}
+\end{trigopol}
+\begin{fourier}
+Eine periodische Funktion $f(t)$ kann durch eine Fourier-Reihe beliebig
+genau approximiert werden:
+\[
+f(t)
+=
+\frac{a_0}2 + \sum_{k=1}^{\infty} \bigl( a_k \cos kt + b_k\sin kt\bigr)
+\]
+\end{fourier}
+\end{frame}
+
+%
+% Kleinste Quadrate
+%
+\begin{frame}
+\frametitle{Kleinste Quadrate}
+\begin{columns}
+\begin{column}{0.47\hsize}
+\begin{leastsquares}
+Zu vorgegebenen Funktionswerten $y_j=f(t_j)$ in den Punkten
+\[
+t_j = 2\pi \frac{j}{N},\qquad j=0,\dots,N-1
+\]
+finde Koeffizienten $\hat a_k$ und $\hat b_k$ derart, dass
+\[
+L=\sum_{j=0}^{N-1} \bigl(y_j - f(t_j)\bigr)^2
+\]
+minimal wird, wobei $f(t)$ ein trigonometrisches Polynom ist.
+\end{leastsquares}
+\end{column}
+\begin{column}{0.5\hsize}
+\begin{loesung}
+$a_k$ und $b_k$ so bestimmen, dass
+\begin{align*}
+\frac{\partial L}{\partial a_k}&=0&
+\frac{\partial L}{\partial b_k}&=0
+\end{align*}
+gilt.
+Berechnung der Ableitungen:
+\begin{align*}
+\frac{\partial L}{\partial a_k}
+&=
+\sum_{j=0}^{N-1}2\bigl(y_j-f(t_j)\bigr)
+\frac{\partial f(t_j)}{\partial a_k}
+\\
+\frac{\partial f(t_j)}{\partial a_k}
+&=
+\begin{cases}
+\frac12&\qquad k=0
+\\
+\cos kt_j&\qquad\text{sonst}
+\end{cases}
+\end{align*}
+und analog für $\sin kt_j$.
+\end{loesung}
+\end{column}
+\end{columns}
+\end{frame}
+
+%
+% Trigonometrische Summen
+%
+\begin{frame}
+\frametitle{Trigonometrische Summen}
+\begin{columns}
+\begin{column}{0.48\hsize}
+\begin{geometrie}
+Die Punkte $(\cos kt_j,\sin kt_j)$ sind gleichmässig auf einem Kreis verteilt:
+\\[3pt]
+Schwerpunkt der roten Punkte ist $0$,
+ausser für $k=0$
+\end{geometrie}
+\end{column}
+\begin{column}{0.48\hsize}
+\def\r{1}
+\begin{tikzpicture}[>=latex,thick]
+\draw (0,0) circle[radius={\r}];
+\draw[->] (-1.3,0)--(1.3,0);
+\draw[->] (0,-1.3)--(0,1.3);
+\foreach\i in {0,1,...,16}{
+\fill[color=red] ({\r*cos(360*\i/17)},{\r*sin(360*\i/17)}) circle[radius=1.5pt];
+}
+\node at (-0.7,-1.2) {$N=17$};
+\node at (1.5,0) [right] {\begin{minipage}{3cm}\raggedright
+\begin{align*}
+\sum_{j=0}^{N-1} \cos kt_j&=N\delta_{k0}\\
+\sum_{j=0}^{N-1} \sin kt_j&=0
+\end{align*}
+\end{minipage}};
+\end{tikzpicture}
+\end{column}
+\end{columns}
+\begin{produkte}
+\vspace{-33pt}
+\[
+\left.
+\begin{aligned}
+\cos\alpha\cos\beta&={\textstyle\frac12}(\cos(\alpha-\beta)+\cos(\alpha+\beta))
+\\
+\sin\alpha\sin\beta&={\textstyle\frac12}(\cos(\alpha-\beta)-\cos(\alpha+\beta))
+\\
+\sin\alpha\cos\alpha&={\textstyle\frac12}(\sin(\alpha-\beta)+\sin(\alpha+\beta))
+\end{aligned}
+\right\}
+\Rightarrow
+\left\{
+\begin{aligned}
+\sum_{j=0}^{N-1}\cos kt_j\cos lt_j&=\frac{N}2\delta_{kl}
+\\
+\sum_{j=0}^{N-1}\sin kt_j\sin lt_j&=\frac{N}2\delta_{kl}
+\\
+\sum_{j=0}^{N-1}\sin kt_j\cos lt_j&=0
+\end{aligned}
+\right.
+\]
+\end{produkte}
+\end{frame}
+
+%
+% Lösung a_0
+%
+\begin{frame}
+\frametitle{Lösung $a_0$}
+\begin{align*}
+\frac{\partial L}{\partial a_0}
+&=
+\sum_{j=0}^{N-1} 2\biggl(y_j-\frac{a_0}2-\sum_{k=1}^\infty
+\bigl(a_k\cos kt_j + b_k\sin kt_j\bigr)
+\biggr)\frac12=0
+\\
+0
+&=
+\sum_{j=0}^{N-1} y_j - N\frac{a_0}{2} 
++\sum_{k=1}^\infty\biggl(
+a_k\underbrace{\sum_{j=0}^{N-1}\cos kt_j}_{\displaystyle=0}
++
+b_k\underbrace{\sum_{j=0}^{N-1}\sin kt_j}_{\displaystyle=0}
+\biggr)
+\\
+\Rightarrow\;
+\hat a_0&=\frac{2}{N}\sum_{j=0}^{N-1} y_j
+\end{align*}
+\end{frame}
+
+%
+% Lösung a_k
+%
+\begin{frame}
+\frametitle{Lösung $a_k$}
+\begin{align*}
+\frac{\partial L}{\partial a_k}
+&=
+\sum_{j=0}^{N-1} 2\biggl(y_j-\frac{a_0}2-\sum_{l=1}^\infty
+\bigl(a_l\cos lt_j + b_l\sin lt_j\bigr)
+\biggr)\cos kt_j=0
+\\
+\sum_{j=0}^{N-1}y_j\cos kt_j
+&=
+\frac{a_0}{2}\underbrace{\sum_{k=1}^\infty\cos kt_j}_{\displaystyle=0}
++
+\sum_{l=1}^\infty
+\biggl(
+a_l
+\underbrace{
+\sum_{j=1}^{N-1}
+\cos lt_j
+\cos kt_j
+}_{\displaystyle=\frac{N}{2}\delta_{kl}}
++
+b_l
+\underbrace{
+\sum_{j=1}^{N-1}
+\sin lt_j
+\cos kt_j
+}_{\displaystyle=0}
+\biggr)
+\\
+\Rightarrow\;
+\hat a_k&=\frac{2}{N}\sum_{j=0}^{N-1}y_j\cos kt_j
+\end{align*}
+\end{frame}
+
+%
+% Lösung b_k
+%
+\begin{frame}
+\frametitle{Lösung $b_k$}
+\begin{align*}
+\frac{\partial L}{\partial b_k}
+&=
+\sum_{j=0}^{N-1} 2\biggl(y_j-\frac{a_0}2-\sum_{l=1}^\infty
+\bigl(a_l\cos lt_j + b_l\sin lt_j\bigr)
+\biggr)\sin kt_j=0
+\\
+\sum_{j=0}^{N-1}y_j\cos kt_j
+&=
+\frac{a_0}{2}\underbrace{\sum_{k=1}^\infty\sin kt_j}_{\displaystyle=0}
++
+\sum_{l=1}^\infty
+\biggl(
+a_l
+\underbrace{
+\sum_{j=1}^{N-1}
+\cos lt_j
+\sin kt_j
+}_{\displaystyle=0}
++
+b_l
+\underbrace{
+\sum_{j=1}^{N-1}
+\sin lt_j
+\sin kt_j
+}_{\displaystyle=\frac{N}{2}\delta_{kl}}
+\biggr)
+\\
+\Rightarrow\;
+\hat b_k&=\frac{2}{N}\sum_{j=0}^{N-1}y_j\sin kt_j
+\end{align*}
+\end{frame}
+
+\end{document}
