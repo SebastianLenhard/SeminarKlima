@@ -186,7 +186,7 @@ b_k\underbrace{\sum_{j=0}^{N-1}\sin kt_j}_{\displaystyle=0}
 % Lösung a_k
 %
 \begin{frame}
-\frametitle{Lösung $a_k$}
+\frametitle{Lösung $a_k$, $k>0$}
 \begin{align*}
 \frac{\partial L}{\partial a_k}
 &=
@@ -196,7 +196,7 @@ b_k\underbrace{\sum_{j=0}^{N-1}\sin kt_j}_{\displaystyle=0}
 \\
 \sum_{j=0}^{N-1}y_j\cos kt_j
 &=
-\frac{a_0}{2}\underbrace{\sum_{k=1}^\infty\cos kt_j}_{\displaystyle=0}
+\frac{a_0}{2}\underbrace{\sum_{j=0}^{N-1}\cos kt_j}_{\displaystyle=0}
 +
 \sum_{l=1}^\infty
 \biggl(
@@ -234,7 +234,7 @@ b_l
 \\
 \sum_{j=0}^{N-1}y_j\cos kt_j
 &=
-\frac{a_0}{2}\underbrace{\sum_{k=1}^\infty\sin kt_j}_{\displaystyle=0}
+\frac{a_0}{2}\underbrace{\sum_{j=0}^{N-1}\sin kt_j}_{\displaystyle=0}
 +
 \sum_{l=1}^\infty
 \biggl(
