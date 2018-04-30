@@ -1,0 +1,70 @@
+Lösen Sie die Differentialgleichung
+\[
+y''=y\qquad\text{mit Anfangsbedingungen $y(0)=A,\;y'(0)=B$}
+\]
+mit Hilfe einer Potenzreihe.
+
+\begin{loesung}
+Wir setzen den Ansatz
+\[
+y(x)
+=
+a_0+a_1x+a_2x^2+a_3x^3+\dots
+\]
+in die Differentialgleichung ein und erhalten
+\begin{align*}
+y'(x)
+&=
+a_1+2a_2x+3a_3x^2+\dots
+\\
+y''(x)
+&=
+2a_2 + 3\cdot 2\,a_3x + 4\cdot 3\,a_4x^2+\dots
+\end{align*}
+Der Koeffizientenvergleicht zeigt, dass 
+\begin{align*}
+a_0&=2\cdot 1\,a_2\\
+a_1&=3\cdot 2\,a_3\\
+a_2&=4\cdot 3\,a_4\\
+a_3&=5\cdot 4\,a_5\\
+a_4&=6\cdot 5\,a_6\\
+a_5&=7\cdot 6\,a_7\\
+   &\qquad\vdots
+\end{align*}
+Daraus liest man ab:
+\begin{align*}
+a_2&=\frac{a_0}{2\cdot 1}=\frac{a_0}{2!}\\
+a_3&=\frac{a_1}{3\cdot 2}=\frac{a_1}{3!}\\
+a_4&=\frac{a_2}{4\cdot 3}=\frac{a_0}{4\cdot 3\cdot 2!}=\frac{a_0}{4!}\\
+a_5&=\frac{a_3}{5\cdot 4}=\frac{a_1}{5\cdot 4\cdot 3!}=\frac{a_1}{5!}\\
+a_6&=\frac{a_4}{6\cdot 5}=\frac{a_0}{6\cdot 5\cdot 4!}=\frac{a_0}{6!}\\
+a_7&=\frac{a_5}{7\cdot 6}=\frac{a_1}{7\cdot 6\cdot 5!}=\frac{a_1}{7!}\\
+   &\qquad\vdots
+\end{align*}
+Die Lösungsfunktion ist daher
+\begin{align*}
+y(x)
+&=
+a_0 + a_1x + \frac{a_0}{2!}x^2 + \frac{a_1}{3!}x^3+\frac{a_0}{4!}x^4
++ \frac{a_1}{5!}x^5+\frac{a_0}{6!}x^6 + \frac{a_1}{7!}x^7+\dots
+\\
+&=
+a_0\underbrace{\biggl(
+1+\frac{x^2}{2!}+\frac{x^4}{4!}+\frac{x^6}{6!}+\dots
+\biggr)}_{\displaystyle =\cosh x} + a_1\underbrace{\biggl(
+x+\frac{x^3}{3!}+\frac{x^5}{5!}+\frac{x^7}{7!}+\dots
+\biggr)}_{\displaystyle=\sinh x}
+\end{align*}
+Jetzt muss noch der Zusammenhang mit der Anfangsbedingung hergestellt werden.
+Es gilt
+\begin{align*}
+y(0)  &= a_0 = A\\
+y'(0) &= a_1 = B,
+\end{align*}
+somit ist die gesuchte Lösung
+\[
+y(x) = A\cosh x + B\sinh x.
+\qedhere
+\]
+\end{loesung}
+

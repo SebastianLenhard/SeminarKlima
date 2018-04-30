@@ -1,0 +1,575 @@
+%
+% slides.tex -- slides
+%
+% (c) 2017 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\theoremstyle{definition}
+\newtheorem{trigopol}{Trigonometrische Polynome}
+\newtheorem{fourier}{Fourier-Reihe}
+\newtheorem{leastsquares}{Kleinste Quadrate}
+\newtheorem{loesung}{Lösung}
+\newtheorem{geometrie}{Schwerpunkt}
+\newtheorem{produkte}{Produkte}
+\newtheorem{basis}{Basiseigenschaft}
+\newtheorem{frage}{Frage}
+\newtheorem{antwort}{Antwort}
+\newtheorem{dft}{Diskrete Fourier-Transformation}
+
+\begin{document}
+
+\setlength{\abovedisplayskip}{3pt}
+\setlength{\belowdisplayskip}{3pt}
+
+\ifthenelse{\boolean{presentation}}{
+\begin{frame}
+\titlepage
+\end{frame}
+}{}
+
+\ifthenelse{\boolean{presentation}}{
+\section{Astronomische Schwankungen}
+
+\begin{frame}
+\frametitle{Astronomische Einflüsse}
+\begin{enumerate}[<+->]
+\item
+Strahlungsleistung der Sonne nimmt mit der Zeit zu\uncover<6->{: {\color{blue}
+nur wichtig für die Klimarekonstruktion über sehr lange Zeiträume}}%
+\uncover<11->{, keine Periode}
+\item
+Sonnenfleckenzyklus führt zu Schwankungen der Strahlungsleistung%
+\uncover<7->{: {\color{blue}kurzfristig beobachtbar}}%
+\uncover<12->{, {\color{red}Periode 11 Jahre}}
+\item
+Störungen durch andere Planeten führen zu periodischen Schwankungen
+in den Erdbahn-Parametern, vor allem die Exzentrizität der Erdbahn%
+\uncover<8->{: {\color{blue}Höhere Strahlung im Perihel wenn $\varepsilon$
+kleiner}}%
+\uncover<13->{, {\color{red}Periode 400\,kyr}}
+\item
+Anziehung durch den Mond: Erdachse präzediert%
+\uncover<9->{: {\color{blue}Mehr Strahlung auf der Nordhalbkugel wenn der
+Sonne zugewandt}}%
+\uncover<14->{, {\color{red}Periode 23\,kyr}}
+\item
+Störungen führen zu Schwankungen der Neigung der Erdachse%
+\uncover<10->{: {\color{blue}Mehr Strahlung am Pol}}%
+\uncover<15->{, {\color{red}Periode 42kyr}}
+\end{enumerate}
+\uncover<16->{$\Rightarrow$ Welche Einflüsse sind im Klima nachweisbar?}
+\end{frame}
+}{}
+
+\section{Fourier}
+
+%
+% Idee von Fourier
+%
+\begin{frame}
+\frametitle{Die Idee von Fourier}
+\begin{trigopol}
+Ein trigonometrisches Polynom ist eine Funktion der Form
+\begin{align*}
+f_n(t)
+&=
+a_0 + a_1\cos t+b_1\sin t + a_2\cos 2t + b_2\sin 2t + \dots + a_n\cos nt
+\\
+&=
+\frac{a_0}2 + \sum_{k=1}^{n-1} a_k \cos kt + \sum_{k=1}^{n-1}b_k\sin kt
++ a_n\cos nt
+\end{align*}
+\end{trigopol}
+\begin{fourier}
+Eine periodische Funktion $f(t)$ kann durch eine Fourier-Reihe beliebig
+genau approximiert werden:
+\[
+f(t)
+=
+a_0 + \sum_{k=1}^{\infty}  a_k \cos kt + \sum_{k=1}^{\infty}b_k\sin kt
+\]
+\end{fourier}
+\end{frame}
+
+%
+% Kleinste Quadrate
+%
+\begin{frame}
+\frametitle{Kleinste Quadrate}
+\begin{columns}
+\begin{column}{0.47\hsize}
+\begin{leastsquares}
+Zu vorgegebenen Funktionswerten $y_j=f(t_j)$ in den Punkten
+\[
+t_j = 2\pi \frac{j}{N},\qquad j=0,\dots,N-1
+\]
+finde Koeffizienten $\hat a_k$ und $\hat b_k$ derart, dass
+\[
+L=\sum_{j=0}^{N-1} \bigl(y_j - f(t_j)\bigr)^2
+\]
+minimal wird, wobei $f(t)$ ein trigonometrisches Polynom ist.
+\end{leastsquares}
+%\begin{dft}
+$\hat{a}_k$ und $\hat{b}_k$ heissen {\em diskrete Fourier-Transformation}
+%\end{dft}
+\end{column}
+\begin{column}{0.5\hsize}
+\begin{loesung}
+$a_k$ und $b_k$ so bestimmen, dass
+\begin{align*}
+\frac{\partial L}{\partial a_k}&=0&
+\frac{\partial L}{\partial b_k}&=0
+\end{align*}
+gilt.
+Berechnung der Ableitungen:
+\begin{align*}
+\frac{\partial L}{\partial a_k}
+&=
+\sum_{j=0}^{N-1}2\bigl(y_j-f(t_j)\bigr)
+\frac{\partial f(t_j)}{\partial a_k}
+\\
+\frac{\partial f(t_j)}{\partial a_k}
+&=
+\cos kt_j
+,\;
+\frac{\partial f(t_j)}{\partial b_k}
+=
+\sin kt_j
+\end{align*}
+und analog für $\partial L/\partial b_k$
+\begin{align*}
+\frac{\partial L}{\partial b_k}
+&=
+\sum_{j=0}^{N-1}2\bigl(y_j-f(t_j)\bigr)
+\frac{\partial f(t_j)}{\partial b_k}
+\end{align*}
+\end{loesung}
+\end{column}
+\end{columns}
+\end{frame}
+
+%
+% Trigonometrische Summen
+%
+\begin{frame}
+\frametitle{Spezielle trigonometrische Summen}
+\begin{columns}
+\begin{column}{0.48\hsize}
+\begin{geometrie}
+Die Punkte $(\cos kt_j,\sin kt_j)$ sind gleichmässig auf einem Kreis verteilt:
+\\[3pt]
+Schwerpunkt der roten Punkte ist $0$,
+ausser für $k=0$
+\end{geometrie}
+\end{column}
+\begin{column}{0.48\hsize}
+\def\r{1}
+\begin{tikzpicture}[>=latex,thick]
+\draw (0,0) circle[radius={\r}];
+\draw[->] (-1.3,0)--(1.3,0);
+\draw[->] (0,-1.3)--(0,1.3);
+\foreach\i in {0,1,...,16}{
+\fill[color=red] ({\r*cos(360*\i/17)},{\r*sin(360*\i/17)}) circle[radius=1.5pt];
+}
+\node at (-0.7,-1.2) {$N=17$};
+\node at (1.5,0) [right] {\begin{minipage}{3cm}\raggedright
+\begin{align*}
+\sum_{j=0}^{N-1} \cos kt_j&=N\delta_{k0}\\
+\sum_{j=0}^{N-1} \sin kt_j&=0
+\end{align*}
+\end{minipage}};
+\end{tikzpicture}
+\end{column}
+\end{columns}
+\begin{produkte}
+\vspace{-20pt}
+\begin{tikzpicture}[>=latex,thick]
+\node at (0,0) {
+\begin{minipage}{\hsize}
+\[
+\left.
+\begin{aligned}
+\cos\alpha\cos\beta&={\textstyle\frac12}(\cos(\alpha-\beta)+\cos(\alpha+\beta))
+\\
+\sin\alpha\sin\beta&={\textstyle\frac12}(\cos(\alpha-\beta)-\cos(\alpha+\beta))
+\\
+\sin\alpha\cos\alpha&={\textstyle\frac12}(\sin(\alpha-\beta)+\sin(\alpha+\beta))
+\end{aligned}
+\right\}
+\Rightarrow
+\left\{
+\begin{aligned}
+\sum_{j=0}^{N-1}\cos kt_j\cos lt_j&=\frac{N}2\delta_{kl}
+\\
+\sum_{j=0}^{N-1}\sin kt_j\sin lt_j&=\frac{N}2\delta_{kl}
+\\
+\sum_{j=0}^{N-1}\sin kt_j\cos lt_j&=0
+\end{aligned}
+\right.
+\]
+\end{minipage}
+};
+\node at (-5,-2) {Im Folgenden: $N=2n$ gerade};
+\end{tikzpicture}
+\end{produkte}
+\end{frame}
+
+%
+% Lösung a_0
+%
+\begin{frame}
+\frametitle{Lösung $a_0$ und $a_n$}
+\begin{align*}
+\frac{\partial L}{\partial a_0}
+&=
+\sum_{j=0}^{N-1} 2\biggl(y_j-a_0
+-\sum_{k=1}^{n-1}
+a_k\cos kt_j
+-\sum_{k=1}^{n-1}
+b_k\sin kt_j\bigr)
+-
+a_n\cos nt_j
+\biggr)\frac12=0
+\\
+0
+&=
+\sum_{j=0}^{N-1} y_j - Na_0
+-\sum_{k=1}^{n-1}
+a_k\underbrace{\sum_{j=0}^{N-1}\cos kt_j}_{\displaystyle=0}
+-\sum_{k=1}^{n-1}
+b_k\underbrace{\sum_{j=0}^{N-1}\sin kt_j}_{\displaystyle=0}
+-
+a_n\underbrace{\sum_{j=0}^{N-1}\cos nt_j}_{\displaystyle=0}
+\\
+\Rightarrow\;
+\hat a_0&=\frac{1}{N}\sum_{j=0}^{N-1} y_j,
+\qquad
+\text{analog findet man}
+\quad
+\hat a_n
+=
+\frac{1}{N}\sum_{j=0}^{N-1} y_j \cos nt_j
+=
+\frac{1}{N}\sum_{j=0}^{N-1} (-1)^jy_j
+\end{align*}
+\end{frame}
+
+%
+% Lösung a_k
+%
+\begin{frame}
+\frametitle{Lösung $a_k$, $0<k<n$}
+\begin{align*}
+\frac{\partial L}{\partial a_k}
+&=
+\sum_{j=0}^{N-1} 2\biggl(y_j-a_0-\sum_{l=1}^{n-1}
+\bigl(a_l\cos lt_j + b_l\sin lt_j\bigr)
+-a_n\cos nt_j
+\biggr)\cos kt_j=0
+\\
+\sum_{j=0}^{N-1}y_j\cos kt_j
+&=
+a_0\underbrace{\sum_{j=0}^{N-1}\cos kt_j}_{\displaystyle=0}
++
+a_n
+\underbrace{
+\sum_{j=1}^{N-1}\cos nt_j
+}_{\displaystyle=0}
+\\
+&\qquad
++
+\sum_{l=1}^{n-1}
+a_l
+\underbrace{
+\sum_{j=1}^{N-1}
+\cos lt_j
+\cos kt_j
+}_{\displaystyle=\frac{N}{2}\delta_{kl}}
++
+\sum_{j=1}^{N-1}
+b_l
+\underbrace{
+\sum_{j=1}^{N-1}
+\sin lt_j
+\cos kt_j
+}_{\displaystyle=0}
+\\[-5pt]
+\Rightarrow\;
+\hat a_k&=\frac{2}{N}\sum_{j=0}^{N-1}y_j\cos kt_j
+\end{align*}
+\end{frame}
+
+%
+% Lösung b_k
+%
+\begin{frame}
+\frametitle{Lösung $b_k$, $0<k<n$}
+\begin{align*}
+\frac{\partial L}{\partial b_k}
+&=
+\sum_{j=0}^{N-1} 2\biggl(y_j-a_0-\sum_{l=1}^{n-1}
+\bigl(a_l\cos lt_j + b_l\sin lt_j\bigr)
+-a_n\cos nt_j
+\biggr)\sin kt_j=0
+\\
+\sum_{j=0}^{N-1}y_j\cos kt_j
+&=
+a_0\underbrace{\sum_{j=0}^{N-1}\sin kt_j}_{\displaystyle=0}
++
+a_n\underbrace{\sum_{j=0}^{N-1}\sin kt_j\cos nt_j}_{\displaystyle=0}
+\\
+&\qquad
++
+\sum_{l=1}^{n-1}
+a_l
+\underbrace{
+\sum_{j=1}^{N-1}
+\cos lt_j
+\sin kt_j
+}_{\displaystyle=0}
++
+\sum_{l=1}^{n-1}
+b_l
+\underbrace{
+\sum_{j=1}^{N-1}
+\sin lt_j
+\sin kt_j
+}_{\displaystyle=\frac{N}{2}\delta_{kl}}
+\\[-5pt]
+\Rightarrow\;
+\hat b_k&=\frac{2}{N}\sum_{j=0}^{N-1}y_j\sin kt_j
+\end{align*}
+\end{frame}
+
+%
+% Schreibweise als Skalarprodukt
+%
+\begin{frame}
+\frametitle{Skalarprodukt für $\hat a_k$ und $\hat b_k$}
+\begin{align*}
+\hat a_k
+&=
+\sum_{j=0}^{N-1} y_j \cos kt_j
+&&\Rightarrow&
+\hat a_k
+&=
+\frac{2}{N}
+\underbrace{
+\begin{pmatrix}y_0\\y_1\\\vdots\\y_{N-1}\end{pmatrix}
+}_{\displaystyle\vec{y}}
+\cdot
+\underbrace{
+\begin{pmatrix}\cos kt_0\\\cos kt_1\\\vdots\\\cos kt_{N-1}\end{pmatrix}
+}_{\displaystyle \vec{c}_k}
+\\
+\intertext{analog:}
+\hat b_k
+&=
+\sum_{j=0}^{N-1} y_j \sin kt_j
+&&\Rightarrow&
+\hat b_k
+&=
+\frac{2}{N}
+\begin{pmatrix}y_0\\y_1\\\vdots\\y_{N-1}\end{pmatrix}
+\cdot
+\underbrace{
+\begin{pmatrix}\sin kt_0\\\sin kt_1\\\vdots\\\sin kt_{N-1}\end{pmatrix}
+}_{\displaystyle \vec{s}_k}
+\\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\frametitle{Skalarprodukt für $\hat a_0$ und $\hat a_n$}
+\begin{align*}
+\vec{c}_0
+&=
+\begin{pmatrix}
+1\\1\\\vdots\\1
+\end{pmatrix}
+=\vec{1}
+&&\Rightarrow&
+\hat a_0
+&=
+\frac1{N}
+\sum_{j=0}^{N-1} y_j\cdot 1
+=
+\frac{1}{N}
+\begin{pmatrix}y_0\\y_1\\\vdots\\y_{N-1}\end{pmatrix}
+\cdot
+\begin{pmatrix}1\\1\\\vdots\\1\end{pmatrix}
+\frac{1}{N}
+=
+\vec{y}\cdot\vec{c}_0
+=
+\vec{y}\cdot\vec{1}
+\\
+\vec{c}_n
+&=
+\begin{pmatrix}1\\-1\\\vdots\\\pm1\end{pmatrix}
+&&\Rightarrow&
+\hat a_n
+&=
+\frac{1}{N}\sum_{j=1}^{N-1}y_j\cdot \cos nt_j
+=
+\frac{1}{N}\vec{y}\cdot\vec{c}_n
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\frametitle{Orthogonalität}
+Die Vektoren $\vec{c}_k$ und $\vec{s}_k$ sind orthogonal.
+Für $0<k,l<n$ gilt:
+\begin{equation}
+\begin{aligned}
+\vec{s}_k\cdot \vec{s}_l
+&=
+\sum_{j=0}^{N-1} \sin kt_j \sin lt_j = \frac{N}{2}\delta_{kl},
+&
+\vec{c}_k\cdot \vec{c}_l
+&=
+\sum_{j=0}^{N-1} \cos kt_j \cos lt_j = \frac{N}{2}\delta_{kl}
+\\
+\vec{s}_k\cdot \vec{c}_l
+&=
+\sum_{j=0}^{N-1} \sin kt_j \cos lt_j = 0
+\end{aligned}
+\label{ortho1}
+\end{equation}
+Die Regeln für $\vec{c}_0$ und $\vec{c}_n$ sind etwas speziell:
+\begin{equation}
+\begin{aligned}
+\vec{c}_0\cdot \vec{c}_k&=N\delta_{k0},
+&
+\vec{c}_n\cdot \vec{c}_k&=N\delta_{kn}
+\\
+\vec{c}_0\cdot\vec{s}_k&=0
+&
+\vec{c}_n\cdot\vec{s}_k&=0
+\end{aligned}
+\label{ortho2}
+\end{equation}
+\begin{basis}
+Mit $N=2n$ bilden die $\vec{c}_k$ mit $0\le k\le n$ und die
+$\vec{s}_l$ mit $1\le l\le n-1$ eine Basis.
+Die Koeffizienten $\hat a_k$ und $\hat b_l$ sind daher
+eindeutig bestimmt.
+\end{basis}
+\end{frame}
+
+%
+% Approximationsfehler
+%
+\begin{frame}
+\frametitle{Approximationsfehler}
+\begin{frage}
+Für $N=2n$ ist $y_j=f_n(t_j)$ für alle Stützstellen $j=0,1,\dots N-1$.
+Um wieviel vergrössert sich der Fehler, wenn man einige Terme weglässt?
+\end{frage}
+
+Weggelassene Terme:
+\[
+\vec{e}(t)
+=
+\sum_{k\in K}a_k\vec{c}_k
++
+\sum_{l\in L}b_l\vec{s}_l
+\]
+
+\begin{antwort}
+Länge von $\vec{e}(t)$ mit Orthonormalität ausrechnen:
+\begin{equation}
+|\vec{e}(t)|^2
+=
+\sum_{k\in K} a_k^2\, \vec{c}_k\cdot\vec{c}_k
++
+\sum_{l\in L} b_l^2\, \vec{s}_l\cdot\vec{s}_l
+\label{fehler}
+\end{equation}
+Die Skalarprodukte sind durch
+\eqref{ortho1}
+und
+\eqref{ortho2}
+bestimmt.
+\end{antwort}
+\end{frame}
+
+%
+% Zusammenfassung
+%
+\begin{frame}
+\frametitle{Fourier-Zusammenfassung}
+$N=2n$ Datenpunkte $\vec{y}$ lassen sich exakt durch das
+trigonometrische Polynom
+\[
+f_n(t)
+=
+a_0 + a_1\cos t+b_1\sin t + a_2\cos 2t + b_2\sin 2t + \dots + a_n\cos nt
+\]
+wiedergeben, wenn man
+\begin{align*}
+a_0
+&=
+\frac1N\vec{y}\cdot\vec{c}_0
+=
+\frac1N\sum_{j=0}^{N-1} y_j
+&
+a_k
+&=
+\frac2N\vec{y}\cdot\vec{c}_k
+=
+\frac2N\sum_{j=0}^{N-1} y_j\cos kt_j
+\\
+a_n
+&=
+\frac1N\vec{y}\cdot\vec{c}_n
+=
+\frac1N\sum_{j=0}^{N-1} y_j\cos nt_j
+&
+b_k
+&=
+\frac2N\vec{y}\cdot\vec{s}_k
+=
+\frac2N\sum_{j=0}^{N-1} y_j\sin kt_j
+\end{align*}
+mit $0<k<n$
+wählt.
+\bigskip
+
+Der Fehler beim Weglassen von Termen wird durch \eqref{fehler}
+bestimmt.
+
+\end{frame}
+
+\section{Anwendung}
+%
+% 
+%
+\begin{frame}
+\frametitle{Anwendung}
+\begin{enumerate}[<+->]
+\item
+Periodische Phänomene mit Hilfe von Fourier-Theorie verwenden
+\item
+Anomalie $\mathstrut = \mathstrut$ Abweichung von den modellierten
+periodischen Phänomenen.
+\item
+Zeiträume grösser als die Perioden:
+\begin{align*}
+\int_0^{2\pi}
+f(t)\,dt
+&=
+a_0\int_0^{2\pi} \,dt
++
+\sum_{k=1}^\infty a_k\underbrace{\int_0^{2\pi}\cos kt\,dt}_{\displaystyle=0}
++
+\sum_{k=1}^\infty b_k\underbrace{\int_0^{2\pi}\sin kt\,dt}_{\displaystyle=0}
+\\
+&=
+2\pi a_0
+\end{align*}
+D.~h.~$2\pi a_0$ sind langfristige Mittelwerte
+$\rightarrow$ Fourier verfeinert Gleichgewichtsmodelle
+\end{enumerate}
+\end{frame}
+
+\end{document}
