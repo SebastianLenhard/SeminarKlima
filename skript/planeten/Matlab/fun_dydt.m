@@ -18,7 +18,6 @@ function dydt = fun_dydt(t,y)
     p5 = 4e-1;
     p6 = 1.5e-3;
     
-    
     d_T_s    =    p1*(P_in - P_out) - p2*h2o*T_s;
     d_T_t    =                        p2*h2o*T_s - P_blackbody(T_t) + p3*(T_grad * h2o);
     d_h2o    =    p6*(P_in) - p4*((h2o^9 + h2o) * T_grad);    

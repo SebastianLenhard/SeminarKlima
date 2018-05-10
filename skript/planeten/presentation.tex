@@ -2,18 +2,21 @@
 
 %style
 \mode<presentation>{
-	\usetheme{Goettingen}
+	%\usetheme{Goettingen}
+	\usetheme{default}
 }
 %packages
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage{graphicx}
 
+\input{packages.tex}
+
 %Einstellungen Präsentation
-\title{Planeten}
+\title{Klima auf anderen Planeten}
 \author{Nicolas Tobler}
 \institute{Mathematisches Seminar 2018}
-\date{014.05.2018}
+\date{14.05.2018}
 
 %Bilder
 \graphicspath{{Pictures/}}
@@ -40,43 +43,44 @@
 	
 	\begin{figure}
 	\center
-	\includegraphics[width=0.7\linewidth]{Pictures/planets.jpg}
+	\includegraphics[width=0.7\linewidth]{planets.jpg}
 	\end{figure}
 	
 \begin{columns}
 \begin{column}{0.33\textwidth}
    Mars
    \begin{itemize}
-   		\item[] Kaum Wolken
-   		\item[] Heiss
+   		\item[-] Kaum Wolken
+   		\item[-] Heiss
    \end{itemize}
 \end{column}
 \begin{column}{0.33\textwidth}
    Venus
    \begin{itemize}
-   		\item[] Dicke Wolkendecke
-   		\item[] Heiss
+   		\item[-] Dicke Wolkendecke
+   		\item[-] Heiss
    \end{itemize}
 \end{column}
 \begin{column}{0.33\textwidth}
    Erde
    \begin{itemize}
-   		\item[] Normales Wetter
+   		\item[-] Normales Wetter
    \end{itemize}
 \end{column}
 \end{columns}
+
 \end{frame}
 
-\subsection{Motivation}
+\subsection{Ziel}
 \begin{frame}
-	\frametitle{Motivation}
+\frametitle{Ziel}
+\begin{itemize}
+	\item[] Werdegang der Planeten nachvollziehen
+	\item[] Annahmen
 	\begin{itemize}
-		\item[] Normale Situation
-	
-		\pause
-		\item[] El Niño
-	
+	\item[-] Gleiche Vorausbedingugnen
 	\end{itemize}
+\end{itemize}
 \end{frame}
 
 
@@ -84,7 +88,7 @@
 \begin{frame}
 	\frametitle{Modell}
 	\begin{figure}
-		\includegraphics[width=\linewidth]{Pictures/Model.eps}
+		\includegraphics[width=\linewidth]{Model.eps}
 	\end{figure}
 \end{frame}
 
@@ -95,17 +99,21 @@
 	\item[] Absorbierte Leistung
 	\begin{equation}
 	P_{in} = \sigma T_{\astrosun}^4 \left( \frac{R_{\astrosun}}{a_{planet}} \right) ^2 \cdot (1-\alpha)
-	\end{equation} 
+	\end{equation}
+	\pause
+	
 	\item[] Abgestrahlte Leistung
 	\begin{equation}
 	P_{out} = (4 \pi R_{S}^2 \sigma T_{S}^4)(1 - \beta)
 	\end{equation}
 	\pause
+	
 	\item[] Albedo
 	\begin{equation}
 	\alpha(C) = (0.65 \cdot C) + 0.15;
 	\end{equation}
 	\pause
+	
 	\item[] Treibhauseffekt
 	\begin{equation}
 	\beta(H) = 0.5 \cdot H
@@ -113,74 +121,150 @@
 \end{itemize}
 \end{frame}
 
+
+
+
 \subsection{Wasserkreislauf}
+
 \begin{frame}
-	\frametitle{Schrittweises Lösen einer DDE}
+	\frametitle{Wasserkreislauf}
 	\begin{itemize}
-		\item[] Wolken
+		\item[] Wasserdampfbildung
 			\begin{equation}
-			\dot{C} = p_4 \left( (H + H^5)(T_S - T_T) \right) - p_5 (C + C^5)
+			p_5 (P_{in})
 			\end{equation} 
-			\pause
-		\item[] Atmosphärischer Wasserdampf
+		\pause
+		\item[] Wolkenbildung
 			\begin{equation}
-			\dot{H} = p_5 \left(P_{in} \right) - p_6 \left( (H + H^9 )(T_S - T_T) \right)
+			p_6 \left( H \frac{dT}{dh} \right)
 			\end{equation}
-			\pause
-		\item[] Lösung im Bereich von 0 bis 1 
-		 	\pause
+		\pause
+		\item[] Wolkenabbau 
 		 	\begin{equation}
-		 	\dot{y}=-1 \textrm{   daraus folgt  } y=1-t
-		 	\end{equation} 	
+			p_5 (C)
+			\end{equation}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Wasserkreislauf}
+	\begin{itemize}
+	
+		\item[] Wasserkreislauf
+			\begin{equation}
+			\dot{H} = p_5 (P_{in}) - p_4 \left( H \frac{dT}{dh}) \right)
+			\end{equation}
+			\begin{equation}	
+			\dot{C} = p_4 \left( H \frac{dT}{dh} \right) - p_5 C
+			\end{equation}		
+	
+		\item[] Temperaturgradent
+			\begin{equation}
+			\frac{dT}{dh} \approx \xi (T_S - T_T)
+			\end{equation}
+		
+		\item[] Eingesetzt
+			\begin{equation}
+			\dot{H} = p_5 (P_{in}) - p_4 \left( H(T_S - T_T) \right)
+			\end{equation}
+			\begin{equation}	
+			\dot{C} = p_4 \left( H(T_S - T_T) \right) - p_5 C
+			\end{equation}		
+		
+	\end{itemize}
+\end{frame}
+
+\subsection{Temperaturgradient}
+
+\begin{frame}
+	\frametitle{Temperaturgradient}
+	\begin{itemize}
+		\item[] Oberflächentemperatur
+		
+			\begin{equation}
+			\dot{T_S} = p_1 \left( P_{in}(C) - P_{out}(T_S, H) \right)
+			\end{equation}
+		\item[] Tropopausentemperatur
+			\begin{equation}	
+			\dot{T_T} = p_2 \left( P_{in}(C) \cdot H \right) - P_{blackbody}(T_T) - p_3 \left( (T_T - T_S) \cdot H \right)
+			\end{equation}		
+		
 	\end{itemize}
 \end{frame}
 
 \subsection{Zusammengefasste Gleichungen}
+
 \begin{frame}
-\frametitle{Charakteristische Gleichung}
+\frametitle{Zusammengefasste Gleichungen}
 \begin{itemize}
-	\item[] Beispiel
-	\begin{equation}
-	\dot{y}(t)=ky(t-\tau)
-	\end{equation} 
-	\item[] Ansatz
-	\begin{equation}
-	y(t) = ce^{\lambda t}
-	\end{equation}
+	\item[] Zusammengefasst
+	
+\begin{equation}
+\left|
+\begin{array}{lcl}
+\dot{T}_S = p_1 \left( P_{in}(C) - P_{out}(T_S, H) \right) \\
+\dot{T}_T = p_2 \left( P_{in}(C) \cdot H \right) - P_{blackbody}(T_T) - p_3 \left( (T_T - T_S) \cdot H \right) \\
+\dot{C} = p_4 \left( H(T_S - T_T) \right) - p_5 C \\
+\dot{H} = p_5 \left(P_{in} \right) - p_4 \left( H(T_S - T_T) \right)
+\end{array}
+\right|
+\end{equation}
+	
 	\pause
-	\item[] Einsetzen
-	\begin{equation}
-	\lambda ce^{\lambda t} = kce^{\lambda (t-\tau )}
-	\end{equation} 	
-	\pause
-	\item[] Vereinfachen
-	\begin{equation}
-	\lambda  - ke^{-\lambda}= 0
-	\end{equation}
+	
+	\item[] Mit limitierenden Termen
+	
+\begin{equation}
+\left|
+\begin{array}{lcl}
+\dot{T}_S = p_1 \left( P_{in}(C) - P_{out}(T_S, H) \right) \\
+\dot{T}_T = p_2 \left( P_{in}(C) \cdot H \right) - P_{blackbody}(T_T) - p_3 \left( (T_T - T_S) \cdot H \right) \\
+\dot{C} = p_4 \left( (H + H^9)(T_S - T_T) \right) - p_5 (C + C^5) \\
+\dot{H} = p_5 \left(P_{in} \right) - p_4 \left( (H + H^9 )(T_S - T_T) \right)
+\end{array}
+\right|
+\end{equation}
+
 \end{itemize}
 \end{frame}
 
-\section{Simulation}
+\section{Simulationsergebnisse}
 
-\subsection{Chaotisches Verhalten}
+\subsection{Temperatur}
 \begin{frame}
-	\frametitle{Chaotisches Verhalten ohne Dämpfungsterm}
-	\begin{itemize}
-		\item[] Gleichung ohne Dämpfung
-			\begin{equation}
-				\dot{T}(t)=-cT(t)+aT(t-\frac{1}{2}\tau_K)-bT(t-(\frac{1}{2}\tau_R+\tau_K))
-			\end{equation}
-			\pause
-		\item[] Änderung des Parameters a
-			\begin{figure}
-				\includegraphics[width=0.9\linewidth, height=0.6\textheight]{param_a_e0.png}
-			\end{figure}
-	\end{itemize}
+	\frametitle{Temperatur}
+		\begin{figure}
+			\includegraphics[width=\linewidth]{Matlab/figures/surfaceTemperature.eps}
+		\end{figure}
 \end{frame}
 
-\subsection{Vollständige Lösung}
+\subsection{Luftfeuchtigkeit}
 \begin{frame}
-\frametitle{Verhalten mit Dämpfungsterm}
+	\frametitle{Luftfeuchtigkeit}
+		\begin{figure}
+			\includegraphics[width=\linewidth]{Matlab/figures/humidity.eps}
+		\end{figure}
+\end{frame}
+
+\subsection{Wolkenabdeckung}
+\begin{frame}
+	\frametitle{Wolkenabdeckung}
+		\begin{figure}
+			\includegraphics[width=\linewidth]{Matlab/figures/cloudCover.eps}
+		\end{figure}
+\end{frame}
+
+\subsection{Albedo}
+\begin{frame}
+	\frametitle{Albedo}
+		\begin{figure}
+			\includegraphics[width=\linewidth]{Matlab/figures/albedo.eps}
+		\end{figure}
+\end{frame}
+
+\subsection{Fazit}
+\begin{frame}
+\frametitle{Fazit}
 \begin{itemize}
 	\item[] Gleichung mit Dämpfung
 	\begin{equation}
@@ -188,21 +272,7 @@
 	\end{equation}
 	\pause
 	\item[] Änderung des Parameters a
-	\begin{figure}
-		\includegraphics[width=0.9\linewidth, height=0.6\textheight]{param_a.png}
-	\end{figure}
-\end{itemize}
-\end{frame}
-
-\subsection{Simulation}
-\begin{frame}
-\frametitle{Simulation und Vergleich mit realen Daten}
-\begin{itemize}
-	\item[] 
-	\begin{figure}
-		\includegraphics[width=0.9\linewidth, height=0.6\textheight]{Simulation_95_98.png}
-	\end{figure}
-	\item[] Anfangswertvektor und Vergleichsdaten von \url{http://www.cpc.ncep.noaa.gov/data/indices/sstoi.indices}
+	
 \end{itemize}
 \end{frame}
 

@@ -21,6 +21,7 @@ VENUS.T_surface = 465; %K;
 VENUS.T_blackbody = 312; %K
 VENUS.albedo = 0.689;
 VENUS.cloud_cover = 0.99; %?
+VENUS.mean_h2o = NaN;
 
 EARTH.g = 9.81;
 EARTH.name = 'Earth';
@@ -32,6 +33,7 @@ EARTH.T_mean = 288; %K
 EARTH.T_blackbody = 275; %K
 EARTH.albedo = 0.367;
 EARTH.cloud_cover = 0.68;
+EARTH.mean_h2o = 0.44;    %http://www.climate4you.com/ClimateAndClouds.htm
 
 MARS.name = 'Mars';
 MARS.v_escape = 5.03e3;
@@ -42,6 +44,7 @@ MARS.T_blackbody = 229; %K
 MARS.albedo = 0.19;
 MARS.greenhouse = 0.75; %?
 MARS.cloud_cover = 0.05;
+MARS.mean_h2o = NaN;
 
 %% Molecules
 % He, o2, co2, h2o,
@@ -57,148 +60,206 @@ SIM.clouds_0 = 0.5;
 
 % PLANET = EARTH;
 
-planets = {EARTH, VENUS, MARS};
+planets = {EARTH, MARS, VENUS};
 
 colors = {[0,113,188]/255, [216,82,24]/255, [236,176,31]/255};
 
 for i = 1:3
-   p = planets(i);
-   PLANET = p{1};
+	p = planets(i);
+	PLANET = p{1};
 
-%% Solve diff equation
-tspan = [0 40];
-y0 = [SIM.T_s_0; SIM.T_t_0; SIM.H2O_0; SIM.clouds_0];
+    %% Solve diff equation
+    tspan = [0 40];
+    y0 = [SIM.T_s_0; SIM.T_t_0; SIM.H2O_0; SIM.clouds_0];
 
-% y0 = y_end;
-% y0(3) = 1;
-% y0
+    % y0 = y_end;
+    % y0(3) = 1;
+    % y0
 
-[t,y] = ode45(@(t,y) fun_dydt(t, y), tspan, y0);
-y_end = y(end, :)';
+    [t,y] = ode45(@(t,y) fun_dydt(t, y), tspan, y0);
+    y_end = y(end, :)';
 
-T_s    = y(:,1);
-T_t    = y(:,2);
-h2o    = y(:,3);
-clouds = y(:,4);
+    T_s    = y(:,1);
+    T_t    = y(:,2);
+    h2o    = y(:,3);
+    clouds = y(:,4);
 
+    %% other parameters
 
-%% Plot
-PLANET.name
-f = figure(i);
-f.set('name',PLANET.name);
+    T_grad = T_s - T_t;
 
-subplot(4,1,1);
-plot(t, T_s, '-', 'color', colors{1}); hold on;
-plot(t, ones(1,length(t)) * PLANET.T_blackbody, '-.', 'color', colors{1}); hold on;
-plot(t, T_t, '-', 'color', colors{2}); hold off
-title([ PLANET.name ' Temperature']);
-ylabel('Temperature / K');
-xlabel('Time');
-ylim([200 350]);
-legend({'Surface', 'Measured blackbody', 'Tropopause'});
-grid
+    P_in = P_absorption() .* (1-albedo(clouds));
+    P_out = P_blackbody(T_s) .* (1-greenhouse(h2o));
 
-subplot(4,1,2)
-plot(t, h2o * 100, '-', 'color', colors{1}); hold on;
-plot(t, clouds * 100, '-', 'color', colors{2});
-plot(t, ones(1,length(t)) * PLANET.cloud_cover * 100, '-.', 'color', colors{2}); hold off;
-title('Atmospheric abundance');
-legend({'Humidity', 'Cloud cover', 'Current cloud cover'});
-ylabel('%');
-xlabel('Time');
-ylim([0, 110]);
-grid;
-
-
-%% other parameters
-
-T_grad = T_s - T_t;
+    Convection = P_in - P_out;
     
-P_in = P_absorption() .* (1-albedo(clouds));
-P_out = P_blackbody(T_s) .* (1-greenhouse(h2o));
+    %%save to struct
+    planets{i}.t = t;
     
-Convection = P_in - P_out;
+    planets{i}.y.T_s = T_s;
+    planets{i}.y.T_t = T_t;
+    planets{i}.y.h2o = h2o;
+    planets{i}.y.clouds = clouds;
     
-%% plot other parameters
-
-subplot(4,1,3)
-plot(t, 100 * albedo(clouds), 'color', colors{1}); hold on;
-plot(t, 100 * ones(1,length(t)) * PLANET.albedo, '-.', 'color', colors{1});
-plot(t, 100 * greenhouse(h2o)), 'color', colors{2}; hold off;
-title('Albedo % Greenhouse effect')
-legend({'Albedo', 'Current albedo', 'Greenhouse'});
-ylim([-100*0.1, 100*1.1]);
-xlabel('Time');
-ylabel('%');
-grid
-
-subplot(4,1,4)
-plot(t, P_in); hold on
-plot(t, P_out); hold off;
-title('Power budget')
-legend({'P_{in}' 'P_{out}'});
-xlabel('Time');
-ylabel('Watts per m^2');
-grid
-
-% f = figure(i+3);
-% f.set('name',PLANET.name);
+    planets{i}.y.P_in = P_in;
+    planets{i}.y.P_out = P_in;
+    planets{i}.y.albedo = albedo(clouds);
+    planets{i}.y.greenhouse = greenhouse(h2o);
+    
+    %% Plot
+%     PLANET.name
+%     f = figure(i);
+%     f.set('name',PLANET.name);
 % 
-% T_vec = linspace(100, 400, 10);
-% h = h2o(end);
-% c = clouds(end) * ones(1, length(T_vec));
+%     subplot(4,1,1);
+%     plot(t, T_s, '-', 'color', colors{1}); hold on;
+%     plot(t, ones(1,length(t)) * PLANET.T_blackbody, '-.', 'color', colors{1}); hold on;
+%     plot(t, T_t, '-', 'color', colors{2}); hold off
+%     title([ PLANET.name ' Temperature']);
+%     ylabel('Temperature / K');
+%     xlabel('Time');
+%     ylim([180 350]);
+%     legend({'Surface', 'Measured blackbody', 'Tropopause'});
+%     grid
 % 
-% plot(T_vec, P_absorption() .* (1-albedo(c))); hold on
-% plot(T_vec, P_blackbody(T_vec) .* (1-greenhouse(h))); hold off;
-% title('Bifurkation budget')
-% legend({'P_{in}' 'P_{out}'});
-% xlabel('Surface Temperature');
-% ylabel('Watts per m^2');
-% grid
-
+%     subplot(4,1,2)
+%     plot(t, h2o * 100, '-', 'color', colors{1}); hold on;
+%     plot(t, clouds * 100, '-', 'color', colors{2});
+%     plot(t, ones(1,length(t)) * PLANET.cloud_cover * 100, '-.', 'color', colors{2}); hold off;
+%     title('Atmospheric abundance');
+%     legend({'Humidity', 'Cloud cover', 'Current cloud cover'});
+%     ylabel('%');
+%     xlabel('Time');
+%     ylim([0, 110]);
+%     grid;
+% 
+%     subplot(4,1,3)
+%     plot(t, 100 * albedo(clouds), 'color', colors{1}); hold on;
+%     plot(t, 100 * ones(1,length(t)) * PLANET.albedo, '-.', 'color', colors{1});
+%     plot(t, 100 * greenhouse(h2o)), 'color', colors{2}; hold off;
+%     title('Albedo % Greenhouse effect')
+%     legend({'Albedo', 'Current albedo', 'Greenhouse'});
+%     ylim([-100*0.1, 100*1.1]);
+%     xlabel('Time');
+%     ylabel('%');
+%     grid
+% 
+%     subplot(4,1,4)
+%     plot(t, P_in); hold on
+%     plot(t, P_out); hold off;
+%     title('Power budget')
+%     legend({'P_{in}' 'P_{out}'});
+%     xlabel('Time');
+%     ylabel('Watts per m^2');
+%     grid
 
 end
 
+fig1 = figure(1)
+fig1.set('name', 'surfaceTemperature');
+for i = 1:3
+    plot(planets{i}.t, planets{i}.y.T_s, '-', 'color', colors{i}); hold on;
+end
+for i = 1:3
+    o = ones(1, length(planets{i}.t));
+    plot(planets{i}.t, o*planets{i}.T_blackbody, '-.', 'color', colors{i});
+end
+hold off;
+title('Surface temperature');
+ylabel('Temperature / K');
+xlabel('Time');
+legend({planets{1}.name, planets{2}.name, planets{3}.name});
+grid
 
 
-% subplot(4,1,4)
-% plot(t, precipitation(T_s));
-% plot(t, escape(T_t)); hold off;
-% legend({'Precipitation' 'Escape'});
-% ylim([-0.1 1.1]);
-% grid
+fig2 = figure(2)
+fig2.set('name', 'cloudCover');
+for i = 1:3
+    plot(planets{i}.t, 100*planets{i}.y.clouds, '-', 'color', colors{i}); hold on;
+end
+for i = 1:3
+    o = ones(1, length(planets{i}.t));
+    plot(planets{i}.t, 100*o*planets{i}.cloud_cover, '-.', 'color', colors{i});
+end
+hold off;
+title('Cloud cover');
+ylabel('%');
+xlabel('Time');
+ylim([0 110])
+legend({planets{1}.name, planets{2}.name, planets{3}.name});
+grid
+
+
+fig3 = figure(3)
+fig3.set('name', 'humidity');
+for i = 1:3
+    plot(planets{i}.t, 100*planets{i}.y.h2o, '-', 'color', colors{i}); hold on;
+end
+for i = 1:3
+    o = ones(1, length(planets{i}.t));
+    plot(planets{i}.t, 100*o*planets{i}.mean_h2o, '-.', 'color', colors{i});
+end
+hold off;
+title('Humidity');
+ylabel('%');
+xlabel('Time');
+legend({planets{1}.name, planets{2}.name, planets{3}.name});
+grid
+
+
+fig4 = figure(4)
+fig4.set('name', 'albedo');
+for i = 1:3
+    plot(planets{i}.t, 100*planets{i}.y.albedo, '-', 'color', colors{i}); hold on;
+end
+for i = 1:3
+    o = ones(1, length(planets{i}.t));
+    plot(planets{i}.t, 100*o*planets{i}.albedo, '-.', 'color', colors{i});
+end
+hold off;
+title('Albedo');
+ylabel('%');
+xlabel('Time');
+ylim([10 80])
+legend({planets{1}.name, planets{2}.name, planets{3}.name});
+grid
+
+% fig1.set('Renderer', 'epsc');
+% fig2.set('Renderer', 'epsc');
+% fig3.set('Renderer', 'epsc');
+% fig4.set('Renderer', 'epsc');
+saveas(fig1,['figures/' fig1.Name], 'epsc')
+saveas(fig2,['figures/' fig2.Name], 'epsc')
+saveas(fig3,['figures/' fig3.Name], 'epsc')
+saveas(fig4,['figures/' fig4.Name], 'epsc')
+
+
 % 
-
-%% vs T
-% figure(3)
-% T_x = linspace(0,273+100, 1000);
-% plot(T_x, P_absorption() .* (1-albedo(T_x, Clouds_c, Clouds_s))); hold on;
-% plot(T_x, P_blackbody(T_x) .* (1-greenhouse(h2o))); 
-% hold off;
-% xlim([0 400])
-% ylim([0 400])
-% legend({'P_in', 'P_out'});
-
-%%
-
-% figure(4)
-% subplot(2,1,1)
-% T = linspace(0,1000, 100);
-% h2o = linspace(0, 1, 100);
-% plot(T, precipitation(T)); hold on;
-% plot(T, escape(T)); hold off;
+%     planets(i).y.T_s = T_s;
+%     planets(i).y.T_t = T_t;
+%     planets(i).y.h2o = h2o;
+%     planets(i).y.clouds = clouds;
+%     
+%     planets(i).y.P_in = P_in;
+%     planets(i).y.P_out = P_in;
+%     planets(i).y.albedo = albedo(clouds);
+%     planets(i).y.greenhouse = greenhouse(h2o);
+%     
+%     
+%     subplot(4,1,1);
+%     plot(t, T_s, '-', 'color', colors{1}); hold on;
+%     plot(t, ones(1,length(t)) * PLANET.T_blackbody, '-.', 'color', colors{1}); hold on;
+%     plot(t, T_t, '-', 'color', colors{2}); hold off
+%     
 % 
-% legend({'precipitation', 'escape'});
-% grid;
-% title('h2o factors')
-
-
-% subplot(2,1,2)
-% for h2o_x = linspace(0,1,10)
-%     plot(T, albedo(T, h2o_x)); hold on;
-% end
-% hold off;
-% title('Albedo')
-% ylabel('Albedo');
-% xlabel('Temperature / K');
-% ylim([0, 1]);
+%     subplot(4,1,2)
+%     plot(t, h2o * 100, '-', 'color', colors{1}); hold on;
+%     plot(t, clouds * 100, '-', 'color', colors{2});
+%     plot(t, ones(1,length(t)) * PLANET.cloud_cover * 100, '-.', 'color', colors{2}); hold off;
+%     title('Atmospheric abundance');
+%     legend({'Humidity', 'Cloud cover', 'Current cloud cover'});
+%     ylabel('%');
+%     xlabel('Time');
+%     ylim([0, 110]);
+%     grid;
+%     

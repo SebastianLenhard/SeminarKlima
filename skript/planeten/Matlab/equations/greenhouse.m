@@ -4,5 +4,5 @@ function g = greenhouse(h2o)
 %     g = max(0, g);
 %     g = (0.7 * g);
 
-    g = (0.5 * h2o);
+    g = (0.6 * h2o);
 end
