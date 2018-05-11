@@ -40,6 +40,9 @@ CHAPTERS = 								\
 	chapters/4/salinitaet.tex					\
 	chapters/4/box.tex						\
 	chapters/4/dimensionslos.tex					\
+	chapters/6/periodisch.tex					\
+	chapters/6/fourierkoef.tex					\
+	chapters/6/vektorgeometrie.tex					\
 	chapters/6/aufgabe1.tex
 
 PAPERDIRS = eis extrem lorenz planeten thermohalin vegetation		\
