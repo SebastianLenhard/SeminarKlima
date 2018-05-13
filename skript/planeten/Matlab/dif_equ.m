@@ -63,7 +63,7 @@ param(2) = 1e-2;
    param(3) = 0.7e4;
 param(4) = 0.3;
 param(5) = 1.5e-3;
-param(6) = 1.7e-2;
+param(6) = 1.9e-2;
 param(7) = 4e-1;
 
 % PLANET = EARTH;
@@ -125,6 +125,11 @@ for i = 1:3
     
     
     %% Plot
+    
+    latexplots = 1;
+    
+    if (latexplots == 0)
+    
     PLANET.name
     f = figure(i);
     f.set('name',PLANET.name);
@@ -174,93 +179,96 @@ for i = 1:3
     %% Plot f1f2f3
     
     subplot(4,1,4)
-    plot(t, T_grad); hold on;
-hold off
+    plot(t, T_grad); hold on;hold off
     title('f1f2f3');
     ylabel('T_grad');
     xlabel('Time');
     legend({'convection', 'blackbody radiation', 'heat transfer'});
     grid
     
+    end
+    
 end
 
 %% latex plots
 
-% fig1 = figure(1);
-% fig1.set('name', 'surfaceTemperature');
-% for i = 1:3
-%     plot(planets{i}.t, planets{i}.y.T_s, '-', 'color', colors{i}); hold on;
-% end
-% for i = 1:3
-%     o = ones(1, length(planets{i}.t));
-%     plot(planets{i}.t, o*planets{i}.T_blackbody, '-.', 'color', colors{i});
-% end
-% hold off;
-% title('Surface temperature');
-% ylabel('Temperature / K');
-% xlabel('Time');
-% legend({planets{1}.name, planets{2}.name, planets{3}.name});
-% grid
-% 
-% 
-% fig2 = figure(2);
-% fig2.set('name', 'cloudCover');
-% for i = 1:3
-%     plot(planets{i}.t, 100*planets{i}.y.clouds, '-', 'color', colors{i}); hold on;
-% end
-% for i = 1:3
-%     o = ones(1, length(planets{i}.t));
-%     plot(planets{i}.t, 100*o*planets{i}.cloud_cover, '-.', 'color', colors{i});
-% end
-% hold off;
-% title('Cloud cover');
-% ylabel('%');
-% xlabel('Time');
-% ylim([0 110])
-% legend({planets{1}.name, planets{2}.name, planets{3}.name});
-% grid
-% 
-% 
-% fig3 = figure(3);
-% fig3.set('name', 'humidity');
-% for i = 1:3
-%     plot(planets{i}.t, 100*planets{i}.y.h2o, '-', 'color', colors{i}); hold on;
-% end
-% for i = 1:3
-%     o = ones(1, length(planets{i}.t));
-%     plot(planets{i}.t, 100*o*planets{i}.mean_h2o, '-.', 'color', colors{i});
-% end
-% hold off;
-% title('Humidity');
-% ylabel('%');
-% xlabel('Time');
-% legend({planets{1}.name, planets{2}.name, planets{3}.name});
-% grid
-% 
-% 
-% fig4 = figure(4);
-% fig4.set('name', 'albedo');
-% for i = 1:3
-%     plot(planets{i}.t, 100*planets{i}.y.albedo, '-', 'color', colors{i}); hold on;
-% end
-% for i = 1:3
-%     o = ones(1, length(planets{i}.t));
-%     plot(planets{i}.t, 100*o*planets{i}.albedo, '-.', 'color', colors{i});
-% end
-% hold off;
-% title('Albedo');
-% ylabel('%');
-% xlabel('Time');
-% ylim([10 80])
-% legend({planets{1}.name, planets{2}.name, planets{3}.name});
-% grid
-% 
-% saveas(fig1,['figures/' fig1.Name], 'epsc')
-% saveas(fig2,['figures/' fig2.Name], 'epsc')
-% saveas(fig3,['figures/' fig3.Name], 'epsc')
-% saveas(fig4,['figures/' fig4.Name], 'epsc')
+if (latexplots == 1)
+
+fig1 = figure(1);
+fig1.set('name', 'surfaceTemperature');
+for i = 1:3
+    plot(planets{i}.t, planets{i}.y.T_s, '-', 'color', colors{i}); hold on;
+end
+for i = 1:3
+    o = ones(1, length(planets{i}.t));
+    plot(planets{i}.t, o*planets{i}.T_blackbody, '-.', 'color', colors{i});
+end
+hold off;
+title('Surface temperature');
+ylabel('Temperature / K');
+xlabel('Time');
+legend({planets{1}.name, planets{2}.name, planets{3}.name});
+grid
 
 
+fig2 = figure(2);
+fig2.set('name', 'cloudCover');
+for i = 1:3
+    plot(planets{i}.t, 100*planets{i}.y.clouds, '-', 'color', colors{i}); hold on;
+end
+for i = 1:3
+    o = ones(1, length(planets{i}.t));
+    plot(planets{i}.t, 100*o*planets{i}.cloud_cover, '-.', 'color', colors{i});
+end
+hold off;
+title('Cloud cover');
+ylabel('%');
+xlabel('Time');
+ylim([0 110])
+legend({planets{1}.name, planets{2}.name, planets{3}.name});
+grid
+
+
+fig3 = figure(3);
+fig3.set('name', 'humidity');
+for i = 1:3
+    plot(planets{i}.t, 100*planets{i}.y.h2o, '-', 'color', colors{i}); hold on;
+end
+for i = 1:3
+    o = ones(1, length(planets{i}.t));
+    plot(planets{i}.t, 100*o*planets{i}.mean_h2o, '-.', 'color', colors{i});
+end
+hold off;
+title('Humidity');
+ylabel('%');
+xlabel('Time');
+legend({planets{1}.name, planets{2}.name, planets{3}.name});
+grid
+
+
+fig4 = figure(4);
+fig4.set('name', 'albedo');
+for i = 1:3
+    plot(planets{i}.t, 100*planets{i}.y.albedo, '-', 'color', colors{i}); hold on;
+end
+for i = 1:3
+    o = ones(1, length(planets{i}.t));
+    plot(planets{i}.t, 100*o*planets{i}.albedo, '-.', 'color', colors{i});
+end
+hold off;
+title('Albedo');
+ylabel('%');
+xlabel('Time');
+ylim([10 80])
+legend({planets{1}.name, planets{2}.name, planets{3}.name});
+grid
+
+saveas(fig1,['figures/' fig1.Name], 'epsc')
+saveas(fig2,['figures/' fig2.Name], 'epsc')
+saveas(fig3,['figures/' fig3.Name], 'epsc')
+saveas(fig4,['figures/' fig4.Name], 'epsc')
+
+end
 
 
 

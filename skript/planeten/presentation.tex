@@ -1,9 +1,9 @@
-\documentclass{beamer}
+\documentclass[ngerman]{beamer}
 
 %style
 \mode<presentation>{
-	%\usetheme{Goettingen}
-	\usetheme{default}
+	\usetheme{Goettingen}
+	%\usetheme{default}
 }
 %packages
 \usepackage[utf8]{inputenc}
@@ -49,7 +49,7 @@
 \begin{center}
 \begin{tabular}{ l c r }
 	%\hline
-  Mars & Earth & Venus \\
+  Mars & Erde & Venus \\
   \hline
   Kaum Wolken & Moderates Wetter & Dicke Wolkendecke \\
   Kalt & Mild & Heiss \\
@@ -83,18 +83,40 @@
 
 \end{frame}
 
-\subsection{Ziel}
+\subsection{Ziele}
 \begin{frame}
-\frametitle{Ziel}
+\frametitle{Ziele}
 \begin{itemize}
 
-	\item[] Verbindung von Klima mit Planet verifizieren
-	\item[] Werdegang der Planeten nachvollziehen
-	\item[] Annahmen
+	\item[$\bullet$] Ziele
 	\begin{itemize}
-	\item[-] Gleiche materielle Eigenschaften
-	\item[-] Gleiches Vorkommen an Wasser 
+		\item[-] Klima mit Planet-Eigenschaften verknüpfen
+		\item[-] Werdegang der Planeten nachvollziehen
 	\end{itemize}
+
+	\item[$\bullet$] Idee
+	\begin{itemize}
+		\item[-] Planeten mit gleichem Modell simulieren
+		\item[-] Orbitale Eigenschaften verwenden
+	\end{itemize}
+
+\end{itemize}
+\end{frame}
+
+\subsection{Vorgehen}
+\begin{frame}
+\frametitle{Vorgehen}
+\begin{itemize}
+
+	\item[$\bullet$] Für alle Planeten geltendes Modell  erstellen
+	\item[$\bullet$] Annahmen
+	\begin{itemize}
+		\item[-] Gleiche materielle Eigenschaften
+		\item[-] Gleiches Vorkommen an Wasser
+		\item[-] Wasser hat grösste Auswirking auf Klima
+	\end{itemize}
+	
+	\item[$\bullet$] Freie Parameter abschätzen
 \end{itemize}
 \end{frame}
 
@@ -113,13 +135,13 @@
 \begin{itemize}
 	\item[] Absorbierte Leistung
 	\begin{equation}
-	P_{in} = \sigma T_{\astrosun}^4 \left( \frac{R_{\astrosun}}{a_{planet}} \right) ^2 \cdot (1-\alpha)
+	P_{in} = \sigma T_{\astrosun}^4 \left( \frac{R_{\astrosun}}{A_{planet}} \right) ^2 \cdot (1-\alpha)
 	\end{equation}
 	\pause
 	
 	\item[] Abgestrahlte Leistung
 	\begin{equation}
-	P_{out} = (4 \pi R_{S}^2 \sigma T_{S}^4)(1 - \beta)
+	P_{out} = (4 \pi R^2 \sigma T^4)(1 - \beta)
 	\end{equation}
 	\pause
 	
@@ -146,17 +168,17 @@
 	\begin{itemize}
 		\item[] Wasserdampfbildung
 			\begin{equation}
-			p_4 (P_{in})
+			\xi_4 (P_{in})
 			\end{equation} 
 		\pause
 		\item[] Wolkenbildung
 			\begin{equation}
-			p_5 \left( H \frac{dT}{dh} \right)
+			\xi_5 \left( H \frac{dT}{dh} \right)
 			\end{equation}
 		\pause
 		\item[] Wolkenabbau 
 		 	\begin{equation}
-			p_6 (C)
+			\xi_6 (C)
 			\end{equation}
 	\end{itemize}
 \end{frame}
@@ -168,21 +190,21 @@
 		\item[] Wasserkreislauf
 			\begin{equation}
 				\begin{matrix}			
-					\dot{H} = & p_4 P_{in}(C) & - p_5  H \frac{dT}{dz} & \\
-					\dot{C} = &               &   p_5  H \frac{dT}{dz} & - p_6 C
+					\dot{H} = & \xi_4 P_{in}(C) & - \xi_5  H \frac{dT}{dz} & \\
+					\dot{C} = &                 &   \xi_5  H \frac{dT}{dz} & - \xi_6 C
 				\end{matrix}	
 			\end{equation}
 	
 		\item[] Temperaturgradent
 			\begin{equation}
-				\frac{dT}{dz} \approx \xi (T_S - T_T)
+				\frac{dT}{dz} \approx \Delta T
 			\end{equation}
 		
 		\item[] Eingesetzt
 			\begin{equation}
 				\begin{matrix}			
-					\dot{H} = & p_4 P_{in}(C) & - p_5 H (T_S - T_T) & \\
-					\dot{C} = &               &   p_5 H (T_S - T_T) & - p_6 C
+					\dot{H} = & \xi_4 P_{in}(C) & - \xi_5 H \Delta T & \\
+					\dot{C} = &                 &   \xi_5 H \Delta T & - \xi_6 C
 				\end{matrix}	
 			\end{equation}			
 		
@@ -194,15 +216,26 @@
 \begin{frame}
 	\frametitle{Temperaturgradient}
 	\begin{itemize}
-		\item[] Oberflächentemperatur
+	
+		\item[]Wasser kondensiert  $\rightarrow$ Niedriger Gradient
 		
-			\begin{equation}
-			\dot{T_S} = p_1 \left( P_{in}(C) - P_{out}(T_S, H) \right)
-			\end{equation}
-		\item[] Tropopausentemperatur
-			\begin{equation}	
-			\dot{T_T} = p_2 \left( P_{in}(C) \cdot H \right) - P_{blackbody}(T_T) - p_3 \left( (T_T - T_S) \cdot H \right)
-			\end{equation}		
+		\item[]Wärmere luft $\rightarrow$ mehr Kondensation
+	
+	
+		\item[]
+		\begin{equation}
+			\Delta T = \xi_3 \frac{1}{TC}
+		\end{equation}
+	
+	
+%		\item[] Oberflächentemperatur	
+%			\begin{equation}
+%			\dot{T_S} = p_1 \left( P_{in}(C) - P_{out}(T_S, H) \right)
+%			\end{equation}
+%		\item[] Tropopausentemperatur
+%			\begin{equation}	
+%			\dot{T_T} = p_2 \left( P_{in}(C) \cdot H \right) - P_{blackbody}(T_T) - p_3 \left( (T_T - T_S) \cdot H \right)
+%			\end{equation}		
 		
 	\end{itemize}
 \end{frame}
@@ -213,32 +246,37 @@
 \frametitle{Zusammengefasste Gleichungen}
 \begin{itemize}
 	\item[] Zusammengefasst
-	
 \begin{equation}
 \left|
 \begin{matrix}
-\dot{T}_S = & & p_1 P_{in}(C) - P_{out}(T_S, H)   & \\
-\dot{T}_T = & p_2 P_{in}(C) H   & - P_{bb}(T_T) & - p_3 (T_T - T_S) H \\
-\dot{H}   = & p_4 (P_{in}(c)) & - p_5 H (T_S - T_T) & \\
-\dot{C}   = &              &   p_5 H (T_S - T_T)  & - p_6 C
+\dot{T} = &  & \xi_1 \left(P_{in}(C) - P_{out}(T, H) \right) &\\
+\dot{H} = & \xi_4 P_{in}(C) & - \xi_5 H \Delta T & \\
+\dot{C} = &                 &   \xi_5 H \Delta T & - \xi_6 C
 \end{matrix}
 \right|
 \end{equation}
-	
 	\pause
-	
 	\item[] Mit limitierenden Termen
-	
 \begin{equation}
 \left|
-\begin{array}{lcl}
-\dot{T}_S = p_1 \left( P_{in}(C) - P_{out}(T_S, H) \right) \\
-\dot{T}_T = p_2 \left( P_{in}(C) \cdot H \right) - P_{blackbody}(T_T) - p_3 \left( (T_T - T_S) \cdot H \right) \\
-\dot{C} = p_4 \left( (H + H^9)(T_S - T_T) \right) - p_5 (C + C^5) \\
-\dot{H} = p_5 \left(P_{in} \right) - p_4 \left( (H + H^9 )(T_S - T_T) \right)
-\end{array}
+\begin{matrix}
+\dot{T} = & & \xi_1 \left(P_{in}(C) - P_{out}(T, H) \right) &\\
+\dot{H} = & \xi_4 P_{in}(C) & - \xi_5 (H + H^9) \Delta T & \\
+\dot{C} = &                 &   \xi_5 (H + H^9) \Delta T & - \xi_6 (C + C^5)
+\end{matrix}
 \right|
-\end{equation}
+\end{equation}	
+	
+%\begin{equation}
+%\left|
+%\begin{array}{lcl}
+%\dot{T}_S = p_1 \left( P_{in}(C) - P_{out}(T_S, H) \right) \\
+%\dot{T}_T = p_2 \left( P_{in}(C) \cdot H \right) - P_{blackbody}(T_T) - p_3 \left( (T_T - T_S) \cdot H \right) \\
+%\dot{C} = p_4 \left( (H + H^9)(T_S - T_T) \right) - p_5 (C + C^5) \\
+%\dot{H} = p_5 \left(P_{in} \right) - p_4 \left( (H + H^9 )(T_S - T_T) \right)
+%\end{array}
+%\right|
+%\end{equation}
 
 \end{itemize}
 \end{frame}
@@ -282,7 +320,17 @@
 \frametitle{Fazit}
 \begin{itemize}
 
-	\item[] Ergebnisse entsprechen den Erwartungen
+	\item[$\bullet$] Ergebnisse gleichen dem heutigen status
+	\item[$\bullet$] Extremes Klima von Mars \& Venus vermutlich prädestiniert
+	
+	\vspace{5mm}
+	
+	\item[$\bullet$] Ergebnisse nur mit Vorsicht zu geniessen	
+	\begin{itemize}
+		\item[-] Nur Wasser simuliert
+		\item[-] Andere Treibhausgase vernaächlässigt
+		\item[-] Chemische und Physikalische Vorgänge bei extremen Temperaturen
+	\end{itemize}
 
 	
 \end{itemize}
@@ -293,10 +341,12 @@
 \frametitle{Nächste Schritte}
 \begin{itemize}
 
-	\item[] Nicht modellierte parameter
+	\item[$\bullet$] Modell ausbauen
 	\begin{itemize}
-		\item[] Vereisung	
-		\item[] Tag Nacht	
+		\item[-] Vereisung
+		\item[-] Tag- \& Nachtseite
+		\item[-] Rotationsgeschwindigkeit
+		\item[-] Mehr athmosphärische Gase
 	\end{itemize}
 	
 \end{itemize}

@@ -1,6 +1,6 @@
 function a = albedo(clouds)
 
-    a = (0.6 .* clouds) + 0.15;
+    a = (0.6 .* clouds) + 0.10;
     
     %% Wolken
 %     
