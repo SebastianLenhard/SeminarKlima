@@ -43,31 +43,43 @@
 	
 	\begin{figure}
 	\center
-	\includegraphics[width=0.7\linewidth]{planets.jpg}
+	\includegraphics[width=0.7\linewidth, trim={0 3cm 0 3cm},clip]{planets.jpg}
 	\end{figure}
 	
-\begin{columns}
-\begin{column}{0.33\textwidth}
-   Mars
-   \begin{itemize}
-   		\item[-] Kaum Wolken
-   		\item[-] Heiss
-   \end{itemize}
-\end{column}
-\begin{column}{0.33\textwidth}
-   Venus
-   \begin{itemize}
-   		\item[-] Dicke Wolkendecke
-   		\item[-] Heiss
-   \end{itemize}
-\end{column}
-\begin{column}{0.33\textwidth}
-   Erde
-   \begin{itemize}
-   		\item[-] Normales Wetter
-   \end{itemize}
-\end{column}
-\end{columns}
+\begin{center}
+\begin{tabular}{ l c r }
+	%\hline
+  Mars & Earth & Venus \\
+  \hline
+  Kaum Wolken & Moderates Wetter & Dicke Wolkendecke \\
+  Kalt & Mild & Heiss \\
+	%\hline
+\end{tabular}
+\end{center}	
+	
+%	
+%\begin{columns}
+%\begin{column}{0.33\textwidth}
+%   Mars
+%   \begin{itemize}
+%   		\item[-] Kaum Wolken
+%   		\item[-] Heiss
+%   \end{itemize}
+%\end{column}
+%\begin{column}{0.33\textwidth}
+%   Venus
+%   \begin{itemize}
+%   		\item[-] Dicke Wolkendecke
+%   		\item[-] Heiss
+%   \end{itemize}
+%\end{column}
+%\begin{column}{0.33\textwidth}
+%   Erde
+%   \begin{itemize}
+%   		\item[-] Normales Wetter
+%   \end{itemize}
+%\end{column}
+%\end{columns}
 
 \end{frame}
 
@@ -75,10 +87,13 @@
 \begin{frame}
 \frametitle{Ziel}
 \begin{itemize}
+
+	\item[] Verbindung von Klima mit Planet verifizieren
 	\item[] Werdegang der Planeten nachvollziehen
 	\item[] Annahmen
 	\begin{itemize}
-	\item[-] Gleiche Vorausbedingugnen
+	\item[-] Gleiche materielle Eigenschaften
+	\item[-] Gleiches Vorkommen an Wasser 
 	\end{itemize}
 \end{itemize}
 \end{frame}
@@ -110,13 +125,13 @@
 	
 	\item[] Albedo
 	\begin{equation}
-	\alpha(C) = (0.65 \cdot C) + 0.15;
+	\alpha(C) = (0.55 \cdot C) + 0.10;
 	\end{equation}
 	\pause
 	
 	\item[] Treibhauseffekt
 	\begin{equation}
-	\beta(H) = 0.5 \cdot H
+	\beta(H) = 0.6 \cdot H
 	\end{equation}
 \end{itemize}
 \end{frame}
@@ -131,17 +146,17 @@
 	\begin{itemize}
 		\item[] Wasserdampfbildung
 			\begin{equation}
-			p_5 (P_{in})
+			p_4 (P_{in})
 			\end{equation} 
 		\pause
 		\item[] Wolkenbildung
 			\begin{equation}
-			p_6 \left( H \frac{dT}{dh} \right)
+			p_5 \left( H \frac{dT}{dh} \right)
 			\end{equation}
 		\pause
 		\item[] Wolkenabbau 
 		 	\begin{equation}
-			p_5 (C)
+			p_6 (C)
 			\end{equation}
 	\end{itemize}
 \end{frame}
@@ -152,24 +167,24 @@
 	
 		\item[] Wasserkreislauf
 			\begin{equation}
-			\dot{H} = p_5 (P_{in}) - p_4 \left( H \frac{dT}{dh}) \right)
+				\begin{matrix}			
+					\dot{H} = & p_4 P_{in}(C) & - p_5  H \frac{dT}{dz} & \\
+					\dot{C} = &               &   p_5  H \frac{dT}{dz} & - p_6 C
+				\end{matrix}	
 			\end{equation}
-			\begin{equation}	
-			\dot{C} = p_4 \left( H \frac{dT}{dh} \right) - p_5 C
-			\end{equation}		
 	
 		\item[] Temperaturgradent
 			\begin{equation}
-			\frac{dT}{dh} \approx \xi (T_S - T_T)
+				\frac{dT}{dz} \approx \xi (T_S - T_T)
 			\end{equation}
 		
 		\item[] Eingesetzt
 			\begin{equation}
-			\dot{H} = p_5 (P_{in}) - p_4 \left( H(T_S - T_T) \right)
-			\end{equation}
-			\begin{equation}	
-			\dot{C} = p_4 \left( H(T_S - T_T) \right) - p_5 C
-			\end{equation}		
+				\begin{matrix}			
+					\dot{H} = & p_4 P_{in}(C) & - p_5 H (T_S - T_T) & \\
+					\dot{C} = &               &   p_5 H (T_S - T_T) & - p_6 C
+				\end{matrix}	
+			\end{equation}			
 		
 	\end{itemize}
 \end{frame}
@@ -201,12 +216,12 @@
 	
 \begin{equation}
 \left|
-\begin{array}{lcl}
-\dot{T}_S = p_1 \left( P_{in}(C) - P_{out}(T_S, H) \right) \\
-\dot{T}_T = p_2 \left( P_{in}(C) \cdot H \right) - P_{blackbody}(T_T) - p_3 \left( (T_T - T_S) \cdot H \right) \\
-\dot{C} = p_4 \left( H(T_S - T_T) \right) - p_5 C \\
-\dot{H} = p_5 \left(P_{in} \right) - p_4 \left( H(T_S - T_T) \right)
-\end{array}
+\begin{matrix}
+\dot{T}_S = & & p_1 P_{in}(C) - P_{out}(T_S, H)   & \\
+\dot{T}_T = & p_2 P_{in}(C) H   & - P_{bb}(T_T) & - p_3 (T_T - T_S) H \\
+\dot{H}   = & p_4 (P_{in}(c)) & - p_5 H (T_S - T_T) & \\
+\dot{C}   = &              &   p_5 H (T_S - T_T)  & - p_6 C
+\end{matrix}
 \right|
 \end{equation}
 	
@@ -234,7 +249,7 @@
 \begin{frame}
 	\frametitle{Temperatur}
 		\begin{figure}
-			\includegraphics[width=\linewidth]{Matlab/figures/surfaceTemperature.eps}
+			\includegraphics[width=0.9\linewidth]{Matlab/figures/surfaceTemperature.eps}
 		\end{figure}
 \end{frame}
 
@@ -242,7 +257,7 @@
 \begin{frame}
 	\frametitle{Luftfeuchtigkeit}
 		\begin{figure}
-			\includegraphics[width=\linewidth]{Matlab/figures/humidity.eps}
+			\includegraphics[width=0.9\linewidth]{Matlab/figures/humidity.eps}
 		\end{figure}
 \end{frame}
 
@@ -250,7 +265,7 @@
 \begin{frame}
 	\frametitle{Wolkenabdeckung}
 		\begin{figure}
-			\includegraphics[width=\linewidth]{Matlab/figures/cloudCover.eps}
+			\includegraphics[width=0.9\linewidth]{Matlab/figures/cloudCover.eps}
 		\end{figure}
 \end{frame}
 
@@ -258,20 +273,31 @@
 \begin{frame}
 	\frametitle{Albedo}
 		\begin{figure}
-			\includegraphics[width=\linewidth]{Matlab/figures/albedo.eps}
+			\includegraphics[width=0.9\linewidth]{Matlab/figures/albedo.eps}
 		\end{figure}
 \end{frame}
 
-\subsection{Fazit}
+\section{Fazit}
 \begin{frame}
 \frametitle{Fazit}
 \begin{itemize}
-	\item[] Gleichung mit Dämpfung
-	\begin{equation}
-	\dot{T}(t)=-cT(t)+aT(t-\frac{1}{2}\tau_K)-bT(t-(\frac{1}{2}\tau_R+\tau_K))-\epsilon(T(t))^3
-	\end{equation}
-	\pause
-	\item[] Änderung des Parameters a
+
+	\item[] Ergebnisse entsprechen den Erwartungen
+
+	
+\end{itemize}
+\end{frame}
+
+\section{Nächste Schritte}
+\begin{frame}
+\frametitle{Nächste Schritte}
+\begin{itemize}
+
+	\item[] Nicht modellierte parameter
+	\begin{itemize}
+		\item[] Vereisung	
+		\item[] Tag Nacht	
+	\end{itemize}
 	
 \end{itemize}
 \end{frame}
