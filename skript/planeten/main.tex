@@ -278,14 +278,27 @@ Mit Anpassungen für gesättigten Wasserdampf und Wolkenabdeckung:
 
 \section{Simulation}
 
-Anfangswerte
+Das Modell wurde in MATLAB mittels Transientenanalyse simuliert. Dazu wurde ein ode45 Solver benutzt.
+
+
+
+
+Die Anfangswerte wurden so gesetzt, dass sie Erd-Bedinugnen unterstützen  
 	Erdbedingungen
 	
 	System anregen Erdähnliche Werte zu generieren.
 
+\begin{equation}
+\begin{matrix}
+T_0 = & 283 \\
+H_0 = & 0.5 \\
+C_0 = & 0.5
+\end{matrix}
+\end{equation}
+
 \subsection{Ergebnisse}
 
-		Die Strich-Punkt-Linie der entspechenden Farbe zeigt den heutigen Wert der Grösse. 
+		Die Strich-Punkt-Linie der entsprechenden Farbe zeigt den heutigen Wert der Grösse. 
 
 		\begin{figure}
 			\center
@@ -314,14 +327,27 @@ Anfangswerte
 \section{Schlussfolgerung}
 \rhead{Schlussfolgerung}
 
+Ergebnisse gleichen dem heutigen Status
+Extremes Klima von Mars \& Venus vermutlich prädestiniert
+
 Abweichungen
 
+Ergebnisse nur mit Vorsicht zu geniessen
+
 Nicht modelierte faktoren:
-chemische umwandlungen
+Nur Wasser simuliert
+Chemische und Physikalische Vorgänge bei extremen Temperaturen
+
+Andere Treibhausgase wie CO$_2$, welches heute den grössten Anteil der Venus- und Marsatmosphäre ausmacht, vernachlässigt.
 
 \section{Verbesserungsmöglichkeiten}
 
 Nächste Schritte das Modell zu verbessern
+
+Um mehr Genauigkeit in den Extremen Bereichen zu erreichen, müssten mehr atmosphärische Gase einbezogen werden.
+Diese Gase besitzen wiederum unterschiedliche Gefrierpunkte, was die Modellierung der Vereisung zulässt.
+		
+Im simulierten Modell wurden lediglich der Durchmesser und die Distanz zur Sonne der Planeten einbezogen. Um die Aussagekraft zu verbessern könnten weitere Planet-abhängige Parameter implementiert werden, wie der Vulkanismus und die Rotationsgeschwindigkeit. Die Rotation erlaubt das Modellieren von Tag- und Nachtseitentemperatur, welche sich stark auf das Klima auswirken.
 
 
 \printbibliography[heading=subbibliography]
