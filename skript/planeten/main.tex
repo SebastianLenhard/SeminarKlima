@@ -10,16 +10,16 @@
 \chapterauthor{Nicolas Tobler}
 
 \section{Einleitung}
+\rhead{Einleitung}
 
 \begin{figure}
 	% https://www.astrobio.net/news-exclusive/comparing-climates-from-earth-to-exoplanets/
-  
 	\centering
 	\includegraphics[width=0.7\linewidth, trim={0 3cm 0 3cm},clip]{Pictures/planets.jpg}
 	\caption{Mars, Erde und Venus massstabsgerecht}
 \end{figure}
 
-\rhead{Abschnitt}
+
 
 %Verschiedene Organisationen, wie unter anderem Elon Musk's SpaceX, haben sich zum Ziel gemacht, in absehbarer Zukunft den Mars für den Menschen bewohnbar zu machen. Insbesondere sollte der Mars eine erdählnliche Atmosphere erhalte, also terraformed werden. Was auf Computer-generierten bildern ziemlich simpel aussieht, wird sich in realität wahrscheinlich ziemlich schwierig herausstellen. In diesem Kapitel wird die aktuelle lage des Klimas auf dem Mars analysiert und mögliche Wege den Mars zu teraformen auf die Machbarkeit untersucht.
 
@@ -39,10 +39,26 @@ boxmodell anteile element
 
 %Grinspoon said, “It may be that conditions for life’s origin aren’t rare, but the hard part is the persistence of habitable conditions.”
 
-\section{Planeten im Vergleich}
-
-
 Auf allen Planeten kann flüssiges Wasser auftreten (Godilooks-Zone).
+
+\begin{center}
+\begin{table}
+	\center
+	\begin{tabular}{l|c c c c}
+                      & Mars    & Erde   & Venus           & Merkur\\
+  \hline
+  Temperatur (Mittel) & 218 K   & 288 K  & 737 K           & 440 K\\
+  Wolken              & $<5\%$ & $68\%$ & $\approx100\%$ & - \\
+  Atmosphäre          & $6 \cdot 10^{-3}$ bar & $1$ bar & $92$ bar & $10^{-15}$ bar
+	%\hline
+	
+\end{tabular}
+\caption{Planeten im Vergleich}
+\end{table}
+
+\end{center}
+
+Merkur ist in der Tabelle vertreten um zu verdeutlichen, dass nahe an der Sonne nicht direkt eine heisse Mitteltemperatur bedeutet.
 
 
 \subsection{Temperatur}
@@ -75,6 +91,7 @@ verwendung von Methan
 
 
 \section{Modell}
+\rhead{Modell}
 
 
 	Für alle Planeten geltendes Modell erstellen
@@ -85,7 +102,7 @@ verwendung von Methan
 	
 	Es wird vor allem angenommen, dass grosse Mengen an Wasser auf allen Planeten vorhanden war.
 	
-	Desshalb wird 
+%	Desshalb wird 
 	
 	Andere klimabestimmenden atmosphärischen Gase werden nicht simuliert, um das Modell im gegebenen Rahmen umzusetzen.
 	%Um das Modell im beschränkem Zeitrahmen zu realisieren, kann nur ein hoch vereinfachtes Modell erstellt werden.
@@ -122,43 +139,45 @@ Am Schluss müssen freie Parameter abgeschätzt werden, um überhaubt plausible 
 	\caption{Modell}
 \end{figure}
 
-\section{Strahlungsbilanz}
+\subsection{Strahlungsbilanz}
+
+Die Strahlungsbillanz wird in Kapitel \hl{reference needed} ausführlich beschrieben. Das hier verwendeten Modell baut direkt darauf auf.
+
+Damit die Durchschnittstemperatur eines Planeten stabil ist, muss die Leistungsbilanz Null sein.
 
 \begin{equation}
-\dot{T} = P_{in} - P_{out}
+\dot{T} = \xi_1(P_{in} - P_{out})
 \end{equation}
 
-%reference to skript needed
+Die Eintreffende Leistung $P_{in}$ besteht primär aus der absorbierten Sonnenstrahlung. Andere Energiequellen wie ein Aktives Planet-Inneres und die Energie aus Gezeiten wird vernachlässigt. Es gilt:
 
 \begin{equation}
 P_{in} = \sigma T_{\astrosun}^4 \left( \frac{R_{\astrosun}}{a_{planet}} \right) ^2 \cdot (1-\alpha)
 \end{equation}
 
-$\alpha$ ist das albedo des Planeten.
+Dabei ist $\alpha$ das Albedo des Planeten.
+
+Die Abgestrahlte Leistung besteht praktisch ausschliesslich aus der Black-body strahlung, welche sich aus der Durchschnittstemperatur $T$ und dem Radius $R$ des Planeten bestimmen lässt. Diese Leistung bleibt jedoch teilweise durch Treibhausgase in der Atmosphäre gefangen. Es gilt: 
 
 \begin{equation}
-P_{out} = (4 \pi R_{S}^2 \sigma T_{S}^4)\epsilon
+P_{out} = (4 \pi R^2 \sigma T_{S}^4)\epsilon
 \end{equation}
 
-\begin{equation}
-\epsilon  = (1 - \beta)
-\end{equation}
-
-$\beta$ ist der Treibhausfaktor
+Dabei ist $\sigma$ die Stefan-Boltzmann-Konstante und $\epsilon$ der Anteil der durchdringenden Leistung.
 
 \subsection{Albedo}
 
-Das albedo wird als Funktion der Wolkenabdeckung $C$ modelliert. Es wird ein linearer zusammenhang erwartet.
+Das Albedo wird als Funktion der prozentualen Wolkenabdeckung $C$ modelliert. Es wird ein linearer Zusammenhang erwartet.
 
 \begin{equation}
 \alpha(C) = (0.65 \cdot C) + 0.15;
 \end{equation}
 
 
-Under der annahme, dass bei allen Planeten das Oberflächenbenalbedo gleich ist, wird ein minimales $\alpha_{min}$ und maximales Albedo $\alpha_{max}$ definiert. Bei 100\% Wolkendeckung soll der maximalwert erricht werden und bei 0\% der minimalwert.
+Unter der Annahme, dass bei allen Planeten das Oberflächenalbedo $\alpha_{surface}$ gleich ist, wird ein minimales $\alpha_{min}$ und maximales Albedo $\alpha_{max}$ definiert. Bei 100\% Wolkendeckung soll der Maximalwert erreicht werden und bei 0\% das Oberflächenalbedo.
 
 \begin{equation}
-\alpha = \alpha_{min} + C(\alpha_{max} - \alpha_{min})
+\alpha = \alpha_{surface} + C(\alpha_{max} - \alpha_{surface})
 \end{equation}
 
 \subsection{Treibhauseffekt}
@@ -167,12 +186,11 @@ Wasserdampf ist ein sehr effektifes Treibhausgas. Es wird angenommen dass der at
 
 % 60\%    % https://www.acs.org/content/acs/en/climatescience/climatesciencenarratives/its-water-vapor-not-the-co2.html 
 
-
+Im verwendeten Modell wird diese linear zum Teibhauseffekt $\beta$ modelliert.
 
 \begin{equation}
-\beta(H) = 0.5 \cdot H
+\epsilon  = (1 - \beta) = (1 - 0.5 \cdot H)
 \end{equation}
-
 
 \subsection{Wasserkreislauf}
 
@@ -277,6 +295,7 @@ Mit Anpassungen für gesättigten Wasserdampf und Wolkenabdeckung:
 
 
 \section{Simulation}
+\rhead{Simulation}
 
 Das Modell wurde in MATLAB mittels Transientenanalyse simuliert. Dazu wurde ein ode45 Solver benutzt.
 
@@ -340,7 +359,7 @@ Chemische und Physikalische Vorgänge bei extremen Temperaturen
 
 Andere Treibhausgase wie CO$_2$, welches heute den grössten Anteil der Venus- und Marsatmosphäre ausmacht, vernachlässigt.
 
-\section{Verbesserungsmöglichkeiten}
+\subsection{Verbesserungsmöglichkeiten}
 
 Nächste Schritte das Modell zu verbessern
 
