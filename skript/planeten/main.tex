@@ -1,8 +1,9 @@
 %
 % main.tex -- Paper zum Thema <thema>
 %
-% (c) 2018 Sebastain Lenhard und Nicolas Tobler, Hochschule Rapperswil
+% (c) 2018 Nicolas Tobler, Hochschule Rapperswil
 %
+
 \chapter{Klima auf anderen Planeten\label{chapter:thema}}
 \lhead{Klima auf anderen Planeten}
 \begin{refsection}
@@ -14,7 +15,7 @@
 	% https://www.astrobio.net/news-exclusive/comparing-climates-from-earth-to-exoplanets/
   
 	\centering
-	\includegraphics[width=0.7\textwidth]{Pictures/planets.jpg}
+	\includegraphics[width=0.7\linewidth, trim={0 3cm 0 3cm},clip]{Pictures/planets.jpg}
 	\caption{Mars, Erde und Venus massstabsgerecht}
 \end{figure}
 
@@ -38,9 +39,11 @@ boxmodell anteile element
 
 %Grinspoon said, “It may be that conditions for life’s origin aren’t rare, but the hard part is the persistence of habitable conditions.”
 
-\section{Das heutige Klima der Planeten}
+\section{Planeten im Vergleich}
 
-Verschiedene Mars proben
+
+Auf allen Planeten kann flüssiges Wasser auftreten (Godilooks-Zone).
+
 
 \subsection{Temperatur}
 
@@ -73,37 +76,59 @@ verwendung von Methan
 
 \section{Modell}
 
+
+	Für alle Planeten geltendes Modell erstellen
+	
+	Das Modell sollte Erdähnliche Bedingungen bewusst erstreben, um zu sehen ob diese auf den Planeten Mars und Venus auch bestehen können.
+	
+	Betrachtet wird ein früher Zeitpunkt der Geschichte des Sonnensystems, als die betrachteten Planeten ähnliche oder annähernd gleiche materielle und Atmosphärische Eigenschaften aufwiesen.
+	
+	Es wird vor allem angenommen, dass grosse Mengen an Wasser auf allen Planeten vorhanden war.
+	
+	Desshalb wird 
+	
+	Andere klimabestimmenden atmosphärischen Gase werden nicht simuliert, um das Modell im gegebenen Rahmen umzusetzen.
+	%Um das Modell im beschränkem Zeitrahmen zu realisieren, kann nur ein hoch vereinfachtes Modell erstellt werden.
+
+	
+	Vereinfacht: Erde nehmen, auf Mars Grösse skallieren, in den Mars-Orbit setzten und schauen was passiert. 
+	
+
+Das hier erarbeitete Modell konzentriert sich nur auf die Strahlungsbillanz und den Wasserkreislauf.
+
+%Wasser wurde gewählt, da auf allen Planeten flüssiges Wasser auftreten kann (Godilooks-Zone).
+Wasser stellt auf der Erde den grössten Anteil zum Treibhauseffekt bei.
+Des Weiteren ist es für den Menschen interessant Planeten mit Erdähnlichen Zuständen anzutreffen.
+
+
+
+ Dazu müssen einige Annahmen getroffen werden.	
+	
+	Annahmen
+		Gleiche materielle Eigenschaften
+		Gleiches Vorkommen an Wasser
+		Wasser hat grösste Auswirkung auf Klima
+	
+	
+Möglichst auf einfachen Physikalischen Gesetzen basieren.	
+	
+	
+Am Schluss müssen freie Parameter abgeschätzt werden, um überhaubt plausible Lösungen zu erreichen.
+
+
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{Pictures/Model.eps}
 	\caption{Modell}
 \end{figure}
 
-
-Boxmodell
-
-Parameter
-
-atmosphere
-wasser
-co2
-sauerstoff
-
-land
-wasser
-
-
-
-
-
-\section{Energiehaushalt}
+\section{Strahlungsbilanz}
 
 \begin{equation}
 \dot{T} = P_{in} - P_{out}
 \end{equation}
 
 %reference to skript needed
-
 
 \begin{equation}
 P_{in} = \sigma T_{\astrosun}^4 \left( \frac{R_{\astrosun}}{a_{planet}} \right) ^2 \cdot (1-\alpha)
@@ -112,7 +137,11 @@ P_{in} = \sigma T_{\astrosun}^4 \left( \frac{R_{\astrosun}}{a_{planet}} \right) 
 $\alpha$ ist das albedo des Planeten.
 
 \begin{equation}
-P_{out} = (4 \pi R_{S}^2 \sigma T_{S}^4)(1 - \beta)
+P_{out} = (4 \pi R_{S}^2 \sigma T_{S}^4)\epsilon
+\end{equation}
+
+\begin{equation}
+\epsilon  = (1 - \beta)
 \end{equation}
 
 $\beta$ ist der Treibhausfaktor
@@ -152,22 +181,22 @@ Modellierung von atmosphärischem Wasserdampf $H$ als relative Luftfeuchtigkeit 
 
 \subsubsection{Wasserdampfbildung}
 
-Linearer zusammenhang zur Leistung
+Linearer Zusammenhang zur Auftreffenden Leistung
 
 \begin{equation}
-p_5 (P_{in})
+\xi_4 (P_{in})
 \end{equation}
 
 \subsubsection{Wolkenbildung}
 
 \begin{equation}
-p_6 \left( H \frac{dT}{dh} \right)
+\xi_5 H \frac{dT}{dh}
 \end{equation}
 
-Der Temperaturgradient wird als differenz der Oberflächentemperatur des Planeten und der Troposphärischen Temperatur modelliert. 
+Der Temperaturgradient wird linear Angenommen somit lässt sich $\frac{dT}{dh}$ durch $\Delta T $ vereinfachen. 
 
 \begin{equation}
-p_6 \left( H(T_S - T_T) \right)
+\xi_5 H \Delta T
 \end{equation}
 
 \subsubsection{Wolkenabbau}
@@ -175,19 +204,16 @@ p_6 \left( H(T_S - T_T) \right)
 linear zur Wolkenabdeckung
 
 \begin{equation}
-p_5 (C)
+\xi_6 C
 \end{equation}
-
 
 \subsection{Zusammengefasst}
 
-
 \begin{equation}
-\dot{H} = p_5 (P_{in}) - p_4 \left( H(T_S - T_T) \right)
-\end{equation}
-
-\begin{equation}
-\dot{C} = p_4 \left( H(T_S - T_T) \right) - p_5 C
+	\begin{matrix}			
+		\dot{H} = & \xi_4 P_{in}(C) & - \xi_5 H \Delta T & \\
+		\dot{C} = &                 &   \xi_5 H \Delta T & - \xi_6 C
+	\end{matrix}	
 \end{equation}
 
 
@@ -223,41 +249,67 @@ Dabei ist $k$ die Bolzmann-Konstante und $m$ die Mol-Masse des Moleküls. Die kr
 T_{escape} = \frac{2GMm}{3kR}
 \end{equation}
 
-
-
 \subsection{Differentialgleichung}
 
 \begin{equation}
 \left|
-\begin{array}{lcl}
-\dot{T}_S = p_1 \left( P_{in}(C) - P_{out}(T_S, H) \right) \\
-\dot{T}_T = p_2 \left( P_{in}(C) \cdot H \right) - P_{blackbody}(T_T) - p_3 \left( (T_T - T_S) \cdot H \right) \\
-\dot{C} = p_4 \left( H(T_S - T_T) \right) - p_5 C \\
-\dot{H} = p_5 \left(P_{in} \right) - p_4 \left( H(T_S - T_T) \right)
-\end{array}
+\begin{matrix}
+\dot{T} = &  & \xi_1 \left(P_{in}(C) - P_{out}(T, H) \right) &\\
+\dot{H} = & \xi_4 P_{in}(C) & - \xi_5 H \Delta T & \\
+\dot{C} = &                 &   \xi_5 H \Delta T & - \xi_6 C
+\end{matrix}
 \right|
 \end{equation}
 
-Um zu verhindern, dass eine Luftfeuchtigkeit oder Wolkenabdeckung von über 100\% auftritt, werden zu gewissen linearen Termen noch den gleichen Term mit grosser Potenz dazuaddiert. Somit wird der effekt verstärkt wenn die Grösse nahe an 100\% kommt.  
+Um zu verhindern, dass eine Luftfeuchtigkeit oder Wolkenabdeckung von über 100\% auftritt, werden zu gewissen linearen Termen noch den gleichen Term mit grosser Potenz dazu addiert. Somit wird der Effekt verstärkt wenn die Grösse nahe an $1$ also $100\%$ kommt.  
 
-Mit Anpassungen für gesättigten Wasserdampf und wolkenabdeckung:
+Mit Anpassungen für gesättigten Wasserdampf und Wolkenabdeckung:
 
 \begin{equation}
 \left|
-\begin{array}{lcl}
-\dot{T}_S = p_1 \left( P_{in}(C) - P_{out}(T_S, H) \right) \\
-\dot{T}_T = p_2 \left( P_{in}(C) \cdot H \right) - P_{blackbody}(T_T) - p_3 \left( (T_T - T_S) \cdot H \right) \\
-\dot{C} = p_4 \left( (H + H^9)(T_S - T_T) \right) - p_5 (C + C^5) \\
-\dot{H} = p_5 \left(P_{in} \right) - p_4 \left( (H + H^9 )(T_S - T_T) \right)
-\end{array}
+\begin{matrix}
+\dot{T} = & & \xi_1 \left(P_{in}(C) - P_{out}(T, H) \right) &\\
+\dot{H} = & \xi_4 P_{in}(C) & - \xi_5 (H + H^9) \Delta T & \\
+\dot{C} = &                 &   \xi_5 (H + H^9) \Delta T & - \xi_6 (C + C^5)
+\end{matrix}
 \right|
 \end{equation}
 
-\section{Ergebnisse}
 
-Matlab plots
+\section{Simulation}
 
+Anfangswerte
+	Erdbedingungen
+	
+	System anregen Erdähnliche Werte zu generieren.
 
+\subsection{Ergebnisse}
+
+		Die Strich-Punkt-Linie der entspechenden Farbe zeigt den heutigen Wert der Grösse. 
+
+		\begin{figure}
+			\center
+			\includegraphics[height=0.45\textheight]{Matlab/figures/surfaceTemperature.eps}
+			\caption{Globale Durchschnittstemperatur}
+		\end{figure}
+		
+		\begin{figure}
+			\center
+			\includegraphics[height=0.45\textheight]{Matlab/figures/humidity.eps}
+			\caption{Relative Luftfeuchtigkeit}
+		\end{figure}
+		
+		\begin{figure}
+			\center
+			\includegraphics[height=0.45\textheight]{Matlab/figures/cloudCover.eps}
+			\caption{Prozentuale Wolkenabdeckung}
+		\end{figure}
+		
+		\begin{figure}
+			\center
+			\includegraphics[height=0.45\textheight]{Matlab/figures/albedo.eps}
+			\caption{Albedo}
+		\end{figure}
 
 \section{Schlussfolgerung}
 \rhead{Schlussfolgerung}
