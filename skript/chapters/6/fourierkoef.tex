@@ -4,6 +4,7 @@
 % (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 \section{Fourier-Koeffizienten}
+\rhead{Fourier-Koeffizienten}
 Bestimmen wir die Fourierkoeffizienten für ein trigonometrisches Polynom
 der Form
 \begin{equation}
@@ -170,6 +171,8 @@ Wir befassen uns zunächst mit Summen der Form
 \foreach \j in {1,...,\N}{
 	\fill[color=red] ({3 * cos(360 * \j/\N)},{3 * sin(360 * \j/\N})
 		circle[radius=0.1];
+	\node[color=red] at ({2.5*cos(\j*(360/\N))},{2.5*sin(\j*(360/\N))})
+		{$t_{\j}$};
 }
 \def\k{9}
 \pgfmathparse{\k*360/\N}
@@ -243,7 +246,7 @@ Die Punkte $(\cos kt_j,\sin kt_j)$ für $k=9$ bilden eine Teilmenge, die
 blau dargestellt ist.
 Jeder blaue Punkt wird genau dreimal besucht, sie bilden ein gleichseitiges
 Fünfeck mit den Punkten $(\cos 3t_j,\sin 3t_j)$ als Ecken.
-Deren Schwerpunkt ist wieder der Nullpunkt
+Deren Schwerpunkt ist wieder der Nullpunkt.
 \label{fourier:einheitskreis}
 }
 \end{figure}
@@ -485,3 +488,41 @@ b_l
 \frac{2}{N}\sum_{j=1}^Ny_j\sin lt_j.
 \end{align*}
 
+\subsection{Zusammenstellung der Resultate}
+Sei $N=2n$ eine gerade natürliche Zahl.
+Eine $2\pi$-periodische Funktion $f(t)$ kann als trigonometrisches Polynom
+der Form
+\[
+p(t)
+=
+a_0 + \sum_{k=1}^{n-1} (a_k\cos kt + b_k\sin kt) + a_n\cos nt
+\]
+derart approximiert werden, dass zu den Zeiten $t_j=2\pi j/N, j=1,\dots,N$ 
+die Funktion und das trigonometrische Polynom übereinstimmen:
+\[
+p(t_j) = y_j = f(t_j).
+\]
+Dazu müssen die Koefizienten
+\begin{align*}
+a_0
+&=
+\frac{1}N
+\sum_{j=1}^N y_j
+\\
+a_k
+&=
+\frac{2}N
+\sum_{j=1}^N y_j\cos t_j
+=
+\frac{2}N
+\sum_{j=1}^N y_j\cos \frac{2\pi j}{N}&k&=1,\dots,n
+\\
+b_k
+&=
+\frac{1}N
+\sum_{j=1}^N y_j\sin t_j
+=
+\frac{2}N
+\sum_{j=1}^N y_j\sin \frac{2\pi j}{N},&k&=1,\dots,n-1
+\end{align*}
+verwendet werden.
