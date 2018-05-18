@@ -1,146 +1,137 @@
 % GUI for THC calculations
-%Jonas Gruendler, HSR 
+% Jonas Gruendler, HSR 
+% Based on GUI for Schwarzschild calculations, Mathsem 2017, Sascha Jecklin
 
-function myui (t,y, tspan, x0, val)
+function myui (t, y, tspan, y0, val)
+
 
 % create figure
-f = figure('Visible','off');
+f = figure('Visible','off', 'units','normalized','outerposition',[0 0 1 1]);
+% figure('units','normalized','outerposition',[0 0 1 1])
 update;
 
 %create Sliders
 salinity_Sp = uicontrol(f, 'Style', 'slider',... 
-               'Min', 0.03, 'Max', 0.05, 'Value', val(4),...
-               'Position', [400 10 120 20]);
+               'Min', 0.03, 'Max', 0.05, 'Value', val(4,1),...
+               'Position', [1500 300 200 30]);
 addlistener(salinity_Sp, 'Value', 'PostSet', @salinity_SpCallBack);
 
 salinity_Se = uicontrol(f, 'Style', 'slider',... 
-               'Min', 0.03, 'Max', 0.05, 'Value', val(6),...
-               'Position', [400 48 120 20]);
+               'Min', 0.03, 'Max', 0.05, 'Value', val(6,1),...
+               'Position', [1500 370 200 30]);
 addlistener(salinity_Se, 'Value', 'PostSet', @salinity_SeCallBack);
 
 temp_Tp = uicontrol(f, 'Style', 'slider',... 
-               'Min', 5, 'Max', 20, 'Value', val(1),...
-               'Position', [400 86 120 20]);
+               'Min', 0, 'Max', 25, 'Value', val(1,1),...
+               'Position', [1500 440 200 30]);
 addlistener(temp_Tp, 'Value', 'PostSet', @temp_TpCallBack);
 
 temp_Te = uicontrol(f, 'Style', 'slider',... 
-               'Min', 5, 'Max', 20, 'Value', val(3),...
-               'Position', [400 124 120 20]);
+               'Min', 0, 'Max', 25, 'Value', val(3,1),...
+               'Position', [1500 510 200 30]);
 addlistener(temp_Te, 'Value', 'PostSet', @temp_TeCallBack);
-%create button
-btn = uicontrol('Style', 'pushbutton', 'String', 'Graphs',...
-                   'Position', [20 20 80 20],...
-                   'Callback', @btnCallBack);
-%create text             
-Salinity_SpTxt = uicontrol('Style','text',...
-    'Position',[520 10 30 20],...
+
+%create labels for sliders      
+Salinity_SpTxt = uicontrol(f, 'Style','text',...
+    'Position',[1700 300 60 30],...
     'String','Salnity Sp');
 
 Salinity_SeTxt = uicontrol('Style','text',...
-    'Position',[520 48 30 20],...
+    'Position',[1700 370 60 30],...
     'String','Salnity Se');
 
 temp_TpTxt = uicontrol('Style','text',...
-    'Position',[520 86 30 20],...
+    'Position',[1700 440 60 30],...
     'String','Temp Tp');
 
 temp_TeTxt = uicontrol('Style','text',...
-    'Position',[520 124 30 20],...
+    'Position',[1700 510 60 30],...
     'String','Temp Te');
 
-% TODO: Create Values for salinity and temp
+% Create Values for salinity and temp
 salinity_SpVal = uicontrol('Style', 'Text',...
-    'Position', [400 35 120 15],...
-    'String', num2str(roundn(val(4), -4)));
+    'Position', [1550 330 120 20],...
+    'String', num2str(roundn(val(4,1), -4)));
 
 salinity_SeVal = uicontrol('Style', 'Text',...
-    'Position', [400 73 120 15],...
-    'String', num2str(roundn(val(6), -4)));
+    'Position', [1550 400 120 20],...
+    'String', num2str(roundn(val(6,1), -4)));
 
 temp_TpVal = uicontrol('Style', 'Text',...
-    'Position', [400 111 120 15],...
-    'String', num2str(roundn(val(1), -1)));
+    'Position', [1550 470 120 20],...
+    'String', num2str(roundn(val(1,1), -1)));
 
 temp_TeVal = uicontrol('Style', 'Text',...
-    'Position', [400 149 120 15],...
-    'String', num2str(roundn(val(3), -1)));
+    'Position', [1550 540 120 20],...
+    'String', num2str(roundn(val(3,1), -1)));
 
-
-f.visible = 'on'
+% make visible after adding all components
+f.Visible = 'on';
 
     function salinity_SpCallBack(hObj, event)
-        x0(4) = get(event.AffectedObject, 'Value');
-        set(salinity_Sp, 'String', num2str(roundn(val(4)), -4))); 
+        val(4,1) = get(event.AffectedObject, 'Value');
+        set(salinity_SpVal, 'String', num2str(roundn(val(4,1), -4))); 
     end
 
     function salinity_SeCallBack(hObj, event)
-        x0(6) = get(event.AffectedObject,'Value');
-        set(velVal, 'String', num2str(roundn(val(6),-4)));
+        val(6,1) = get(event.AffectedObject,'Value');
+        set(salinity_SeVal, 'String', num2str(roundn(val(6,1),-4)));
         update;
     end
         
     function temp_TpCallBack(hObj, event)
-        x0(1) = get(event.AffectedObject,'Value');
-        set(velVal, 'String', num2str(roundn(val(1),-4)));
+        val(1,1) = get(event.AffectedObject,'Value');
+        set(temp_TpVal, 'String', num2str(roundn(val(1,1),-4)));
         update;
     end
 
     function temp_TeCallBack(hObj, event)
-        x0(3) = get(event.AffectedObject,'Value');
-        set(velVal, 'String', num2str(roundn(val(3),-4)));
+        val(3,1) = get(event.AffectedObject,'Value');
+        set(temp_TeVal, 'String', num2str(roundn(val(3,1),-4)));
         update;
     end
 
-%GUI update
-
+    %GUI update
    function update
         hold off;
         [t,y] =  ode45(@(t,y) odefun_3Box_1Flux(t,y,val), tspan, y0); 
         plotGraphs;
    end
 
+    %Draw plots
     function plotGraphs
-       %% Plot Temperature
-        figure(1)
-        plot(t,y(:,1));
-        hold on
-        plot(t,y(:,2));
-        plot(t,y(:,3));
-        hold off
-        title('Temperature-plot')
-        xlabel('time')
-        ylabel('Temp(C)')
-        legend('T1', 'T2', 'T3')
+       %create subplots
+       p1 = subplot(1,4,1);
+       p2 = subplot(1,4,2);
+       p3 = subplot(1,4,3);
+       
+       %plot temperature
+        plot(p1, t,y(:,1), t, y(:,2), t, y(:,3));
+        title(p1, 'Temperature-plot')
+        xlabel(p1, 'time')
+        ylabel(p1, 'Temp(C)')
+        legend(p1, 'T1', 'T2', 'T3')
 
-        %% Plot Salinity
-        figure(2);
-        plot(t,y(:,4));
-        hold on
-        plot(t,y(:,5));
-        plot(t,y(:,6));
-        hold off
-        title('Salinity-plot')
-        xlabel('time')
-        ylabel('Salinity(psu)')
-        legend('S1', 'S2', 'S3')
+        % Plot Salinity
+        plot(p2, t,y(:,4), t, y(:,5), t, y(:,6));
+        title(p2, 'Salinity-plot')
+        xlabel(p2, 'time')
+        ylabel(p2, 'Salinity(psu)')
+        legend(p2, 'S1', 'S2', 'S3')
 
-        %% Berechnung Fluss
+        % calc Flux
         k = 1.5*10^(-6);
         a = 1.5*10^(-4);
         b = 8*10^(-4);
         q = k*(a*(y(:,2)-y(:,1))-b*(y(:,4)-y(:,3)));
         % q2 = k*(a*(y(:,3)-y(:,2))-b*(y(:,6)-y(:,5)));
 
-        %% Plot Fluss
-        figure(3) 
-        plot(t,q);
-        hold on
-        % plot(t, q2);
-        hold off
-        title('Fluss-plot')
-        xlabel('time')
-        ylabel('Fluss')
-        legend('q') 
+        % Plot Flux 
+        plot(p3, t,q);
+        title(p3, 'Fluss-plot')
+        xlabel(p3, 'time')
+        ylabel(p3, 'Fluss')
+        legend(p3, 'q') 
        
     end
 

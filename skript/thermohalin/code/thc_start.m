@@ -5,6 +5,6 @@ tspan = [0 90000];
 val = [7; 7; 19; 0.035; 0.035; 0.042];
 
 %% Lösung Diffgl
-%[t,y] = ode45(@(t,y) odefun_3Box_1Flux(t,y,val), tspan, y0);
+[t,y] = ode45(@(t,y) odefun_3Box_1Flux(t,y,val), tspan, y0);
 
-myui(t,y, tspan, y0, val);
+myui (t, y, tspan, y0, val)
