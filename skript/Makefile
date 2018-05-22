@@ -32,11 +32,18 @@ CHAPTERS = 								\
 	chapters/2/hydrodynamik.tex					\
 	chapters/2/lorenz.tex						\
 	chapters/2/aufgabe1.tex						\
+	chapters/2/aufgabe2.tex						\
+	chapters/2/aufgabe3.tex						\
 	chapters/3/crit.tex						\
 	chapters/3/dgl.tex						\
+	chapters/3/aufgabe1.tex						\
 	chapters/4/salinitaet.tex					\
 	chapters/4/box.tex						\
-	chapters/4/dimensionslos.tex
+	chapters/4/dimensionslos.tex					\
+	chapters/6/periodisch.tex					\
+	chapters/6/fourierkoef.tex					\
+	chapters/6/vektorgeometrie.tex					\
+	chapters/6/aufgabe1.tex
 
 PAPERDIRS = eis extrem lorenz planeten thermohalin vegetation		\
 	verzoegert lorenz2 kalman learning
