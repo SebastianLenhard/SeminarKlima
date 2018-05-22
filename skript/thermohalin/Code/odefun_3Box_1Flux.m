@@ -2,6 +2,13 @@ function dydt = odefun_3Box_1Flux(t, y, const)
 
 %dydt = zeros(6,1);
 
+dt1 = 0;
+dt2 = 0;
+dt3 = 0;
+ds1 = 0;
+ds2 = 0;
+ds3 = 0;
+
 k = 1.5*10^(-6);
 a = 1.5*10^(-4);
 b = 8*10^(-4);

@@ -1,8 +1,8 @@
 %% Startvariablen, Timebase, konstante Temp
 
-y0 = [0; 0; 0; 0.035; 0.032; 0.04;];
+y0 = [5; 5; 5; 0.030; 0.03; 0.03;];
 tspan = [0 90000];
-val = [7; 7; 19; 0.035; 0.035; 0.042];
+val = [0; 0; 0; 0.05; 0.05; 0.05];
 
 %% Lösung Diffgl
 [t,y] = ode45(@(t,y) odefun_3Box_1Flux(t,y,val), tspan, y0);
