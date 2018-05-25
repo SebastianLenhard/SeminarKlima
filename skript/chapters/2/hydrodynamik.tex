@@ -60,7 +60,7 @@ Wände zu- oder abfliessen.
 Wir berechnen daher für jede Wand des Quaders, wie gross der Massefluss
 durch die Wand in einer Zeiteinheit $\Delta t$ ist.
 
-Durch eine Rechteck mit Abmessungen $\Delta y \times \Delta z$ senkrecht
+Durch ein Rechteck mit Abmessungen $\Delta y \times \Delta z$ senkrecht
 zur $x$-Achse fliesst in der Zeit $\Delta t$ die das Volumen
 $v_x\Delta x\,\Delta y\,\Delta z$ und damit die Masse
 \begin{equation}
@@ -169,10 +169,10 @@ wird dann
 -\nabla\cdot (\varrho\vec{v})
 \]
 geschrieben werden.
-So erhält die Kontinuitätsgleichung die kompakte Form
-\[
-\frac{\partial}{\partial t}\varrho = -\nabla\cdot (\varrho\vec{v}).
-\]
+%So erhält die Kontinuitätsgleichung die kompakte Form
+%\[
+%\frac{\partial}{\partial t}\varrho = -\nabla\cdot (\varrho\vec{v}).
+%\]
 
 \subsection{Inkompressible Strömung}
 Bei einem inkompressiblen Fluid ist die Dichte eine Konstante, alle
@@ -214,16 +214,22 @@ ist daher
 Das zweite Newtonsche Gesetz $F=ma$ besagt, dass Kraft und Beschleunigung
 proportional sind.
 Dies gilt jedoch nur, wenn die Masse unveränderlich ist.
-Da ein Volumen des Fluides wegen veränderlicher Dichte jedoch seine
-Masse verändern kann, müssen wir verwenden, dass die Kraft die zeitliche
-Änderung des Impulses ist.
+Genauer besagt Newtons zweites Gesetz, dass die Kraft die
+zeitliche Änderung des Impulses ist, also
+\[
+F=
+\frac{d}{dt}(m\vec v).
+\]
+Ein Volumen des Fluides kann wegen veränderlicher Dichte seine
+Masse verändern.
+Kräfte auf das Fluid ändern daher die Impulsdichte des Fluids.
 
 \subsubsection{Impulsdichte}
 Die Impulsdichte des Fluids wird an jeder Stelle durch die Grösse
 $\vec{p}=\varrho\vec{v}$ gegeben.
 Das zweite Newtonsche Gesetz besagt dann, dass die Änderung von $\vec p$
 durch die äusseren Kräfte $\vec{b}$ bestimmt wird, die auf das Fluid wirkt.
-Der Impuls ein einem Volumen kann aber auch ändern, dass das Fluid Impuls
+Der Impuls in einem Volumen kann aber auch ändern, dass das Fluid Impuls
 in das Volumen hinein- oder aus dem Volumen heraustransportiert.
 Jede Komponente des Impulses ist eine Erhaltungsgrösse, für die ohne
 Wirkung äusserer Kräfte die verallgemeinerte Kontinuitätsgleichung
@@ -719,7 +725,7 @@ p=\varrho T R_s
 mit der spezifischen Gaskonstante $R_s$ verbunden.
 Für den Zusammenhang von Dichte, Temperatur und Salzgehalt gibt
 es jedoch kein derart einfaches Modell.
-Eine weitere Kopplung zwischen der Temepratur und der
+Eine weitere Kopplung zwischen der Temperatur und der
 Strömung entsteht durch die Viskosität $\nu$, die sehr stark
 von der Temperatur abhängt.
 Auch dafür gibt es keine einfachen Modell.
@@ -847,7 +853,7 @@ vor:
 \begin{satz}[Green]
 \label{skript:2dim green}
 Sei $D$ in kompaktes Gebiet in der $x$-$y$-Ebene mit Rand $\partial D=C$.
-Weiter seine $f,g\colon D\to\mathbb R$ stetige Funktionen, die in $D$ 
+Weiter seien $f,g\colon D\to\mathbb R$ stetige Funktionen, die in $D$ 
 stetig differenzierbar sind.
 Dann gilt
 \begin{equation}
@@ -1184,7 +1190,7 @@ Die Divergenz von $\vec{v}\vec{v}$ ist
 \]
 Es folgt
 \[
-\nabla\cdot(\vec{v}) \vec{v})
+\nabla\cdot(\vec{v}\vec{v})
 =
 \vec{v}\cdot\nabla \vec{v}.
 \]
@@ -1346,8 +1352,8 @@ Wir müssen jetzt also
 berechnen.
 Der erste Term fällt weg, weil es auf die Reihenfolge der zweiten
 Ableitungen nicht ankommt.
-Im zweiten Term haben wir angekommen, dass $\nu$ nicht vom Ort
-abhängigt.
+Im zweiten Term haben wir angenommen, dass $\nu$ nicht vom Ort
+abhängig.
 Dies ist genau genommen nicht richtig, da $\nu$ zum Beispiel
 stark von der Temperatur abhängt, die ebenfalls nicht konstant sein
 muss.

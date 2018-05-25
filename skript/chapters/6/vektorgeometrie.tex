@@ -4,5 +4,86 @@
 % (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 \section{Vektorgeometrische Interpretation}
+\rhead{Vektorschreibweise}
+\subsection{Vektoren}
+Die Operationen zur Bestimmung der Fourier-Koeffizienten können in 
+vektorieller Schreibweise etwas übersichtlicher dargestellt werden.
+Zunächst fassen wir die Funktionswerte $y_j$ in einem Vektor zusamen.
+\begin{equation}
+y = \begin{pmatrix}y_1\\\vdots\\y_N\end{pmatrix}
+\end{equation}
+Zur Berechnung der Fourier-Koeffizienten brauchen wir auch noch die
+Werte der trigonometrischen Funktionen zu den Zeiten $t_j$, die wir
+ebenfalls als Vektoren
+\begin{align*}
+c_0&=\begin{pmatrix}0\\\vdots\\0\end{pmatrix},
+&
+c_k&=\begin{pmatrix}\cos kt_1\\\vdots\\\cos kt_N\end{pmatrix},\;(k=1,\dots,n)
+&&\text{und}
+&
+s_k&=\begin{pmatrix}\sin kt_1\\\vdots\\\sin kt_N\end{pmatrix},\;(k=1,\dots,n-1)
+\end{align*}
+schreiben.
+Die Fourier-Koeffizienten können jetzt als Skalarprodukte geschrieben werden:
+\begin{align*}
+a_0 &=\frac1N c_0\cdot y,&
+a_k &=\frac2N c_k\cdot y,\;(k=1,\dots,n),&
+b_k &=\frac2N s_k\cdot y,\;(k=1,\dots,n-1).
+\end{align*}
 
+\subsubsection{Rekonstruktion der Funktion}
+Auch die Darstellung der Funktion kann man wieder als Skalarprodukt schreiben.
+Dazu schreiben wir die Fourier-Koeffizienten und die Werte der
+trigonometrischen Funtionen also Vektoren
+\begin{align*}
+a
+&=
+\begin{pmatrix}
+a_0\mathstrut\\
+a_1\mathstrut\\
+b_1\mathstrut\\
+a_2\mathstrut\\
+b_2\mathstrut\\
+\vdots\\
+b_{n-1}\mathstrut\\
+a_n\mathstrut
+\end{pmatrix}
+&&\text{und}
+&
+e(t)
+&=
+\begin{pmatrix}
+1\\
+\cos t\\
+\sin t\\
+\cos2t\\
+\sin2t\\
+\vdots\\
+\sin(n-1)t\\
+\cos nt
+\end{pmatrix}.
+\end{align*}
+Damit wird 
+\[
+p(t) = a\cdot e(t)
+\]
+
+\subsubsection{Fourier-Transformation}
+Die Berechnung der Fourier-Koeffizienten ist eine lineare Operation
+\[
+a
+=
+\begin{pmatrix}
+1           &1           &\dots &1            \\
+\cos t_1    &\cos t_2    &\dots &\cos t_N     \\
+\sin t_1    &\sin t_2    &\dots &\sin t_N     \\
+\cos 2t_1   &\cos 2t_2   &\dots &\cos 2t_N    \\
+\sin 2t_1   &\sin 2t_2   &\dots &\sin 2t_N    \\
+\vdots      &\vdots      &\vdots&\vdots       \\
+\sin(n-1)t_1&\sin(n-1)t_2&\dots &\sin(n-1)t_N \\
+\cos nt_1   &\cos nt_2   &\dots &\cos nt_N    
+\end{pmatrix}
+\]
+
+\subsection{Fast Fourier Transform}
 
