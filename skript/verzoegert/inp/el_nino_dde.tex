@@ -1,0 +1,43 @@
+\section{El Niño DDE}
+\rhead{El Niño DDE}
+
+
+\subsection{Gleichung}
+Zur Modellierung des El Niño Effektes wurde die folgende DDE gefunden %todo Verweis Gleichung El Niño
+\begin{equation} \label{eldde}
+\dot{T}(t)=-cT(t)+aT(t-\frac{1}{2}\tau_K)-bT(t-(\frac{1}{2}\tau_R+\tau_K))-\epsilon(T(t))^3
+\end{equation}
+Mit dieser DDE wird die Änderung der Meerestemperatur $T$ vor der Küste Südamerikas beschrieben.
+Die Konstanten $c,a,b,\epsilon$ müssen so bestimmt werden, dass die DDE ein möglichst gutes Resultat ergibt.
+Erst wenn diese Konstanten grob bestimmt sind, kann eine sinnvolle numerische Simulation gestartet werden.
+Hilfreich sind vor allem ungefähre Verhältnisse zwischen den Konstanten, so dass man zumindest einen Anhaltspunkt für die Simulation hat.
+Die Verzögerungen $\tau_K$ und $\tau_R$ sind ungefähr bekannt aus physikalischen Untersuchungen der Rossby- und Kelvinwellen.
+\begin{equation}
+	\tau_K \approxeq \frac{1}{6}yr \text{ und } \tau_R \approxeq \frac{4}{6}yr
+\end{equation}
+Die Konstante $\epsilon$ ist nur zur Stabilisation, d.h. wir wählen diese so klein wie möglich.
+
+
+\subsection{Charakteristische Gleichung}
+Die charakteristische Gleichung für die DDE \ref{eldde} scheint sehr schwierig zu sein. 
+Aus diesem Grund vereinfachen wir die DDE so weit, bis wir einen Ansatz versuchen können.
+Als erstes Linearisieren wir die DDE und erhalten
+\begin{equation}
+	\dot{T}(t)=-cT(t)+aT(t-\frac{1}{2}\tau_K)-bT(t-(\frac{1}{2}\tau_R+\tau_K))
+\end{equation}
+Als nächsten Schritt setzen wir $\tau_K=0$ \footnote{$\tau_K=0$ weil $\tau_K << \tau_R$}und erhalten
+\begin{equation}
+	\dot{T}(t)=-cT(t)+aT(t)-bT(t-(\frac{1}{2}\tau_R))
+\end{equation}
+Nun stellen wir eine einfache DDE auf mit $\alpha = a-c$, $\beta = b$ und $\tau = \frac{1}{2}\tau_R$.
+\begin{equation}
+	\dot{T}(t)=\alpha T(t)-\beta T(t-\tau)
+\end{equation}
+In diese DDE setzen wir nun den bekannten Ansatz $e^{-\lambda t}$ mit $\lambda \in \mathbb{C}$ ein und erhalten
+\begin{equation}
+	\lambda e^{\lambda t} = \alpha e^{\lambda t} - \beta e^{\lambda(t-\tau)} \Longrightarrow \lambda = \alpha-\beta e^{-\lambda \tau}
+\end{equation}
+Es ist offensichtlich das beliebig viele Lösungen für Lambda möglich sind.
+Da das El Niño Phänomen oszilliert, betrachten nur die Lösungen wo $\lambda$ rein imaginär wird. 
+
+\subsection{Zusammenfassung der Analytischen Betrachtungen}
