@@ -34,10 +34,24 @@ Nun stellen wir eine einfache DDE auf mit $\alpha = a-c$, $\beta = b$ und $\tau 
 	\dot{T}(t)=\alpha T(t)-\beta T(t-\tau)
 \end{equation}
 In diese DDE setzen wir nun den bekannten Ansatz $e^{-\lambda t}$ mit $\lambda \in \mathbb{C}$ ein und erhalten
-\begin{equation}
+\begin{equation} \label{char}
 	\lambda e^{\lambda t} = \alpha e^{\lambda t} - \beta e^{\lambda(t-\tau)} \Longrightarrow \lambda = \alpha-\beta e^{-\lambda \tau}
 \end{equation}
-Es ist offensichtlich das beliebig viele Lösungen für Lambda möglich sind.
-Da das El Niño Phänomen oszilliert, betrachten nur die Lösungen wo $\lambda$ rein imaginär wird. 
-
-\subsection{Zusammenfassung der Analytischen Betrachtungen}
+Es sind beliebig viele Lösungen für $\Lambda$ und die Konstanten möglich.
+Wir suchen nun die Lösung, welche dem El Niño Phänomen entspricht.
+Da der El Niño oszilliert\footnote{El Niño oszilliert annähernd Sinusförmig, ohne Dämpfung}, betrachten nur die Lösungen wo $\lambda$ rein imaginär wird. %todo Bild Oszillation El Nino
+Wir setzen also $\lambda = i\omega$ und nach der Formel von Gauss wird die Gleichung \ref{char} umgeschrieben zu 
+\begin{equation}
+	 i\omega = \alpha-\beta(\cos(-\omega \tau)+i\sin(-\omega \tau))
+\end{equation}
+Es ergeben sich daraus zwei Gleichungen für Imaginär- und Realteil
+\begin{equation}
+  	\alpha-\beta\cos(\omega \tau) = 0 \text{ und } \beta\sin(\omega\tau)=\omega
+\end{equation}
+Wenn diese beiden Gleichungen durcheinander dividiert werden, erhalten wir die Bedingung
+\begin{equation} \label{bed}
+	\tan(\omega\tau)=\frac{\omega}{\alpha}
+\end{equation}
+  	
+\subsection{Berechnen der Konstanten}
+Aus der Bedingung \ref{bed} können %todo Beschreibung wie Konstanten a,b,c gefunden werden können
