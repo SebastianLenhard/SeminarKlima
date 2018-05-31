@@ -1,0 +1,28 @@
+% !TeX root = documentation.tex
+% !TeX spellcheck = de_DE
+
+
+\documentclass[attraktor.tex]{subfiles}
+
+\begin{document}
+	\section{Attraktor}
+	Um was handelt es sich bei einem Attraktor?
+	Vorweg ist wichtig zu sagen, dass es in dynamischen Systemen keine standartisierte Definition eines Attraktors gibt. Wir verwenden in diesem Kontext folgende Definition: 
+	\begin{center}
+		Ein Attraktor ist eine Menge an Werten, zu welchen sich ein System zu entwickeln tendiert.
+	\end{center} Egal welche Startwerte man in einem Attraktor verwendet, das System entwickelt sich immer auf dieselbe Art und Weise. Im Bezug auf den Lorenz Attraktor ist dies die berühmte Form des Butterflys. Mathematisch formuliert ist ein Attraktor 
+	%TODO format formula
+	\begin{centerFigure}
+		\begin{align}
+			\label{Attraktor}Attraktor = \left\{ x_a | \forall \varepsilon > 0
+			\forall T \exists t > T
+			|x(t) - x_a| < \varepsilon \right\} 
+		\end{align}
+	\end{centerFigure}
+	
+	F"ur jeden Zeitpunkt $T$ existiert ein späterer Zeitpunkt $t$, bei dem sich die Funktion $x$ (Lorenz-Attraktor) so entwickelt, dass der Betrag der Differenz kleiner als die Toleranz $\varepsilon$ wird.
+	
+	\subsection{Strange Attraktor}
+	Beim Strange Attraktor wird ein normaler Attraktor um eine chaotische Komponenten erweitert. Das heisst, das sich Werte innerhalb des Systems chaotisch verhalten. So k"onnten sich L"osungen in der Definition \eqref{Attraktor} innerhalb von $\varepsilon$ beliebig bewegen. Kleinste Parameter- oder Startpunkt"anderungen f"uhren zu scheinbar zusammenhangslose Resultate. Dieses Verhalten wird Chaos genannt und im Folgenden genauer erl"autert.
+	
+\end{document}
