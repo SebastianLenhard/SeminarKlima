@@ -1,2 +1,88 @@
 \section{Numerische Lösung}
 \rhead{Numerische Lösung}
+
+Die El-Niño-DDE soll mithilfe von Matlab numerisch gelöst werden.
+Matlab stellt zum Lösen von DDEs eine fertige Funktion zu Verfügung (dde23).
+Da diese Funktion auf anderen Systemen (z.B. Octave) nicht verwendbar ist, soll eine eigene Lösungsfunktion geschrieben werden.
+Beim Schreiben dieser Funktion wird darauf geachtet, dass die Syntax mit dde23 vergleichbar ist. 
+
+Es werden zwei verschiedene Ansätze implementiert: 
+\begin{itemize}
+	\item Berechnung von endlich kurzen Zeitschritten
+	\item Berechnung über die Laplacetransformation
+\end{itemize}
+
+\subsection{Analyse der Funktion dde23}
+Die offizielle Syntax von dde23 \footnote{https://www.mathworks.com/help/matlab/ref/dde23.html} lautet: 
+\begin{lstlisting}{dde23}
+	sol = dde23(ddefun,lags,history,tspan);
+\end{lstlisting}
+Wir analysieren zunächst alle Parameter.
+
+\subsubsection{Parameter: ddefun}
+Die ddefun stellt die eigentliche DDE dar, welche als Funktion übergeben werden muss.
+Unsere El-Niño-DDE \ref{eldde} hat als eigene Parameter die Zeit (t), den aktuellen Wert (y), die verzögerten Werte (Z) und alle Konstanten.
+\begin{lstlisting}{dde_full}
+	function dydt = dde_full(t,y,Z,c,a,b,e)
+	ylag1 = Z(:,1);
+	ylag2 = Z(:,2);
+	dydt = -c*y+a*ylag1-b*ylag2-e*y.^3;
+\end{lstlisting}
+Damit diese Funktion akzeptiert wird, müssen natürlich die Konstanten gesetzt sein.
+\begin{lstlisting}{my_dde}
+	c = 1; a = 2.6; b = 3; e = 0.1;
+	my_dde = @(t,y,Z) dde_full(t,y,Z,c,a,b,e);
+\end{lstlisting}
+
+\subsubsection{Parameter: lags}
+Die Verzögerungen (in Jahren) entsprechen einem simplen Vektor.
+\begin{lstlisting}{lags}
+	tauk = 0.15; taur = 1;
+	tau = [0.5*tauk 0.5*taur+tauk];
+\end{lstlisting}
+
+\subsubsection{Parameter: history}
+Die history entspricht einer Funktion, welche die Werte aus der Vergangenheit ausgibt. 
+Das kann mit Vektoren (mit realen Daten\footnote{http://www.cpc.ncep.noaa.gov/data/indices/sstoi.indices}) und einer Interpolation gelöst werden.
+\begin{lstlisting}{hist}
+	function s = dde_hist(t)
+	t_v = [-0.67,-0.58,-0.5,-0.42,-0.33,-0.25,-0.167,-0.083,0];
+	s_v = [0.71,0.5,-0.06,-0.4,-0.68,-0.23,-0.2,-0.66,-0.83];  
+	s = @(t) interp1(t_v,s_v,t);
+\end{lstlisting}
+
+\subsubsection{Gesamte Anwendung}
+Der Parameter tspan gibt die zu berechnende Zeitspanne (hier 0-3 Jahre) an.
+\begin{lstlisting}{Anwendung}
+	sol = dde23(my_dde,tau,dde_hist,[0, 3]);
+\end{lstlisting}
+Der Aufruf dde23 soll nun durch eine eigene Funktion ersetzt werden.
+ 
+
+\subsection{Berchnung von endlich kurzen Zeitschritten}
+Bei diesem Ansatz wird immer die Ableitung zu einer bestimmten Zeit berechnet.
+Diese Ableitung wird dann für einen (kurzen) Zeitschritt als Konstant genommen und damit nächste Wert berechnet.
+\begin{algorithm}
+	\caption{Numerischer DDE-Solver}
+	\label{algo1}
+	\begin{algorithmic}[1]
+		\State Initialisieren, d.h. Zeitachse erstellen, Zeitschritt dt berechnen, etc
+		\For{dt in t}
+		\State Alle verzögerten Werte finden (entweder in dde\_hist oder in alter Lösung)
+		\For{i in tau}
+		\State Korrekten verzögerten Wert für jedes $\tau$ speichern
+		\EndFor
+		\State dde-Funktion aufrufen und dydt speichern
+		\State Nächster Wert = aktueller Wert + dydt*dt
+		\EndFor
+	\end{algorithmic}
+\end{algorithm}
+
+\subsection{Laplacetransformation}
+Die Laplacetransformation beschreibt eine Transformation vom Zeit zum (komplexen) Frequenzbereich.
+Diese Transformation ist folgendermaßen definiert:
+\begin{equation}
+	todo Laplace
+\end{equation} 
+
+

@@ -13,7 +13,7 @@ Erst wenn diese Konstanten grob bestimmt sind, kann eine sinnvolle numerische Si
 Hilfreich sind vor allem ungefähre Verhältnisse zwischen den Konstanten, so dass man zumindest einen Anhaltspunkt für die Simulation hat.
 Die Verzögerungen $\tau_K$ und $\tau_R$ sind ungefähr bekannt aus physikalischen Untersuchungen der Rossby- und Kelvinwellen.
 \begin{equation}
-	\tau_K \approxeq \frac{1}{6}yr \text{ und } \tau_R \approxeq \frac{4}{6}yr
+	\tau_K \approxeq \frac{1}{6}yr \text{ und } \tau_R \approxeq 1 yr
 \end{equation}
 Die Konstante $\epsilon$ ist nur zur Stabilisation, d.h. wir wählen diese so klein wie möglich.
 
@@ -45,7 +45,7 @@ Wir setzen also $\lambda = i\omega$ und nach der Formel von Gauss wird die Gleic
 	 i\omega = \alpha-\beta(\cos(-\omega \tau)+i\sin(-\omega \tau))
 \end{equation}
 Es ergeben sich daraus zwei Gleichungen für Imaginär- und Realteil
-\begin{equation}
+\begin{equation} \label{bed1}
   	\alpha-\beta\cos(\omega \tau) = 0 \text{ und } \beta\sin(\omega\tau)=\omega
 \end{equation}
 Wenn diese beiden Gleichungen durcheinander dividiert werden, erhalten wir die Bedingung
@@ -54,4 +54,18 @@ Wenn diese beiden Gleichungen durcheinander dividiert werden, erhalten wir die B
 \end{equation}
   	
 \subsection{Berechnen der Konstanten}
-Aus der Bedingung \ref{bed} können %todo Beschreibung wie Konstanten a,b,c gefunden werden können
+Aus der Bedingung \ref{bed} können die Konstanten näherungsweise berechnet werden.
+Zuerst geben wir die Kreisfrequenz der Oszillation $\omega$ an. 
+Auf der Abbildung (todo: ref Oszillationsbild) können wir eine Periodendauer zwischen drei und sieben Jahren erkennen.
+Wir bestimmen für die folgenden Berechnungen eine durchschnittliche Periodendauer von 4 Jahren. 
+Alle Zeitangaben werden in Jahren angegeben.
+
+Daraus ergibt sich $\omega = \frac{2\pi}{T_{Periode}} = \frac{\pi}{2}$ und aus der Bedingung \ref{bed} erhalten wir nun 
+\begin{equation}
+	a-c=\alpha=\frac{\omega}{\tan(\frac{1}{2}\tau_R \omega)}=\frac{\frac{\pi}{2}}{\tan(\frac{\pi}{4})}=\frac{\pi}{2}\approx 1.6
+\end{equation}
+Weiter berechnen wir $\beta$ aus \ref{bed1} und erhalten
+\begin{equation}
+	b=\beta=\frac{\omega}{\sin(\frac{1}{2}\tau_R \omega)}=\frac{\frac{\pi}{2}}{\sin(\frac{\pi}{4})}\approx 2.3
+\end{equation}
+
