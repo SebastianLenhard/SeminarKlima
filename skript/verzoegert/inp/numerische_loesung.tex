@@ -95,14 +95,14 @@ Diese Transformation ist folgendermaßen definiert:
 Für die Laplacetransformation gibt es einige bekannte Eigenschaften. 
 Eine davon ist die Verschiebung im Zeitbereich, eine Andere die Ableitung.
 \begin{align}
-	f(t-t_0)\: \laplace \: F(s)e^{-t_0 s}\\
-	\frac{\partial f(t)}{\partial t}\: \laplace \: sF(s)-f(0^+)
+	f(t-t_0)\: \multimapdotbothA \: F(s)e^{-t_0 s}\\
+	\frac{\partial f(t)}{\partial t}\: \multimapdotbothA \: sF(s)-f(0^+)
 \end{align}
 Mit dieser Eigenschaft können wir nun unsere DDE \ref{eldde} Transformieren.
 Wir verwenden für die Laplacetransformierte der Temperatur $T$ das Formelzeichen $F$.
 Da es keine Regeln für den kubischen Term gibt, wir $\epsilon = 0$ gesetzt.
 \begin{align}
-	T(t)\: \laplace \: F(s)\\
+	T(t)\: \multimapdotbothA \: F(s)\\
 	sF(s)-T(0^+)=-cF(s)+aF(s)e^{-\frac{1}{2}\tau_K s}-bF(s)e^{-(\frac{1}{2}\tau_R + \tau_K) s}
 \end{align}
 Diese Gleichung können wir nach $F(s)$ auflösen und erhalten:
