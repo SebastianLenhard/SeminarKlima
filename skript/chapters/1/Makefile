@@ -33,5 +33,5 @@ betaplane.jpg:	betaplane.png
 	convert betaplane.png -density 300 -units PixelsPerInch betaplane.jpg
 
 betaplane.png:	betaplane.pov
-	sh ../../../povray +A0.1 -W1920 -H1080 -Obetaplane.png betaplane.pov
+	povray +A0.1 -W1920 -H1080 -Obetaplane.png betaplane.pov
 
