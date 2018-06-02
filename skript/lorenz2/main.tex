@@ -3,13 +3,110 @@
 %
 % (c) 2018 Hansruedi Patzen, Hochschule Rapperswil
 %
-\chapter{Höherdimensionales Lorenzsystem\label{chapter:lorenz2}}
-\lhead{Höherdimensionales Lorenzsystem}
+\chapter{H"oherdimensionales Lorenzsystem\label{chapter:lorenz2}}
+\lhead{H"oherdimensionales Lorenzsystem}
 \begin{refsection}
 \chapterauthor{Hansruedi Patzen}
 
-\section{Abschnitt}
-\rhead{Abschnitt}
+% worum geht es
+
+Auf das dreidimensionale Lorenzsystem wurde bereits in 
+\cref{section:lorenz-modell} sowie in \cref{chapter:lorenz} detailliert 
+eingegangen. In diesem Kapitel wollen wir nun aber Lorenzsysteme h"oherer 
+Ordnung untersuchen. Das kommt mit einiger Arbeit einher. So brauchen wir 
+entweder komplett neue Basisfunktionen, oder aber wir erweitern unsere 
+bestehenden, wie in \cref{section:lorenz2:basic_function} aufgezeigt. Mit den 
+dann gefunden Basisfunktionen k"onnen wir dann unsere Gleichungen aufbauen und 
+versuchen daf"ur eine L"osung zu finden, letzteres geschieht in 
+\cref{section:lorenz2:new_equations}.
+
+\section{Einf"uhrung}
+
+Bevor wir uns aber auf die Suche nach Basisfunktionen machen, hier nun ein paar 
+Angaben zu den in diesem Kapitel verwendeten Notation und einigen grundlegenden 
+Funktionen und Umformungen, welche sp"ater verwendet werden, ein kleiner 
+\"Teaser\" zu dem was uns noch erwartet sozusagen.
+
+\subsection{Notation}
+Die verwendete Notation entspricht grunds"atzlich derjenigen, welche man 
+bereits aus anderen mathematischen B"uchern kennt. Einzig die Verwendung der 
+sogenannten Multi-Index-Notationen k"onnte f"ur einige Leser zu Unklarheiten 
+f"uhren, daher hier eine kurze Einf"uhrung.
+
+Unter der Multi-Index-Notation versteht versteht man einen Index, meist wird 
+zur klaren Unterscheidung ein griechischer Buchstabe verwendet, der einem 
+$n$-Tupel
+\begin{equation*}
+	\alpha = (\alpha_1, \alpha_2, \dotsc, \alpha_n)
+\end{equation*}
+ mit ein paar Einschr"ankungen
+\begin{equation*}
+	|\alpha| = |\alpha_1 + \alpha_2 + \dots + \alpha_n|
+\end{equation*}
+ entspricht. F"ur unseren Fall wird sich zeigen, dass $n = 2$ ausreichend ist.
+ 
+N"utzlich ist diese Notation insbesondere, wenn mit Summen gearbeitet wird. So 
+kann mittels einer Forderung wie beispielsweise $|\alpha| = k$, die Summe
+\begin{equation}
+	\sum_{k = 0}^{\infty}\sum_{l = 0}^{k}a_{l, k - l}
+	\label{equation:lorenz2:doublesum}
+\end{equation}
+vereinfacht werden zu
+\begin{equation}
+	\sum_{k = 0}^{\infty}a_{\alpha} \qquad |\alpha| = k.
+	\label{equation:lorenz2:mmsum}
+\end{equation}
+M"oglich ist dies, da $|\alpha| = k$ f"ur alle Kombinationen der verschiedenen 
+$|\alpha_m|$ gilt. Zum Beispiel ist $|\alpha| = k = 2$ f"ur die $2$-Tuple 
+Multi-Indexe
+\begin{align*}
+	\alpha = (0, 2), \\
+	\alpha = (1, 1), \\
+	\alpha = (2, 0) \\
+\end{align*}
+erf"ullt, was genau dem in \cref{equation:lorenz2:doublesum} f"ur $k = 2$ 
+geforderten Index-Tupel $(l, k - l)$ entspricht.
+
+\subsection{Hilfsfunktionen}
+Da wir f"ur einige Umformungen Funktionen verwenden, die mit wahrscheinlich 
+nicht jedem Leser gel"aufig sind, soll dieser Abschnitt eine kurze "Ubersicht 
+bieten.
+
+Die Signum-Funktion (kurz \sgn).
+\begin{equation}
+\sgn(x) =
+\begin{cases*}
+1 & f"ur x > 0 \\
+0 & f"ur x = 0 \\
+-1 & f"ur x < 0
+\end{cases*}
+\end{equation}
+
+Sinus und Kosinus eines absoluten Wertes.
+\begin{align*}
+\sin(|x|) &= \sgn(x)\sin(x)
+\\
+\cos(|x|) &= \cos(x)
+\end{align*}
+
+Umwandlung Sinus-Kosinus, Kosinus-Sinus, Sinus-Sinus und Kosinus-Kosinus 
+Produkten in Summen.
+\begin{align*}
+\sin(x)\cos(y) &= \frac{1}{2} \left(\sin(x - y) + \sin(x + y)\right)
+\\
+\cos(x)\sin(y) &= \frac{1}{2} \left(\sin(x + y) - \sin(x - y)\right)
+\\
+\sin(x)\sin(y) &= \frac{1}{2} \left(\cos(x - y) - \cos(x + y)\right)
+\\
+\cos(x)\cos(y) &= \frac{1}{2} \left(\cos(x - y) + \cos(x + y)\right)
+\end{align*}
+
+\section{Erweiterung der Basisfunktionen\label{section:lorenz2:basic_function}}
+
+\section{L"osen der neuen Gleichungen\label{section:lorenz2:new_equations}}
+
+
+
 
 \section{Schlussfolgerung}
 \rhead{Schlussfolgerung}
