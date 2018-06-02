@@ -1,0 +1,29 @@
+\section{Auswertung}
+\rhead{Auswertung}
+\subsection{Simulation El-Niño mit realen Werten}
+Der Matlab-Code zur Simulation des El-Niño DDE ist nun vorhanden.
+Damit die Simulation sinnvoll ist, wird eine Zeitperiode in der Vergangenheit berechnet.
+Ausgewählt zur Simulation wird die Zeitperiode ab September 1995. 
+Also werden die Daten von Januar bis September 1995 als History genommen.
+
+Simuliert werden 1 Jahr, 3 Jahre und 10 Jahre.
+%todo Grafiken einfügen
+Es ist offensichtlich, dass die Genauigkeit einer Vorhersage ziemlich schnell abnimmt.
+%todo ev. Analyse der Genauigkeit
+%todo ev. Andere Zeitspanne zum Vergleich, wo Vorhersage failt
+
+\subsection{Chaotisches Verhalten}
+Wenn der Dämpfungsterm $\epsilon$ weggelassen wird, tendieren die Lösungen zu chaotischem Verhalten.
+Chaotisches Verhalten bedeutet, dass kleinste Änderungen der Konstanten extrem unterschiedliche Lösungen verursachen können. 
+Wir simulieren über zehn Jahre und ändern dabei die Konstante $a$ von 0 bis 5.
+%todo Grafik
+Ein ähnlich chaotisches Verhalten sehen wir auch bei einer Änderung der anderen Konstanten.
+Zum Vergleich die identische Simulation mit einem $\epsilon = 0.1$. 
+%todo Grafik
+Hier sehen wird die korrekte Auswirkung einer Änderung von $a$.
+Die Konstante $a$ bewirkt eine Änderung der Amplitude und der Frequenz.
+
+
+\subsection{Fazit}
+%todo Fazit
+%todo Literaturverzeichnis
