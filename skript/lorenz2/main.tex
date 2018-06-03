@@ -8,8 +8,6 @@
 \begin{refsection}
 \chapterauthor{Hansruedi Patzen}
 
-% worum geht es
-
 Auf das dreidimensionale Lorenzsystem wurde bereits in 
 \cref{section:lorenz-modell} sowie in \cref{chapter:lorenz} detailliert 
 eingegangen. In diesem Kapitel wollen wir nun aber Lorenzsysteme h"oherer 
@@ -21,6 +19,7 @@ versuchen daf"ur eine L"osung zu finden, letzteres geschieht in
 \cref{section:lorenz2:new_equations}.
 
 \section{Einf"uhrung}
+\rhead{Einf"uhrung}
 
 Bevor wir uns aber auf die Suche nach Basisfunktionen machen, hier nun ein paar 
 Angaben zu den in diesem Kapitel verwendeten Notation und einigen grundlegenden 
@@ -33,17 +32,18 @@ bereits aus anderen mathematischen B"uchern kennt. Einzig die Verwendung der
 sogenannten Multi-Index-Notationen k"onnte f"ur einige Leser zu Unklarheiten 
 f"uhren, daher hier eine kurze Einf"uhrung.
 
-Unter der Multi-Index-Notation versteht versteht man einen Index, meist wird 
-zur klaren Unterscheidung ein griechischer Buchstabe verwendet, der einem 
+Unter der Multi-Index-Notation versteht versteht man einen Index, der einem 
 $n$-Tupel
 \begin{equation*}
-	\alpha = (\alpha_1, \alpha_2, \dotsc, \alpha_n)
+	\alpha = (\alpha_1, \alpha_2, \dotsc, \alpha_n) \qquad \alpha_k \in 
+	\mathbb{N}_{0}
 \end{equation*}
- mit ein paar Einschr"ankungen
+entspricht. Zur klaren Unterscheidung zu normalen Indexen, wird meist ein 
+griechischer Buchstabe verwendet. Multi-Indexe haben zudem die Eigenschaft, 
+dass ihr absoluter Wert wie folgt definiert ist
 \begin{equation*}
-	|\alpha| = |\alpha_1 + \alpha_2 + \dots + \alpha_n|
+	|\alpha| = \alpha_1 + \alpha_2 + \dots + \alpha_n.
 \end{equation*}
- entspricht. F"ur unseren Fall wird sich zeigen, dass $n = 2$ ausreichend ist.
  
 N"utzlich ist diese Notation insbesondere, wenn mit Summen gearbeitet wird. So 
 kann mittels einer Forderung wie beispielsweise $|\alpha| = k$, die Summe
@@ -57,22 +57,23 @@ vereinfacht werden zu
 	\label{equation:lorenz2:mmsum}
 \end{equation}
 M"oglich ist dies, da $|\alpha| = k$ f"ur alle Kombinationen der verschiedenen 
-$|\alpha_m|$ gilt. Zum Beispiel ist $|\alpha| = k = 2$ f"ur die $2$-Tuple 
+$|\alpha_m|$ gilt. Zum Beispiel ist $|\alpha| = k = 2$ f"ur $2$-Tupel 
 Multi-Indexe
 \begin{align*}
-	\alpha = (0, 2), \\
-	\alpha = (1, 1), \\
-	\alpha = (2, 0) \\
+	\alpha &= (0, 2), \\
+	\alpha &= (1, 1), \\
+	\alpha &= (2, 0)
 \end{align*}
 erf"ullt, was genau dem in \cref{equation:lorenz2:doublesum} f"ur $k = 2$ 
 geforderten Index-Tupel $(l, k - l)$ entspricht.
 
-\subsection{Hilfsfunktionen}
-Da wir f"ur einige Umformungen Funktionen verwenden, die mit wahrscheinlich 
-nicht jedem Leser gel"aufig sind, soll dieser Abschnitt eine kurze "Ubersicht 
-bieten.
+\subsection{Formel Sammelserum}
+Einige Umformungen die wir in den n"achsten Abschnitten vornehmen werden, 
+verwenden Teils nicht ganz gel"aufige Funkionen. Damit nicht immer gleich 
+Wikipedia bem"uht werden muss, haben wir diese hier in einem kleinen 
+Formel Sammelserum zusammengestellt.
 
-Die Signum-Funktion (kurz \sgn).
+Die Signum-Funktion (kurz $\sgn(x)$):
 \begin{equation}
 \sgn(x) =
 \begin{cases*}
@@ -80,21 +81,35 @@ Die Signum-Funktion (kurz \sgn).
 0 & f"ur x = 0 \\
 -1 & f"ur x < 0
 \end{cases*}
+\label{equation:lorenz2:signum}
 \end{equation}
 
-Sinus und Kosinus eines absoluten Wertes.
-\begin{align*}
-\sin(|x|) &= \sgn(x)\sin(x)
+Betragsfunktion (kurz $|x|$)
+\begin{equation}
+|x| =
+\begin{cases*}
+x & f"ur x $\geq$ 0 \\
+-x & f"ur x < 0
+\end{cases*}
+\label{equation:lorenz2:absfunction}
+\end{equation}
+
+Sinus und Kosinus eines absoluten Wertes (\cref{equation:lorenz2:absfunction}):
+\begin{equation}
+\begin{split}
+\sin(|x|) &= \sgn(x)\sin(x) \qquad \Leftrightarrow \qquad \sin(x) = 
+\sgn(x)\sin(|x|)
 \\
 \cos(|x|) &= \cos(x)
-\end{align*}
+\end{split}
+\label{equation:lorenz2:sincosabs}
+\end{equation}
 
-Umwandlung Sinus-Kosinus, Kosinus-Sinus, Sinus-Sinus und Kosinus-Kosinus 
-Produkten in Summen.
+Produkte von Sinus und Kosinus Kombinationen:
 \begin{align*}
-\sin(x)\cos(y) &= \frac{1}{2} \left(\sin(x - y) + \sin(x + y)\right)
-\\
 \cos(x)\sin(y) &= \frac{1}{2} \left(\sin(x + y) - \sin(x - y)\right)
+\\
+\sin(x)\cos(y) &= \frac{1}{2} \left(\sin(x - y) + \sin(x + y)\right)
 \\
 \sin(x)\sin(y) &= \frac{1}{2} \left(\cos(x - y) - \cos(x + y)\right)
 \\
@@ -102,9 +117,11 @@ Produkten in Summen.
 \end{align*}
 
 \section{Erweiterung der Basisfunktionen\label{section:lorenz2:basic_function}}
+\rhead{Erweiterung der Basisfunktionen}
+
 
 \section{L"osen der neuen Gleichungen\label{section:lorenz2:new_equations}}
-
+\rhead{L"osen der neuen Gleichungen}
 
 
 
