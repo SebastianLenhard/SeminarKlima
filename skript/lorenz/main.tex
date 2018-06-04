@@ -4,20 +4,19 @@
 % (c) 2018 Matthias Baumann und Oliver Dias, Hochschule Rapperswil
 %
 
-% Settings
+\definecolor{lightlightgray}{gray}{0.9}
 
-\newenvironment{centerFigure}[1][]{
-	\begin{figure}[h]
-	\begin{center}
-	\def\tempa{#1}
-}{
-	% Tests whether tempa set and add caption, if unset use content in {} brackets \detokenize{}
-	\if\tempa\empty\else\caption{\tempa}\let\tempa\undefined\fi  % remove tempa again
-	\end{center}
-	\end{figure}
-}
-
-\lstset{language=Java} 
+\lstset{
+	language=Java,
+	frame=ltrb,
+	rulecolor=\color{black},
+	basicstyle=\ttfamily,
+	keywordstyle=\color{blue},
+	commentstyle=\color{gray},
+	numbers=left,
+	numberstyle=\scriptsize,
+	backgroundcolor=\color{lightlightgray},
+	showspaces=false} 
 
 % Document
 
