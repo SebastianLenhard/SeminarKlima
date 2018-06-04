@@ -33,7 +33,7 @@ Der \textit{Y-Achsenabschnitt} wird mit dem Ergebnis der vorherigen Rechnungssch
 
 \begin{align}
 \label{LGResult}
-y(t + 1) &= \frac{\delta LG}{\delta t} \cdot  \Delta + y(t) & LG = Lorenzgleichung
+y(t + 1) &= \frac{d LG}{d t} \cdot  \Delta + y(t) & LG = Lorenzgleichung
 \end{align}
 
 Dieses Verfahren kann auf alle Koordinaten des Lorenz-Systems angewendet werden.
@@ -41,9 +41,9 @@ Dieses Verfahren kann auf alle Koordinaten des Lorenz-Systems angewendet werden.
 Eingefügt in die Gleichung \eqref{LGResult} ergibt sich folgendes System:
 
 \begin{align}
-x(t + 1) &= \frac{\delta \sigma(x - y)}{\delta t} \cdot \Delta + x(t)\\
-y(t + 1) &= \frac{\delta x(\rho - z) - y}{\delta t} \cdot \Delta + y(t)\\
-z(t + 1) &= \frac{\delta xy - \beta z}{\delta t} \cdot \Delta + z(t)
+x(t+\Delta t) = x(t) + \frac{dx}{dt} \cdot \Delta t\\
+y(t + \Delta t) = y(t) + \frac{dy}{dt} \cdot \Delta t\\
+z(t + \Delta t) = z(t) + \frac{dz}{dt} \cdot \Delta t
 \end{align}
 
 Das angewendete Verfahren nennt sich \textit{Eulerisches-} oder \textit{Einschritt-Verfahren}. Durch das, dass wir einen numerischen Ansatz mit dem Euler Verfahren gew"ahlt haben, resultiert eine Ann"aherung des Lorenz-Attraktors. Da solche Abweichungen von der tats"achlichen L"osung existieren, ist zu erwarten, dass diese Abweichungen gross genug sind, um zum chaotischen Verhalten beizutragen. Es g"abe auch genauere Verfahren f"ur das numerische L"osen der Gleichungen wie das \textit{Quadratische Verfahren} oder das \textit{Runge-Kutta Verfahren}. Da aber auch bei diesen Verfahren keine absolute Genauigkeit erreicht wird, blieben wir bei der Eulerischen Ann"aherung. 
@@ -59,16 +59,16 @@ Das oben erw"ahnte Gleichungssystem haben wir im Javascript-Code verwendet, um d
 Die $ x, y $ Variablen in der 1. Gleichung ist noch mit dem Wert des vorherigen Durchgangs besetzt und deshalb eine Annäherung um den echten Wert. Das gleiche gilt für alle Werte, die vor der Ausführung noch nicht gesetzt sind. Beim ersten Durchgang wird 0.1 als Startwert angenommen. Die folgenden Variablen wurden für den Code verwendet und definiert:
 
 \begin{align}
-	\begin{tabular}{| c | c |}
+{\renewcommand{\arraystretch}{1.2}
+	\begin{tabular}{| c | c | c |}
 		\hline
-		delta $ (\Delta) $ & 0.1 \\\hline
-		sigma $ (\sigma) $ & \multirow{3}{*}{Argumente}\\
-		rho $(\rho) $ & \\
-		beta $ (\beta) $ & \\\hline
-		x & \multirow{3}{*}{berechnet}\\
-		y & \\
-		z & \\\hline
+		\textbf{Mathematisches Symbol} & \textbf{Variable im Code} & \textbf{Bedeutung (Anfangswert)}\\\hline
+		$ \Delta $ & \texttt{delta} & Zeitschritt (0.1) \\\hline
+		$ \sigma $ & \texttt{sigma} & Rayleigh Zahl (10)\\\hline
+		$\varrho $ & \texttt{rho} & Prandtl Zahl (28)\\\hline
+		$\beta $ & \texttt{beta}  & W"armeausdehnung ($\frac{8}{3}$)\\\hline
 	\end{tabular}
+}
 \end{align}
 
 \subsubsection{Visualisierung}
