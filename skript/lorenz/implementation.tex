@@ -28,7 +28,7 @@ Der dritte Parameter des Lorenz-Modells ist das $\beta$. Es entspricht der W"arm
 
 \subsection{Implementation}
 
-\paragraph{Lorenz-System}
+\subsubsection{Lorenz-System}
 Differenzialgleichungslöser in Javascript implementieren ist sehr ineffizient und auch gar nicht nötig. Wir haben uns für einen anderen Weg entschieden. Das Ergebnis einer Differenzialgleichung ist die Steigung an einem Punkt t. Diese Steigung können wir in eine lineare Gleichung einsetzen und daraus den absoluten Punkt berechnen.
 
 Der \textit{Y-Achsenabschnitt} wird mit dem Ergebnis der vorherigen Rechnungsschritt belegt, da der Differenzalterm den Abstand vom Wert \textit{vorher} berechnet.  
@@ -49,7 +49,7 @@ y(t + 1) &= \frac{\delta x(\rho - z) - y}{\delta t} * \Delta + y(t)\\
 z(t + 1) &= \frac{\delta xy - \beta z}{\delta t} * \Delta + z(t)
 \end{align}
 \end{centerFigure}
-Das angewendete Verfahren nennt sich \textit{Eulerisches-} oder \textit{Einschritt-Verfahren}. Durch das, dass wir einen numerischen Ansatz mit dem Euler Verfahren gew"ahlt haben, resultiert eine Ann"aherung des Lorenz-Attraktors. Da solche Abweichungen von der tats"achlichen L"osung existieren, ist zu erwarten, dass diese Abweichungen gross genug sind, um zum chaotischen Verhalten beizutragen. Es g"abe auch genauere Verfahren f"ur das numerische L"osen der Gleichungen wie das \textit{Quadratische Verfahren} oder das \textit{Runge-Kutta Verfahren}. Da aber auch bei diesen Verfahren keine absolute Genauigkeit erreicht wird, blieben wir bei der Eulerischen Ann"aherung. \\
+Das angewendete Verfahren nennt sich \textit{Eulerisches-} oder \textit{Einschritt-Verfahren}. Durch das, dass wir einen numerischen Ansatz mit dem Euler Verfahren gew"ahlt haben, resultiert eine Ann"aherung des Lorenz-Attraktors. Da solche Abweichungen von der tats"achlichen L"osung existieren, ist zu erwarten, dass diese Abweichungen gross genug sind, um zum chaotischen Verhalten beizutragen. Es g"abe auch genauere Verfahren f"ur das numerische L"osen der Gleichungen wie das \textit{Quadratische Verfahren} oder das \textit{Runge-Kutta Verfahren}. Da aber auch bei diesen Verfahren keine absolute Genauigkeit erreicht wird, blieben wir bei der Eulerischen Ann"aherung. 
 
 Das oben erw"ahnte Gleichungssystem haben wir im Javascript-Code verwendet, um die Resultate des Lorenzsystems auszurechnen. In Javascript haben wir die Punkte in einem Array(\texttt{Tuple3}) gespeichert.
 
@@ -76,7 +76,7 @@ Die $ x, y $ Variablen in der 1. Gleichung ist noch mit dem Wert des vorherigen 
 	\end{tabular}
 \end{centerFigure}
 
-\paragraph{Visualisierung}
+\subsubsection{Visualisierung}
 Die Werte des Lorenz-Systems, welche der Algorithmus im letzten Paragraph berechnet hat, stellen Ortsvektoren in einem drei dimensionalen Raum dar. An jedem Punkt des Lorenz-Systems stellt der Visualisierungsalgorithmus eine \textit{Sphere} dar. Es werden in unserer Darstellung 2500 Werte berechnet und angezeigt.
 
 \begin{centerFigure}[Visualisierung des Lorenz Attraktors]
