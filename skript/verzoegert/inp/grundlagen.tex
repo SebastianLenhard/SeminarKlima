@@ -10,20 +10,22 @@ Verzögerte Differentialgleichungen werden als DDE (engl. "\textbf{D}elayed \tex
 
 Die allgemeine DDE 1. Ordnung sieht folgendermaßen aus:
 \begin{equation}
-	\dot{x}(t) = f(x(t),x(t-\tau_1),...,x(t-\tau_n))
+	\dot{x}(t) = f(x(t),x(t-\tau_1),\dots,x(t-\tau_n))
 \end{equation}
-Dabei ist $f$ eine beliebige Funktion. Die Verzögerungen $\tau_1,...,\tau_n$ sind gegeben und nach der Grösse geordnet, also $0<\tau_1<...<\tau_n$.
+Dabei ist $f$ eine beliebige Funktion. Die Verzögerungen $\tau_1,\dots,\tau_n$ sind gegeben und nach der Grösse geordnet, also $0<\tau_1<\dots<\tau_n$.
 
 Im Unterschied zu einer gewöhnliche Differentialgleichung ist das Anfangswertproblem nicht mehr eindimensional, d.h. es genügt nicht mehr den Anfangszustand zu kennen.
 Alle Werte von $-\tau_n$ bis $0$ müssen gegeben sein. 
-Es braucht somit eine unendliche Anzahl Anfangswertvektoren, welche bekannt sein müssen.
+Es braucht nicht nur einen einzelnen Anfangswertvektor, sondern eine ganze Funktion von Anfangswertvektoren im Intervall $[-\tau, 0]$.
 
-In den folgenden Betrachtungen analysieren wir die einfachste DDE:
+\subsection{Analytische Lösungsverfahren an einem Beispiel}
+Um die analytischen Lösungsverfahren zu verstehen, werden diese zunächst an einem einfachen Beispiel erläutert.
+In den folgenden Betrachtungen analysieren wir die DDE:
 \begin{equation}\label{bsp}
 \dot{y}(t)=ky(t-\tau)
 \end{equation}
 
-\subsection{Schrittweises Lösen}
+\subsubsection{Schrittweises Lösen}
 Beim schrittweisen wird die DDE immer in Schritten von einem $\tau$ gelöst.
 Wir nehmen an, dass $y$ im Bereich von $-\tau$ bis $0$ immer Konstant bleibt
 \begin{equation}
@@ -33,8 +35,8 @@ Daraus folgt, dass im Bereich von $0\le t<\tau$ die Ableitung
 \begin{equation}\label{abl}
 	\dot{y}(t)=k
 \end{equation}
-wird. Durch integrieren von \ref{abl} erhalten wir
-\begin{equation}
+wird. Durch integrieren von \eqref{abl} erhalten wir
+\begin{equation}\label{schritt1}
 	y(t)=1+kt
 \end{equation}
 für den Bereich $0\le t<\tau$. 
@@ -44,10 +46,20 @@ Wir erhalten für den zweiten Schritt  $\tau\le t<2\tau$
 	\dot{y}(t)=k(1+k(t-\tau))=k+k^2(t-\tau)
 \end{equation}
 Es ist offensichtlich das diese Methode nur für kurze Zeiten, einfache Anfangswerte und einfache Formeln funktioniert. 
-Bereits \ref{abl2} ist nicht mehr ganz einfach zu Integrieren. 
-Für längere Zeiten werden die Integrale immer komplexer. %todo ev simulation matlab
+Bereits \eqref{abl2} ist nicht mehr ganz einfach zu integrieren. 
+Für längere Zeiten werden die Integrale immer komplexer.
 
-\subsection{Charakteristisches Polynom}
+In Abbildung \ref{fig_bsp} sieht man das Resultat des Beispiels. 
+Die lineare Funktion \eqref{schritt1} ist als erster Schritt gut sichtbar.
+Ab Schritt 2 sieht man die Nichtlinearität. 
+\begin{figure}
+	\centering
+	\input{verzoegert/inp/figures/bsp_steps.tex}
+	\caption{Beispiel mit $k=-1$ und $\tau=1$}
+	\label{fig_bsp}
+\end{figure}
+
+\subsubsection{Charakteristisches Polynom}
 Bei gewöhnlichen Differentialgleichungen können Lösungen mit Hilfe des charakteristischen Polynoms gefunden werden. 
 Bei DDEs wird das Polynom zu einer Gleichung. 
 Wir betrachten wiederum die Gleichung \ref{bsp} und verwenden als Lösungsansatz
@@ -55,13 +67,47 @@ Wir betrachten wiederum die Gleichung \ref{bsp} und verwenden als Lösungsansatz
 	y(t) = ce^{\lambda t}
 \end{equation}
 Dieser klassische Ansatz eignet sich (fast) immer, da die Exponentialfunktion beim differenzieren erhalten bleibt. 
-\ref{ansatz} eingesetzt in \ref{bsp} ergibt
+\eqref{ansatz} eingesetzt in \eqref{bsp} ergibt
 \begin{equation}
 	\lambda ce^{\lambda t} = kce^{\lambda (t-\tau )}
 \end{equation} 
-Diese Gleichung kann gekürzt werden zu
-\begin{equation}
-\lambda  - ke^{-\lambda \tau}= 0
+Diese Gleichung kann durch $ce^{\lambda t}$ gekürzt werden zu
+\begin{equation}\label{chareq}
+	\lambda  - ke^{-\lambda \tau}= 0
 \end{equation} 
-Damit können nun verschiedene Werte für die Konstante $k$ berechnet werden, je nachdem wie Lösung aussehen soll. 
-Die charakteristische Gleichung ist somit  eine Hilfe um Konstanten zu bestimmen, falls eine bestimmte Lösung erreicht werden soll.
+Damit können nun verschiedene Werte für die Konstante $k$ berechnet werden, je nachdem wie die Lösung $\lambda$ aussehen soll.
+Wir nehmen an, dass $\lambda$ komplex ist und setzen $\lambda = \lambda_r + i\lambda_i$ in die Gleichung \eqref{chareq} ein.
+\begin{equation}\label{chareq_kompl}
+	\lambda_r + i\lambda_i  - ke^{-(\lambda_r + i\lambda_i) \tau}= 0
+\end{equation} 
+Diese Gleichung stellen wir um als Gleichungssystem mit Imaginär- und Realteil\footnote{Mithilfe der Eulerschen Formel $e^{iy}=\cos(y)+i\sin(y)$}
+\begin{align}
+	\lambda_r - ke^{-\lambda_r\tau}\cos(\lambda_i\tau)=0 \label{realchar} \\
+	\lambda_i + ke^{-\lambda_r\tau}\sin(\lambda_i\tau)=0 \label{imagchar}
+\end{align}
+Nimmt man den zweiten Term auf die rechte Seite und dividiert die beiden Gleichungen, erhält man
+\begin{equation} \label{chareq_kompl_frac}
+	-\frac{\lambda_r}{\lambda_i} = \cot(\lambda_i\tau)
+\end{equation}
+Damit lassen sich nun beliebig viele Kombinationen von $\lambda$ und $k$ generieren.
+Als Beispiel wollen wir eine periodische Schwingung mit gleichbleibender Amplitude erreichen.
+Daraus ergibt sich ein $\lambda_r = 0$. 
+Die Verzögerung ist gegeben als $\tau = 1$.
+Eingesetzt in \eqref{chareq_kompl_frac} erhalten wir:
+\begin{equation}
+	\cot(\lambda_i) = 0 \longrightarrow \lambda_i = (2n-1)\frac{\pi}{2}
+\end{equation}
+Mit $n\in \mathbb{N}$ können wir z.B. die kleinste Frequenz $n=1$ einsetzen und erhalten $\lambda_i = \frac{\pi}{2}$.
+Damit können wir aus \eqref{imagchar} die Konstante $k$ bestimmen
+\begin{equation}
+	\frac{\pi}{2} + k = 0 \longrightarrow k = -\frac{\pi}{2}
+\end{equation}
+Zur überprüfung wurde mit diesen Werten die Gleichung numerisch berechnet (vgl. Abbildung \ref{fig:bsp_chareq}).
+Man sieht dort gut die gleichbleibende Amplitude und die Periodendauer von $\frac{2\pi}{\frac{\pi}{2}}=4$.
+
+\begin{figure}
+	\centering
+	\input{verzoegert/inp/figures/bsp_chareq.tex}
+	\caption{Beispiel mit $k=-\frac{pi}{2}$ und $\tau=1$}
+	\label{fig:bsp_chareq}
+\end{figure}
