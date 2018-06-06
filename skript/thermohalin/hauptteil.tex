@@ -1,19 +1,18 @@
 \section{Simulation}
 \rhead{Simulation}
 
-Im Rahmen dieser Arbeit wird nun versucht, die Zwei-Box Simulation aus \ref{Kapitel 4} in eine 3-Box Simulation umzuwandeln und diese auf den Golfstrom anzuwenden.
-Als jeweils eine Box für jeden Pol und eine Box für den Äquator.
-Mit den richtigen Startbedingungen sollte ich so hoffentlich auf die gleichen Resultate wie die Forscher kommen.
+Nun zur Simulation. Der Golfstrom lässt sich leicht in 3 Zonen aufteilen, jeweils eine für Nord- und Südpol und eine für den Äquator.
+Als jeweils eine Box für jede Zone.
+Der Erste Schritt ist es nun, ein Modell zu erstellen. 
+Im laufe der Arbeit wurden zwei Modelle gebaut, welche hier präsentiert werden.
 
-Der Erste Schritt ist es nun, ein Modell zu erstellen. Ich habe im lauf der Bearbeitung zwei Modelle erstellt, welche ich hier vorstellen werde. 
+\subsection{"Zwei Fluss" Modell}
 
-\subsection{Zwei Fluss Modell}
-
-In diesem Modell sind je zwei Boxen durch einen separaten Fluss verbunden, welcher wie bereits bekannt, von den jeweiligen Dichteunterschieden abhängig ist.
+In diesem Modell sind je zwei Boxen durch einen separaten Fluss verbunden. Der Fluss ist dann jeweils wie bersits bekannt von den jeweiligen Dichteunterschieden abhängig. Hier ein Darstellung des Modelles:
 
 %Platzhalter Tikz 3Box2Fluss  
 
-So kann Man für jede Box separat eine Gleichung für die Temperatur- und Salinitätsänderung erstellen:
+So lassen sich, wie bereits beim 2-Box Modell, jeweils für jede Box zwei Gleichungen aufstellen:
 
 \begin{equation}
 \begin{aligned}
@@ -44,6 +43,9 @@ Und den dazugehörenden Gleichungen für die zwei Flüsse:
 \end{aligned}
 \end{equation}
 
+\subsubsection{Matlab-Code}
+
+Erklärung des codes, Codeausschnitte
 
 \subsubsection{Resultate}
 
@@ -52,6 +54,8 @@ Die Gleichungen sehen vielversprechend aus. Nur stimmen die Resulatate nicht mit
 Durch die entkoppelung der zwei Flüsse, war es möglich das der eine Seine Richtung ändert, der andere jedoch bleibt. Das resultiert in zwei gegenläufige Ströme welche in keiner Weise mit dem Golfstrom übereinstimmen.
 Nachträglich ist dieser Fehler offensichtlich. Durch das Erlauben von zwei Flüssen Wird ermöglicht, dass in der Mitte euch eine auf- und Absteigzone entsteht.
 diese Tatsache macht dieses Modell zu einem Fehlschlag.
+
+%%input Matlab Graphen zur Darstellung der trennung und umkehrung der Zwei flüsse!!
 
 \subsection{Ein Fluss Modell} 
 
@@ -81,5 +85,17 @@ Aus diesem Modell lassen sich nun neue Gleichungen für die Boxen aufstellen:
 \frac{dS_3}{dt} &= -H/2 &+d(S_e-S_3)&+\begin{cases} q(S_2-S_3) & \quad q>0 \\ |q|(S_1-S_3) & \quad q<0 \end{cases}
 \end{aligned}
 \end{equation}	
+\subsubsection{Matlab-code}
 
-sichtbar ist hier nn, dass der Fluss imme
+Erklärung der Änderung, (Codeausschnitte)
+
+
+\subsubsection{Resultate} 
+
+1. Resultat normale Simulation mit aktuellen Werten
+
+2. Simulation der werte nach klimaerwärmung
+
+3. Vergleich Paper Liu Wei
+
+
