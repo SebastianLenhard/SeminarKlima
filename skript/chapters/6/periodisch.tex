@@ -4,4 +4,105 @@
 % (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 \section{Periodische Funktionen}
+Das ursprüngliche Budyko-Modell modelliert die Jahresmittel-Temperatur,
+ignoriert also die Temperatur-Entwicklung der Temperatur im Laufe des
+Jahres.
+Damit ist es aber zum Beispiel nicht möglich, das Einsetzen von
+Eiszeiten zu modellieren.
+Wie in Kapitel~\ref{chapter:neigung} gezeigt wird, ist die jährlich
+auf die Erde eingetrahlte Leistung unabhängig von der Neigung der
+Erdachse.
+Ein Modell, welches den Zusammenhang zwischen Eiszeiten und der
+Achsneigung modellieren soll muss also die periodischen Schwankungen
+der Einstrahlung der Sonne auf jede Erd-Halbkugel berücksichtigen.
+
+Ein geeignetes Modell wird also nicht mehr autonom sein, sondern auf der
+rechten Seite der Differentialgleichung
+\[
+\frac{dx}{dt} = f(x,t)
+\]
+muss man berücksichtigen, dass $f(x,t)$ nun auch von der Zeit $t$ abhängt
+und periodisch in $t$ mit Periode $T$ ist.
+Dies bedeutet $f(x,t+T)=f(x,t)$ für beliebige Vektoren $x$ und 
+Zeiten $t$.
+
+Man kann natürlich nicht mehr erwarten, dass es eine zeitunabhängige
+Gleichgewichtslösung gibt.
+Vielmehr erwarten wir statt konstanter Gleichgewichtslösungen 
+periodische Lösungen mit der gleichen Periode $T$, dass also
+$x(t+T)=x(t)$.
+
+\subsection{Fourierreihen}
+Die Funktionen
+\begin{equation}
+1,
+\cos \frac{2\pi kt}{T},
+\sin \frac{2\pi kt}{T},\qquad k\in \mathbb N
+\label{skript:periodisch:fourierbasis}
+\end{equation}
+sind alle periodisch mit Periode $T$, aber auch eine beliebige
+Linearkombination
+\begin{equation}
+f(t)
+=
+a_0  +\sum_{k=1}^\infty\biggl(
+a_k \cos \frac{2\pi kt}{T} + b_k\sin\frac{2\pi kt}{T}
+\biggr)
+\label{skript:periodisch:fourierreihe}
+\end{equation}
+hat diese Eigenschaft.
+
+Es war eine bedeutende Erkenntnis von Joseph Fourier, dass bis auf ein
+paar technische Bedingungen, welche die Konvergenz der Funktionenreihe
+sicherstellen sollen, jede periodische Funktion $f(t)$ 
+als Reihe von Vielfachen der Funktionen
+\eqref{skript:periodisch:fourierbasis}
+in der Form
+\eqref{skript:periodisch:fourierreihe}
+dargestellt werden kann.
+Die Berechnung der Koeffizienten $a_0,a_1,a_2,\dots$ und $b_1,b_2,b_3,\dots$
+erfolgt mit Hilfe von Fourier-Integralen, deren Theorie wir hier weiter
+nicht entwickeln wollen.
+
+Für unsere Zwecke ist die vollständige Theorie der Fourier-Reihen nicht
+notwendig, denn die Daten, an die wir unsere Klimamodelle anpassen
+müssen, stellen bestenfalls diskrete Approximationen von stetigen
+Funktionen dar.
+Wir müssen die allgemeine Fourier-Theorie daher spezialisieren auf diese
+diskrete Situation.
+
+\subsection{Diskrete Fourierreihen: trigonometrische Polynome}
+Wir wollen im Folgenden periodische diskrete Funktionen möglichst gut
+approximieren.
+Da für diskrete Funktionen die Skala des Argumentes nicht so wichtig ist,
+verwenden wir als Basis die Funktionen 
+\begin{equation}
+1,\cos kt\quad\text{und}\quad \sin kt,\quad k\in\mathbb N.
+\end{equation}
+Die Funktion $f(t)$ soll also geschrieben werden als sogenanntes 
+trigonometrisches Polynom
+\begin{equation}
+f(t)
+=
+a_0 + \sum_{k=1}^n \bigl(a_k \cos kt + b_k\sin kt).
+\end{equation}
+Die Funktion soll die Werte $y_j$ in den äquidistanten $t$-Werten 
+$t_j=2\pi j/N$ mit $0\le j<N$ möglichst gut wiedergeben.
+
+Zur Bestimmung der Koeffizienten $a_0$, $a_k$ und $b_k$ stehen also nur
+die $N$ Bedingungen
+\begin{equation}
+f(t_j)=y_j
+\label{skript:periodisch:fourierbedingungen}
+\end{equation}
+zur Verfügung.
+Die Gleichungen \eqref{skript:periodisch:fourierbedingungen} sind
+lineare Gleichungen für die Unbekannten $a_k$ und $b_k$ mit
+$\cos kt_j$ und $\sin kt_j$ als Koeffizienten.
+Sie können daher höchstens endlich viele Koeffizienten $a_k$ und $b_k$
+bestimmen.
+Dieses Problem wird im nächsten Abschnitt gelöst.
+
+
+
 

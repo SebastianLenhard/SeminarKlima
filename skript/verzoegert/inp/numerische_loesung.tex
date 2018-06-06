@@ -1,0 +1,112 @@
+\section{Numerische Lösung}
+\rhead{Numerische Lösung}
+
+Die El-Niño-DDE soll mithilfe von Matlab numerisch gelöst werden.
+Matlab stellt zum Lösen von DDEs eine fertige Funktion zu Verfügung (dde23).
+Da diese Funktion auf anderen Systemen (z.B. Octave) nicht verwendbar ist, soll eine eigene Lösungsfunktion geschrieben werden.
+Beim Schreiben dieser Funktion wird darauf geachtet, dass die Syntax mit dde23 vergleichbar ist. 
+
+Es werden zwei verschiedene Ansätze implementiert: 
+\begin{itemize}
+	\item Berechnung von endlich kurzen Zeitschritten
+	\item Berechnung über die Laplacetransformation
+\end{itemize}
+
+\subsection{Analyse der Funktion dde23}
+Die offizielle Syntax von dde23 \footnote{https://www.mathworks.com/help/matlab/ref/dde23.html} lautet: 
+\begin{lstlisting}{dde23}
+	sol = dde23(ddefun,lags,history,tspan);
+\end{lstlisting}
+Wir analysieren zunächst alle Parameter.
+
+\subsubsection{Parameter: ddefun}
+Die ddefun stellt die eigentliche DDE dar, welche als Funktion übergeben werden muss.
+Unsere El-Niño-DDE \ref{eldde} hat als eigene Parameter die Zeit (t), den aktuellen Wert (y), die verzögerten Werte (Z) und alle Konstanten.
+\begin{lstlisting}{dde_full}
+	function dydt = dde_full(t,y,Z,c,a,b,e)
+	ylag1 = Z(:,1);
+	ylag2 = Z(:,2);
+	dydt = -c*y+a*ylag1-b*ylag2-e*y.^3;
+\end{lstlisting}
+Damit diese Funktion akzeptiert wird, müssen die Konstanten gesetzt werden.
+\begin{lstlisting}{my_dde}
+	c = 1; a = 2.6; b = 3; e = 0.1;
+	my_dde = @(t,y,Z) dde_full(t,y,Z,c,a,b,e);
+\end{lstlisting}
+
+\subsubsection{Parameter: lags}
+Die Verzögerungen (in Jahren) entsprechen einem simplen Vektor.
+\begin{lstlisting}{lags}
+	tauk = 0.15; taur = 1;
+	tau = [0.5*tauk 0.5*taur+tauk];
+\end{lstlisting}
+
+\subsubsection{Parameter: history}
+Die history entspricht einer Funktion, welche die Werte aus der Vergangenheit ausgibt. 
+Das kann mit Vektoren (mit realen Daten\footnote{http://www.cpc.ncep.noaa.gov/data/indices/sstoi.indices}) und einer Interpolation gelöst werden.
+\begin{lstlisting}{hist}
+	function s = dde_hist(t)
+	t_v = [-0.67,-0.58,-0.5,-0.42, ...];
+	s_v = [0.71,0.5,-0.06,-0.4,...];  
+	s = @(t) interp1(t_v,s_v,t);
+\end{lstlisting}
+
+\subsubsection{Gesamte Anwendung}
+Der Parameter tspan gibt die zu berechnende Zeitspanne (hier 0-3 Jahre) an.
+\begin{lstlisting}{Anwendung}
+	sol = dde23(my_dde,tau,dde_hist,[0, 3]);
+\end{lstlisting}
+Der Aufruf dde23 soll nun durch eine eigene Funktion ersetzt werden.
+ 
+
+\subsection{Berchnung von endlich kurzen Zeitschritten}
+Bei diesem Ansatz wird immer die Ableitung zu einer bestimmten Zeit berechnet.
+Diese Ableitung wird dann für einen (kurzen) Zeitschritt als Konstant genommen und damit nächste Wert berechnet.
+\begin{algorithm}
+	\caption{Numerischer DDE-Solver}
+	\label{algo1}
+	\begin{algorithmic}[1]
+		\State Initialisieren, d.h. Zeitachse erstellen, Zeitschritt dt berechnen, etc
+		\For{dt in t}
+		\State Bestimmen ob die verzögerten Werte dde\_hist oder in alter Lösung (wenn t > $\tau$) vorkommen
+		\For{i in tau}
+		\State Korrekten verzögerten Wert für jedes $\tau$ finden
+		\EndFor
+		\State dde-Funktion aufrufen und dydt speichern
+		\State Nächster Wert = aktueller Wert + dydt*dt
+		\EndFor
+	\end{algorithmic}
+\end{algorithm}
+
+Mit diesem Algorithmus wird ein identisches Ergebnis wie mit dde23 erreicht. 
+Es werden jeweils 10000 Datenpunkte berechnet. 
+Bei mehr Datenpunkten dauert die Berechnung sehr lange, wohl auch weil der Algorithmus nicht optimiert ist.
+Bei dde23 werden keine fixen Zeitschritte dt berechnet, sondern eine Abschätzung des Fehlers wird vorgenommen.
+Falls der geschätzte Fehler hoch ist, wird ein kleiner Zeitschritt berechnet. 
+Bei kleinem Fehler (z.B. Sinus-Maximum) werden entsprechend große Zeitschritte gerechnet. %todo add Grafik
+
+
+\subsection{Laplacetransformation}
+Die Laplacetransformation beschreibt eine Transformation vom Zeit zum (komplexen) Frequenzbereich.
+Diese Transformation ist folgendermaßen definiert:
+\begin{equation}
+	F(s)=\int_{0}^{\infty}f(t)e^{-st}dt \text{ wobei } s=j\omega
+\end{equation} 
+Für die Laplacetransformation gibt es einige bekannte Eigenschaften. 
+Eine davon ist die Verschiebung im Zeitbereich, eine Andere die Ableitung.
+\begin{align}
+	f(t-t_0)\: \multimapdotbothA \: F(s)e^{-t_0 s}\\
+	\frac{\partial f(t)}{\partial t}\: \multimapdotbothA \: sF(s)-f(0^+)
+\end{align}
+Mit dieser Eigenschaft können wir nun unsere DDE \ref{eldde} Transformieren.
+Wir verwenden für die Laplacetransformierte der Temperatur $T$ das Formelzeichen $F$.
+Da es keine Regeln für den kubischen Term gibt, wir $\epsilon = 0$ gesetzt.
+\begin{align}
+	T(t)\: \multimapdotbothA \: F(s)\\
+	sF(s)-T(0^+)=-cF(s)+aF(s)e^{-\frac{1}{2}\tau_K s}-bF(s)e^{-(\frac{1}{2}\tau_R + \tau_K) s}
+\end{align}
+Diese Gleichung können wir nach $F(s)$ auflösen und erhalten:
+\begin{equation}
+	F(s) = \frac{T(0)}{s+c-ae^{-\frac{1}{2}\tau_K s}+be^{-(\frac{1}{2}\tau_R + \tau_K)s}}
+\end{equation}
+%todo Erklären wieso es nicht funktioniert

@@ -68,10 +68,118 @@ Damit wird
 p(t) = a\cdot e(t)
 \]
 
+\subsubsection{Orthogonalität}
+Die Aussagen von Satz~\ref{skript:fourier:orthogonalitaet1}
+lassen sich jetzt in geometrische Form fassen.
+\begin{satz}
+Es gilt
+\begin{align*}
+c_k\cdot c_l
+&=
+\begin{cases}
+N&\qquad k=l=0\\
+\displaystyle\frac{N}2&\qquad k=l>0\\
+0&\qquad\text{sonst}
+\end{cases}
+\\
+s_k\cdot s_l
+&=
+\begin{cases}
+\displaystyle\frac{N}2&\qquad k=l\\
+0&\qquad\text{sonst}
+\end{cases}
+\\
+c_k\cdot s_l
+&=
+0
+\end{align*}
+\label{skript:fourier:orthogonalitaet}
+\end{satz}
+
+\begin{proof}[Beweis]
+Die genannten Skalarprodukte sind nichts anderes als die Summen in
+Satz~\ref{skript:fourier:orthogonalitaet1}:
+\begin{align*}
+c_k\cdot c_l
+&=
+\sum_{j=1}^N \cos kt_j \cos lt_j
+=
+\begin{cases}
+N&\qquad k=l=0\\
+\displaystyle\frac{N}2&\qquad k=l>0\\
+0&\qquad\text{sonst}
+\end{cases}
+\end{align*}
+und analog für die anderen Skalarprodukte.
+Die Aussage des Satzes ist daher nichts anders als eine geometrische
+Umformulierung der Aussagen des
+Satzes~\ref{skript:fourier:orthogonalitaet1}.
+\end{proof}
+
+\subsubsection{Die Identität von Parseval}
+Die Relationen von
+Satz~\ref{skript:fourier:orthogonalitaet1}
+besagen, dass die Vektoren $c_k$ und $s_k$ orthogonal sind.
+Wir wenden Sie auf das Skalarprodukt der Funktion $f$ mit sich selbst an.
+\begin{align*}
+f\cdot f
+&=
+a_0^2 c_0\,\cdot c_0
++
+\sum_{k=1}^na_k^2 \,c_k\cdot c_k
++
+\sum_{k=1}^{n-1} b_k^2\,s_k\cdot s_k
+\\
+&=
+Na_0^2
++
+\frac{N}2\sum_{k=1}^n a_k^2
++
+\frac{N}2\sum_{k=1}^{n-1} b_k^2
+=
+\frac{N}2
+\biggl(
+2a_0^2
++
+\sum_{k=1}^n a_k^2
++
+\sum_{k=1}^{n-1} b_k^2
+\biggr)
+\end{align*}
+Damit haben wir den folgenden Satz bewiesen:
+\begin{satz}[Parseval]
+\[
+\|f\|^2
+=
+\sum_{j=1}^N y_j^2
+=
+\frac{N}2
+\biggl(
+2a_0^2
++
+\sum_{k=1}^n a_k^2
++
+\sum_{k=1}^{n-1} b_k^2
+\biggr)
+\]
+\end{satz}
+
+\subsection{Fourier-Transformation}
 \subsubsection{Fourier-Transformation}
 Die Berechnung der Fourier-Koeffizienten ist eine lineare Operation
+mit der $N\times N$-Matrix:
 \[
-a
+A
+=
+\begin{pmatrix}
+c_0^t\\
+c_1^t\\
+s_1^t\\
+\vdots\\
+c_{n-1}^t\\
+s_{n-1}^t\\
+c_n^t
+\end{pmatrix}
 =
 \begin{pmatrix}
 1           &1           &\dots &1            \\
@@ -79,11 +187,120 @@ a
 \sin t_1    &\sin t_2    &\dots &\sin t_N     \\
 \cos 2t_1   &\cos 2t_2   &\dots &\cos 2t_N    \\
 \sin 2t_1   &\sin 2t_2   &\dots &\sin 2t_N    \\
-\vdots      &\vdots      &\vdots&\vdots       \\
+\vdots      &\vdots      &\ddots&\vdots       \\
 \sin(n-1)t_1&\sin(n-1)t_2&\dots &\sin(n-1)t_N \\
 \cos nt_1   &\cos nt_2   &\dots &\cos nt_N    
 \end{pmatrix}
 \]
+Die Orthogonalitätsrelationen von
+Satz~\ref{skript:fourier:orthogonalitaet}
+können jetzt neu geschrieben werden:
+\begin{align*}
+AA^t
+&=
+\begin{pmatrix}
+c_0\cdot c_0&
+	c_0\cdot c_1&
+		c_0\cdot s_1&
+			\dots&
+				c_0\cdot c_{n-1}&
+					c_0\cdot s_{n-1}&
+						c_0\cdot c_n\\
+c_1\cdot c_0&
+	c_1\cdot c_1&
+		c_1\cdot s_1&
+			\dots&
+				c_1\cdot c_{n-1}&
+					c_1\cdot s_{n-1}&
+						c_1\cdot c_n\\
+s_1\cdot c_0&
+	s_1\cdot c_1&
+		s_1\cdot s_1&
+			\dots&
+				s_1\cdot c_{n-1}&
+					s_1\cdot s_{n-1}&
+						s_1\cdot c_n\\
+\vdots	&\vdots	&\vdots	&\ddots	&\vdots	&\vdots	&\vdots	\\
+c_{n-1}\cdot c_0&
+	c_{n-1}\cdot c_1&
+		c_{n-1}\cdot s_1&
+			\dots&
+				c_{n-1}\cdot c_{n-1}&
+					c_{n-1}\cdot s_{n-1}&
+						c_{n-1}\cdot c_n\\
+s_{n-1}\cdot c_0&
+	s_{n-1}\cdot c_1&
+		s_{n-1}\cdot s_1&
+			\dots&
+				s_{n-1}\cdot c_{n-1}&
+					s_{n-1}\cdot s_{n-1}&
+						s_{n-1}\cdot c_n\\
+c_n\cdot c_0&
+	c_n\cdot c_1&
+		c_n\cdot s_1&
+			\dots&
+				c_n\cdot c_{n-1}&
+					c_n\cdot s_{n-1}&
+						c_n\cdot c_n\\
+\end{pmatrix}
+\\
+&=
+\begin{pmatrix}
+N     &0        &0        &\dots    &0        &0        &0        \\
+0     &\frac{N}2&0        &\dots    &0        &0        &0        \\
+0     &0        &\frac{N}2&\dots    &0        &0        &0        \\
+\vdots&\vdots   &\vdots   &\ddots   &\vdots   &\vdots   &\vdots   \\
+0     &0        &0        &\dots    &\frac{N}2&0        &0        \\
+0     &0        &0        &\dots    &0        &\frac{N}2&0        \\
+0     &0        &0        &\dots    &0        &0        &\frac{N}2
+\end{pmatrix}.
+\end{align*}
+Bis auf die Faktoren $N$ und $\frac{N}2$ auf der Diagonalen ist
+${\cal F}{\cal F}^t$ 
+eine Diagonalmatrix.
+Wir können die Matrix zu einer Einheitsmatrix machen, indem wir 
+sie mit der Diagonalmatrix
+\begin{equation}
+D
+=
+\begin{pmatrix}
+\sqrt{\frac1N}&0&\dots&0\\
+0&\sqrt{\frac{2}{N}}&\dots&0\\
+\vdots&\vdots&\ddots&\vdots\\
+0&0&\dots&\sqrt{\frac{2}{N}}
+\end{pmatrix}
+\end{equation}
+multiplizieren.
+Wir schreiben
+\begin{align*}
+{\cal F}
+&=
+D\, A
+\end{align*}
+Wir nennen $\cal F$ die {\em Fourier-Matrix}.
+\index{Fourier-Matrix}%
+Die Fourier-Matrix $\cal F$ ist orthogonal, es gilt
+\[
+{\cal F}{\cal F}^t
+=
+DAA^tD^t
+=
+DD^tAA^t
+=
+E,
+\]
+wobei wir im letzten Schritt $D^t$ mit $AA^t$ vertauschen durften,
+weil beide Diagonalmatrizen sind und damit vertauschen.
+Insbesondere erhält $\cal F$ das Skalarprodukt, womit wir natürlich
+nur die Parseval-Identität anders formuliert haben.
 
-\subsection{Fast Fourier Transform}
+\subsubsection{Fast Fourier Transform}
+
+
+
+
+
+
+
+
 
