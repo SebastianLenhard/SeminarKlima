@@ -50,7 +50,7 @@ Das angewendete Verfahren nennt sich \textit{Eulerisches-} oder \textit{Einschri
 
 Das oben erw"ahnte Gleichungssystem haben wir im Javascript-Code verwendet, um die Resultate des Lorenzsystems auszurechnen. In Javascript haben wir die Punkte in einem Array(\texttt{Tuple3}) gespeichert.
 
-	\begin{lstlisting}
+	\begin{lstlisting}[style=C]
 	x = arr[i].x + ((sigma * y) - (sigma * x)) * delta;
 	y = arr[i].y + ((-x * z) + (rho * x) - y) * delta;
 	z = arr[i].z + ((x * y) - (beta * z)) * delta;
