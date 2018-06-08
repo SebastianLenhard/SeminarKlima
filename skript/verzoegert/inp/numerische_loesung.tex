@@ -6,12 +6,6 @@ Matlab stellt zum Lösen von DDEs eine fertige Funktion zu Verfügung (\texttt{d
 Da diese Funktion auf anderen Systemen (z.B. Octave) nicht verwendbar ist, soll eine eigene Lösungsfunktion geschrieben werden.
 Beim Schreiben dieser Funktion wird darauf geachtet, dass die Syntax mit \texttt{dde23} vergleichbar ist. 
 
-Es werden zwei verschiedene Ansätze implementiert: 
-\begin{itemize}
-	\item Berechnung von endlich kurzen Zeitschritten
-	\item Berechnung über die Laplacetransformation
-\end{itemize}
-
 \subsection{Analyse der Funktion \texttt{dde23}}
 Die offizielle Syntax von \texttt{dde23} \footnote{https://www.mathworks.com/help/matlab/ref/dde23.html} lautet: 
 \begin{lstlisting}[style=MATLAB]{dde23}
@@ -87,9 +81,17 @@ Mit diesem Algorithmus wird ein identisches Ergebnis wie mit \texttt{dde23} erre
 \end{figure}
 Es werden jeweils 10000 Datenpunkte berechnet. 
 Bei mehr Datenpunkten dauert die Berechnung sehr lange, wohl auch weil der Algorithmus nicht optimiert ist.
-Bei \texttt{dde23} werden keine fixen Zeitschritte dt berechnet, sondern eine Abschätzung des Fehlers wird vorgenommen.
-Falls der geschätzte Fehler hoch ist, wird ein kleiner Zeitschritt berechnet. 
-Bei kleinem Fehler (z.B. Sinus-Maximum) werden entsprechend große Zeitschritte gerechnet.
 
-\subsection{Fehler bei wenigen Datenpunkten}
-%todo Beschreibung, Grafiken
+\subsection{Instabilität bei wenigen Datenpunkten} \label{num:instabil}
+Der Algorithmus von \texttt{dde23} berechnet viel weniger Datenpunkte.
+Wenn wir die Anzahl Datenpunkte in unserem Algorithmus reduzieren, werden die Lösungen schnell instabil (vgl. Abbildung \ref{fig:instab100}).
+\begin{figure}
+	\centering
+	\includegraphics{verzoegert/inp/figures/instab100.eps}
+	\caption{Vergleich der Lösung mit 10000 Datenpunkten und der Lösung mit 100 Datenpunkten. Gelöst wurde das Beispiel von \eqref{bsp}.}
+	\label{fig:instab100}
+\end{figure}
+Auf den ersten Blick scheint dieses Resultat verblüffend, da 100 Datenpunkte immer noch relativ viel sind.
+
+\subsubsection{title}
+%todo Wieso gibt es dieses Phänomen...erklären
