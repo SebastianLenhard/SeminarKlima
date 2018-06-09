@@ -1,0 +1,192 @@
+%
+% rossby.tex
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+
+\section{Rossby-Wellen\label{section:elnino:rossby}}
+In der Untersuchung der Kelvin-Wellen haben wir angenommen, dass die
+Geschwindigkeit $v$ entlang der Längenkreise verschwindet.
+Die Strömung wird im allgemeinen nicht parallel zum Äquator sein.
+Trotzdem beobachten wir zum Beispiel, dass die Westwindströmung 
+zwischen verschiedenen geographischen Breiten mäandriert.
+Woher kommt diese Wellenbewegung?
+
+\subsection{Zirkulation\label{subsection:rossby:zirkulation}}
+Aus der Diskussion der globalen Zirkulation wissen wir, dass die
+Strömung in Äquatornähe dominiert wird durch eine mittlere Strömung
+konstante Strömung mit Geschwindigkeit $U$ in Ost-West-Richtung.
+Wir suchen daher eine Beschreibung der Abweichungen von dieser
+mittleren Strömung.
+Unter Verwendung der gleichen Notation wie im
+Abschnitt~\ref{section:elnino:kelvin} schreiben wir daher
+\[
+u=U+u',\qquad v=U+v'\qquad\text{mit $u,v\ll U$}.
+\]
+
+
+Wir nehmen im folgenden wieder an, dass die Strömung quellenfrei ist.
+Dann lässt sich wie früher gezeigt, dass die Strömung mit einer
+Strömungsfunktion $\psi$ als
+\[
+u=-\frac{\partial \psi}{\partial y},\qquad
+v=\frac{\partial\psi}{\partial x}
+\]
+beschrieben werden kann.
+
+Die Drehimpulsdichte in der Strömung ist gegeben durch die Zirkulation
+\[
+\zeta
+=
+\frac{\partial v}{\partial x} - \frac{\partial u}{\partial y}
+=
+\Delta \psi.
+\]
+Da der Drehimpuls erhalten ist, muss die Zirkulation in einem
+Luftpacket abnehmen, wenn es sich auf der Nordhalbkubel nach Norden
+bewegt.
+Die Quelle dieser Zirkulationsänderung ist die Erddrehung und damit
+die Corioliskraft $f$ und der mathematische Ausdruck der Drehimpulserhaltung
+ist die Erhaltung der Grösse $\zeta+f$.
+
+\subsection{Bewegungsgleichung\label{subsection:rossby:bewegungsgleichung}}
+Die Grösse $\zeta+f$ ist erhalten, ihre zeitliche Ableitung
+\[
+\frac{d(\zeta f)}{dt}=0
+\]
+verschwindet also.
+$f$ hängt nur von $y$ ab, aber die Funktion $\zeta$ hängt von $t$,
+$x$ und $y$ ab.
+Wir berechnen die Ableitung mit Hilfe der Kettenregel:
+\begin{align*}
+0
+=
+\frac{d(\zeta+f)}{dt}
+&=
+\frac{\partial\zeta}{\partial t}
++
+\frac{\partial\zeta}{\partial x}\cdot \frac{dx}{dt}
++
+\frac{\partial(\zeta+f)}{\partial y}\cdot\frac{dy}{dt}
+\\
+&\simeq
+\frac{\partial\zeta}{\partial t}
++
+(U+u)\frac{\partial\zeta}{\partial x}
++
+v\biggl(\frac{\partial\zeta}{\partial y} + \frac{\partial f}{\partial y}\biggr).
+\end{align*}
+Da $u\ll U$ ist, kännen wir in erster Näherung $u$ im zweiten Term 
+vernachlässigen.
+Und da $\partial\zeta/\partial y$ ebenfalls sehr klein ist, können
+wir dies im letzten Term im Vergleich zu $\partial f/\partial y$
+vernachlässigen.
+Schliesslich können wir wie in Abschnitt~\ref{section:elnino:kelvin}
+die $\beta$-Ebenen-Approximation verwenden, und $\partial f/\partial y$
+durch $\beta$ ersetzen.
+Schliesslich können wir wieder $v=\partial\psi/\partial x$ ersetzen.
+Wir erhalten so
+\[
+0
+=
+\frac{\partial\zeta}{\partial t}
++
+U\frac{\partial\zeta}{\partial x}
++
+\beta\frac{\partial\psi}{\partial x}
+\]
+als Bewegungsgleichung.
+
+Indem wir $\zeta=\Delta \psi$ schreiben, erhalten wir so die 
+Bewegungsgleichung
+\begin{equation}
+\frac{\partial\Delta\psi}{\partial t}
++
+U\frac{\partial\Delta\psi}{\partial x}
++
+\beta\frac{\partial\psi}{\partial x}
+=
+0.
+\label{rossby:gleichung}
+\end{equation}
+
+
+\subsection{Wellenlösungen\label{subsection:rossby:loesungen}}
+Gesucht sind Lösungen der Gleichung~\eqref{rossby:gleichung}
+in Form kleiner Abweichungen.
+Wir erwarten Wellenlösungen und schreiben sie daher in der Form
+\[
+\psi_{kl}(t,x,y)
+=
+\sin(kx+ly-\omega t).
+\]
+Die Ableitungen, die wir für die Bewegungsgleichung
+\eqref{rossby:gleichung} benötigen, sind
+\begin{align*}
+\frac{\partial}{\partial t} \psi_{kl}(t,x,y)
+&=
+-\omega \cos(kx+ly-\omega t) = -\omega\psi_{kl}(t,x,y),
+\\
+\frac{\partial}{\partial x} \psi_{kl}(t,x,y)
+&=
+k
+\cos(kx+ly-\omega t) = k \psi_{kl}(t,x,y),
+\\
+\Delta\psi_{kl}
+&=
+-(k^2+l^2)\cos(kx+ly-\omega t)=-(k^2+l^2)\psi_{kl}(t,x,y).
+\end{align*}
+Setzen wir dies in die Differentialgleichung ein, erhalten wir 
+\begin{align*}
+0
+&=
+\omega(k^2+l^2)\psi_{kl}(t,x,y)
+-
+Uk(k^2+l^2)\psi_{kl}(t,x,y)
++
+\beta k\psi_{kl}(t,x,y)
+\\
+&=
+\bigl((\omega-Uk)(k^2+l^2)+\beta k\bigr)\psi_{kl}(t,x,y)
+\end{align*}
+Für eine Lösung muss also die Dispersionsrelation
+\[
+(\omega -Uk)(k^2+l^2) +\beta k=0
+\]
+gelten.
+Aufgeläst nach $\omega$ ist dies
+\begin{align*}
+\omega(k^2+l^2)
+&=
+Uk(k^2+l^2) -\beta k
+\\
+\Rightarrow\qquad
+\omega
+&=
+Uk
+-
+\frac{\beta k}{k^2+l^2}.
+\end{align*}
+Eine Wellenlösung mit Wellenzahlen $k$ und $l$ hat daher 
+die Ausbreitungsgeschwindigkeit 
+\begin{equation}
+c=\frac{\omega}{k} = U-\beta\frac{1}{k^2+l^2}
+\label{rossby:phasengeschwindigkeit}
+\end{equation}
+entlang der $x$-Koordinate.
+Da der Nenner immer positiv ist, ist $c$ kleiner als $U$, solche
+Wellen können sich immer nur in West-Ost-Richtung ausbreiten.
+
+\subsection{Gruppengeschwindigkeit}
+Die Phasengeschwindigkeit 
+\eqref{rossby:phasengeschwindigkeit}
+hilft uns nicht, die Dynamik des El Niño zu verstehen, da wir dazu
+den Transport von Energie verstehen müssen.
+
+
+
+
+
+
+
+
