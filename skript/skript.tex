@@ -296,6 +296,13 @@ Hochschule für Technik, Rapperswil, 2018
 \expandafter\input{chapters/uebungsaufgaben/#1.tex}
 }
 \renewcommand\theproblemcounter{\thechapter.\arabic{problemcounter}}
+% linsys
+\newcolumntype{\linsysR}{>{$}r<{$}}
+\newcolumntype{\linsysL}{>{$}l<{$}}
+\newcolumntype{\linsysC}{>{$}c<{$}}
+\newenvironment{linsys}[1]{%
+\begin{tabular}{*{#1}{\linsysR@{\;}\linsysC}@{\;}\linsysR}}%
+{\end{tabular}}
 
 % Loesung
 \def\swallow#1{
