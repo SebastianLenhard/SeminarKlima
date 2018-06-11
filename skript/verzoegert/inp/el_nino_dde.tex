@@ -3,7 +3,7 @@
 
 
 \subsection{Gleichung}
-Zur Modellierung des El Niño Effektes wurde die folgende DDE gefunden %todo Verweis Gleichung El Niño
+Zur Modellierung des El Niño Effektes wurde im Kapitel \ref{section:dde-nino} die folgende DDE gefunden
 \begin{equation} \label{eldde}
 \dot{T}(t)=-cT(t)+aT(t-\frac{1}{2}\tau_K)-bT(t-(\frac{1}{2}\tau_R+\tau_K))
 \end{equation}
@@ -53,7 +53,6 @@ Wenn diese beiden Gleichungen durcheinander dividiert werden, erhalten wir die B
 \begin{equation} \label{bed}
 	\tan(\omega\tau)=\frac{\omega}{\alpha}
 \end{equation}
- %todo ev. Berechnung der gesamten charakter. Eq. zeigen?
  
 \subsection{Berechnen der Konstanten}
 Aus der Bedingung \eqref{bed} können die Konstanten näherungsweise berechnet werden.
@@ -90,7 +89,7 @@ Wir erhalten die Gleichung
 \dot{T}(t)=-cT(t)+aT(t-\frac{1}{2}\tau_K)-bT(t-(\frac{1}{2}\tau_R+\tau_K))-\varepsilon T(t)^3
 \end{equation}
 In Abbildung \ref{fig:chaos_fix} wird die identische Änderung von $a$ gezeigt, aber mit einem $\varepsilon = 0.1$.
-Man sieht sehr gut, wie nun die Konstante $a$ Einfluss auf die Lösung hat.
+Man sieht sehr gut den Einfluss, den die Konstante $a$ auf die Lösung hat (verändert Frequenz und Amplitude).
 \begin{figure}
 	\centering
 	\includegraphics{verzoegert/inp/figures/param_a_e01.eps}
