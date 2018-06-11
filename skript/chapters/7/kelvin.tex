@@ -1,0 +1,270 @@
+%
+% kelvin.tex
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\section{Kelvin-Wellen\label{section:elnino:kelvin}}
+\rhead{Rossby- und Kelvin-Wellen}
+In diesem Abschnitt soll die Ausbreitung von Anomalien in der Höhe
+der Meeresoberfläche in der Höhe des Äquators studiert werden.
+
+\subsection{Kelvin-Wellen\label{subsection:kelvin}}
+Ein der einfachsten Form führt ein Tiefdruckgebiet über dem zentralen
+Pazifik dazu, dass die Meeresoberfläche über die Normalhöhe ansteigt.
+Wenn sich das Tiefdruckgebiet auffüllt und die Druckkraft zur Aufrechterhaltung
+dieser Anomalie wegfällt, wird dieser ``Wasserberg'' zerfallen.
+Mit Hilfe der Gleichungen der Strömungsdynamik sollte sich die Ausbreitung
+dieser Wellen beschreiben lassen.
+
+Da die Anfangsbedingungen symmetrisch bezüglich einer Spiegelung an
+der Äquatorebenen sind, dürfen wir annehmen, dass auch die resultierende
+Strömung diese Symmetrie hat.
+In unmittelbarer Nähe des Äquators brauchen wir die Krümmung der
+Erdoberfläche nicht zu berücksichtigen, und können daher mit einem
+$x$-$y$-Koordinatensystem arbeiten, in dem $x$ die Richtung entlang des
+Äquators und $y$ die Richtung entlang der Längenkreise ist.
+Die Strömungsgeschwindigkeitskomponenten nennen wir $u$ entlang des
+Äquators und $v$ entlang der Längenkreise.
+Die Anomalie der Höhe der Meeresoberfläche bezeichnen wir mit $h(x,y)$.
+
+\subsection{Bewegungsgleichung für Kelvin-Wellen}
+Die zeitliche Änderung der Geschwindigkeit, also die Beschleunigung,
+ist nach dem zweiten Newtonschen Gesetz proportional zu den Kräften.
+Die Schwerkraft versucht, den Wasserberg abzubauen.
+Wasser wird in die Richtung beschleunigt, in die die Höhe $h(x,y)$
+abnimmt.
+Ausserdem wirkt die Coriolis-Kraft, die die Strömung auf der Nordhalbkugel
+nach rechts ablenkt, und auf der Südhalbkugel nach links.
+\begin{equation}
+\begin{aligned}
+\frac{\partial u}{\partial t}
+&=
+\phantom{-}
+fv - g\frac{\partial h}{\partial x}
+\\
+\frac{\partial v}{\partial t}
+&=
+-fu - g\frac{\partial h}{\partial y}
+\end{aligned}
+\label{elnino:kelvin:newton}
+\end{equation}
+Dies ist ein System von zwei partiellen Differentialgleichung für 
+drei unbekannte Funktionen $h$, $u$ und $v$, es ist also mindestens
+noch eine weitere Gleichung nötig, damit das Problem überhaupt gelöst
+werden kann.
+
+Abfliessendes Wasser reduziert die Höhenanomalie.
+Die Kontinuitätsgleichung
+besagt, dass die Abnahme der der Höhenanomalie proportional ist zur
+Divergenz des Geschwindigkeitsfeldes ist.
+Die fehlende Differentialgleichung ist daher
+\begin{equation}
+\frac{\partial h}{\partial t}
+=
+-H\biggl(
+\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y}
+\biggr).
+\label{elnino:kelvin:kont}
+\end{equation}
+Gesucht ist jetzt also eine Lösung der Differentialgleichungen
+\eqref{elnino:kelvin:newton} und \eqref{elnino:kelvin:kont}.
+
+\subsection{Wellengleichung}
+Wir interessieren uns nur für eine Lösung in unmittelbarer Nähe des
+Äquators und dürfen daher annehmen, dass sich das Wasser nicht
+entlang der Längenkreise bewegt, dass also $v=0$ gilt.
+Die Differentialgleichungen
+\eqref{elnino:kelvin:newton} und \eqref{elnino:kelvin:kont}.
+vereinfachen sich damit zu
+\begin{align}
+\frac{\partial u}{\partial t}
+&=
+\phantom{-fu}
+ - g\frac{\partial h}{\partial x}
+\label{kelvin:naeherung:1}
+\\
+0
+&=
+-fu - g\frac{\partial h}{\partial y}
+\label{kelvin:naeherung:2}
+\\
+\frac{\partial h}{\partial t}
+&=
+-H
+\frac{\partial u}{\partial x}
+\label{kelvin:naeherung:3}
+\end{align}
+Indem wir \eqref{kelvin:naeherung:1} nach $x$ und 
+\eqref{kelvin:naeherung:3} nach $t$ ableiten, erhalten wir
+\begin{equation}
+\left.
+\begin{aligned}
+\frac{\partial^2 u}{\partial x\,\partial t}
+&=
+-g\frac{\partial^2h}{\partial x^2}
+\\
+\frac{\partial^2 h}{\partial t^2}
+&=
+-H\frac{\partial^2 u}{\partial t\,\partial x}
+\end{aligned}
+\;
+\right\}
+\quad
+\Rightarrow
+\quad
+\frac{\partial^2 h}{\partial t^2}
+=
+gH\frac{\partial^2 h}{\partial x^2}
+\label{kelvin:wellengleichung}
+\end{equation}
+Dies ist eine Wellengleichung für eine Welle mit Ausbreitungsgeschwindigkeit
+$c=\sqrt{gH}$.
+
+\subsection{Approximative Lösung der Wellengleichung}
+Bis jetzt wurde die zweite Gleichung~\eqref{kelvin:naeherung:2}
+nicht verwendet, es wurde eigentlich nur das Verhalten der Welle auf
+dem Äquator modelliert.
+Da wir jetzt aber wissen, dass mindestens entlang des Äquators die Lösung
+eine Welle mit Ausbreitungsgeschwindigkeit $c=\sqrt{gH}$ ist, können
+wir versuchen, auch die $y$-Abhängigkeit zu modellieren.
+
+\subsubsection{Dispersionsrelation}
+Eine in $x$-Richtung laufende Welle mit Wellenzahl $k$ kann beschrieben werden
+als
+$
+\sin(kx-\omega t).
+$
+Die Wellenzahl $k$ ist positiv für eine nach Osten laufende Welle und negativ
+für eine nach Westen laufende Welle.
+Wir suchen also eine Lösung des Gleichungssystems
+\eqref{kelvin:naeherung:1}--\eqref{kelvin:naeherung:3}
+in der Form
+\[
+h_k(t,x,y) = \gamma(y)\cdot \sin(kx-\omega t)
+\]
+zu finden.
+Die Funktion $\gamma(y)$ beschreibt das Profil des ``Wasserberges'' 
+in der Nähe des Äquators, wir nehmen daher an, dass $\gamma(y)$ für grosse
+Werte von $y$ rasch abnimmt.
+
+Einsetzen des Lösungsansatzes $h_k(t,x,y)$ in die
+Gleichung~\eqref{kelvin:wellengleichung} liefert
+\begin{equation}
+\left.
+\begin{aligned}
+\frac{\partial^2 h_k}{\partial t^2}
+&=
+- \omega^2 \gamma(y) \sin(kx-\omega t)
+=
+-\omega^2 h_k(t,x,y)
+\\
+\frac{\partial^2 h_k}{\partial x^2}
+&=
+-
+k^2
+\gamma(y)
+\sin (kx-\omega t)
+=
+-k^2 h_k(t,x,y)
+\end{aligned}
+\;\right\}
+\qquad
+\Rightarrow
+\qquad
+\omega^2=gHk^2
+\quad\text{oder}\quad
+\biggl|
+\frac{\omega}{k}\biggr|
+=\sqrt{gH}=c
+\end{equation}
+Aus dieser Dispersionsrelation
+liest man ab, dass die Phasengeschwindigkeit einer solchen
+Welle unabhängig ist von der Frequenz.
+
+\subsubsection{$y$-Abhängigkeit}
+Bis jetzt haben wir die Gleichung~\eqref{kelvin:naeherung:2} nicht
+verwendet.
+Sie erlaubt, $u$ zu berechnen, es gilt
+\[
+u=-\frac{g}{f}\,\frac{\partial h}{\partial y}
+\qquad
+\text{oder für $h_k$}
+\qquad
+u_k=-\frac{g}{f} \gamma'(y) \sin(kx-\omega t).
+\]
+Setzt man dies in \eqref{kelvin:naeherung:3} ein, erhält man
+\begin{equation}
+\left.
+\begin{aligned}
+\frac{\partial h_k}{\partial t}
+&=
+-\omega
+\gamma(y) \cos(kx-\omega t)
+\\
+\frac{\partial u_k}{\partial x}
+&=
+k \frac{g}{f}\gamma'(y) \cos(kx-\omega t)
+\end{aligned}
+\;\right\}
+\qquad\Rightarrow\qquad
+-\omega
+\gamma(y) \cos(kx-\omega t)
+=
+-H
+k \frac{g}{f}\gamma'(y) \cos(kx-\omega t)
+\end{equation}
+nach Kürzen gemeinsamer Faktoren und Umstellen folgt
+\begin{equation}
+\gamma'(y)
+=
+\gamma(y) \frac{f}{gH}\frac{\omega}{k}
+=
+\pm
+\frac{f}{c} \gamma(y).
+\label{kelvin:gamma:dgl1}
+\end{equation}
+Das Vorzeichen in \eqref{kelvin:gamma:dgl1} hängt vom Vorzeichen der
+Wellenzahl $k$ ab, das obere Vorzeichen steht für eine nach Osten
+laufende Welle.
+
+Die Coriolis-Kraft $f$ verschwindet am Äquator, in erster Näherung
+ist sie proportional zur $y$, wir schreiben daher $f=\beta y$.
+Die Differentialgleichung~\eqref{kelvin:gamma:dgl1} wird damit zu
+\begin{equation}
+\gamma'(y)
+=
+\pm
+\frac{\beta}{c} 
+y\gamma(y).
+\label{kelvin:gamma:dgl2}
+\end{equation}
+
+Für zunehmende $y$ muss $\gamma$ abnehmen, es muss also $\gamma'(y)<0$ sein
+für genügend grosse $y$.
+Dies ist aber nur möglich für das negative Vorzeichen, und damit nur
+für eine nach Osten laufende Welle.
+Im folgenden konzentrieren wir uns daher auf das negative Zeichen
+in \eqref{kelvin:gamma:dgl2}.
+
+Um eine Lösung von \eqref{kelvin:gamma:dgl2} zu finden, teilen wir
+durch $\gamma(y)$
+und verwenden, dass $\gamma'(y)/\gamma(y)$ die Ableitung des
+Logarithmus ist:
+\begin{equation}
+\frac{\gamma'(y)}{\gamma(y)}
+=
+\frac{d}{dy}\log \gamma(y) = -\frac{\beta}{c} y
+\qquad\Rightarrow\qquad
+\log\gamma(y) = -\frac{\beta}{2c}y^2
+\qquad\Rightarrow\qquad
+\gamma(y) = \exp\biggl(
+- \frac{\beta}{2c}y^2
+\biggr)
+\end{equation}
+Das $y$-Profil der Welle ist also eine Gauss-Funktion.
+Die Zone, in der sich eine Kelvin-Welle ausbreiten kann, 
+wird breiter, wenn $\beta$ grösser wird, wenn also die 
+Rotationsgeschwindigkeit des Planeten grösser wird.
+Sie wird kleiner, wenn $c=\sqrt{gH}$ grösser wird, also
+bei grösserer Gravitation.
+
