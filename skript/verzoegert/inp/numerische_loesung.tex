@@ -53,16 +53,16 @@ Der Parameter \texttt{tspan} gibt die zu berechnende Zeitspanne (hier 0-3 Jahre)
 Der Aufruf \texttt{dde23} soll nun durch eine eigene Funktion ersetzt werden.
  
 
-\subsection{Berchnung von endlich kurzen Zeitschritten}
+\subsection{Berechnung mit kurzen Zeitschritten}
 Bei diesem Ansatz wird immer die Ableitung zu einer bestimmten Zeit berechnet.
-Diese Ableitung wird dann für einen (kurzen) Zeitschritt als Konstant genommen und damit nächste Wert berechnet.
+Diese Ableitung wird dann für einen (kurzen) Zeitschritt als Konstant genommen und damit der nächste Wert berechnet.
 \begin{algorithm}
 	\caption{Numerischer DDE-Solver}
 	\label{algo1}
 	\begin{algorithmic}[1]
 		\State Initialisieren, d.h. Zeitachse erstellen, Zeitschritt dt berechnen, etc
 		\For{dt in t}
-		\State Bestimmen ob die verzögerten Werte dde\_hist oder in alter Lösung (wenn t > $\tau$) vorkommen
+		\State Bestimmen, ob die verzögerten Werte dde\_hist oder in alter Lösung (wenn t > $\tau$) vorkommen
 		\For{i in tau}
 		\State Korrekten verzögerten Wert für jedes $\tau$ finden
 		\EndFor
@@ -130,13 +130,13 @@ Bei einem gegebenen Anfangsvektor kann das Resultat $y_n$ berechnet werden, inde
 \begin{equation}
 \left( \begin{array}{c}y_{n+1} \\ y_n \end{array} \right) = A^n \left( \begin{array}{c}y_0 \\ y_{-1} \end{array} \right)
 \end{equation}
-Das Potenzieren der Matrix $A$ hat zur Folge das die Lösung explodiert, falls die Eigenwerte von $A$ den Wert $1$ übersteigen.
+Das Potenzieren der Matrix $A$ hat zur Folge, dass die Lösung explodiert, falls die Eigenwerte von $A$ den Wert $1$ übersteigen.
 Unsere Matrix im Beispiel hat nur einen sinnvollen Eigenwert $\lambda = 1+hk$.
 Wir erhalten damit folgende Ungleichung:
 \begin{equation}
 	\vert 1+hk \vert < 1
 \end{equation}
-Dies entspricht der sogenannten Stabilitätsfunktion des expliziten Euler-Verfahren.
+Dies entspricht der Stabilitätsfunktion des expliziten Euler-Verfahren (vgl. \cite{verzoegert:euler}).
 
 
 \subsubsection{Berechnung der Eigenwerte am Beispiel}
