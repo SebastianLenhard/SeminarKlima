@@ -107,7 +107,10 @@ TEXFILES = $(SKRIPTFILES) \
 BLXFILES = \
 	skript.bbl \
 	skript1-blx.bbl \
-# 	skript2-blx.bbl skript3-blx.bbl skript4-blx.bbl skript5-blx.bbl \
+ 	skript2-blx.bbl \
+	skript3-blx.bbl \
+#	skript4-blx.bbl \
+#	skript5-blx.bbl \
 #	skript6-blx.bbl skript7-blx.bbl skript8-blx.bbl skript9-blx.bbl
 
 skript.pdf:	skript.tex $(TEXFILES) skript.ind $(BLXFILES)
