@@ -7,7 +7,7 @@ Da diese Funktion auf anderen Systemen (z.B. Octave) nicht verwendbar ist, soll 
 Beim Schreiben dieser Funktion wird darauf geachtet, dass die Syntax mit \texttt{dde23} vergleichbar ist. 
 
 \subsection{Analyse der Funktion \texttt{dde23}}
-Die offizielle Syntax von \texttt{dde23} \footnote{https://www.mathworks.com/help/matlab/ref/dde23.html} lautet: 
+Die offizielle Syntax von \texttt{dde23} (vgl. \cite{verzoegert:dde23}) lautet: 
 \begin{lstlisting}[style=MATLAB]{dde23}
 	sol = dde23(ddefun,lags,history,tspan);
 \end{lstlisting}
@@ -29,7 +29,7 @@ Damit diese Funktion akzeptiert wird, müssen die Konstanten gesetzt werden.
 \end{lstlisting}
 
 \subsubsection{Parameter: lags}
-Die Verzögerungen (in Jahren) entsprechen einem simplen Vektor.
+Die Verzögerungen (in Jahren) entsprechen einem normalen Vektor.
 \begin{lstlisting}[style=MATLAB]{lags}
 	tauk = 0.15; taur = 1;
 	tau = [0.5*tauk 0.5*taur+tauk];
@@ -37,7 +37,7 @@ Die Verzögerungen (in Jahren) entsprechen einem simplen Vektor.
 
 \subsubsection{Parameter: history}
 Die history entspricht einer Funktion, welche die Werte aus der Vergangenheit ausgibt. 
-Das kann mit Vektoren (mit realen Daten\footnote{http://www.cpc.ncep.noaa.gov/data/indices/sstoi.indices}) und einer Interpolation gelöst werden.
+Das kann mit Vektoren (mit realen Daten aus \cite{NOAA:Daten}) und einer Interpolation gelöst werden.
 \begin{lstlisting}[style=MATLAB]{hist}
 	function s = dde_hist(t)
 	t_v = [-0.67,-0.58,-0.5,-0.42, ...];
@@ -139,40 +139,37 @@ Wir erhalten damit folgende Ungleichung:
 Dies entspricht der sogenannten Stabilitätsfunktion des expliziten Euler-Verfahren.
 
 
-\subsubsection{Berechnung am Beispiel}
-Am Beispiel sieht die Berechnung gleich komplexer aus, da Werte aus der Vergangenheit wichtig sind.
+\subsubsection{Berechnung der Eigenwerte am Beispiel}
+Am Beispiel sieht die Berechnung komplexer aus, da Werte aus der Vergangenheit wichtig sind.
 Wir berechnen das ganze nur für eine Schrittweite $h=0.2$, also mit 100 Berechnungsschritten (vgl. Abbildung \ref{fig:instab100}).
 Beim Einsetzen erhalten wir: 
 \begin{equation}
-	\left( \begin{array}{c}y_{n+1} \\ y_n \\ y_{n-1} \\ y_{n-2} \\ y_{n-3} \end{array} \right) =
+	\left( \begin{array}{c}y_{n+1} \\ y_n \\ y_{n-1} \\ y_{n-2} \\ y_{n-3} \\ y_{n-4}\end{array} \right) =
 	\begin{pmatrix} 
-	1 & 0 & 0 & 0 & kh \\
-	1 & 0 & 0 & 0 & 0 \\
-	0 & 1 & 0 & 0 & 0 \\
-	0 & 0 & 1 & 0 & 0 \\
-	0 & 0 & 0 & 1 & 0
+	1 & 0 & 0 & 0 & 0 & kh \\
+	1 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 1 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 1 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 1 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 1 & 0
 	\end{pmatrix}
-	\left( \begin{array}{c}y_{n} \\ y_{n-1} \\ y_{n-2} \\ y_{n-3} \\ y_{n-4} \end{array} \right)
+	\left( \begin{array}{c}y_{n} \\ y_{n-1} \\ y_{n-2} \\ y_{n-3} \\ y_{n-4} \\y_{n-5} \end{array} \right)
 \end{equation}
- Wie man sieht, hängt die Größe der Matrix $A$ von der Schrittweite $h$ und der Verzögerung $\tau$ ab.
- Hier werden 5 Schritte pro $\tau$ benötigt.
+Wie man sieht, hängt die Größe der Matrix $A$ von der Schrittweite $h$ und der Verzögerung $\tau$ ab.
+Hier werden 5 Schritte pro $\tau$ benötigt.
  
- Wenn man die Eigenwerte für $k=-\frac{\pi}{2}$ berechnet, erhält man immer kleinere Werte als $1$.
- Somit ist die numerische Berechnung auch bei 100 Schritten stabil.
- Unser Fehler ist somit keine Instabilität, sondern einfach eine starke Ungenauigkeit.
- Wenn anstelle einer Oszillation eine exponentielle Abnahme gerechnet wird (z.B. mit $k=-0.3$), dann geht die Lösung auch mit 100 Schritten gegen $0$.
- 
-\subsubsection{Woher kommt der Fehler?}
-Der Fehler kommt ganz einfach von der Approximation.
-Wir haben bei einer Schrittweite von $h=0.2$ immer die gleiche Steigung für einen Zeitschritt von $0.2$.
-Da die nächste Steigung immer von vergangenen Werten abhängt, werden allfällige Fehler nicht korrigiert (kein Feedback).
+Wenn man die Eigenwerte für $k=-\frac{\pi}{2}$ berechnet, erhält man als maximalen Absolutwert $\vert \lambda \vert = 1.0129$.
+Dieser Eigenwert ist größer als 1.
+Also haben wir für $h=0.2$ eine Instabilität.
+Dies erklärt das Verhalten auf Abbildung \ref{fig:instab100}. 
 \begin{figure}
 	\centering
-	\includegraphics{verzoegert/inp/figures/instab_zoom.eps}
-	\caption{Vergleich der Lösung mit 10000 Datenpunkten und der Lösung mit 100 Datenpunkten. Zoom auf die Entstehung des Fehlers.}
-	\label{fig:instab_zoom}
-\end{figure}
-In Abbildung \ref{fig:instab_zoom} sieht man gut, dass zu lange mit falschen Steigungen gerechnet wird.
-In einem Zeitschritt ändert die Steigung relativ stark.
+	\includegraphics{verzoegert/inp/figures/eigenvl.eps}
+	\caption{Maximale Eigenwerte in Abhängigkeit der Schritweite $h$}
+	\label{fig:eigenvl}
+\end{figure} 
 
-Behoben werden könnte der Fehler durch einen besseren Algorithmus (wie in \texttt{dde23}\footnote{\texttt{dde23} verwendet den Runge-Kutta-Algorithmus}), oder durch verkleinern der Schrittbreite $h$.
+Die ganze Berechnung der Eigenwerte kann mit Matlab durchgeführt werden. 
+In Abbildung \ref{fig:eigenvl} sieht man die Abhängigkeit des maximalen Eigenwertes von der Schrittweite.
+Bis zu einer maximalen Schrittweite von $0.01$ beträgt der maximale Eigenwert genau $1$.
+Danach übersteigt der maximale Eigenwert die Grenze von $1$ und instabile Lösungen können auftreten.
