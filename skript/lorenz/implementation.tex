@@ -15,22 +15,22 @@ Die X-Achse entspricht dabei der hydrodynamischen, räumlichen Durchschnittsgesc
 Wie aus den obigen Gleichungen ersichtlich ist, sind drei Parameter vorhanden. Alle sind immer positiv.
 
 \subsubsection{1. Parameter: $\sigma$}
-$\sigma$ entspricht der dimensionslosen Prandtl Nummer. Diese ist das Verhältnis von \textit{Viskosit"at} und der \textit{Temperaturleitfähigkeit}. Da beide Eigenschaften die Einheit $\frac{m^2}{s}$ haben, resultiert daraus eine dimensionslose Zahl.
+$\sigma$ entspricht der dimensionslosen Prandtl Nummer. Diese ist das Verhältnis von \textit{Viskosität} und der \textit{Temperaturleitfähigkeit}. Da beide Eigenschaften die Einheit $\frac{m^2}{s}$ haben, resultiert daraus eine dimensionslose Zahl.
 
 \subsubsection{2. Parameter: $\rho$}
-Auch das $\rho$ wurde nach einem Mathematiker benannt. Der Name für diesen Parameter ist Rayleigh Nummer. Es entspricht dem Verhältnis von \textit{W"armeausdehnung} und der \textit{Viskosit"at}.
+Auch das $\rho$ wurde nach einem Mathematiker benannt. Der Name für diesen Parameter ist Rayleigh Nummer. Es entspricht dem Verhältnis von \textit{Wärmeausdehnung} und der \textit{Viskosität}.
 
 \subsubsection{3. Parameter: $\beta$}
-Der dritte Parameter des Lorenz-Modells ist das $\beta$. Es entspricht der W"armeausdehnung. Dabei handelt es sich um die Ver"anderung der geometrischen Gr"ossen eines K"orpers, die sich mit erh"ohter Temperatur vergr"ossern. Dehnt sich ein K"orper aufgrund der Temperatur"anderung aus, so ver"andert sich auch stets die Dichte. Bei fluiden Materialien hat dies Auswirkungen auf den Druck. 
+Der dritte Parameter des Lorenz-Modells ist das $\beta$. Es entspricht der Wärmeausdehnung. Dabei handelt es sich um die Veränderung der geometrischen Grössen eines Körpers, die sich mit erhöhter Temperatur vergrössern. Dehnt sich ein Körper aufgrund der Temperaturänderung aus, so verändert sich auch stets die Dichte. Bei fluiden Materialien hat dies Auswirkungen auf den Druck. 
 
 \subsection{Implementation}
-Es gibt f"ur das L"osen von Differentialgleichungen zwei Ans"atze. Zum einen der analytische Ansatz, der eine allgmeing"ultige L"osung sucht. Es handelt sich bei den drei Lorenz-Gleichungen um nicht-lineare Differentialgleichungen, welche analytisch nicht l"osbar sind. Aus diesem Grund f"allt dieser Ansatz weg. 
+Es gibt für das Lösen von Differentialgleichungen zwei Ansätze. Zum einen der analytische Ansatz, der eine allgmeingültige Lösung sucht. Es handelt sich bei den drei Lorenz-Gleichungen um nicht-lineare Differentialgleichungen, welche analytisch nicht lösbar sind. Aus diesem Grund fällt dieser Ansatz weg. 
 
-Der zweite Ansatz ist, eine Diskretisierung vorzunehmen und den Computer f"ur jeden definierten Zeitpunkt die Resultate der Gleichungen ausrechnen zu lassen. Dies ist auch der in dieser Arbeit gew"ahlte Ansatz, der im Folgenden bis zur tats"achlichen Visualisierung genauer beschrieben wird. 
+Der zweite Ansatz ist, eine Diskretisierung vorzunehmen und den Computer für jeden definierten Zeitpunkt die Resultate der Gleichungen ausrechnen zu lassen. Dies ist auch der in dieser Arbeit gewählte Ansatz, der im Folgenden bis zur tatsächlichen Visualisierung genauer beschrieben wird. 
 
 \subsubsection{Eulerisches Verfahren}
 
-Das Ziel vom eulerischen N"aherungsverfahren ist es hier, die Differentialgleichungen approximativ zu l"osen. Durch eine Diskretisierung der Werte k"onnen wir eine Form der Gleichungen bestimmen, die sp"ater visualisiert werden k"onnen. Um die Ableitung zu ber"ucksichtigen, muss das Ergebnis einer Differenzialgleichung zu einem diskreten Zeitpunkt f"ur die Berechnung des n"achsten Zeitpunktes addiert werden. So wird die Steigung an einem Punkt t berechnet. Diese Steigung können wir in eine lineare Gleichung einsetzen und daraus den absoluten Punkt berechnen.
+Das Ziel vom eulerischen Näherungsverfahren ist es hier, die Differentialgleichungen approximativ zu lösen. Durch eine Diskretisierung der Werte können wir eine Form der Gleichungen bestimmen, die später visualisiert werden können. Um die Ableitung zu berücksichtigen, muss das Ergebnis einer Differenzialgleichung zu einem diskreten Zeitpunkt für die Berechnung des nächsten Zeitpunktes addiert werden. So wird die Steigung an einem Punkt t berechnet. Diese Steigung können wir in eine lineare Gleichung einsetzen und daraus den absoluten Punkt berechnen.
 
 Der \textit{Y-Achsenabschnitt} wird mit dem Ergebnis der vorherigen Rechnungsschritt belegt, da der Differenzalterm den Abstand vom Wert vorher berechnet.  
 
@@ -49,11 +49,11 @@ y(t + \Delta t) = y(t) + \frac{dy}{dt} \cdot \Delta t\\
 z(t + \Delta t) = z(t) + \frac{dz}{dt} \cdot \Delta t
 \end{align}
 
-Das angewendete Verfahren nennt sich \textit{Eulerisches-} oder \textit{Einschritt-Verfahren}. Durch das, dass wir einen numerischen Ansatz mit dem Euler Verfahren gew"ahlt haben, resultiert eine Ann"aherung des Lorenz-Attraktors. Da solche Abweichungen von der tats"achlichen L"osung existieren, ist zu erwarten, dass diese Abweichungen gross genug sind, um zum chaotischen Verhalten beizutragen. Es g"abe auch genauere Verfahren f"ur das numerische L"osen der Gleichungen wie das \textit{Quadratische Verfahren} oder das \textit{Runge-Kutta Verfahren}. Da aber auch bei diesen Verfahren keine absolute Genauigkeit erreicht wird, blieben wir bei der Eulerischen Ann"aherung. 
+Das angewendete Verfahren nennt sich \textit{Eulerisches-} oder \textit{Einschritt-Verfahren}. Durch das, dass wir einen numerischen Ansatz mit dem Euler Verfahren gewählt haben, resultiert eine Annäherung des Lorenz-Attraktors. Da solche Abweichungen von der tatsächlichen Lösung existieren, ist zu erwarten, dass diese Abweichungen gross genug sind, um zum chaotischen Verhalten beizutragen. Es gäbe auch genauere Verfahren für das numerische Lösen der Gleichungen wie das \textit{Quadratische Verfahren} oder das \textit{Runge-Kutta Verfahren}. Da aber auch bei diesen Verfahren keine absolute Genauigkeit erreicht wird, blieben wir bei der Eulerischen Annäherung. 
 
 \subsubsection{Umsetzung im Code}
 
-Das oben erw"ahnte Gleichungssystem haben wir im Javascript-Code verwendet, um die Resultate des Lorenzsystems auszurechnen. In Javascript haben wir die Punkte in einem Array(\texttt{Tuple3}) gespeichert.
+Das oben erwähnte Gleichungssystem haben wir im Javascript-Code verwendet, um die Resultate des Lorenzsystems auszurechnen. In Javascript haben wir die Punkte in einem Array(\texttt{Tuple3}) gespeichert.
 
 	\begin{lstlisting}[style=C]
 	x = arr[i].x + ((sigma * y) - (sigma * x)) * delta;
@@ -71,7 +71,7 @@ Die $ x, y $ Variablen in der 1. Gleichung ist noch mit dem Wert des vorherigen 
 		$ \Delta $ & \texttt{delta} & Zeitschritt (0.1) \\\hline
 		$ \sigma $ & \texttt{sigma} & Rayleigh Zahl (10)\\\hline
 		$\varrho $ & \texttt{rho} & Prandtl Zahl (28)\\\hline
-		$\beta $ & \texttt{beta}  & W"armeausdehnung ($\frac{8}{3}$)\\\hline
+		$\beta $ & \texttt{beta}  & Wärmeausdehnung ($\frac{8}{3}$)\\\hline
 	\end{tabular}
 }
 \end{align}
