@@ -1,21 +1,22 @@
 function dydt = odefun_3Box_1Flux(t, y, const)
 
-
+% Initialisierung mit 0
 dt1 = 0;
 dt2 = 0;
 dt3 = 0;
 ds1 = 0;
 ds2 = 0;
 ds3 = 0;
-
+% Definierung der Naturkonstanten
 k = 1.5*10^(-6);
 a = 1.5*10^(-4);
 b = 8*10^(-4);
-H = 0.00001;
+H = 0.0000001;
 c = 0.0001;
 d = 0.0001;
-
-q = k*(a*(y(1)-y(2)) - b*(y(4)-y(5)));
+% Flussgleichung
+q = k*(a*(y(2)-y(1)) - b*(y(5)-y(4)));
+% Diffgleichungen mit if-Statement
 if q > 0
     dt1 = c*(const(1)-y(1)) + q*(y(3)-y(1));
     dt2 = c*(const(2)-y(2)) + q*(y(1)-y(2));
@@ -31,5 +32,4 @@ elseif q < 0
     ds2 = H + d*(const(5)-y(5)) + abs(q)*(y(6)-y(5));
     ds3 = -H/2 + d*(const(6)-y(6)) + abs(q)*(y(4)-y(6));
 end
-
 dydt = [dt1; dt2; dt3; ds1; ds2; ds3];

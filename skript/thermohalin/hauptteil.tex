@@ -6,9 +6,9 @@ Dazu wird der Golfstrom in drei Zonen aufgeteilt. Die jeweiligen Polarregionen u
 Im laufe des Seminars wurden zwei Modelle erstellt. Der erste Ansatz war sehr lehrreich hatte aber  schlussendlich nichts mit dem realen Golfstrom gemeinsam. Der zweite Ansatz war erfolgreicher und der Golfstrom kann mit diesem Modell qualitativ simuliert werden.
 In den folgenden zwei Kapiteln werden diese zwei Modelle vorgestellt und die jeweiligen Resultate diskutiert.
 
-\subsection{Zwei-Fluss Modell(1.Ansatz)}
+\subsection{Zwei-Fluss Modell( 1. Ansatz)}
 
-In diesem Modell werden die Boxen jeweils durch Rohre verbunden wie im 2-Box Modell. Nun werden jedoch zwei flüsse simuliert, die von den jeweiligen Dichtegradienten der Unterschiedlichen Boxen abhängen. $q_1$ ist also nur vom Dichteunterschied zwischen Box $1$ und Box $2$ abhängig. Dementsprechend hängt auch $q_2$ nur vom Dichteunterschied der Boxen $2$ und $3$ ab.
+In diesem Modell werden die Boxen jeweils durch Rohre verbunden wie im 2-Box Modell. Nun werden jedoch zwei Flüsse simuliert, die von den jeweiligen Dichtegradienten der unterschiedlichen Boxen abhängen. $q_1$ ist also nur vom Dichteunterschied zwischen Box $1$ und Box $2$ abhängig. Dementsprechend hängt auch $q_2$ nur vom Dichteunterschied der Boxen $2$ und $3$ ab.
 Der Vorteil der Aufteilung der Flüsse ist, dass wir sie entkoppeln können und sie nicht von der jeweiligen dritten Box abhängig sind.
 Eine Darstellung des Modelles ist in Abbildung 9.4 zu finden.
 
@@ -33,11 +33,11 @@ So lassen sich nun für jede Box die zugehörigen Salinitäts- und Temperaturgle
 \end{equation}
 \begin{equation}
 \begin{aligned}
-\frac{dS_1}{dt} &= -H/2 &+ d(S_1^*-S_1)&+|q_1|(S_2-S_1)\phantom{+|q_2|(S_3-S_2)}
+\frac{dS_1}{dt} &= -\frac{H}{2} &+ d(S_1^*-S_1)&+|q_1|(S_2-S_1)\phantom{+|q_2|(S_3-S_2)}
 \\
 \frac{dS_2}{dt} &= \phantom{-}H &+ d(S_2^*-S_2)&+|q_1|(S_1-S_2)+|q_2|(S_3-S_2)	
 \\
-\frac{dS_3}{dt} &= -H/2 &+d(S_3^*-S_3)&+ \phantom{+|q_1|(S_1-S_2)}|q_2|(S_2-S_3)
+\frac{dS_3}{dt} &= -\frac{H}{2} &+d(S_3^*-S_3)&+ \phantom{+|q_1|(S_1-S_2)}|q_2|(S_2-S_3)
 \end{aligned}
 \end{equation}	
 
@@ -53,27 +53,29 @@ Dazu die Flussgleichungen die jeweils nur von den Dichteunterschied der jeweilig
 
 \subsubsection{Matlab-Code der Simulation}
 
-Als Ziel ist es, die oben aufgestellten Differentialgleichungen mittels Matlab zu lösen. Dies wird mit dem Differentialgleichungslöser ode45 aus der Matlab Funktionenbibliothek erreicht.
+Als Ziel ist es, die oben aufgestellten Differentialgleichungen mittels Matlab zu lösen. Dies wird mit dem Differentialgleichungslöser \texttt{ode45} aus der Matlab Funktionenbibliothek erreicht.
 Dazu müssen wir der Funktion nur einen Zustandsvektor, einen Zeitvektor und die Konstanten der jeweiligen Umgebungstemperaturen und Salinitäten übergeben.
-\lstinputlisting[style=Matlab]{thermohalin/listings/input.m} 
+\lstinputlisting[style=Matlab]{thermohalin/listings/input.m}\label{thermohalin:listing:input}
 Diese werden wie folgt dem Differentialgleichungslöser übergeben:
-\lstinputlisting[style=Matlab]{thermohalin/listings/listing-ode45.m} 
+\lstinputlisting[style=Matlab]{thermohalin/listings/listing-ode45.m}\label{thermohalin:listing:uebergabe}
 
-Daraufhin wird im File \texttt{odefun-3Box.m} Das Gleichungssystem schrittweise gelöst und die Resultate zurückgegeben. Gleichzeitig wird der Zustandsvektor mit $0$ initialisiert und die Naturkonstanten zur Flussberechnung definiert.
+Daraufhin wird im File \texttt{odefun-3Box.m}\footnote{Der Code zur Simulation ist im Github-Repository des Seminares enthalten: https://github.com/AndreasFMueller/SeminarKlima.git} Das Gleichungssystem schrittweise gelöst und die Resultate zurückgegeben. Gleichzeitig wird der Zustandsvektor mit $0$ initialisiert und die Naturkonstanten zur Flussberechnung definiert.
 
-\lstinputlisting[style=Matlab]{thermohalin/listings/listing-solve.m}
+%%Fussnote zu Gitrepo mit link
+
+\lstinputlisting[style=Matlab]{thermohalin/listings/listing-solve.m}\label{thermohalin:listing:solve}
 
 Die Rückgabewerte werden in einem Array gespeichert und dann geplottet. Um den Text nicht in die Länge zu ziehen wird hier nur das der code zur erstellung des Temperaturplots dargestellt. Die Salinität folgt dem gleichen Schema.
 Da die Flüsse innerhalb der ode45-Funktion berechnet wurden, muss dies nachträglich noch einmal gemacht werden, da die Werte ja geplottet werden. Dazu müssen die jeweiligen Werte aus dem Lösungsvektor extrahiert und die Flüsse wiederholt berechnet werden.
-\lstinputlisting[style=Matlab]{thermohalin/listings/listing-plot.m}
+\lstinputlisting[style=Matlab]{thermohalin/listings/listing-plot.m}\label{thermohalin:listing:plot}
 
-Die So entstehenden Figuren werden im Folgenden Kapitel ausgewertet und Diskutiert. 
+Die so entstehenden Figuren werden im folgenden Kapitel ausgewertet und diskutiert. 
 
 \subsubsection{Resultate}
 
 
-Soweit sieht alles vielversprechend aus und die ersten Durchläufe ergaben auch brauchbare Resultate. Wenn nun jedoch mit den Umgebungsvariablen gespielt wird treten plötzlich unmögliche Phänomene auf.
-Einer der beiden Flüsse ist negativ und ändert seine Richtung. Das resultiert in zwei gegenläufigen Strömen welche in keiner Weise mit dem Golfstrom übereinstimmen. Das führt dazu, dass am Äquator eine Absinkstelle entsteht. Sonst kann dieses Ereignis gar nicht eintreten. In der Realität ist klar zu erkennen, dass Absink- und Aufsteigstellen jeweils nur an den Polen vorhanden sind. 
+Soweit sieht alles vielversprechend aus und die ersten Durchläufe ergaben auch brauchbare Resultate. Wenn nun jedoch mit den Umgebungsvariablen verändert werden, treten plötzlich unmögliche Phänomene auf.
+Einer der beiden Flüsse ist negativ und ändert seine Richtung. Das resultiert in zwei gegenläufigen Strömen welche in keiner Weise mit dem Golfstrom übereinstimmen. Das führt dazu, dass am Äquator eine Absinkstelle entsteht. In der Realität ist klar zu erkennen, dass Absink- und Aufsteigstellen jeweils nur an den Polen vorhanden sind. 
 Ein Plot der Simulationsresultate findet sich in Abbildung \ref{thermohalin:simulationsresultate}.
 
 \begin{figure}
@@ -84,7 +86,7 @@ Ein Plot der Simulationsresultate findet sich in Abbildung \ref{thermohalin:simu
 \end{figure}
 
 Durch die Entkoppelung der zwei Flüsse, war es möglich, dass ein Fluss seine Richtung ändert.
-Simulationstechnisch gesehen, hat das Modell funktioniert. Nur ist das Modell Fehlerhaft. Das Modell muss also angepasst werden. Das Resultat Der Anpassung ist in Abbildung \ref{thermohalin:3b2f-inverted} zu sehen.
+Simulationstechnisch gesehen, hat das Modell funktioniert. Nur ist das Modell fehlerhaft. Das Modell muss also angepasst werden. Das Resultat der Anpassung ist in Abbildung \ref{thermohalin:3b2f-inverted} zu sehen.
 
 \begin{figure}
 	\centering
@@ -95,12 +97,12 @@ Simulationstechnisch gesehen, hat das Modell funktioniert. Nur ist das Modell Fe
 
 Nun lässt sich die neu entstandene Absinkstelle auch sofort erkennen. 
 Mit diesem Modell lässt sich der Golfstrom also nicht erfolgreich simulieren. 
-Der nächste, erfolgreichere, Ansatz wird im nächsten Unterkapitel vorgestellt.
+Der nächste, erfolgreichere, Ansatz wird im nächsten Abschnitt vorgestellt.
 
 \subsection{Ein-Fluss Modell} 
 
 Dieses Modell ist der verbesserte Nachfolger des Zwei-Fluss Modelles.
-Es stammt aus einer Aufgabe des Seminarbuches \texttt{Mathematics and Climate} \cite{skript:kaperengler}.
+Es stammt aus einer Aufgabe von \texttt{Mathematics and Climate} \cite{skript:kaperengler}.
 
 Um zu verhindern, dass in der mittleren Box eine zusätzliche Absinkzone entsteht, muss dieser Weg versperrt werden. Das erreicht man am einfachsten, wenn der Tiefenstrom von der Äquatorbox getrennt wird. Die Äquatorzone ist so nur via Oberflächenströmungen mit den anderen Boxen verbunden und die Tiefenströmung verbindet nur die Polzonen.
 
@@ -112,7 +114,17 @@ Um zu verhindern, dass in der mittleren Box eine zusätzliche Absinkzone entsteh
 	\label{thermohalin:3b1f}
 \end{figure}
 
-Aus diesem Modell lassen sich nun neue Gleichungen für die Boxen aufstellen:
+Wie im vorherigen Modell benötigen wir wieder 3 Gleichungen für Temperatur- und Salinitätsänderung der jeweiligen Boxen.
+Jedoch gibt es nur noch einen Fluss welchen die Boxen verbindet. Das stimmt auch viel besser mit der Realität überein. Der Fluss wird nun von der Temperatur- und Salinitätsdifferenz zwischen der Betrachteten und der vorherigen Box getrieben. Folgend ist die Gleichung für für Box Nr. 1 dargestellt, um die Zusammenhänge zu erläutern:
+
+\begin{equation}
+\frac{dT_1}{dt} = c(T_p-T_1)+ \begin{cases} q(T_3-T_1)  \quad q>0 \\ |q|(T_2-T_1)  \quad q<0 \end{cases}
+\end{equation}
+
+Der erste Term beschreibt wie bisher den Temperaturaustausch zwischen Box und Umgebung. Der Zweite Term ist jedoch anders als vorher, da der Fluss je nach Flussrichtung von anderen Boxen getrieben wird. 
+Wenn der Fluss positiv ist, also $q>0$, dann wird für die Berechnung Box Nr. 3 und die aktuelle Box verwendet, da die dritte Box die Quellbox darstellt. Wenn der Fluss nun negativ wird, ist die Quellbox jedoch Box Nr. 2 also muss hier Differenz zwischen der Zweiten und der Dritten Box berechnet werden. Um die Simulation zu erleichtern, wird im Falle eines negativen Flusses mit dem Absolutbetrag gerechnet. Damit die Resultate trotzdem stimmen werden  bei der Differenzbildung jeweils die Terme vertauscht damit die Richtung trotzdem stimmt. 
+
+Das gesamte Gleichungssystem hat also folgende Form:
 
 \begin{equation}
 \begin{aligned}
@@ -132,9 +144,25 @@ Aus diesem Modell lassen sich nun neue Gleichungen für die Boxen aufstellen:
 \frac{dS_3}{dt} &= -H/2 &+d(S_e-S_3)&+\begin{cases} q(S_2-S_3) & \quad q>0 \\ |q|(S_1-S_3) & \quad q<0 \end{cases}
 \end{aligned}
 \end{equation}	
+
+Der Fluss $q$ wird weiter aus den Dichteunterschieden berechnet. Für die Berechnungen werden jedoch nur die polaren Boxen verwendet.
+
+\begin{equation}
+q = k[\alpha(T_1-T_3)-\beta(S_3-S_1)] 
+\end{equation}
+
+Aufgrund diese Gleichungen kann dann der neue Matlabcode geschrieben werden, welcher im nächsten Abschnitt erklärt wird.
+
+
 \subsubsection{Matlab-code}
 
-Erklärung der Änderung, (Codeausschnitte)
+Die Übergabe der Startwerte und Konstanten, der Aufruf des Differentialgleichungslösers und das Plotten der Resultate sind gleich geblieben und werden deshalb nicht noch einmal gezeigt( \ref{thermohalin:listing:input}). Die Änderungen befinden sich in der Funktion selber. Je nachdem ob der Fluss positiv oder negativ ist muss ein anderer Fall der Gleichung berechnet werden. Dies wird mit einem \texttt{if}-Statement erreicht, welches in jedem Durchgang neu ausgewertet wird.
+
+\lstinputlisting[style=Matlab]{thermohalin/listings/listing-3b1f-solve.m}
+
+
+
+
 
 
 \subsubsection{Resultate} 
