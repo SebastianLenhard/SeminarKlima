@@ -15,18 +15,18 @@ b = 8*10^(-4);
 results = zeros(6,1);
 counter = 0;
 
-t1inc = (30)/7;
-t2inc = (30)/7;
-t3inc = (30)/7;
+t1inc = (4)/7;
+t2inc = (4)/7;
+t3inc = (4)/7;
 s1inc = (0.05-0.03)/7;
 s2inc = (0.05-0.03)/7;
 s3inc = (0.05-0.03)/7;
 
 
-for i = 0:t1inc:30
-    for j = 0:t2inc:30
-            for k = 0:t3inc:30
-                for l = 0.03:s1inc:0.05 
+for i = 2:t1inc:6
+    for j = 0:t2inc:4
+            for k = 25:t3inc:29
+                for l = 0.02:s1inc:0.04 
                     for m = 0.03:s2inc:0.05
                         for n = 0.03:s3inc:0.05
                             [t,y] = ode45(@(t,y) odefun_3Box_1Flux(t,y,val), tspan, y0);
@@ -43,13 +43,13 @@ for i = 0:t1inc:30
                     val(4) = val(4) + s1inc;
                     val(5) = 0.03;
                 end
-                val(3) = val(3) + jinc;
+                val(3) = val(3) + t3inc;
                 val(4) = 0.03;
             end
             val(2) = val(2) + t2inc;
             val(3)= 0;
     end  
-    val(1) = val(1) + iinc;
+    val(1) = val(1) + t1inc;
     val(2) = 0;
 end
 val(1) = 0;

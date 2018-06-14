@@ -61,8 +61,6 @@ Diese werden wie folgt dem Differentialgleichungslöser übergeben:
 
 Daraufhin wird im File \texttt{odefun-3Box.m}\footnote{Der Code zur Simulation ist im Github-Repository des Seminares enthalten: https://github.com/AndreasFMueller/SeminarKlima.git} Das Gleichungssystem schrittweise gelöst und die Resultate zurückgegeben. Gleichzeitig wird der Zustandsvektor mit $0$ initialisiert und die Naturkonstanten zur Flussberechnung definiert.
 
-%%Fussnote zu Gitrepo mit link
-
 \lstinputlisting[style=Matlab]{thermohalin/listings/listing-solve.m}\label{thermohalin:listing:solve}
 
 Die Rückgabewerte werden in einem Array gespeichert und dann geplottet. Um den Text nicht in die Länge zu ziehen wird hier nur das der code zur erstellung des Temperaturplots dargestellt. Die Salinität folgt dem gleichen Schema.
@@ -99,7 +97,7 @@ Nun lässt sich die neu entstandene Absinkstelle auch sofort erkennen.
 Mit diesem Modell lässt sich der Golfstrom also nicht erfolgreich simulieren. 
 Der nächste, erfolgreichere, Ansatz wird im nächsten Abschnitt vorgestellt.
 
-\subsection{Ein-Fluss Modell} 
+\subsection{Ein-Fluss Modell (2. Ansatz)} 
 
 Dieses Modell ist der verbesserte Nachfolger des Zwei-Fluss Modelles.
 Es stammt aus einer Aufgabe von \texttt{Mathematics and Climate} \cite{skript:kaperengler}.
@@ -156,21 +154,42 @@ Aufgrund diese Gleichungen kann dann der neue Matlabcode geschrieben werden, wel
 
 \subsubsection{Matlab-code}
 
-Die Übergabe der Startwerte und Konstanten, der Aufruf des Differentialgleichungslösers und das Plotten der Resultate sind gleich geblieben und werden deshalb nicht noch einmal gezeigt( \ref{thermohalin:listing:input}). Die Änderungen befinden sich in der Funktion selber. Je nachdem ob der Fluss positiv oder negativ ist muss ein anderer Fall der Gleichung berechnet werden. Dies wird mit einem \texttt{if}-Statement erreicht, welches in jedem Durchgang neu ausgewertet wird.
+Die Übergabe der Startwerte und Konstanten, der Aufruf des Differentialgleichungslösers und das Plotten der Resultate sind gleich geblieben und werden deshalb nicht noch einmal gezeigt( \ref{thermohalin:listing:input}). Die Änderungen befinden sich in der Funktion selber. Je nachdem ob der Fluss positiv oder negativ ist muss ein anderer Fall der Gleichung berechnet werden. Dies wird mit einem \texttt{if}-Statement erreicht, welches in jedem Durchgang neu ausgewertet wird. 
 
 \lstinputlisting[style=Matlab]{thermohalin/listings/listing-3b1f-solve.m}
 
 
-
-
-
-
 \subsubsection{Resultate} 
 
-1. Resultat normale Simulation mit aktuellen Werten
+Nach mehrfacher Simulation scheint es so, dass dieses Modell tatsächlich funktioniert. Für Umgebungswerte, welche realen Werten entsprechen, reagiert die Simulation wie der richtige Golfstrom. Der Golfstrom fliesst vom Süd- zum Nordpol, sinkt dort ab und fliesst am Meeresgrund wieder bis zum Südpol, wo er aufsteigt und so den Kreislauf schliesst. Ein Plot der Resultate ist in Abbildung \ref{thermohalin:3b1f-skript} dargestellt.
 
-2. Simulation der werte nach klimaerwärmung
+Wie ersichtlich wird, bleiben die Temperaturen ungefähr konstant. Dies liegt daran, dass die Temperaturstartwerte schon den Umgebungswerten angepasst wurde, was bedeutet dass diese Anpassung schon geschehen ist. Beim Salinitätsplot ist jedoch klar der Einfluss des virtuellen Salzflusses zu sehen, welcher dazu führt, dass die Salinität in der Äquatorregion leicht steigt und in Polnähe dementsprechend abnimmt. Das Resultat stimmt jedoch und der Golfstrom fliesst in die uns bekannte Richtung.
 
-3. Vergleich Paper Liu Wei
+\begin{figure}
+	\centering
+	\includegraphics[width=14cm]{thermohalin/Code/graphs/3b1f-skript.jpg}
+	\caption{Resultat der Ein-Fluss Simulation ohne Klimawandel}
+	\label{thermohalin:3b1f-skript}
+\end{figure}
+
+Spannend wird es nun, wenn Die Umgebungsvariablen so angepasst werden, dass sie eine Klimaerwärmung und deren Folgen darstellen. Wie bereits in Abschnitt \ref{thermohalin:EinflussKlimawandel} gesehen haben, muss dazu die Salinität am Nordpol und die Temperatur am Äquator erhöht werden. Dies sollte nun dazu führen, dass der Golfstrom schwächer wird, anhält, oder gar seine Richtung ändert. 
+Der Vektor welcher die Umgebungsvariablen enthält wird also dementsprechend angepasst.
+\begin{equation*}
+val = \begin{pmatrix}T_{1}^{*} \\ T_{2}^{*} \\ T_{3}^{*} \\ S_{1}^{*} \\ S_{2}^{*} \\ S_{3}^{*}\end{pmatrix}
+\end{equation*}
+
+Die Werte von $S_1^*$ ( Salinität Nordpol) und $T_3^*$ (Temperatur Äquator) werden also erhöht.
+
+Das Resultat entspricht den Erwartungen. Bei einer kleinen Veränderung wird der Strom nur schwächer, je grösser die Abweichungen jedoch sind desto stärker Wird der Effekt.
+Bis sich dann die Richtung des Stromes ändert.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=14cm]{thermohalin/Code/graphs/3b1f-skript-klimawandel.jpg}
+	\caption{Resultat der Ein-Fluss Simulation mit Klimawandel}
+	\label{thermohalin:3b1f-skript-klimawandel}
+\end{figure}
+
+Wenn das nun mit dem Paper von Liu Wei \cite{thermohalin:liuwei} vergleichen kommen wir auf vergleichbare Resultate.
 
 
