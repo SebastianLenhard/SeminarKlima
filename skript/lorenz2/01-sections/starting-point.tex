@@ -2,13 +2,13 @@
 \rhead{Einstieg}
 
 Bevor wir uns auf die Suche nach Basisfunktionen machen, folgen hier ein paar 
-Angaben zu den in diesem Kapitel verwendeten Notation und einigen grundlegenden 
-Funktionen und Umformungen, welche sp"ater verwendet werden, ein kleiner 
-``Teaser'' zu dem was uns noch erwartet sozusagen.
+Angaben zu den in diesem Kapitel verwendeten Notation und zu einigen 
+grundlegenden Funktionen und Umformungen, welche sp"ater verwendet werden. Eine 
+kleine Vorschau zu dem was uns noch erwartet sozusagen.
 
 \subsection{Notation}
-Die verwendete Notation entspricht grunds"atzlich derjenigen, welche man 
-bereits aus der Literatur kennt. Einzig die Verwendung der 
+Die verwendete Notation entspricht grunds"atzlich derjenigen, welche 
+bereits aus der Literatur bekannt sind. Einzig die Verwendung der 
 sogenannten Multi-Index-Notationen k"onnte f"ur einige Leser zu Unklarheiten 
 f"uhren, daher hier eine kurze Einf"uhrung.
 
@@ -18,35 +18,35 @@ $n$-Tupel
 	\alpha = (\alpha_1, \alpha_2, \dotsc, \alpha_n) \qquad \alpha_k \in 
 	\mathbb{N}_{0}
 \end{equation*}
-entspricht. Zur klaren Unterscheidung zu normalen Indexen, wird meist ein 
-griechischer Buchstabe verwendet. Der absolute Wert eiens Multi-Indices ist wie 
+entspricht. Zur klaren Unterscheidung zu normalen Indices, wird meist ein 
+griechischer Buchstabe verwendet. Der absolute Wert eines Multi-Indices ist wie 
 folgt definiert
 \begin{equation*}
 	|\alpha| = \alpha_1 + \alpha_2 + \dots + \alpha_n.
 \end{equation*}
  
 N"utzlich ist diese Notation insbesondere, wenn mit Summen gearbeitet wird. So 
-kann mittels der Forderung $|\alpha| = k$ und unter Ausnutzung der ``Symetrie'' 
-von $k$ und $l$ die Summe
+kann mittels der Forderung $|\alpha| = k$ und unter Ausnutzung der 
+``Symmetrie'' von $k$ und $l$ die Summe
 \begin{equation}
 	\sum_{k = 0}^{\infty}\sum_{l = 0}^{k}a_{l, k - l}
 	\label{equation:lorenz2:doublesum}
 \end{equation}
-vereinfacht werden zu
+auch geschrieben werden kann als
 \begin{equation*}
 	\sum_{k = 0}^{\infty}\sum_{|\alpha| = k}a_{\alpha}
 	\qquad \alpha = (\alpha_1, \alpha_2).
 \end{equation*}
 Fortf"uhrend werden wir die innere Summe $\sum_{|\alpha| = k}$ als implizit 
 gegeben annehmen und daher nicht mehr ausschreiben. Es gilt also
-\begin{equation}
+\begin{equation*}
 	\sum_{k = 0}^{\infty}c_{\alpha}
 	\qquad
-	\text{wobei gilt }\alpha = (\alpha_1, \alpha_2),
-	c_{\alpha} = \sum_{|\alpha| = k}a_{\alpha}.
+	\text{wobei }\alpha = (\alpha_1, \alpha_2),
+	c_{\alpha} = \sum_{|\alpha| = k}a_{\alpha},
 	\label{equation:lorenz2:mmsum}
-\end{equation}
-Was ausgeschrieben
+\end{equation*}
+was ausgeschrieben
 \begin{equation*}
 	a_{(0,0)} + a_{(0,1)} + a_{(1,0)} + a_{(0,2)} + a_{(1,1)} + a_{(2,0)} + 
 	a_{(0,3)} + 
@@ -71,8 +71,8 @@ Die Signum-Funktion (kurz $\sgn(x)$):
 \label{equation:lorenz2:signum}
 \end{equation}
 
-Die \sgn-Funktion k"onnen wir dazu verwenden Sinus und Kosinus eines absoluten 
-Wertes zu berechnen zu vereinfachen:
+Die \sgn-Funktion k"onnen wir dazu verwenden, die Berechnung von Sinus und 
+Kosinus eines absoluten Wertes zu vereinfachen:
 \begin{equation}
 \begin{split}
 \sin(|x|) &= \sgn(x)\sin(x) \qquad \Leftrightarrow \qquad \sin(x) = 
@@ -84,7 +84,7 @@ Wertes zu berechnen zu vereinfachen:
 \end{equation}
 
 Produkte von Sinus und Kosinus k"onnen wir mit folgenden S"atzen in einfache 
-Summen umgewandeln. Unter anderem kann dies mit Hilfe der Komplexen 
+Summen umwandeln. Unter anderem kann dies mit Hilfe der komplexen 
 Zahlentheorie gezeigt werden:
 \begin{align*}
 \cos(x)\sin(y) &= \frac{1}{2} \left(\sin(x + y) - \sin(x - y)\right)

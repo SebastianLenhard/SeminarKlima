@@ -1,18 +1,16 @@
 \section{H"oherdimensionales Lorenzsystem\label{section:lorenz2:ho-model}}
 \rhead{Lorenz-Modell h"oherer Ordnung}
-Nun nehmen wir als die Grundgleichungen aus 
-\cref{equation:lorenz2:base} und unsere neuen Basisfunktionen aus 
-\cref{equation:lorenz2:basic-functions} und bauen daraus ein 
-h"oherdimensionales Lorenzsystem.
+Nun nehmen wir die Grundgleichungen aus \cref{equation:lorenz2:base} und unsere 
+neuen Basisfunktionen aus \cref{equation:lorenz2:basic-functions} und bauen 
+daraus ein h"oherdimensionales Lorenzsystem.
 
-Als ersten Schritt erweitern wir unsere in \cref{skript:psiansatz} und 
-\cref{skript:thetaansatz} gefundenen L"osungen und erhalten
+Als ersten Schritt werden die in \cref{skript:psiansatz} und 
+\cref{skript:thetaansatz} gefundenen L"osungen erweitert und es resultiert
 \begin{equation}
 \psi(x,y,t) =
 \sum_{k = 1}^{\infty}
 a_{\alpha}(t)
-\sin(\alpha_1 ax) \sin(\alpha_2 y)
-\qquad |\alpha| = k,
+\sin(\alpha_1 ax) \sin(\alpha_2 y),
 \label{equation:lorenz2:extendedpsi}
 \end{equation}
 sowie
@@ -20,8 +18,7 @@ sowie
 \vartheta(x,y,t) =
 \sum_{k = 1}^{\infty}
 b_{\alpha}(t)
-\cos(\alpha_1 ax) \sin(\alpha_2 y)
-\qquad |\alpha| = k.
+\cos(\alpha_1 ax) \sin(\alpha_2 y).
 \label{equation:lorenz2:extendedtheta}
 \end{equation}
 
@@ -39,12 +36,12 @@ Als n"achstes betrachten wir nochmals die \cref{equation:lorenz2:base}
 + \frac{T_0}{\pi}\frac{\partial\psi}{\partial x}
 - \frac{\partial(\psi,\vartheta)}{\partial(x,y)}.
 \end{align*}
-Statt einfach wild Terme einzusetzen, macht es Sinn, systematisch vorzugehen. 
-Es ist leicht zu erkennen, dass wir sowohl partielle Ableitungen nach $x$ als 
-auch $y$ brauchen werden. Daher fangen wir an, uns Bausteine zurechtzulegen 
-indem wir die 
+Um das Einsetzen und Vereinfachen der Terme einfacher zu gestalten, ist es 
+sinnvoll, systematisch vorzugehen. Es ist leicht zu erkennen, dass wir sowohl 
+partielle Ableitungen nach $x$ als auch nach $y$ brauchen werden. Daher fangen 
+wir an, uns Bausteine zurechtzulegen, indem wir die 
 \cref{equation:lorenz2:extendedpsi,equation:lorenz2:extendedtheta} 
-zwei Mal je nach $x$ und $y$ ableiten.
+je zwei Mal nach $x$ und $y$ ableiten.
 
 F"ur $\psi(x,y,t)$ erhalten wir
 \begin{align*}
@@ -54,16 +51,14 @@ a
 \sum_{k = 1}^{\infty}
 \alpha_1
 a_{\alpha}(t)
-\cos(\alpha_1 ax) \sin(\alpha_2 y)
-&&|\alpha| = k
+\cos(\alpha_1 ax) \sin(\alpha_2 y),
 \\
 \frac{\partial\psi}{\partial y}
 &=
 \sum_{k = 1}^{\infty}
 \alpha_2
 a_{\alpha}(t)
-\sin(\alpha_1 ax) \cos(\alpha_2 y)
-&&|\alpha| = k
+\sin(\alpha_1 ax) \cos(\alpha_2 y),
 \\
 \frac{\partial^2\psi}{\partial x^2}
 &=
@@ -72,8 +67,7 @@ a^2
 \sum_{k = 1}^{\infty}
 \alpha_1^2
 a_{\alpha}(t)
-\sin(\alpha_1 ax) \sin(\alpha_2 y)
-&&|\alpha| = k
+\sin(\alpha_1 ax) \sin(\alpha_2 y),
 \\
 \frac{\partial^2\psi}{\partial y^2}
 &=
@@ -82,7 +76,6 @@ a_{\alpha}(t)
 \alpha_2^2
 a_{\alpha}(t)
 \sin(\alpha_1 ax) \sin(\alpha_2 y)
-&&|\alpha| = k
 \end{align*}
 und f"ur $\vartheta(x,y,t)$
 \begin{align*}
@@ -93,16 +86,14 @@ a
 \sum_{k = 1}^{\infty}
 \alpha_1
 b_{\alpha}(t)
-\sin(\alpha_1 ax) \sin(\alpha_2 y)
-&&|\alpha| = k
+\sin(\alpha_1 ax) \sin(\alpha_2 y),
 \\
 \frac{\partial\vartheta}{\partial y}
 &=
 \sum_{k = 1}^{\infty}
 \alpha_2
 b_{\alpha}(t)
-\cos(\alpha_1 ax) \cos(\alpha_2 y)
-&&|\alpha| = k
+\cos(\alpha_1 ax) \cos(\alpha_2 y),
 \\
 \frac{\partial^2\vartheta}{\partial x^2}
 &=
@@ -111,8 +102,7 @@ a^2
 \sum_{k = 1}^{\infty}
 \alpha_1^2
 b_{\alpha}(t)
-\cos(\alpha_1 ax) \sin(\alpha_2 y)
-&&|\alpha| = k
+\cos(\alpha_1 ax) \sin(\alpha_2 y),
 \\
 \frac{\partial^2\vartheta}{\partial y^2}
 &=
@@ -120,8 +110,7 @@ b_{\alpha}(t)
 \sum_{k = 1}^{\infty}
 \alpha_2^2
 b_{\alpha}(t)
-\cos(\alpha_1 ax) \sin(\alpha_2 y)
-&&|\alpha| = k.
+\cos(\alpha_1 ax) \sin(\alpha_2 y).
 \end{align*}
 
 Damit haben wir alles zusammen um den einfachen Laplace Operator $\laplace$ 
@@ -145,7 +134,6 @@ a_{\gamma}(t)
 \delta_2^2
 a_{\delta}(t) 
 \sin(\delta_1 ax) \sin(\delta_2 y)
-&&|\gamma| = i, |\delta| = j
 \\
 &=
 -
@@ -153,7 +141,6 @@ a_{\delta}(t)
 \left(\alpha_1^2 a^2 + \alpha_2^2 \right)
 a_{\alpha}(t)
 \sin(\alpha_1 ax) \sin(\alpha_2 y)
-&&|\alpha| = k
 \end{align*}
 und $\vartheta(x,y,t)$
 \begin{align*}
@@ -173,7 +160,6 @@ b_{\gamma}(t)
 \delta_2^2
 b_{\delta}(t)
 \cos(\delta_1 ax) \sin(\delta_2 y)
-&&|\gamma| = i, |\delta| = j
 \\
 &=
 -
@@ -181,7 +167,6 @@ b_{\delta}(t)
 \left(\alpha_1^2 a^2 + \alpha_2^2\right)
 b_{\alpha}(t)
 \cos(\alpha_1 ax) \sin(\alpha_2 y)
-&&|\alpha| = k
 \end{align*}
 aufzul"osen. In \cref{equation:lorenz2:extendedpsi} brauchen wir zudem 
 $\laplace^2\psi(x,y,t)$. Daf"ur ben"otigen wir die zweifachen Ableitungen von 
@@ -194,8 +179,7 @@ a
 \alpha_1
 \left(\alpha_1^2 a^2 + \alpha_2^2 \right)
 a_{\alpha}(t)
-\cos(\alpha_1 ax) \sin(\alpha_2 y)
-&&|\alpha| = k
+\cos(\alpha_1 ax) \sin(\alpha_2 y),
 \\
 \frac{\partial^2\laplace\psi}{\partial x^2}
 &=
@@ -204,8 +188,7 @@ a^2
 \alpha_1^2
 \left(\alpha_1^2 a^2+\alpha_2^2\right)
 a_{\alpha}(t)
-\sin(\alpha_1 ax) \sin(\alpha_2 y)
-&&|\alpha| = k
+\sin(\alpha_1 ax) \sin(\alpha_2 y),
 \\
 \frac{\partial\laplace\psi}{\partial y}
 &=
@@ -214,8 +197,7 @@ a_{\alpha}(t)
 \alpha_2
 \left(\alpha_1^2 a^2 + \alpha_2^2 \right)
 a_{\alpha}(t)
-\sin(\alpha_1 ax) \cos(\alpha_2 y)
-&&|\alpha| = k
+\sin(\alpha_1 ax) \cos(\alpha_2 y),
 \\
 \frac{\partial^2\laplace\psi}{\partial y^2}
 &=
@@ -224,14 +206,14 @@ a_{\alpha}(t)
 \left(\alpha_1^2 a^2+\alpha_2^2\right)
 a_{\alpha}(t)
 \sin(\alpha_1 ax) \sin(\alpha_2 y)
-&&|\alpha| = k
 \end{align*}
 und k"onnen dann
 \begin{align*}
 \laplace^2\psi
 &= 
 \frac{\partial^2\laplace\psi}{\partial x^2} + 
-\frac{\partial^2\laplace\psi}{\partial y^2} \\
+\frac{\partial^2\laplace\psi}{\partial y^2}
+\\
 &=
 a^2
 \sum_{i = 1}^{\infty}
@@ -247,14 +229,12 @@ a_{\gamma}(t)
 \left(\delta_1^2 a^2+\delta_2^2\right)
 a_{\delta}(t)
 \sin(\delta_1 ax) \sin(\delta_2 y)
-&&|\gamma| = i, |\delta| = j
 \\
 &=
 \sum_{k = 1}^{\infty}
 \left(\alpha_1^2 a^2+\alpha_2^2\right)^2
 a_{\alpha}(t)
 \sin(\alpha_1 ax) \sin(\alpha_2 y)
-&&|\alpha| = k
 \end{align*}
 zusammenbauen.
 
@@ -315,8 +295,6 @@ a
 a_{\eta}(t)
 \cos(\eta_1 ax) \sin(\eta_2 y)
 \right)
-\\
-&|\gamma| = i, |\delta| = j, |\xi| = q, |\eta| = r
 \\
 &=
 -
@@ -453,8 +431,6 @@ a_{\delta}(t)
 \sgn(\gamma_1 - \delta_1)\sgn(\gamma_2 - \delta_2)
 \sin(|\gamma_1 - \delta_1|ax)\sin(|\gamma_2 - \delta_2|y)
 \Big)
-\\
-&|\gamma| = i, |\delta| = j
 \end{align*}
 und analog dazu kann auch die zweite
 \begin{align*}
@@ -497,8 +473,6 @@ a
 b_{\eta}(t)
 \sin(\eta_1 ax) \sin(\eta_2 y)
 \right)
-\\
-&|\gamma| = i, |\delta| = j, |\xi| = q, |\eta| = r
 \\
 &=\phantom{+}
 a
@@ -552,19 +526,17 @@ a
 a_{\gamma}(t)
 \sum_{j = 1}^{\infty}
 b_{\delta}(t)
-\left(
+\Big(
 \gamma_1 \delta_2
 \cos(\gamma_1 ax) \sin(\gamma_2 y)
 \cos(\delta_1 ax) \cos(\delta_2 y)
-\right.
 \\[-2.5ex]
 &\phantom{=abbb\sum\sum.....{}}
-\left.
 +
 \gamma_2 \delta_1
 \sin(\gamma_1 ax) \cos(\gamma_2 y)
 \sin(\delta_1 ax) \sin(\delta_2 y)
-\right)	
+\Big)	
 \\
 &=
 \frac{a}{4}
@@ -572,12 +544,10 @@ b_{\delta}(t)
 a_{\gamma}(t)
 \sum_{j = 1}^{\infty}
 b_{\delta}(t)
-\left(
+\bigg(
 \gamma_1 \delta_2
-\left(
+\Big(
 \cos((\gamma_1 - \delta_1)ax)\sin((\gamma_2 + \delta_2)y)
-\right.
-\right.
 \\[-2.5ex]
 &\phantom{=abbb\sum\sum.....{}}
 +\cos((\gamma_1 - \delta_1)ax)\sin((\gamma_2 - \delta_2)y)
@@ -586,16 +556,14 @@ b_{\delta}(t)
 +\cos((\gamma_1 + \delta_1)ax)\sin((\gamma_2 + \delta_2)y)
 \\[-1.0ex]
 &\phantom{=abbb\sum\sum.....{}}
-\left.
 +\cos((\gamma_1 + \delta_1)ax)\sin((\gamma_2 - \delta_2)y)
-\right)
+\Big)
 \\[-1.0ex]
 &\phantom{=abbb\sum\sum.....{}}
 +
 \gamma_2 \delta_1
-\left(
+\Big(
 \cos((\gamma_1 - \delta_1)ax)\sin((\gamma_2 + \delta_2)y)
-\right.
 \\[-1.0ex]
 &\phantom{=abbb\sum\sum.....{}}
 -\cos((\gamma_1 - \delta_1)ax)\sin((\gamma_2 - \delta_2)y)
@@ -604,11 +572,9 @@ b_{\delta}(t)
 -\cos((\gamma_1 + \delta_1)ax)\sin((\gamma_2 + \delta_2)y)
 \\[-1.0ex]
 &\phantom{=abbb\sum\sum.....{}}
-\left.
-\left.
 +\cos((\gamma_1 + \delta_1)ax)\sin((\gamma_2 - \delta_2)y)
-\right)
-\right)
+\Big)
+\bigg)
 \\
 &=
 \frac{a}{4}
@@ -669,11 +635,9 @@ b_{\delta}(t)
 \cos(|\gamma_1 + \delta_1|ax)\sin(|\gamma_2 + \delta_2|y)
 \Big)
 \bigg)
-\\
-&|\gamma| = i, |\delta| = j
 \end{align*}
-aufzul"osen. Jetzt haben wir alle Bausteine zusammen und k"onnen diese in die 
-einzelnen Gleichungen einsetzen. Damit erhalten wir einerseits
+aufgel"ost werden. Jetzt haben wir alle Bausteine zusammen und k"onnen diese in 
+die einzelnen Gleichungen einsetzen. Damit erhalten wir einerseits
 \begin{align*}
 \frac{\partial\Delta\psi}{\partial t}
 &=
@@ -739,8 +703,6 @@ a_{\delta}(t)
 \sin(|\zeta_1 - \delta_1|ax)\sin(|\zeta_2 - \delta_2|y)
 \Big)
 \\
-&|\gamma| = k, |\xi| = q, |\eta| = s, |\zeta| = i, |\delta| = j
-\\
 \Leftrightarrow \qquad
 &
 \sum_{k = 1}^{\infty}
@@ -795,8 +757,6 @@ a_{\beta}(t)
 \sin(|\alpha_1 - \beta_1|ax)\sin(|\alpha_2 - \beta_2|y)
 \Big)
 \Bigg)
-\\
-&|\gamma| = k, |\alpha| = i, |\beta| = j
 \end{align*}
 und andererseits
 \begin{align*}
@@ -861,8 +821,6 @@ b_{\delta}(t)
 \Big)
 \bigg)
 \\
-&|\gamma| = k, |\xi| = q, |\eta| = s, |\zeta| = i, |\delta| = j
-\\
 \Leftrightarrow \qquad
 &\sum_{k = 1}^{\infty}
 \dot{b}_{\gamma}(t)
@@ -914,13 +872,12 @@ b_{\beta}(t)
 \Big)
 \bigg)
 \Bigg)
-\\
-&|\gamma| = k, |\alpha| = i, |\beta| = j
 \end{align*}
 als Gleichungen die es nun zu l"osen gilt.
 
 Da wir die $x$ und $y$ Komponenten loswerden wollen, damit nur noch $t$ "ubrig 
-bleibt, brauchen wir Gleichungen f"ur einzelne $\dot{a}_\gamma(t)$
+bleibt, brauchen wir Gleichungen f"ur einzelne $\dot{a}_\gamma(t)$ f"ur 
+$|\gamma| > 0$
 \begin{align}
 \left(\gamma_1^2 a^2 + \gamma_2^2\right)
 \dot{a}_\gamma(t)
@@ -1012,8 +969,6 @@ f_\gamma(\alpha_1 - \beta_1, \alpha_2 + \beta_2)
 f_\gamma(\alpha_1 - \beta_1, \alpha_2 - \beta_2)
 \right)
 \label{equation:lorenz2:dota}
-\\
-&|\gamma| > 0, |\alpha| = i, |\beta| = j \nonumber
 \end{align}
 und wieder analog f"ur
 \begin{align}
@@ -1039,17 +994,15 @@ g_\gamma(\alpha_1, \alpha_2)
 a_{\alpha}(t)
 \sum_{j = 1}^{\infty}
 b_{\beta}(t)
-\left(
+\bigg(
 \left(\alpha_1 \beta_2 + \alpha_2 \beta_1 \right)
 \left(
 g_\gamma(\gamma_1 - \beta_1, \alpha_2 + \beta_2)
 +
 g_\gamma(\gamma_1 + \beta_1, \alpha_2 - \beta_2)
-\right)
-\right. \nonumber
+\right) \nonumber
 \\[-3ex]
 &\phantom{=-aat\sum\sum...{}}
-\left.
 +
 \left(\alpha_1 \beta_2 - \alpha_2 \beta_1 \right)
 \left(
@@ -1057,7 +1010,7 @@ g_\gamma(\gamma_1 - \beta_1, \alpha_2 - \beta_2)
 +
 g_\gamma(\gamma_1 + \beta_1, \alpha_2 + \beta_2)
 \right)
-\right)
+\bigg)
 \Bigg) \nonumber
 \\
 \Leftrightarrow \qquad
@@ -1081,17 +1034,15 @@ a_{\gamma}(t)
 a_{\alpha}(t)
 \sum_{j = 1}^{\infty}
 b_{\beta}(t)
-\left(
+\bigg(
 \left(\alpha_1 \beta_2 + \alpha_2 \beta_1 \right)
 \left(
 g_\gamma(\alpha_1 - \beta_1, \alpha_2 + \beta_2)
 +
 g_\gamma(\alpha_1 + \beta_1, \alpha_2 - \beta_2)
-\right)
-\right.\nonumber
+\right) \nonumber
 \\[-2ex]
 &\phantom{=-aat\sum..a..\sum...{}}
-\left.
 +
 \left(\alpha_1 \beta_2 - \alpha_2 \beta_1 \right)
 \left(
@@ -1099,10 +1050,8 @@ g_\gamma(\alpha_1 - \beta_1, \alpha_2 - \beta_2)
 +
 g_\gamma(\alpha_1 + \beta_1, \alpha_2 + \beta_2)
 \right)
-\right)
+\bigg)
 \label{equation:lorenz2:dotb}
-\\
-&|\gamma| > 0, |\alpha| = i, |\beta| = j.\nonumber
 \end{align}
 
 Die beiden Hilfsfunktionen $f_\gamma(q, s)$ und $g_\gamma(q, s)$ lautet wie 
