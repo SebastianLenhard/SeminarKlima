@@ -1,7 +1,7 @@
 \section{H"oherdimensionales Lorenzsystem\label{section:lorenz2:ho-model}}
 \rhead{Lorenz-Modell h"oherer Ordnung}
-Nun nehmen wir als/ die Grundgleichungen aus 
-\cref{skript:lorenzausgangsgleichung} und unsere neuen Basisfunktionen aus 
+Nun nehmen wir als die Grundgleichungen aus 
+\cref{equation:lorenz2:base} und unsere neuen Basisfunktionen aus 
 \cref{equation:lorenz2:basic-functions} und bauen daraus ein 
 h"oherdimensionales Lorenzsystem.
 
@@ -25,7 +25,7 @@ b_{\alpha}(t)
 \label{equation:lorenz2:extendedtheta}
 \end{equation}
 
-Als n"achstes betrachten wir die \cref{skript:lorenzausgangsgleichung}
+Als n"achstes betrachten wir nochmals die \cref{equation:lorenz2:base}
 \begin{align*}
 \frac{\partial\Delta\psi}{\partial t}
 &=
@@ -39,10 +39,11 @@ Als n"achstes betrachten wir die \cref{skript:lorenzausgangsgleichung}
 + \frac{T_0}{\pi}\frac{\partial\psi}{\partial x}
 - \frac{\partial(\psi,\vartheta)}{\partial(x,y)}.
 \end{align*}
-Statt einfach Terme zu ersetzen, macht es Sinn, systematisch vorzugehen. Es ist 
-leicht zu erkennen, dass wir sowohl partielle Ableitungen nach $x$ als auch $y$ 
-brauchen werden. Daher fangen wir an, uns Bausteine zurechtzulegen indem wir 
-die \cref{equation:lorenz2:extendedpsi,equation:lorenz2:extendedtheta} 
+Statt einfach wild Terme einzusetzen, macht es Sinn, systematisch vorzugehen. 
+Es ist leicht zu erkennen, dass wir sowohl partielle Ableitungen nach $x$ als 
+auch $y$ brauchen werden. Daher fangen wir an, uns Bausteine zurechtzulegen 
+indem wir die 
+\cref{equation:lorenz2:extendedpsi,equation:lorenz2:extendedtheta} 
 zwei Mal je nach $x$ und $y$ ableiten.
 
 F"ur $\psi(x,y,t)$ erhalten wir
@@ -257,17 +258,17 @@ a_{\alpha}(t)
 \end{align*}
 zusammenbauen.
 
-Bei einigen werden sich bei den Gleichungen f"ur die Laplace Operatoren beim 
-Addieren zweier unendlicher Summen wahrscheinlich die Nackenhaare hochgestellt 
-haben. Diese Umformung sei uns aber erlaubt, da wir davon ausgehen m"ussen, 
-dass die einzelnen Serien konvergent sind. Zudem h"alt uns nichts davon ab, die 
-Indexe der beiden unabh"angigen Summen so umzubenennen, dass diese 
+Wem bei den Gleichungen f"ur die Laplace Operatoren aufgrund der Addition 
+zweier unendlicher Summen etwas mulmig war, soll unbesorgt sein. Diese 
+Umformung sei uns erlaubt, da wir davon ausgehen m"ussen, dass die einzelnen 
+Reihen konvergent sind. Zudem h"alt uns nichts davon ab, die 
+Indices der beiden unabh"angigen Summen so umzubenennen, dass diese 
 "Ubereinstimmen. Damit ist klar, dass die gleichen Basisfunktionen generiert 
 werden und die Summen somit vereinfacht werden k"onnen.
 
 Mit unseren bisherigen Bausteinen haben wir jetzt fast alles zusammen, um 
 \cref{skript:lorenzausgangsgleichung} aufzul"osen. Einzig die 
-Funktionsdeterminanten fehlen noch, was auch dem haarigen Teil der Gleichung 
+Funktionaldeterminanten fehlen noch, was auch dem haarigen Teil der Gleichung 
 entspricht, was uns erst die Kopplung der beiden Terme beschert.
 
 Beginnen wir also damit die erste Funktionsdeterminante
@@ -674,14 +675,13 @@ b_{\delta}(t)
 aufzul"osen. Jetzt haben wir alle Bausteine zusammen und k"onnen diese in die 
 einzelnen Gleichungen einsetzen. Damit erhalten wir einerseits
 \begin{align*}
-&\frac{\partial\Delta\psi}{\partial t}
-=
+\frac{\partial\Delta\psi}{\partial t}
+&=
 \nu\Delta^2\psi 
 +c\frac{\partial\vartheta}{\partial x}
 -\frac{\partial(\psi,\Delta\psi)}{\partial(x,y)}
 \\
-&\qquad \qquad \qquad \Leftrightarrow
-\\
+\Leftrightarrow \qquad
 &-
 \sum_{k = 1}^{\infty}
 \dot{a}_{\gamma}(t)
@@ -741,8 +741,7 @@ a_{\delta}(t)
 \\
 &|\gamma| = k, |\xi| = q, |\eta| = s, |\zeta| = i, |\delta| = j
 \\
-&\qquad \qquad \qquad \Leftrightarrow
-\\
+\Leftrightarrow \qquad
 &
 \sum_{k = 1}^{\infty}
 \dot{a}_{\gamma}(t)
@@ -801,14 +800,13 @@ a_{\beta}(t)
 \end{align*}
 und andererseits
 \begin{align*}
-&\frac{\partial\vartheta}{\partial t}
-=
+\frac{\partial\vartheta}{\partial t}
+&=
 \kappa\Delta\vartheta
 + \frac{T_0}{\pi}\frac{\partial\psi}{\partial x}
 - \frac{\partial(\psi,\vartheta)}{\partial(x,y)}
 \\
-&\qquad \qquad \qquad \Leftrightarrow
-\\
+\Leftrightarrow \qquad
 &
 \sum_{k = 1}^{\infty}
 \dot{b}_{\gamma}(t)
@@ -865,8 +863,7 @@ b_{\delta}(t)
 \\
 &|\gamma| = k, |\xi| = q, |\eta| = s, |\zeta| = i, |\delta| = j
 \\
-&\qquad \qquad \qquad \Leftrightarrow
-\\
+\Leftrightarrow \qquad
 &\sum_{k = 1}^{\infty}
 \dot{b}_{\gamma}(t)
 \cos(\gamma_1 ax) \sin(\gamma_2 y)
@@ -1108,21 +1105,20 @@ g_\gamma(\alpha_1 + \beta_1, \alpha_2 + \beta_2)
 &|\gamma| > 0, |\alpha| = i, |\beta| = j.\nonumber
 \end{align}
 
-Die Definition der beiden Hilfsfunktionen lautet
-\begin{equation*}
+Die beiden Hilfsfunktionen $f_\gamma(q, s)$ und $g_\gamma(q, s)$ lautet wie 
+folgt:
+\begin{align*}
 f_\gamma(q, s)
-=
+&=
 \begin{cases}
 \sgn(q)\sgn(s) & |q| = \gamma_1, |s| = \gamma_2 \\
 0 & \text{sonst}
 \end{cases}
-\end{equation*}
-und
-\begin{equation*}
+\\
 g_\gamma(q, s)
-=
+&=
 \begin{cases}
 \sgn(s) & |q| = \gamma_1, |s| = \gamma_2 \\
 0 & \text{sonst}.
 \end{cases}
-\end{equation*}
+\end{align*}
