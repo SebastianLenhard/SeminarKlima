@@ -40,6 +40,10 @@ CHAPTERS = 								\
 	chapters/4/salinitaet.tex					\
 	chapters/4/box.tex						\
 	chapters/4/dimensionslos.tex					\
+	chapters/5/kugelkoordinaten.tex					\
+	chapters/5/kugelfunktionen.tex					\
+	chapters/5/spektral.tex						\
+	chapters/5/spektralegleichungen.tex				\
 	chapters/6/periodisch.tex					\
 	chapters/6/fourierkoef.tex					\
 	chapters/6/vektorgeometrie.tex					\
