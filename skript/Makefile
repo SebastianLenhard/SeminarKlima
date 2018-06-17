@@ -44,6 +44,9 @@ CHAPTERS = 								\
 	chapters/5/kugelfunktionen.tex					\
 	chapters/5/spektral.tex						\
 	chapters/5/spektralegleichungen.tex				\
+	chapters/5/einstrahlung.tex					\
+	chapters/5/halbkugel.tex					\
+	chapters/5/strahlung.tex					\
 	chapters/6/periodisch.tex					\
 	chapters/6/fourierkoef.tex					\
 	chapters/6/vektorgeometrie.tex					\
