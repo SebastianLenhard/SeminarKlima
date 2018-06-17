@@ -139,7 +139,7 @@ für die Einstrahlung am Äquator.
 \subsubsection{Der allgemeine Fall mit Sonnenauf- und -untergang}
 \begin{figure}
 \centering
-\includegraphics{chapters/5/ein.pdf}
+\includegraphics[width=\hsize]{chapters/5/ein.pdf}
 \caption{Über eine Rotation gemittelte Einstrahlungsdichte
 in Abhängigkeit von der geographischen Breite
 gemäss Formel~\eqref{skript:einstrahlung:plottable} für verschiedene
@@ -226,7 +226,7 @@ Abbildung~\ref{skript:einstrahlung:ein} dargestellt.
 \subsubsection{Strahlungsleistung auf dem Breitenkreis $\vartheta$}
 \begin{figure}
 \centering
-\includegraphics{chapters/5/ein1.pdf}
+\includegraphics[width=\hsize]{chapters/5/ein1.pdf}
 \caption{Strahlungsleistung auf geographischer Breite $\vartheta$,
 gegeben durch Formel~\eqref{skript:einstrahlung:breite}.
 \label{skript:einstrahlung:ein1}}
@@ -243,4 +243,38 @@ E_{\text{in}}(\vartheta)
 \end{equation}
 Die resultierende Funktion ist in Abbildung~\ref{skript:einstrahlung:ein1}
 dargestellt.
+
+\subsection{Einstrahlung über ein Jahr}
+\begin{figure}
+\centering
+\includegraphics[width=\hsize]{chapters/5/total.pdf}
+\caption{Einstrahlung über ein Jahr in Abhängigkeit von der geographischen
+Breite.
+\label{skript:einstrahlung:total}}
+\end{figure}
+Die in \eqref{skript:einstrahlung:breite} gefunden Einstrahlung auf einem
+Breitengrad $\vartheta$ geht von einer konstanten Neigung der Erdachse aus.
+Die Bewegung der Erde um die Sonne bedeutet aber, dass die Neigung der
+der Erdachse scheinbar variert,
+es gilt nämlich
+\[
+\tan \gamma(t) = \tan\gamma_\text{max}\cdot \sin t.
+\]
+Für ein Klimamodell wesentlich ist daher der Mittelwert
+\[
+s_{\gamma_\text{max}}(\vartheta)
+=
+\frac1{2\pi}
+\int_0^{2\pi} \varepsilon(\vartheta,\gamma(t))\,dt
+\]
+von \eqref{skript:einstrahlung:breite} über ein Jahr.
+Abbildung~\ref{skript:einstrahlung:total} zeigt das Resultat der 
+numerischen Integration.
+
+
+
+
+
+
+
 

@@ -3,7 +3,7 @@
 #
 # (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
 #
-all:	ein.pdf ein1.pdf halb.pdf
+all:	ein.pdf ein1.pdf halb.pdf total.pdf
 
 ein.pdf:	ein.tex
 	pdflatex ein.tex
@@ -17,7 +17,10 @@ halb.pdf:	halb.tex
 ein.txt:	ein.maxima
 	maxima -b ein.maxima
 
-ein.octave:	ein.m
+total.pdf:	total.tex insolation.tex
+	pdflatex total.tex
+
+insolation.tex:	ein.m
 	octave ein.m
 
 
