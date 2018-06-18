@@ -1,6 +1,12 @@
 % !TeX root = documentation.tex
 % !TeX spellcheck = de_DE
 
+% TODO: Link für Lorenz-Attraktorfür WebApp
+% Abschnitt WebGL, Algorithmus Farbe
+% (x, y, z) Vektoren für Positionierung
+% Dreh, Zoom Bewegungen 
+% Automatisches Update 
+
 \section{Visualisierung}
 Das oben erwähnte Gleichungssystem haben wir im Javascript-Code verwendet, um die Resultate des Lorenzsystems auszurechnen. In Javascript haben wir die Punkte in einem Array(\texttt{Tuple3}) gespeichert.
 
@@ -12,7 +18,9 @@ Das oben erwähnte Gleichungssystem haben wir im Javascript-Code verwendet, um d
 	\end{lstlisting}
 
 Die $ x, y $ Variablen in der 1. Gleichung ist noch mit dem Wert des vorherigen Durchgangs besetzt und deshalb eine Annäherung um den echten Wert. Das gleiche gilt für alle Werte, die vor der Ausführung noch nicht gesetzt sind. 
-Beim ersten Durchgang wird 0.1 als Startwert angenommen um zu verhindern, dass das Gleichungssystem gelöst ist durch den Initialwert einer Javascript Variable. Wenn $ \vec{0} $ eingesetzt wird löst sich das Gleichungssystem auf $ \vec{0} $. Da das Ergebnis wieder eingesetzt wird in der nächsten Runde, wird das Gleichungssystem über alle Runden $ \vec{0} $ ausgeben.
+Beim ersten Durchgang wird 0.1 als Startwert angenommen um zu verhindern, dass das Gleichungssystem gelöst ist durch den Initialwert einer Javascript Variable. 
+
+Wenn $ \vec{0} $ eingesetzt wird löst sich das Gleichungssystem auf $ \vec{0} $. Da das Ergebnis wieder eingesetzt wird in der nächsten Runde, wird das Gleichungssystem über alle Runden $ \vec{0} $ ausgeben.
 Die folgenden Variablen wurden für den Code verwendet und definiert:
 
 \begin{align}

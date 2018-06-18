@@ -30,27 +30,31 @@ Es gibt für das Lösen von Differentialgleichungen zwei Ansätze. Zum einen der
 
 Der zweite Ansatz ist, eine Diskretisierung vorzunehmen und den Computer für jeden definierten Zeitpunkt die Resultate der Gleichungen ausrechnen zu lassen. Dies ist auch der in dieser Arbeit gewählte Ansatz, der im Folgenden bis zur tatsächlichen Visualisierung genauer beschrieben wird. 
 
-%TODO Betitlung
-\subsubsection{Eulersches Verfahren}
+%TODO Neuer Text
+\subsubsection{Euler-Verfahren}
 
-Das Ziel vom eulerischen Näherungsverfahren ist es hier, die Differentialgleichungen approximativ zu lösen. Durch eine Diskretisierung der Werte können wir eine Form der Gleichungen bestimmen, die später visualisiert werden können. Um die Ableitung zu berücksichtigen, muss das Ergebnis einer Differenzialgleichung zu einem diskreten Zeitpunkt für die Berechnung des nächsten Zeitpunktes addiert werden. So wird die Steigung an einem Punkt t berechnet. Diese Steigung können wir in eine lineare Gleichung einsetzen und daraus den absoluten Punkt berechnen.
+Das Ziel vom eulerischen Näherungsverfahren ist die Differentialgleichungen approximativ zu lösen. Durch eine Diskretisierung der Werte können wir eine Form der Gleichungen bestimmen, die später visualisiert werden können. Um die Ableitung zu berücksichtigen, muss das Ergebnis einer Differenzialgleichung zu einem diskreten Zeitpunkt für die Berechnung des nächsten Zeitpunktes addiert werden. So wird die Steigung an einem Punkt t berechnet. Diese Steigung können wir in eine lineare Gleichung einsetzen und daraus den absoluten Punkt berechnen.
 
-Der \textit{Y-Achsenabschnitt} wird mit dem Ergebnis der vorherigen Rechnungsschritt belegt, da der Differenzalterm den Abstand vom Wert vorher berechnet.  
-
-\begin{align}
-\label{LGResult}
-% TODO: Lorenzgleichung umschreiben
-y(t + 1) &= \frac{d LG}{d t} \cdot  \Delta t + y(t) & LG = Lorenzgleichung
-\end{align}
+Der \textit{Y-Achsenabschnitt} des linearen Gleichungssystems wird mit dem Ergebnis der vorherigen Rechnungsschritt belegt, da der Differenzalterm den Abstand vom Wert vorher berechnet.
 
 Dieses Verfahren kann auf alle Koordinaten des Lorenz-Systems angewendet werden.
 
-Eingefügt in die Gleichung \eqref{LGResult} ergibt sich folgendes System:
+Das angewendete Verfahren nennt sich \textit{Eulersches-} oder \textit{Einschritt-Verfahren}. Durch das, dass wir einen numerischen Ansatz mit dem Euler Verfahren gewählt haben, resultiert eine Annäherung des Lorenz-Attraktors. Da solche Abweichungen von der tatsächlichen Lösung existieren, ist zu erwarten, dass diese Abweichungen gross genug sind, um zum chaotischen Verhalten beizutragen. Es gäbe auch genauere Verfahren für das numerische Lösen der Gleichungen wie das \textit{Quadratische Verfahren} oder das \textit{Runge-Kutta Verfahren}. Da aber auch bei diesen Verfahren keine absolute Genauigkeit erreicht wird, blieben wir bei der Eulerschen Annäherung. 
+
+Das Euler-Verfahren lässt sich in ein Gleichungssytem formalisieren. Bei welchem die Differenzialgleichung die Steigung bestimmt und mit dem \textit{Y-Achsenabschnitt} addiert wird:
 
 \begin{align}
-x(t+\Delta t) = x(t) + \frac{dx}{dt} \cdot \Delta t\\
-y(t + \Delta t) = y(t) + \frac{dy}{dt} \cdot \Delta t\\
-z(t + \Delta t) = z(t) + \frac{dz}{dt} \cdot \Delta t
+    x(t+ \Delta t) = x(t) + \frac{dx}{dt} \cdot \Delta t\\
+    y(t + \Delta t) = y(t) + \frac{dy}{dt} \cdot \Delta t\\
+    z(t + \Delta t) = z(t) + \frac{dz}{dt} \cdot \Delta t
 \end{align}
 
-Das angewendete Verfahren nennt sich \textit{Eulersches-} oder \textit{Einschritt-Verfahren}. Durch das, dass wir einen numerischen Ansatz mit dem Euler Verfahren gewählt haben, resultiert eine Annäherung des Lorenz-Attraktors. Da solche Abweichungen von der tatsächlichen Lösung existieren, ist zu erwarten, dass diese Abweichungen gross genug sind, um zum chaotischen Verhalten beizutragen. Es gäbe auch genauere Verfahren für das numerische Lösen der Gleichungen wie das \textit{Quadratische Verfahren} oder das \textit{Runge-Kutta Verfahren}. Da aber auch bei diesen Verfahren keine absolute Genauigkeit erreicht wird, blieben wir bei der Eulerschen Annäherung. 
+Wir können nun mit diesem numerischen System die Annäherung des Lorenz-Modells berechnen indem wir diese Gleichungen einsetzen. Nach dem Einsetzen erhalten wir folgendes System.
+
+\begin{align}
+    x(t + \Delta t) = x(t) + \frac{d \sigma(x - y)}{dt} \cdot \Delta t\\
+    y(t + \Delta t) = y(t) + \frac{d x(\rho - z) - y}{dt} \cdot \Delta t\\
+    z(t + \Delta t) = z(t) + \frac{d xy - \beta z}{dt} \cdot \Delta t
+\end{align}
+
+Dieses System entspricht dem Code der Visualisierung unterhalb.
