@@ -4,15 +4,9 @@
 \section{Hintergründe}
 %TODO Einleitung Hintergründe
 
-\subsection{Dynamik} %TODO Mehr an sein Skript anlehnen
-Dynamik beschreibt Systeme deren Variablen sich über die Zeit verändern. Zu jedem Zeitpunkt besitzt ein dynamisches System einen Vektor der auf einen Punkt im Ergebnisplott zeigt. Dieser Vektor wird dann als Basis für die Berechnung des nächsten Punktes im Koordinatensystem verwendet.
-
-Immer sind dynamische Systeme auch deterministisch \cite{wikidynamicalsystems}. Das bedeutet, dass aus dem jetztigen Ausgangspunkt den nächsten Punkt im System berechnet werden kann.
-
-
 \subsection{Empfindlichkeit der Anfangsbedingungen}
 %TODO Klarer von Chaostheorie separieren
-Die Chaostheorie ist ein Teilbereich der oben erwähnten dynamischen Systeme. Im Folgenden werden Systeme und Modelle als Synonym betrachtet. Chaotische Systeme besitzen ganz wenige Eingangsparameter. % TODO: Warum?
+Die Chaostheorie ist ein Teilbereich der oben erwähnten dynamischen Systeme. Im Folgenden werden Systeme und Modelle als Synonym betrachtet. Chaotische Systeme besitzen ganz wenige Anfangsbedingungen. % TODO: Warum?
 
 Die entscheidende Eigenschaft, nach welcher diese Systeme kategoriesiert werden, ist ihre Empfindlichkeit auf die Eingangsparameter. Eine kleine änderung in den Eingangsparamter kann eine grosse änderung der Werte auslösen.
 
@@ -28,21 +22,19 @@ Im Generellen ist die Chaostheorie ein Bereich der Mathematik der sich mit nicht
 %TODO Subsection Gleichgewichtspunkte an sein Skript angelehnt inbezugnehmend auf Lorenz-Attraktor
 
 \subsection{Attraktor}
+In dynamischen Systemen ist ein Attraktor eine Untermenge eines Phasenraums(gewisse Anzahl an Zuständen), zu welchen sich ein dynamisches System im Laufe der Zeit zubewegt und diese Menge das System nicht mehr verlässt. \cite{wikiattraktor}
+ Egal welche Startwerte man in einem Attraktor verwendet, das System entwickelt sich immer auf dieselbe Art und Weise. Im Bezug auf den Lorenz Attraktor ist dies die berühmte Form des Butterflys. Mathematisch formuliert ist ein Attraktor 
 
-Vorweg ist wichtig zu sagen, dass es in dynamischen Systemen keine standartisierte Definition eines Attraktors gibt. Wir verwenden in diesem Kontext folgende Definition: 
-\begin{center}
-	Ein Attraktor ist eine Menge an Werten, zu welchen sich ein System zu entwickeln tendiert.
-\end{center} Egal welche Startwerte man in einem Attraktor verwendet, das System entwickelt sich immer auf dieselbe Art und Weise. Im Bezug auf den Lorenz Attraktor ist dies die berühmte Form des Butterflys. Mathematisch formuliert ist ein Attraktor 
 
-% TODO: Beispiel
-
-\begin{align}%TODO Proper formatting?
-\label{Attraktor} \text{Attraktor} = \left\{ x_a | \forall \varepsilon > 0
-\forall T \exists t > T
-|x(t) - x_a| < \varepsilon \right\} 
+\begin{align}
+\label{Attraktor} \text{Attraktor} &= \{ x_a | \forall \varepsilon > 0 \nonumber\\
+&\qquad {} \forall T \exists t > T \nonumber\\
+&\qquad {} |x(t) - x_a| < \varepsilon \} 
 \end{align}
 
-Für jeden Zeitpunkt $T$ existiert ein späterer Zeitpunkt $t$, bei dem sich die Funktion $x$ (Lorenz-Attraktor) so entwickelt, dass der Betrag der Differenz kleiner als die Toleranz $\varepsilon$ wird.
+Für jeden Zeitpunkt $T$ existiert ein späterer Zeitpunkt $t$, bei dem sich die Funktion $x$ (Lorenz-Attraktor) so entwickelt, dass der Betrag der Differenz kleiner als die Toleranz $\varepsilon$ wird. 
+
+Als Beispiel könnte man, neben dem Lorenz-Attraktor, ein Pendel nehmen. Ein Pendel entwickelt sich mit der Zeit immer näher an einen Punkt, bei welchem sich alle darauf wirkenden Kräfte zu 0 addieren. Dieser Punkt ist also der Attraktor für dieses Pendelsystem. Im Unterschied zum Lorenz-Attraktor handelt es sich beim Pendelsystem aber um ein nicht-chaotisches System. Eine kleine Änderung in der Startposition der Masse am Ende des Pendels führt auf eine kleine Änderung in der Position, wobei es bei einem chaotischen System anders ausehen würde. 
 
 \subsection{Strange Attraktor}
 Beim Strange Attraktor wird ein normaler Attraktor um eine chaotische Komponenten erweitert. Das heisst, dass sich Werte innerhalb des Systems chaotisch verhalten. So könnten sich Lösungen in der Definition \eqref{Attraktor} innerhalb von $\varepsilon$ beliebig bewegen. Kleinste Parameter- oder Startpunktänderungen führen zu scheinbar zusammenhangslose Resultate. Dieses Verhalten wird wie in den vorherigen Abschnitten beschrieben Chaos genannt.
