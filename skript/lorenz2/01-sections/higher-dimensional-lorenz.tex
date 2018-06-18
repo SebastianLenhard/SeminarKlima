@@ -123,7 +123,7 @@ b_{\alpha}(t)
 \cos(\alpha_1 ax) \sin(\alpha_2 y).
 \end{align*}
 
-Damit haben wir alles zusammen um den einfachen Laplace Operator $\laplace$ 
+Damit haben wir alles zusammen um den einfachen Laplace-Operator $\laplace$ 
 f"ur $\psi(x,y,t)$
 \begin{align*}
 \laplace\psi
@@ -184,9 +184,9 @@ b_{\delta}(t)
 b_{\alpha}(t)
 \cos(\alpha_1 ax) \sin(\alpha_2 y)
 \end{align*}
-aufzul"osen. In \cref{equation:lorenz2:extendedpsi} brauchen wir zudem 
-$\laplace^2\psi(x,y,t)$. Daf"ur ben"otigen wir die zweifachen Ableitungen von 
-$\laplace\psi(x,y,t)$ nach $x$ und $y$
+aufzul"osen. F"ur die \cref{equation:lorenz2:extendedpsi} brauchen wir zudem 
+$\laplace^2\psi(x,y,t)$, was die zweifachen Ableitungen von 
+$\laplace\psi(x,y,t)$ nach $x$ respektive $y$
 \begin{align*}
 \frac{\partial\laplace\psi}{\partial x} &=
 -
@@ -227,7 +227,7 @@ a_{\alpha}(t)
 a_{\alpha}(t)
 \sin(\alpha_1 ax) \sin(\alpha_2 y)
 \end{align*}
-und k"onnen dann
+beinhaltet, womit wir dann
 \begin{align*}
 \laplace^2\psi
 &= 
@@ -259,7 +259,18 @@ a_{\delta}(t)
 a_{\alpha}(t)
 \sin(\alpha_1 ax) \sin(\alpha_2 y)
 \end{align*}
-zusammenbauen.
+zusammenbauen k"onnen.
+
+Wie wir hier sehen, sind nicht nur die urspr"unglichen, sondern auch auch die 
+erweiterten Basisfunktionen nat"urlich wieder Eigenfunktionen des 
+Laplace-Operators. Es gilt dabei
+\begin{equation*}
+	\laplace^n f = \lambda^n f
+	\qquad
+	\text{mit }
+	\lambda = -\left(\alpha_1^2 a^2+\alpha_2^2\right),
+	n \in \mathbb{N}.
+\end{equation*}
 
 Wem bei den Gleichungen f"ur die Laplace Operatoren aufgrund der Addition 
 zweier unendlicher Summen etwas mulmig war, soll unbesorgt sein. Diese 
