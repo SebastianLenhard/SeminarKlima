@@ -32,23 +32,18 @@ Der dritte Parameter des Lorenz-Modells ist das $\beta$. Es entspricht der Wärm
 \end{figure}
 
 
-\subsection{Eulersches Verfahren}
+\subsection{Numerische Lösungen}
 Es gibt für das Lösen von Differentialgleichungen zwei Ansätze. Zum einen der analytische Ansatz, der eine allgmeingültige Lösung sucht. Es handelt sich bei den drei Lorenz-Gleichungen um nicht-lineare Differentialgleichungen, welche analytisch nicht lösbar sind. Aus diesem Grund fällt dieser Ansatz weg. 
 
 Der zweite Ansatz ist, eine Diskretisierung vorzunehmen und den Computer für jeden definierten Zeitpunkt die Resultate der Gleichungen ausrechnen zu lassen. Dies ist auch der in dieser Arbeit gewählte Ansatz, der im Folgenden bis zur tatsächlichen Visualisierung genauer beschrieben wird. 
 
-%TODO Neuer Text
 \subsubsection{Euler-Verfahren}
 
-Das Ziel vom eulerischen Näherungsverfahren ist die Differentialgleichungen approximativ zu lösen. Durch eine Diskretisierung der Werte können wir eine Form der Gleichungen bestimmen, die später visualisiert werden können. Um die Ableitung zu berücksichtigen, muss das Ergebnis einer Differenzialgleichung zu einem diskreten Zeitpunkt für die Berechnung des nächsten Zeitpunktes addiert werden. So wird die Steigung an einem Punkt t berechnet. Diese Steigung können wir in eine lineare Gleichung einsetzen und daraus den absoluten Punkt berechnen.
+Wir wählten für die Diskretisierung das \textit{Euler-} oder \textit{Einschritt-Verfahren} zur Annäherung der Werte des Lorenz-Modells. Das resultierende Gleichungssystem aus dem Einschritt-Verfahren wird aus einfachen Arithmetik Operationen bestehen und sehr einfach für den Computer berechenbar sein. Diese Effizienz erlaubt auch Phones die Visualisierung effizient anzuzeigen und flüssig neu zu rendern.
 
-Der \textit{Y-Achsenabschnitt} des linearen Gleichungssystems wird mit dem Ergebnis der vorherigen Rechnungsschritt belegt, da der Differenzalterm den Abstand vom Wert vorher berechnet.
+Als Basis für dieses Verfahren nahm Euler eine lineare Gleichung $ y = a \cdot x + b $. Er setzte das Ergebnis der Differenzialgleichung als Steigung $ a $ ein. X wird mit dem Diskretisierungsschritt belegt. Der Diskretisierungsschritt beschreibt den Abstand zweier numerischen Messungen in der Visualisierung. Mit dem Diskretisierungsschritt kontrolliert man nicht den Abstand zweier Punkte, sondern den Abstand aller Punkte zueinander. Wenn diese Zahl erhöht wird, dann nimmt der Detailgrad ab, dafür kann eine längere Zeit mit der gleichen Anzahl Messungen das Modell durch die Software aufgezeichnet werden.
 
-Dieses Verfahren kann auf alle Koordinaten des Lorenz-Systems angewendet werden.
-
-Das angewendete Verfahren nennt sich \textit{Eulersches-} oder \textit{Einschritt-Verfahren}. Durch das, dass wir einen numerischen Ansatz mit dem Euler Verfahren gewählt haben, resultiert eine Annäherung des Lorenz-Attraktors. Da solche Abweichungen von der tatsächlichen Lösung existieren, ist zu erwarten, dass diese Abweichungen gross genug sind, um zum chaotischen Verhalten beizutragen. Es gäbe auch genauere Verfahren für das numerische Lösen der Gleichungen wie das \textit{Quadratische Verfahren} oder das \textit{Runge-Kutta Verfahren}. Da aber auch bei diesen Verfahren keine absolute Genauigkeit erreicht wird, blieben wir bei der Eulerschen Annäherung. 
-
-Das Euler-Verfahren lässt sich in ein Gleichungssytem formalisieren. Bei welchem die Differenzialgleichung die Steigung bestimmt und mit dem \textit{Y-Achsenabschnitt} addiert wird:
+Der \textit{Y-Achsenabschnitt} des linearen Gleichungssystems $ b $ wird mit dem Ergebnis der vorherigen Rechnungsschritt $ x(t) $ belegt, da der Differenzalterm den Abstand vom Wert vorher berechnet.
 
 \begin{align}
     x(t+ \Delta t) = x(t) + \frac{dx}{dt} \cdot \Delta t\\
@@ -56,12 +51,12 @@ Das Euler-Verfahren lässt sich in ein Gleichungssytem formalisieren. Bei welche
     z(t + \Delta t) = z(t) + \frac{dz}{dt} \cdot \Delta t
 \end{align}
 
-Wir können nun mit diesem numerischen System die Annäherung des Lorenz-Modells berechnen indem wir diese Gleichungen einsetzen. Nach dem Einsetzen erhalten wir folgendes System.
+Wir können nun die Gleichungen des Lorenz-Modells einsetzen. Dadurch entstehen die folgenden einfachen Gleichungen mit nur arithmetischen Operationen.
 
 \begin{align}
-    x(t + \Delta t) = x(t) + \frac{d \sigma(x - y)}{dt} \cdot \Delta t\\
-    y(t + \Delta t) = y(t) + \frac{d x(\rho - z) - y}{dt} \cdot \Delta t\\
-    z(t + \Delta t) = z(t) + \frac{d xy - \beta z}{dt} \cdot \Delta t
+    x(t + \Delta t) = x(t) + \sigma(x - y) \cdot \Delta t\\
+    y(t + \Delta t) = y(t) + x(\rho - z) - y \cdot \Delta t\\
+    z(t + \Delta t) = z(t) + xy - \beta z \cdot \Delta t
 \end{align}
 
-Dieses System entspricht dem Code der Visualisierung unterhalb.
+Dieses System entspricht dem Code der Visualisierung unterhalb. Im Differenzalterm wurde die Differenzialgleichung des Lorenz-Modells eingesetzt.
