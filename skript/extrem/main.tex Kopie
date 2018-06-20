@@ -8,7 +8,7 @@
 \begin{refsection}
 \chapterauthor{Melina Staub}
 
-M3WLREWRF
+
 \section{Einleitung}
 Fast täglich erscheinen Schlagzeiten wie diese in der Zeitung
 
@@ -296,11 +296,6 @@ Die Messreihen der Standorte Basel Binningen, Zürich-Fluntern, Lugano und Davos
 Die Messdaten der Gletscher werden vom Schweizerischen Gletschermessnetz GLAMOS\footnote{%
 Die Veränderungen der Schweizer Gletscher werden jährlich gemessen. Das Messnetz GLAMOS wird getragen durch die ETH Zürich und die Universitäten Fribourg und Zürich mit finanzieller Unterstützung durch das Bundesamt für Umwelt BAFU, MeteoSchweiz und SCNAT.}ebenfalls öffentlich zugänglich zur Verfügung gestellt.
 
-<<<<<<< HEAD
-\subsection{Prüfung Messreihe}
-Die Messreihen geben einen Einblick über die letzten 74 Jahre, nämlich von 1943 - 2017. Damit die Hypothese widerlegt wird und somit der Klimawandel nachgewiesen werden kann, müssen drei oder mehr extreme Ereignisse in den letzten 10 Jahren vorkommen (Abbildung \ref{TabExt}). Dann wäre das Signifikanzniveau $\alpha$ von 0.05 unterschritten und die Hypothese ohne jegliche Zweifel widerlegt.
-
-
 \section{Temperatur}
 
 
@@ -313,21 +308,12 @@ Mittlere Jahrestemperatur in $^{\circ}$C.
 
 \begin{figure}[htbp]
 \centering
-<<<<<<< HEAD
 \includegraphics[width=1.0\textwidth]{extrem/JMittel.pdf}
 \caption{BLaBLa}
 \label{JMittel}
 \end{figure}
 
-Bei der Jahresmitteltemperatur ist das Ergebnis eindeutig (Abbildung \ref{JMittel}). Bei beiden Messpunkten, sowohl Lugano als auch Basel Binningen, wird der Hypothesentest widerlegt da die Alphagrenze unterschritten wird. Bei Basel Binningen kommen vier der extremsten Ereignisse in den letzten 10 Jahren vor. In Lugano sind es sogar deren fünf! 
 
-=======
-\includegraphics[width=1.0\textwidth]{extrem/JahresMittel.pdf}
-\caption{BLaBLa}
-\label{JahresMittel}
-\end{figure}
-
->>>>>>> master
 
 \subsection{Sommertage}
 Ein Sommertag ist wie folgt definiert
@@ -335,17 +321,6 @@ Ein Sommertag ist wie folgt definiert
 \begin{definition}
 Maximale Temperatur $\ge 25^{\circ}$C und langjähriger Mittelwert (1961 - 1990).
 \end{definition}
-
-<<<<<<< HEAD
-Die Sommertage in Lugano waren in den letzten 10 Jahren nie extrem. Zu Beginn der Messungen um die Jahre 1943-1959 zeigen sich Extremwerte. Wohingegen Davos eine Häufung der Anzahl von Sommertagen in den letzten 10 Jahren zeigt. In den früheren Messjahren waren keine oder nur sehr wenige Sommertage vorhanden. In en letzten 10 Jahren ist die Anzahl aber immer weiter gestiegen und ist mit 5 Ereignissen nahezu unmöglich. In Davos wird die Hypothese widerlegt und somit ein Wandel im Klima nachgewiesen.
-=======
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=1.0\textwidth]{extrem/Sommertage.pdf}
-\caption{BLaBLa}
-\label{Sommertage}
-\end{figure}
->>>>>>> master
 
 
 \subsection{Tropennächte}
@@ -362,31 +337,12 @@ Minimale Temperatur $\ge 20^{\circ}$C und langjähriger Mittelwert (1961 - 1990)
 \label{Tropennacht}
 \end{figure}
 
-<<<<<<< HEAD
-Sowohl in Lugano wie auch Basel Binningen sind in den letzten 10 Jahren eine extreme Anzahl von Tropennächten gemessen worden. Mit vier Ereignissen pro Standort wird die Alpha-Grenze klar unterschritten.
-
-
-\subsection{Hitzetage} \label{Hitzetage}
-=======
-
 \subsection{Hitzetage}
->>>>>>> master
 Ein Hitzetag ist wie folgt definiert
 
 \begin{definition}
 Maximale Temperatur $\ge 30^{\circ}$C und langjähriger Mittelwert (1961 - 1990).
 \end{definition}
-
-<<<<<<< HEAD
-Bei den Hitzetagen ist im Klima kein Wandel zu erkennen. Weder in Zürich-Fluntern noch in Lugano wurden in den letzten Jahren extrem viele Hitzetage gemessen. Bei beiden Orten, waren die Hitzetage zu Beginn der Messreihe (um 1943) vermehrt vorgekommen.
-=======
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=1.0\textwidth]{extrem/Hitzetage.pdf}
-\caption{BLaBLa}
-\label{Hitzetage}
-\end{figure}
->>>>>>> master
 
 
 \subsection{Frosttage}
@@ -396,18 +352,6 @@ Ein Frosttag ist wie folgt definiert
 Minimale Temperatur $< 0^{\circ}$C und langjähriger Mittelwert (1961 - 1990).
 \end{definition}
 
-<<<<<<< HEAD
-
-Wie bereits bei den Hitzetagen ~\ref{Hitzetage} \nameref{Hitzetage} ist auch bei den Frosttagen weder in Basel Binningen noch in Lugano kein Wandel im Klima zu erkennen. Ebenso wurden die Extreme vermehrt zu Beginn der Messreihe gemessen.
-=======
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=1.0\textwidth]{extrem/Frosttage.pdf}
-\caption{BLaBLa}
-\label{Frosttage}
-\end{figure}
->>>>>>> master
-
 
 \subsection{Eistage}
 Ein Eistag ist wie folgt definiert
@@ -416,17 +360,6 @@ Ein Eistag ist wie folgt definiert
 Maximale Temperatur $< 0^{\circ}$C und langjähriger Mittelwert (1961 - 1990).
 \end{definition}
 
-<<<<<<< HEAD
-Anhang der Anzahl Eistage in Zürich-Fluntern und Davos, kann kein Klimawandel festgestellt werden. Weder in den oberen noch in den unteren Extremen Ereignissen.
-
-=======
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=1.0\textwidth]{extrem/Eistage.pdf}
-\caption{BLaBLa}
-\label{Eistage}
-\end{figure}
->>>>>>> master
 
 \section{Niederschlag}
 
@@ -438,16 +371,6 @@ Der Jahresniederschlag ist wie folgt definiert
 Jahresniederschlag in mm.
 \end{definition}
 
-<<<<<<< HEAD
-=======
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=1.0\textwidth]{extrem/Jahresniederschlag.pdf}
-\caption{BLaBLa}
-\label{Jahresniederschlag}
-\end{figure}
->>>>>>> master
-
 
 \subsection{Neuschnee}
 Die Neuschneemenge ist wie folgt definiert
@@ -456,36 +379,12 @@ Die Neuschneemenge ist wie folgt definiert
 Neuschneemenge, Jahressumme der täglichen Aufzeichnung in cm.
 \end{definition}
 
-<<<<<<< HEAD
-
-
-\section{Gletscher}
-Bei den Gletscherdaten wurde ein Zeitraum von 1881 - 2017 gewählt. Durch die Anzahl der Messjahre verschieben sich die Wahrscheinlichkeiten der Ereignisse. In den Beispielen der Gletscher müssen aber ebenso 3 oder mehr extreme Ereignisse in den letzten 10 Jahren vorkommen um diese dem Klimawandel zuschreiben zu können.
-
-\subsection{Grosser Aletschgletscher}
-
-=======
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=1.0\textwidth]{extrem/Neuschnee.pdf}
-\caption{BLaBLa}
-\label{Neuschnee}
-\end{figure}
-
 
 \section{Gletscher}
 
 
 \subsection{Grosser Aletschgletscher}
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=1.0\textwidth]{extrem/Aletsch.pdf}
-\caption{DBLaBLa}
-\label{AletschTab}
-\end{figure}
-
->>>>>>> master
 
 \begin{figure}[htbp]
 \centering
@@ -496,15 +395,6 @@ Bei den Gletscherdaten wurde ein Zeitraum von 1881 - 2017 gewählt. Durch die An
 
 \subsection{Vadret da Morteratsch}
 
-<<<<<<< HEAD
-=======
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=1.0\textwidth]{extrem/Morteratsch.pdf}
-\caption{BlaBla}
-\label{Morteratschtab}
-\end{figure}
->>>>>>> master
 
 \begin{figure}[htbp]
 \centering
@@ -514,12 +404,6 @@ Bei den Gletscherdaten wurde ein Zeitraum von 1881 - 2017 gewählt. Durch die An
 \end{figure}
 
 
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> master
 \section{Ist die Klimaerwärmung in der Schweiz real?}
 
 
