@@ -40,6 +40,13 @@ CHAPTERS = 								\
 	chapters/4/salinitaet.tex					\
 	chapters/4/box.tex						\
 	chapters/4/dimensionslos.tex					\
+	chapters/5/kugelkoordinaten.tex					\
+	chapters/5/kugelfunktionen.tex					\
+	chapters/5/spektral.tex						\
+	chapters/5/spektralegleichungen.tex				\
+	chapters/5/einstrahlung.tex					\
+	chapters/5/halbkugel.tex					\
+	chapters/5/strahlung.tex					\
 	chapters/6/periodisch.tex					\
 	chapters/6/fourierkoef.tex					\
 	chapters/6/vektorgeometrie.tex					\
@@ -107,8 +114,17 @@ TEXFILES = $(SKRIPTFILES) \
 BLXFILES = \
 	skript.bbl \
 	skript1-blx.bbl \
-# 	skript2-blx.bbl skript3-blx.bbl skript4-blx.bbl skript5-blx.bbl \
-#	skript6-blx.bbl skript7-blx.bbl skript8-blx.bbl skript9-blx.bbl
+ 	skript2-blx.bbl \
+	skript3-blx.bbl \
+	skript4-blx.bbl \
+	skript5-blx.bbl \
+	skript6-blx.bbl \
+	skript7-blx.bbl \
+	skript8-blx.bbl \
+	skript9-blx.bbl \
+	skript10-blx.bbl \
+	skript11-blx.bbl \
+	skript12-blx.bbl
 
 skript.pdf:	skript.tex $(TEXFILES) skript.ind $(BLXFILES)
 	pdflatex skript.tex
@@ -152,6 +168,15 @@ skript8-blx.bbl:	skript8-blx.aux
 
 skript9-blx.bbl:	skript9-blx.aux
 	bibtex skript9-blx
+
+skript10-blx.bbl:	skript10-blx.aux
+	bibtex skript10-blx
+
+skript11-blx.bbl:	skript11-blx.aux
+	bibtex skript11-blx
+
+skript12-blx.bbl:	skript12-blx.aux
+	bibtex skript12-blx
 
 clean:	cleansubdir
 	rm -f *.bbl *.aux *.log *.out *.run.xml *.pdf *.blg *.idx *.ind \

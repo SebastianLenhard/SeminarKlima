@@ -1,0 +1,89 @@
+\section{Einstieg\label{section:lorenz2:einstieg}}
+\rhead{Einstieg}
+
+Bevor wir uns auf die Suche nach Basisfunktionen machen, folgen hier ein paar 
+Angaben zu der in diesem Kapitel verwendeten Notation und einigen 
+grundlegenden Funktionen und Identit"aten, welche sp"ater verwendet werden. 
+Eine kleine Vorschau zu dem was uns noch erwartet sozusagen.
+
+\subsection{Notation}
+Die verwendete Notation entspricht grunds"atzlich derjenigen, welche 
+bereits aus der Literatur bekannt sind. Einzig die Verwendung der 
+sogenannten Multi-Index-Notation k"onnte f"ur einige Leser zu Unklarheiten 
+f"uhren, daher hier eine kurze Einf"uhrung.
+
+Unter der Multi-Index-Notation versteht man einen Index, der einem 
+$n$-Tupel
+\begin{equation*}
+	\alpha = (\alpha_1, \alpha_2, \dotsc, \alpha_n) \qquad \alpha_k \in 
+	\mathbb{N}_{0}
+\end{equation*}
+entspricht. Zur klaren Unterscheidung zu normalen Indices, wird meist ein 
+griechischer Buchstabe verwendet. Der absolute Wert eines Multi-Indices ist wie 
+folgt definiert
+\begin{equation*}
+	|\alpha| = \alpha_1 + \alpha_2 + \dots + \alpha_n.
+\end{equation*}
+ 
+N"utzlich ist diese Notation insbesondere, wenn mit Summen gearbeitet wird. So 
+kann mittels der Forderung $|\alpha| = k$ und unter Ausnutzung der 
+``Symmetrie'' von $k$ und $l$ die Summe
+\begin{equation}
+	\sum_{k = 0}^{\infty}\sum_{l = 0}^{k}a_{l, k - l}
+	\label{equation:lorenz2:doublesum}
+\end{equation}
+auch geschrieben werden kann als
+\begin{equation*}
+	\sum_{k = 0}^{\infty}\sum_{|\alpha| = k}a_{\alpha}
+	\qquad \alpha = (\alpha_1, \alpha_2).
+\end{equation*}
+Dies liefert uns
+\begin{equation*}
+	a_{(0,0)} +
+	a_{(0,1)} + a_{(1,0)} +
+	a_{(0,2)} + a_{(1,1)} + a_{(2,0)} +
+	a_{(0,3)} + \dotsb
+\end{equation*}
+Wie man sehen kann, entspricht dies genau dem in 
+\cref{equation:lorenz2:doublesum} geforderten $2$-Tupel $(l, k - l)$.
+
+\subsection{Formelzusammenstellung}
+Einige Umformungen, die wir in den n"achsten Abschnitten vornehmen werden, 
+verwenden teilweise nicht ganz gel"aufige Funkionen. Damit nicht immer gleich 
+Wikipedia bem"uht werden muss, werden diese hier zusammengestellt.
+
+Die Signum-Funktion (kurz $\sgn(x)$):
+\begin{equation}
+\sgn(x) =
+\begin{cases*}
+1 & f"ur $x$ > 0 \\
+0 & f"ur $x$ = 0 \\
+-1 & f"ur $x$ < 0
+\end{cases*}
+\label{equation:lorenz2:signum}
+\end{equation}
+
+Die \sgn-Funktion k"onnen wir dazu verwenden, die Berechnung von Sinus und 
+Kosinus eines absoluten Wertes zu vereinfachen:
+\begin{equation}
+\begin{split}
+\sin(|x|) &= \sgn(x)\sin(x) \qquad \Leftrightarrow \qquad \sin(x) = 
+\sgn(x)\sin(|x|)
+\\
+\cos(|x|) &= \cos(x)
+\end{split}
+\label{equation:lorenz2:sincosabs}
+\end{equation}
+
+Produkte von Sinus und Kosinus k"onnen wir mit folgenden Identit"aten in 
+einfache Summen umwandeln. Unter anderem kann dies mit Hilfe der komplexen 
+Zahlentheorie gezeigt werden:
+\begin{align*}
+\cos(x)\sin(y) &= \frac{1}{2} \left(\sin(x + y) - \sin(x - y)\right)
+\\
+\sin(x)\cos(y) &= \frac{1}{2} \left(\sin(x - y) + \sin(x + y)\right)
+\\
+\sin(x)\sin(y) &= \frac{1}{2} \left(\cos(x - y) - \cos(x + y)\right)
+\\
+\cos(x)\cos(y) &= \frac{1}{2} \left(\cos(x - y) + \cos(x + y)\right)
+\end{align*}

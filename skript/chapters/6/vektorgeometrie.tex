@@ -5,6 +5,13 @@
 %
 \section{Vektorgeometrische Interpretation}
 \rhead{Vektorschreibweise}
+Die bisherigen rein analytischen Betrachtungen verdecken den geometrischen
+Gehalt der bisher entwickelten Theorie.
+In diesem Abschnitt soll daher zunächst eine vektorielle Darstellung
+aufgebaut, die dann erlauben soll, einerseits die Formeln für die 
+Fourierkoeffizienten geometrisch zu verstehen und andererseits auf
+komplexere Situationen zu verallgemeinern.
+
 \subsection{Vektoren}
 Die Operationen zur Bestimmung der Fourier-Koeffizienten können in 
 vektorieller Schreibweise etwas übersichtlicher dargestellt werden.
@@ -164,8 +171,209 @@ Damit haben wir den folgenden Satz bewiesen:
 \]
 \end{satz}
 
+\subsubsection{$2\pi$-Periodische Funktionen auf $\mathbb R$}
+Die eben vektoriell dargestellte Analyse diskreter periodischer Funktionen 
+kann verallgemeinert werden auf die Analyse von Funktionen auf
+anderen Definitionsgebieten.
+Benötigt wird eine Familie von Basisfunktionen und ein Skalarprodukt
+$\langle\;,\;\rangle$ derart, dass die Basisfunktionen $g_i$ bezüglich
+dieses Skalarproduktes orthonormiert sind, dass also
+\[
+\langle g_i,g_j\rangle
+=
+\delta_{ij}
+=
+\begin{cases}
+1&\qquad i=j\\
+0&\qquad\text{sonst}.
+\end{cases}
+\]
+Jede Linearkombination
+\[
+f = \sum_{i} \alpha_i g_i
+\]
+von Basisfunktionen kann ebenfalls mit dem Skalarprodukt rekonstruiert
+werden.
+Dazu berechnet man
+\[
+\langle g_i,f\rangle
+=
+\biggl\langle
+g_i,\sum_j\alpha_jg_j
+\biggr\rangle
+=
+\sum_j \langle g_i,\alpha_jg_j\rangle
+=
+\sum_j \alpha_j\delta_{ij}
+=
+\alpha_i.
+\]
+Das Skalarprodukt kann auch verwendet werden, um einen Abstand zwischen
+Vektoren als
+\[
+\| f-g\|^2
+=
+\langle f-g,f-g\rangle
+\]
+zu definieren.
+
+Dieselbe Situation lässt sich auch für $2\pi$-periodische Funktionen 
+auf $\mathbb R$ herbeiführen.
+Als Basisfunktionen kann man die Funktionen 
+\begin{equation}
+\frac{1}{\sqrt{2}},\; \cos kx,\; \sin lx\quad k>0
+\label{fourier:basis}
+\end{equation}
+verwenden.
+Das Skalarprodukt $\langle f,g\rangle$ muss linear in $f$ und $g$ sein.
+Eine naheliegende Wahl ist
+\[
+\langle f, g\rangle
+=
+\frac{1}{\pi}\int_{-\pi}^{\pi} f(x)\,g(x)\,dx.
+\]
+Wir überprüfen, ob die Funktionen orthogonal sind:
+\begin{align*}
+\left\langle \frac1{\sqrt{2}},\frac1{\sqrt{2}}\right\rangle
+&=
+\frac1{\pi}
+\int_{-\pi}^{\pi} \frac12\,dx
+=
+1
+\\
+\left\langle \frac1{\sqrt{2}},\cos kx\right\rangle
+&=
+\frac1{\pi}\int_{-\pi}^{\pi}
+\frac1{\sqrt{2}}\cos kx
+\,dx
+=0
+\\
+\left\langle \frac1{\sqrt{2}},\sin kx\right\rangle
+&=
+\frac1{\pi}\int_{-\pi}^{\pi}
+\frac1{\sqrt{2}}\sin kx
+\,dx
+=0
+\\
+\langle \cos kx,\cos lx\rangle
+&=
+\frac1{\pi}
+\int_{-\pi}^\pi \cos kx\cos lx\,dx
+\\
+&=
+\frac1{\pi}
+\int_{-\pi}^\pi
+\frac12\bigl(
+\cos (k-l)x+\cos (k+l)x
+\bigr)
+\,dx
+=
+\begin{cases}
+1&\qquad k=l\\
+0&\qquad\text{sonst}
+\end{cases}
+\\
+\langle \sin kx,\sin lx\rangle
+&=
+\frac1{\pi}
+\int_{-\pi}^\pi \sin kx\,\sin lx\,dx
+\\
+&=
+\frac1{\pi}
+\int_{-\pi}^\pi
+\frac12
+\bigl(
+\cos (k-l)x - \cos (k+l)x
+\bigr)
+\,dx
+=
+\begin{cases}
+1&\qquad k=l\\
+0&\qquad\text{sonst}
+\end{cases}
+\\
+\langle \sin kx,\cos lx\rangle
+&=
+\frac1{\pi}
+\int_{-\pi}^{\pi} 
+\frac12\bigl(
+\sin (k-l)x + \sin (k+l)x
+\bigr)
+\,dx
+=0
+\end{align*}
+Zu einer $2\pi$-periodischen Funktion $f(x)$ kann man daher immer
+die Koeffizienten
+\begin{equation}
+\begin{aligned}
+\bar{a}_0&=\frac1{\pi\sqrt{2}}\int_{-\pi}f(x)\,dx
+\\
+a_k&=\frac1{\pi}\int_{-\pi}^\pi f(x)\cos kx\,dx
+\\
+b_k&=\frac1{\pi}\int_{-\pi}^\pi f(x)\sin kx\,dx
+\end{aligned}
+\label{fourier:normalekoeffizienten}
+\end{equation}
+berechnen.
+Die Linearkombination
+\begin{equation}
+\tilde f(x)
+=
+\bar{a}_0\cdot\frac1{\sqrt{2}}
++ 
+\sum_{k=1}^\infty (a_k\cos kx+b_k\sin kx)
+\label{fourier:reihe}
+\end{equation}
+ist natürlich wieder eine $2\pi$-periodische Funktion.
+
+Ist $f(x)$ eine Linearkombination von Funktionen~\eqref{fourier:basis},
+dann sind nur endlich viele der Koeffizienten $\bar{a}_0$, $a_k$ und $b_k$
+sind von $0$ verschieden und es gilt $f(x)=\tilde f(x)$, die Summe
+\eqref{fourier:reihe} rekonstriert die Funktion $f(x)$ also exakt..
+
+Für eine beliebige $2\pi$-periodische Funktion $f(x)$ ist die Funktion
+$\tilde f(x)$ nach \eqref{fourier:reihe} im Allgemeinen eine unendliche
+Reihe.
+Die Reihe \eqref{fourier:reihe} heisst die Fourier-Reihe der Funktion 
+$f(x)$.
+\index{Fourier-Reihe}
+
+In der Literatur wird $a_0$ meistens anders definiert, nämlich als
+\[
+a_0 = \frac1{\pi}\int_{-\pi}^{\pi} f(x)\,dx = \sqrt{2}\bar{a}_0
+\qquad\Rightarrow\qquad
+\bar{a}_0 = \frac{a_0}{\sqrt{2}}
+\]
+Der erste Term der Reihe~\eqref{fourier:basis} wird dann
+\[
+\bar{a}_0\cdot\frac1{\sqrt{2}}
+=
+\frac{a_0}{\sqrt{2}}\cdot\frac{1}{\sqrt{2}}
+=
+\frac{a_0}2
+\]
+und die Fourier-Reihe ist
+\begin{equation}
+\tilde f(x)
+=
+\frac{a_0}2
++
+\sum_{k=1}^\infty (a_k\cos kx+b_k\sin kx).
+\end{equation}
+
 \subsection{Fourier-Transformation}
-\subsubsection{Fourier-Transformation}
+Die Fourier-Koeffizienten $a_k$ und $b_k$ hängen linear von den
+Funktionswerten $y_j$ ab.
+Der Vektor der Fourier-Koeffizienten muss daher der Bildvektor des
+Vektors $\vec y$ der Funktionswerte unter einer linearen Transformation
+sein.
+In diesem Abschnitt soll zunächst diese diskrete Fourier-Transformation 
+hergeleitet werden.
+Anschliessend soll gezeigt werden, wie sich diese Eigenschaft auf 
+periodische Funktionen und auf beliebige Funktionen auf $\mathbb R$
+ausdehenen lässt.
+
+\subsubsection{Diskrete Fourier-Transformation}
 Die Berechnung der Fourier-Koeffizienten ist eine lineare Operation
 mit der $N\times N$-Matrix:
 \[
@@ -297,7 +505,9 @@ nur die Parseval-Identität anders formuliert haben.
 \subsubsection{Fast Fourier Transform}
 
 
+\subsubsection{Fourier-Transformation von $2\pi$-periodischen Funktionen}
 
+\subsubsection{Fourier-Transformation von Funktionen auf $\mathbb R$}
 
 
 

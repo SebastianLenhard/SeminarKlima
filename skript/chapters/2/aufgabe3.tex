@@ -1,4 +1,4 @@
-Finden Sie eine Lösung der Differentialgleichung 
+Finden Sie eine gerade Lösung der Differentialgleichung 
 \begin{equation}
 y''(x)\cdot\cos x=y(x)
 \label{aufgabe3-dgl}
@@ -64,7 +64,7 @@ y''(x)\cdot\cos x
 \cos x
 -\frac12(a_1+3^2a_3)
 \cos2x
--\frac12(a_2+4^2a_4)
+-\frac12(2^2a_2+4^2a_4)
 \cos3x
 \\
 &\qquad
@@ -80,25 +80,102 @@ a_1&=-2^2\frac12a_2       &&\Rightarrow& a_2 &=-\frac{2}{2^2}a_1
 \\
 a_2&=-\frac12(a_1+3^2a_3) &&\Rightarrow& a_3 &= -\frac{1}{3^2}(2a_2+a_1)
 \\
-a_3&=-\frac12(a_2+4^2a_4) &&\Rightarrow& a_4 &= -\frac{1}{4^2}(2a_3+a_2)
+a_3&=-\frac12(2^2a_2+4^2a_4) &&\Rightarrow& a_4 &= -\frac{1}{4^2}(2a_3+2^2a_2)
 \\
-a_4&=-\frac12(a_3+5^2a_5) &&\Rightarrow& a_5 &= -\frac{1}{5^2}(2a_4+a_3)
+a_4&=-\frac12(3^2a_3+5^2a_5) &&\Rightarrow& a_5 &= -\frac{1}{5^2}(2a_4+3^2a_3)
+\intertext{oder allgemein}
+a_k&=-\frac12\bigl((k-1)^2a_{k-1} + (k+1)^2a_{k+1}\bigr)
+&&\Rightarrow&
+a_{k+1}&=-\frac{1}{(k+1)^2}\bigl(2a_k+(k-1)^2a_{k-1}\bigr).
 \end{align*}
 Offenbar sind die Koeffizienten $a_k$ mit $k>0$ proportional zu $a_0$,
 die Lösungsfunktion ist daher ein Vielfaches der Funktion, welche man
 erhält, wenn man $a_0=1$ setzt.
-Damit sind die ersten vier Koeffizienten sofort zu berechnen:
+
+Etwas formaler können wir diese Rekursionsformel auch aus der
+Summendarstellung des Ansatzes herleiten:
 \begin{align*}
-a_1&=-2\\
-a_2&= 1\\
-a_3&= 0
+y(x)
+&=
+\sum_{j=0}^\infty a_j \cos jx
+\\
+y''(x)\cdot \cos x
+&=
+-
+\sum_{k=0}^\infty a_k k^2\cos kx \cos x
+\\
+&=
+-\frac12\sum_{k=0}^\infty a_k k^2\bigl(\cos(k+1)x + \cos(k-1)x\bigr)
+\\
+&=
+-\frac12 \sum_{j=1}^\infty (j-1)^2a_{j-1} \cos jx
+-\frac12 \sum_{j=-1}^\infty (j+1)^2a_{j+1} \cos jx
+\end{align*}
+Durch Koeffizientenvergleich finden wir
+\begin{align*}
+j&=0:
+&
+a_0
+&=
+-\frac12 a_1
+&
+a_1&=-2a_0=-2
+\\
+j&=1:
+&
+a_1
+&=
+-\frac122^2a_2
+&
+a_2
+&=
+-\frac12a_1
+=
+1
+\\
+j&>1:
+&
+a_j
+&=
+-\frac12
+\bigl(
+(j+1)^2a_{j+1} + (j-1)^2 a_{j-1}
+\bigr).
+\end{align*}
+Für $j>1$ lesen wir ab
+\begin{align*}
+a_{j+1}
+&=
+-\frac{1}{(j+1)^2} \bigl(
+2a_j+(j-1)^2a_{j-1}
+\bigr).
+\end{align*}
+Damit ist der Koeffizient $a_3$ zum Beispiel:
+\begin{align*}
+a_3
+&= 
+-\frac1{3^2}(2a_2 + 2^2 a_1)
+=
+-\frac1{9}(2\cdot(2\cdot 1-1^2\cdot 2)=0.
 \end{align*}
 Für die Koeffizienten $a_k$ mit grösseren $k$ verwenden wir die 
 Rekursionsformel
 \[
-a_k=-\frac{1}{k^2}(2a_{k-1}+a_{k-2})
+a_k=-\frac{1}{k^2}(2a_{k-1}+(k-2)^2a_{k-2})
 \]
 und erhalten die Koeffizienten in Tabelle~\ref{aufgabe3-tabelle}.
+Im Speziellen ist
+\begin{align*}
+a_4&=-\frac1{16}(2\cdot a_3 + 2^2 a_2)=-\frac14
+\\
+a_5
+&=
+-\frac1{25}\bigl(2\cdot a_4 + 3^2 a_3\bigr)
+=
+\frac1{25}\biggl(-2\cdot\frac14\biggr)
+=
+-\frac1{50}
+\end{align*}
 \begin{table}
 \centering
 \begin{tabular}{>{$}l<{$}|>{$}r<{$}}
@@ -107,27 +184,29 @@ k&a_k\\
  0&   1\phantom{.000000000000000}\\
  1&  -2\phantom{.000000000000000}\\
  2&   1\phantom{.000000000000000}\\
- 3&  \phantom{-}0\phantom{.000000000000000}\\
- 4&  -0.0625\phantom{00000000000}\\
- 5&   0.005\phantom{000000000000}\\
- 6&   0.001458333333333\\
- 7&  -0.000161564625850\\
- 8&  -0.000017737563776\\
- 9&   0.000002432589548\\
-10&   0.000000128723847\\
-11&  -0.000000022231713\\
-12&  -0.000000000585142\\
-13&   0.000000000138473\\
-14&   0.000000000001572\\
-15&  -0.000000000000629\\
-16&  -0.000000000000001\\
-17&   0.000000000000002\\
+ 3&   0\phantom{.000000000000000}\\
+ 4&  -0.25\phantom{0000000000000}\\
+ 5&   0.02\phantom{0000000000000}\\
+ 6&   0.11\phantom{0000000000000}\\
+ 7&  -0.014693877551020\\
+ 8&  -0.061415816326531\\
+ 9&   0.010405328798186\\
+10&   0.039098015873016\\
+11&  -0.007611798879331\\
+12&  -0.027045680482937\\
+13&   0.005769935061331\\
+14&   0.019811418976634\\
+15&  -0.004509963836970\\
+16&  -0.015132883561509\\
+17&   0.003615943357928\\
+18&   0.011934525632810\\
+19&  -0.002960877234645\\
 \end{tabular}
 \caption{Tabelle der Koeffizienten für die
 Lösungsfunktion~\eqref{aufgabe3-ansatz} der Differentialgleichung
 \eqref{aufgabe3-dgl}.
 \label{aufgabe3-tabelle}}
-\end{table}
+\end{table}%
 \begin{figure}
 \centering
 \begin{tikzpicture}[>=latex,thick]
@@ -139,12 +218,16 @@ Lösungsfunktion~\eqref{aufgabe3-ansatz} der Differentialgleichung
 \draw (-0.1,4)--(0.1,4); \node at (0,4) [left] {$4$};
 %\draw (-0.1,5)--(0.1,5); \node at (0,5) [left] {$5$};
 \draw (-0.1,-1)--(0.1,-1); \node at (0,-1) [left] {$-1$};
-\draw[domain=-360:360,samples=101,color=red,line width=1.4pt] plot
-({3.1415*(\x)/180},{1-2*cos(\x) + cos(2*(\x)) -0.0625*cos(4*(\x))+0.005*cos(5*(\x)) +0.001458333*cos(6*(\x)) -0.000161564*cos(7*(\x)) -0.00001773*cos(8*(\x))});
+\input{chapters/2/a3.path}
+
 \draw (-3.1415,-0.1)--(-3.1415,0.1);
 \draw (3.1415,-0.1)--(3.1415,0.1);
 \draw (-6.2830,-0.1)--(-6.2830,0.1);
 \draw (6.2830,-0.1)--(6.2830,0.1);
+\draw (1.5708,-0.1)--(1.5708,0.1);
+\draw (-1.5708,-0.1)--(-1.5708,0.1);
+\draw (4.7124,-0.1)--(4.7124,0.1);
+\draw (-4.7124,-0.1)--(-4.7124,0.1);
 \node at (-3.1415,0) [below] {$-\pi$};
 \node at (3.1415,0) [below] {$\pi$};
 \node at (6.2830,0) [below] {$2\pi$};
@@ -152,5 +235,65 @@ Lösungsfunktion~\eqref{aufgabe3-ansatz} der Differentialgleichung
 \end{tikzpicture}
 \caption{Graphische Darstellung der Lösungsfunktion der Differentialgleichung
 \eqref{aufgabe3-dgl}.}
-\end{figure}
+\end{figure}%
+In Tabelle~\ref{aufgabe3-tabelle} kann man erkennen, dass die Koeffizienten
+nur sehr langsam abnehmen.
+Da die Lösungsfunktion an den Stellen $(2k+1)\pi/2$ mit $k\in\mathbb Z$
+nicht differenzierbar ist, ist dieses Verhalten sogar zu erwarten.
+Genauer, man erwartet, dass die Koeffizienten $a_k$ wie $1/k$ abnehmen.
+Und wie kann man sich überhaupt versichern, dass die Fourierreihe
+an anderen Stellen konvergiert?
+
+Man kann aber auch ablesen, dass die Elemente $a_{k+1}$ und $a_{k-1}$ 
+entgegengesetztes Vorzeichen haben und betragsmässig sehr nahe beeinander
+sind.
+Um das besser zu verstehen berechnen wir die Summe $a_{k+1}-a_{k-1}$
+und erhalten
+\begin{align*}
+a_{k+1}+a_{k-1}
+&=
+-\frac{1}{(k+1)^2}(2a_k + (k-1)^2 a_{k-1}) + a_{k-1}
+\\
+&=
+-\frac{1}{(k+1)^2}(2a_k + (k-1)^2 a_{k-1}+) - (k+1)^2a_{k-1})
+\\
+&=
+-\frac{1}{(k+1)^2}(2a_k + ((k-1)^2-(k+1)^2) a_{k-1}+))
+\\
+&=
+-\frac{1}{(k+1)^2}(2a_k + 4ka_{k-1})).
+\end{align*}
+Daraus liest man ab, dass tatsächlich die Summe $a_{k+1}+a_{k-1}$
+wie $1/k^2$ abnimmt.
+Man kann daraus auch eine Abschätzung für $y(0)$ bekommen, nämlich
+\begin{align*}
+y(0)
+&=
+\sum_{j=0}^\infty a_k 
+\\
+&=
+a_0 + a_1 + a_2 + a_3 + a_4+ a_5 + a_6 + a_7 + a_8 + \dots
+\\
+&=
+a_0 + a_1 + (a_2 + a_4) + (a_3 + a_5) + (a_6 + a_8) + (a_7 + a_9)+\dots
+\\
+|y(0)|
+&=
+\biggl|
+a_0 + a_1
++
+\sum_{k=1}^\infty (a_{2k} + a_{2k+2})
++
+\sum_{k=1}^\infty (a_{2k+1} + a_{2k+3})
+\biggr|
+\\
+&\le
+|a_0| + |a_1|
++
+\sum_{k=1}^\infty |a_{2k}+a_{2k+2}|
++
+\sum_{k=1}^\infty |a_{2k+1}+a_{2k+3}|
+\end{align*}
+Da in beiden Reihen die Terme wie $1/k^2$ gegen $0$ gehen, konvergieren
+sie.
 \end{loesung}
