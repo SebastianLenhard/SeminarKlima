@@ -141,6 +141,9 @@ I(\vartheta,\varphi)
 \includegraphics{chapters/5/ell2.pdf}
 \caption{Mittlere Insolation über ein Jahr in Abhängigkeit von der
 geographischen Breite.
+Die hellroten Kurven zeigen die Insolation für Achsneigungen zwischen
+$0^\circ$ ($\sin\theta$-Kurve mit Nullstellen an den Intervallenden)
+und $90^\circ$.
 \label{skript:einstrahlung:jahrinsbild}}
 \end{figure}
 Jetzt müssen wir die Insolation noch über die Rotation im Laufe eines 
@@ -170,6 +173,58 @@ Form lösbar.
 Die numerische Berechnung mit Octave ergibt den Graphen
 in Abbildung~\ref{skript:einstrahlung:jahrinsbild}.
 
-
-
+Als Spezialfall sei notiert, dass im Falle verschwindender Neigung
+$\gamma=0$ das Integral zu
+\begin{align*}
+I(\vartheta)
+&=
+\frac{S_0}{2\pi^2}
+\int_{-\frac{\pi}2}^{\frac{\pi}2}
+\sqrt{1-\cos^2\vartheta}
+\,d\varphi
+=
+\frac{S_0}{2\pi^2}
+\int_{-\frac{\pi}2}^{\frac{\pi}2}
+\sin\vartheta
+\,d\varphi
+=
+\frac{S_0}{\pi}
+\sin\vartheta
+\end{align*}
+wird.
+In Abbildung~\ref{skript:einstrahlung:jahrinsbild} ist dies die
+Kurve mit den Nullstellen an den Intervalenden.
+Man erkennt auch, dass im Spezialfall $\gamma=90^\circ$ die Insolation zu
+\begin{align*}
+I(\vartheta)
+&=
+\frac{S_0}{2\pi^2}
+\int_{-\frac{\pi}2}^{\frac{\pi}2}
+\sqrt{1- \sin^2\vartheta\cos^2\varphi}
+\,d\varphi
+\end{align*}
+wird.
+Man kann ablesen und sieht dies auch in der 
+Abbildung~\ref{skript:einstrahlung:jahrinsbild} bestätigt, dass
+die mittlere Insolation am Äquator ist als an den Polen.
+Wenn nämlich $\sin\vartheta_1 < \sin\vartheta_2$, dann ist
+\begin{align*}
+\sqrt{1- \sin^2\vartheta_1\cos^2\varphi}
+&>
+\sqrt{1- \sin^2\vartheta_2\cos^2\varphi}
+\\
+\Rightarrow
+\qquad
+\frac{S_0}{2\pi^2}
+\int_{-\frac{\pi}2}^{\frac{\pi}2}
+\sqrt{1- \sin^2\vartheta_1\cos^2\varphi}
+\,d\varphi
+&>
+\frac{S_0}{2\pi^2}
+\int_{-\frac{\pi}2}^{\frac{\pi}2}
+\sqrt{1- \sin^2\vartheta_2\cos^2\varphi}
+\,d\varphi,
+\end{align*}
+in der Mitte des Intervals bei $\vartheta=\frac{\pi}2$ ist $I(\vartheta)$
+daher minimal.
 
