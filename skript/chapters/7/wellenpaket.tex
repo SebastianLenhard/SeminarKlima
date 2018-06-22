@@ -1,0 +1,53 @@
+%
+% wellenpaket.tex
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\usepackage{ifthen}
+\usepackage{color}
+\usetikzlibrary{arrows,intersections}
+\begin{document}
+
+\def\deltak{0.6}
+\def\knull{12}
+\def\ampli{0.25}
+\begin{tikzpicture}[>=latex,thick]
+
+\begin{scope}[xshift=-6cm]
+\draw[->] (-0.1,0)--(5.3,0) coordinate[label={$k$}];
+\draw[->] (0,-0.1)--(0,2.3) coordinate[label={right:$\hat f(k)$}];
+\draw[color=red,line width=1.4pt] (-0.1,0)--({3-0.2},0);
+\draw[color=red,line width=1.4pt] ({3+0.2},0)--(5.1,0);
+\draw[color=red,line width=1.4pt] ({3-0.2},2)--({3+0.2},2);
+\draw[color=red,line width=0.1pt] ({3-0.2},0)--({3-0.2},2);
+\draw[color=red,line width=0.1pt] ({3+0.2},0)--({3+0.2},2);
+\draw[line width=0.1pt] (0,2)--(5,2);
+\draw (-0.1,2)--(0.1,2);
+\draw (3,-0.1)--(3,0.1);
+\draw ({3-0.2},-0.1)--({3-0.2},0.1);
+\draw ({3+0.2},-0.1)--({3+0.2},0.1);
+\node at (3,0) [below] {$k_0$};
+\node at ({3-0.2},0) [above left] {$k_0-\Delta k$};
+\node at ({3+0.2},0) [above right] {$k_0+\Delta k$};
+\end{scope}
+
+\begin{scope}[xshift=3.5cm,yshift=1cm]
+\draw[->] (-3.6,0)--(3.8,0) coordinate[label={$x$}];
+\draw[->] (-3.5,-1.1)--(-3.5,1.3) coordinate[label={right:$u(x,t)$}];
+\draw[color=red] plot[domain=-3.5:3.5,samples=10000]
+	({\x},{\ampli*cos(360*\knull*\x)*sin(360*\deltak*\x)/\x});
+\draw[color=blue] plot[domain=-3.5:3.5,samples=400]
+	({\x},{\ampli*sin(360*\deltak*\x)/\x});
+\draw (0,0.1)--(0,-0.1);
+\draw[line width=0.1] (0,1.1)--(0,-1.1);
+\node at (0,-1) [below] {$x-ct$};
+\end{scope}
+
+\end{tikzpicture}
+
+\end{document}
