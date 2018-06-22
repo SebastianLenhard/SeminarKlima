@@ -20,11 +20,11 @@ Um eine Idee über das Ausmass der Eisschmelze in den letzten 25 Jahren zu bekom
 	\caption{Ausschnitt aus einer Animation der NASA \cite{skript:eis:animation_NASA}. Dargestellt ist das Polareis (nur das Meereis, ganz Grönland ist z.B. auch vereist) jeweils im September des angegebenen Jahres. Je weisser das Eis, desto älter ist es (ganz weiss entspricht vier Jahre und älter).	Dazu ist auch die globale Jahresdurchschnittstemperatur eingetragen.}
 	\label{skript:eis:fig:NASAohne}
 \end{figure}
-Die Abbildung \ref{skript:eis:fig:globale_Mitteltemperaturen} zeigt die Veränderung der globalen Durchschnittstemperatur über einen ähnlichen Zeitraum. Obwohl es wenig Sinn macht, diese Werte absolut anzugeben, wollen wir das hier tun; wir sehen in Kapitel \ref{skript:eis:Resultate} die Verwendung. Der Vergleichspunkt, um aus den differenziellen Werten \cite{skript:eis:vitalsign_NASA} absolute zu bekommen, ist das Jahr 2017, in welchem die Temperatur 14.7°C \cite{skript:eis:ref2017} betragen haben soll.
+Die Abbildung \ref{skript:eis:fig:globale_Mitteltemperaturen} zeigt die Veränderung der globalen Durchschnittstemperatur über einen ähnlichen Zeitraum. Obwohl es wenig Sinn macht, die Temperaturwerte absolut anzugeben, wollen wir das hier tun; wir sehen in Abschnitt \ref{skript:eis:Resultate} die Verwendung. Der Vergleichspunkt, um aus den differenziellen Werten \cite{skript:eis:vitalsign_NASA} absolute zu bekommen, ist das Jahr 2017, in welchem die Temperatur 14.7°C \cite{skript:eis:ref2017} betragen haben soll.
 \begin{figure}
 	\centering
 	\includegraphics[width=14cm]{eis/globale_Mitteltemperaturen.jpg}
-	\caption{Globale Durchschnittstemperatur 1984 bis 2017}
+	\caption{Globale Jahresdurchschnittstemperatur 1984 bis 2017}
 	\label{skript:eis:fig:globale_Mitteltemperaturen}
 \end{figure}
 \subsection{Problem an der Eisschmelze} \label{skript:eis:Problem an der Eisschmelze}
@@ -32,7 +32,7 @@ Die Abbildung \ref{skript:eis:fig:globale_Mitteltemperaturen} zeigt die Verände
 Warum ist den Polkappen eine so grosse Bedeutung für das Klima zuzuschreiben? Folgen für das Klima einer grossen Eisschmelze aufgrund einer Temperaturerhöhung sind unter Anderem: 
 \begin{itemize}
 	\item Wenn das Eis schmilzt, kommt irgendwann der darunterliegende Boden zum Vorschein. Das führt dazu, dass die Albedo an diesen Stellen sofort um mehr als die Hälfte sinkt, was bedeutet, dass global betrachtet die aufgenommene Strahlungsleistung zunimmt und die Erwärmung weiter vorangetrieben wird.
-	\item Taut Permafrost auf, gelangen grosse Mengen des Klimagases Methan, welches zuvor im Permafrost eingeschlossen waren, in die Atmosphäre, was ebenfalls zu einer zusätzlichen Erwärmung führt.
+	\item Taut Permafrost auf, gelangen grosse Mengen des Klimagases Methan, welches zuvor im Permafrost eingeschlossen war, in die Atmosphäre, was ebenfalls zu einer zusätzlichen Erwärmung führt.
 \end{itemize}
 Veränderungen der Eismenge verstärken sich also von selbst.
 Die Eisschmelze ist somit ein Prozess mit einer Mitkopplung mit globalen Auswirkungen.
@@ -59,14 +59,14 @@ Budykos Modell konnte die Eisschmelze an den Polen nicht darstellen, bzw. aufgru
 \end{itemize}
 Wir möchten nun Budykos Modell in ein realistischeres überführen, in dem wir die Erde in Zonen (Breitengrade) aufteilen und obige Überlegungen zonenabhängig durchführen.
 \subsection{Einstrahlung abhängig vom Breitengrad}
-Die eintreffende Energie pro Fläche ist wie in Abbildung \ref{skript:einfallswinkel} ersichtlich abhängig vom Einstrahlungswinkel, der dem Breitengrad $\vartheta$ entgegengesetzt ist. Die Energie pro Fläche ist somit proportional zu $\cos(\vartheta)$. Um der Tatsache Rechnung zu tragen, dass die Gegenden um den Äquator mehr Energie als die polaren Regionen erhalten, führen wir die breitengradabhängige Energieverteilungsfunktion
+Die eintreffende Energie pro Fläche ist, wie in Abbildung \ref{skript:einfallswinkel} ersichtlich, abhängig vom Einstrahlungswinkel, der dem Breitengrad $\vartheta$ entgegengesetzt ist. Die Energie pro Fläche ist somit proportional zu $\cos(\vartheta)$. Um der Tatsache Rechnung zu tragen, dass die Gegenden um den Äquator mehr Energie als die polaren Regionen erhalten, führen wir die breitengradabhängige Energieverteilungsfunktion
 \begin{equation}\label{skript:eis:Energieverteilung Breitengrad}
 s(\vartheta)
 =
 \frac{2}{\pi^2}\int_{0}^{2\pi}\cos(\vartheta)\,d\phi,\quad
 \vartheta\in(-\tfrac{1}{2}\pi,\tfrac{1}{2}\pi)
 \end{equation}
-ein. Der Faktor $\frac{2}{\pi^2}$ wird für die Normalisierungsbedingung in Kapitel \ref{skript:eis:Modellverbesserung:Normalisierung} verwendet. Wird wie hier nur der Breitengrad berücksichtigt, ergibt sich eine Energieverteilung gemäss Abbildung \ref{skript:eis:fig:Einstrahlung_abh_vom_Breitengrad}.
+ein. Der Faktor $\frac{2}{\pi^2}$ wird für die Normalisierungsbedingung in Abschnitt \ref{skript:eis:Modellverbesserung:Normalisierung} verwendet. Wird wie hier nur der Breitengrad berücksichtigt, ergibt sich eine Energieverteilung gemäss Abbildung \ref{skript:eis:fig:Einstrahlung_abh_vom_Breitengrad}.
 \begin{figure}
  	\centering
  	\includegraphics[width=10cm]{eis/Einstrahlung_abh_vom_Breitengrad.jpg}
@@ -80,7 +80,7 @@ s_{\eta}(\vartheta)
 =
 \frac{2}{\pi^2}\int_{0}^{2\pi}\sqrt{1-(\cos\vartheta\sin\eta \cos\phi-\sin\vartheta \cos\eta)^2}\,d\phi,
 \end{equation}
-welches in Kapitel \hl{Verweis Skript Kap 5} erläutert wurde. Es kann gezeigt werden, dass die Formel \eqref{skript:eis:Energieverteilung Breitengrad} der Spezialfall von \eqref{skript:eis:Energieverteilung Neigung}für eine Neigung von $0^{\circ}$ ist. Zurzeit beträgt die Neigung $\eta=23.4^{\circ}$, damit verändert sich die Energieverteilung, wie in Abbildung \ref{skript:eis:fig:Einstrahlung_abh_mit_und_ohne_Neigung}.
+welches in Kapitel \hl{Verweis Skript Kap 5} erläutert wurde. Es kann gezeigt werden, dass die Formel \eqref{skript:eis:Energieverteilung Breitengrad} der Spezialfall von \eqref{skript:eis:Energieverteilung Neigung} für eine Neigung von $0^{\circ}$ ist. Zurzeit beträgt die Neigung $\eta=23.4^{\circ}$, damit verändert sich die Energieverteilung, wie in Abbildung \ref{skript:eis:fig:Einstrahlung_abh_mit_und_ohne_Neigung} zu sehen ist.
 \begin{figure}
 	\centering
 	\includegraphics[width=10cm]{eis/Einstrahlung_abh_mit_und_ohne_Neigung.jpg}
@@ -119,11 +119,13 @@ In den vereisten Breitengraden wird mehr Sonnenlicht reflektiert, die Albedo ist
 \begin{equation}\label{skript:eis:Albedoverteilung}
 a(\vartheta,\vartheta_\text{iceline})
 =
-\begin{cases}
-	a_\text{Eis}&-\tfrac{\pi}{2}\leq\vartheta\leq-\vartheta_\text{iceline}\quad\text{Nordpolarkappe}\\
-	a_\text{Land}&-\vartheta_\text{iceline}\leq\vartheta\leq\vartheta_\text{iceline} \\
-	a_\text{Eis}&\vartheta_\text{iceline}\leq\vartheta\leq\tfrac{\pi}{2}\qquad\>\text{Südpolarkappe}
-\end{cases},
+\left\{
+\begin{tabular}{lll}
+	$a_\text{Eis}$&$-\tfrac{\pi}{2}\leq\vartheta\leq-\vartheta_\text{iceline}$&$\text{Südpolarkappe}$\\
+	$a_\text{Land}$&$-\vartheta_\text{iceline}\leq\vartheta\leq\vartheta_\text{iceline}$&$\text{Äquatorialzone}$\\
+	$a_\text{Eis}$&$\vartheta_\text{iceline}\leq\vartheta\leq\tfrac{\pi}{2}$&$\text{Nordpolarkappe}$
+\end{tabular}
+\right.,
 \end{equation}
 wobei wir die Parameter $a_\text{Eis}=0.7$ und $a_\text{Land}=0.285$ wählen. Diese Funktion ist in Abbildung \ref{skript:eis:fig:Albedoverteilung} dargestellt.
 \begin{figure}
@@ -134,7 +136,7 @@ wobei wir die Parameter $a_\text{Eis}=0.7$ und $a_\text{Land}=0.285$ wählen. Di
 \end{figure}
 \section{Energiegleichung}
 \rhead{Energiegleichung}
-Nun haben wir alle Komponente zusammen, um sie wieder in Budykos Modell einzufügen. Mit Berücksichtigung der Zonen ergibt sich die Gleichung
+Nun haben wir alle Komponenten zusammen, um sie wieder in Budykos Modell einzufügen. Mit Berücksichtigung der Zonen ergibt sich die Gleichung
 \begin{equation}\label{skript:eis:Ein pro Breitengrad}
 E_\text{in}(\vartheta,\vartheta_\text{iceline})
 =
@@ -146,8 +148,8 @@ E_\text{in}(\vartheta_\text{iceline})
 =
 \frac{Q}{2}\int_{-\pi/2}^{\pi/2}(1-a(\vartheta,\vartheta_\text{iceline}))\cdot\tilde{s}(\vartheta)\cdot\cos\vartheta\,d\vartheta,
 \end{equation}
-wobei {\em Ein} nur noch abhängig von der Eislinie ist, was das Ziel war.
-Um die Gleichgewichtslösungen zu erhalten, setzen wir {\em Ein} mit {\em Eout} gleich wie in \hl{Verweis Skript Budyko} und bekommen
+wobei $E_\text{in}$ nur noch abhängig von der Eislinie ist, was das Ziel war.
+Um die Gleichgewichtslösungen zu erhalten, setzen wir $E_\text{in}$ mit $E_\text{out}$ gleich wie in \hl{Verweis Skript Budyko} und bekommen
 \begin{equation}\label{skript:eis:Gleichgewichtsgleichung}
 	E_\text{in}(\vartheta_\text{iceline})
 	=
@@ -180,9 +182,9 @@ Wie schon im Modell von Budyko angenommen, ist in Abbildung \ref{skript:eis:fig:
 	\caption{Abhängigkeit der Eislinie von der Temperatur für zwei verschiedene Werte der Land Albedo. Der Messpunkt ist bei der Jahrestemperatur von 2017 eingetragen.}
 	\label{skript:eis:fig:iceline_abh_von_der_Temperatur}
 \end{figure}
-Wird die Gleichgewichtsgleichung \eqref{skript:eis:Gleichgewichtsgleichung} nach der Temperatur $T$ aufgelöst, kann die Eislinie in Abhängigkeit der Temperatur dargestellt werden. Abbildung \ref{skript:eis:fig:iceline_abh_von_der_Temperatur} zeigt, wie sich die Eislinie bei einer globalen Erwärmung verhält. Je weniger Eis vorhanden ist, desto empfindlicher die Eislinie auf eine Temperaturänderung, bis das Eis fast schlagartig verschwindet.
+Wird die Gleichgewichtsgleichung \eqref{skript:eis:Gleichgewichtsgleichung} nach der Temperatur $T$ aufgelöst, kann die Eislinie in Abhängigkeit der Temperatur dargestellt werden. Abbildung \ref{skript:eis:fig:iceline_abh_von_der_Temperatur} zeigt, wie sich die Eislinie bei einer globalen Erwärmung verhält. Je weniger Eis vorhanden ist, desto empfindlicher reagiert die Eislinie auf eine Temperaturänderung, bis das Eis fast schlagartig verschwindet.
 
-Hier erklärt sich auch, warum für die Land Albedo der Wert 0.285 und nicht wie bei Budyko 0.3 verwendet wurde: Das Modell würde uns seit 20 Jahren kein Eis mehr zugestehen, entsprechend musste der Wert so angepasst werden, dass es realistischer wird. Erwärmt sich die Erde weiter wie bis anhin, könnte das Polareis noch in diesem Jahrhundert vollständig verschwinden.
+Hier erklärt sich auch, warum für $a_\text{Land}$ der Wert 0.285 und nicht wie bei Budyko 0.3 verwendet wurde: Das Modell würde uns seit 20 Jahren kein Eis mehr zugestehen, entsprechend musste der Wert so angepasst werden, dass es realistischer wird. Erwärmt sich die Erde weiter wie bis anhin, könnte das Polareis noch in diesem Jahrhundert im Sommer vollständig verschwinden.
 \subsection{Eisfläche abhängig von der Temperatur}
 \rhead{Eisfläche abhängig von der Temperatur}
 Ist die Eislinie bekannt, kann daraus mit
@@ -196,7 +198,7 @@ die Eisfläche am Nord- und Südpol berechnet werden, wobei $R$ dem Polradius vo
 	\caption{Zusammenhang der globalen Eisfläche und der Durchschnittstemperatur. Die Datenpunkte sind für die Temperatur vom Jahr 2017 und für eine zusätzliche Erwärmung von $0.5^{\circ}$.}
 	\label{skript:eis:fig:Eisflaeche_abh_von_der_Temperatur}
 \end{figure}
-Etwas unerwartet zeigt sich in Abbildung \ref{skript:eis:fig:Eisflaeche_abh_von_der_Temperatur}, dass dieser Zusammenhang beinahe linear ist. Bei einer Erwärmung ausgehend vom Jahr 2017 um weitere $0.5^{\circ}$C schmelzen 10 Mio. km$^2$ Eis, was rund $\tfrac{1}{50}$ der Erdoberfläche entspricht. Diese Zahlen stimmen aber so nicht wirklich, weil innerhalb der Eislinie doch nicht alles vereist ist. Sie zeigen aber die drastischen Auswirkung einer geringen Temperaturerhöhung.
+Etwas unerwartet zeigt sich in Abbildung \ref{skript:eis:fig:Eisflaeche_abh_von_der_Temperatur}, dass dieser Zusammenhang beinahe linear ist. Bei einer Erwärmung ausgehend vom Jahr 2017 um weitere $0.5^{\circ}$C werden 10 Mio. km$^2$ Eis schmelzen, was rund $\tfrac{1}{50}$ der Erdoberfläche entspricht. Diese Zahlen stimmen aber so nicht wirklich, weil innerhalb der Eislinie doch nicht alles vereist ist. Sie zeigen aber die drastischen Auswirkungen einer geringen Temperaturerhöhung.
 \subsection{Vergleich mit der Realität}
 \rhead{Vergleich mit der Realität}
 Wie gut stimmt das Modell mit der Realität überein? Wir wollen dafür wieder die Bilder der NASA anschauen und die Daten des Modells einfügen. Dies wurde in Abbildung \ref{skript:eis:fig:NASA_mit_Breitengraden} gemacht.
@@ -215,7 +217,7 @@ Obwohl das Modell plausible Resultate liefert, wollen wir hier die Fehler und ge
 	\item Symmetrie (ungleiche Land- und somit Eisverteilung zwischen der Nord- und Südhalbkugel). Landflächen vereisen einfacher bis in tiefe Breitengrade als Meer, weil die fehlende Strömung zu weniger Wärmetransport an die Oberfläche führt. In der Folge bildet sich auf dem Land bereits ab etwa dem 55. Breitengrad Permafrost. Auf der Nordhalbkugel hat es in den Breitengraden von $55^\circ$ bis $70^\circ$ bedeutend mehr Landfläche als auf der Südhalbkugel, deshalb darf dort mit mehr Eis gerechnet werden. So sind grosse Gebiete wie Teile von Kanada, Alaska, Sibirien und Skandinavien auch im Sommer gefroren, wo es im Vergleich zur Antarktis kein Eis gibt.
 	\item Die abgestrahlte Leistung ist auch temperatur- und somit breitengradabhängig. Indem wir Zonen mit und ohne Eis und eine globale Durchschnittstemperatur über $0^\circ\text{C}$ haben, lassen wir implizit unterschiedliche Oberflächentemperaturen zu. Weil die abgestrahlte Leistung proportional zu $T^4$ ist, wird an den Polen bestimmt nicht gleich viel Energie abgestrahlt, wie am Äquator.
 	\item Kein Wärmespeichereffekt. Dies führt dazu, dass keine Jahreszeiten abgebildet werden können; die Eislinie schwankt über das Jahr um über ein Dutzend Breitengrade. Das Eis mittelt Temperaturschwankungen auch über mehrere Jahre aus.
-	\item Approximationen. Zu guter Letzt sei erwähnt, dass die Energieverteilung mit der Gleichung \eqref{skript:eis:Energieverteilung Approximation} approximiert wurde. Der Einfluss auf das Ergebnis dürfte aber aufgrund der guten Übereinstimmung mit \eqref{skript:eis:Energieverteilung Neigung} aber gering ausfallen.
+	\item Approximationen. Zu guter Letzt sei erwähnt, dass die Energieverteilung mit der Gleichung \eqref{skript:eis:Energieverteilung Approximation} approximiert wurde. Der Einfluss auf das Ergebnis dürfte aufgrund der guten Übereinstimmung mit \eqref{skript:eis:Energieverteilung Neigung} aber gering ausfallen.
 \end{itemize}
 \section{Schlussfolgerung}
 \rhead{Schlussfolgerung}
@@ -224,6 +226,6 @@ Obwohl das Modell plausible Resultate liefert, wollen wir hier die Fehler und ge
 	\item Das Modell kann die Veränderungen der Eislinie der letzten Jahre aufgrund der Temperaturerhöhung plausible wiedergeben.
 	\item Die Eislinie reagiert sehr empfindlich auf eine Temperaturänderung. Bei der Eisfläche sieht es weniger schlimm aus. 
 \end{itemize}
-Mit Sicherheit kann gesagt werden, dass das Eis an den Polen zukünftig noch mehr zurückgehen wird, wenn sich die Erde weiterhin erwärmt. Es ist denkbar, dass wir einmal einen im Sommer eisfreien Nordpol noch erleben könnten. Die gute Nachricht dabei: Das Modell macht keine Aussage darüber, dass der Prozess der Eisbildung nicht reversibel wäre. Sollte sich die Erde also wieder abkühlen, wird es wieder mehr Eis geben, andernfalls ist aber mit einem massivem Anstieg des Meeresspiegels und der damit verbundenen Flutung von Küstenstädten und ganzen Inseln zu rechen.
+Mit Sicherheit kann gesagt werden, dass das Eis an den Polen zukünftig noch mehr zurückgehen wird, wenn sich die Erde weiterhin erwärmt. Es ist denkbar, dass wir einmal einen im Sommer eisfreien Nordpol noch erleben könnten. Die gute Nachricht dabei: Das Modell macht keine Aussage darüber, dass der Prozess der Eisbildung nicht reversibel wäre. Sollte sich die Erde also wieder abkühlen, wird es wieder mehr Eis geben, andernfalls ist aber mit einem massiven Anstieg des Meeresspiegels und der damit verbundenen Flutung von Küstenstädten und ganzen Inseln zu rechen.
 \printbibliography[heading=subbibliography]
 \end{refsection}

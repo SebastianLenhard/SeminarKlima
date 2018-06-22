@@ -2,14 +2,14 @@
 \rhead{Einstieg}
 
 Bevor wir uns auf die Suche nach Basisfunktionen machen, folgen hier ein paar 
-Angaben zu den in diesem Kapitel verwendeten Notation und zu einigen 
-grundlegenden Funktionen und Umformungen, welche sp"ater verwendet werden. Eine 
-kleine Vorschau zu dem was uns noch erwartet sozusagen.
+Angaben zu der in diesem Kapitel verwendeten Notation und einigen 
+grundlegenden Funktionen und Identit"aten, welche sp"ater verwendet werden. 
+Eine kleine Vorschau zu dem was uns noch erwartet sozusagen.
 
 \subsection{Notation}
 Die verwendete Notation entspricht grunds"atzlich derjenigen, welche 
 bereits aus der Literatur bekannt sind. Einzig die Verwendung der 
-sogenannten Multi-Index-Notationen k"onnte f"ur einige Leser zu Unklarheiten 
+sogenannten Multi-Index-Notation k"onnte f"ur einige Leser zu Unklarheiten 
 f"uhren, daher hier eine kurze Einf"uhrung.
 
 Unter der Multi-Index-Notation versteht man einen Index, der einem 
@@ -37,11 +37,12 @@ auch geschrieben werden kann als
 	\sum_{k = 0}^{\infty}\sum_{|\alpha| = k}a_{\alpha}
 	\qquad \alpha = (\alpha_1, \alpha_2).
 \end{equation*}
-Ausgeschrieben liefert uns dies
+Dies liefert uns
 \begin{equation*}
-	a_{(0,0)} + a_{(0,1)} + a_{(1,0)} + a_{(0,2)} + a_{(1,1)} + a_{(2,0)} + 
-	a_{(0,3)} + 
-	\dotsb
+	a_{(0,0)} +
+	a_{(0,1)} + a_{(1,0)} +
+	a_{(0,2)} + a_{(1,1)} + a_{(2,0)} +
+	a_{(0,3)} + \dotsb
 \end{equation*}
 Wie man sehen kann, entspricht dies genau dem in 
 \cref{equation:lorenz2:doublesum} geforderten $2$-Tupel $(l, k - l)$.
@@ -74,8 +75,8 @@ Kosinus eines absoluten Wertes zu vereinfachen:
 \label{equation:lorenz2:sincosabs}
 \end{equation}
 
-Produkte von Sinus und Kosinus k"onnen wir mit folgenden S"atzen in einfache 
-Summen umwandeln. Unter anderem kann dies mit Hilfe der komplexen 
+Produkte von Sinus und Kosinus k"onnen wir mit folgenden Identit"aten in 
+einfache Summen umwandeln. Unter anderem kann dies mit Hilfe der komplexen 
 Zahlentheorie gezeigt werden:
 \begin{align*}
 \cos(x)\sin(y) &= \frac{1}{2} \left(\sin(x + y) - \sin(x - y)\right)
