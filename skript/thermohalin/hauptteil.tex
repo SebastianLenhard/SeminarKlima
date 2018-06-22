@@ -1,9 +1,9 @@
 \section{Simulation}
 \rhead{Simulation}
 
-Der erste schritt ist die Erstellung eines Modells.
+Der erste Schritt ist die Erstellung eines Modells.
 Dazu wird der Golfstrom in drei Zonen aufgeteilt. Die jeweiligen Polarregionen und der Äquator werden je zu einer Zone. Diese Zonen werden dann je einer Box zugeordnet. Diese Boxen werden mittels Kanälen verbunden um so den Strom zu modellieren. 
-Im laufe des Seminars wurden zwei Modelle erstellt. Der erste Ansatz (siehe \ref{thermohalin:3b2f_title}) war sehr lehrreich hatte aber schlussendlich nichts mit dem realen Golfstrom gemeinsam. Der zweite Ansatz (siehe \ref{thermohalin:3b1f_title}) war erfolgreicher und der Golfstrom kann mit diesem Modell qualitativ simuliert werden.
+Im Laufe des Seminars wurden zwei Modelle erstellt. Der erste Ansatz (siehe \ref{thermohalin:3b2f_title}) war sehr lehrreich, hatte aber schlussendlich nichts mit dem realen Golfstrom gemeinsam. Der zweite Ansatz (siehe \ref{thermohalin:3b1f_title}) war erfolgreicher und der Golfstrom kann mit diesem Modell qualitativ simuliert werden.
 In den folgenden zwei Kapiteln werden diese zwei Modelle vorgestellt und die jeweiligen Resultate diskutiert.
 
 \subsection{Zwei-Fluss Modell( 1. Ansatz)}\label{thermohalin:3b2f_title}
@@ -19,7 +19,7 @@ Eine Darstellung des Modelles ist in Abbildung \ref{thermohalin:3b2f} zu finden.
 		\label{thermohalin:3b2f}
 \end{figure}
 
-Aufgrund der Darstellung lassen sich für jede Box die zugehörigen Salinitäts- und Temperaturgleichungen aufstellen. Box $1$ und $3$ haben jeweils einen Fluss in der Gleichung. Im Gegensatz dazu wird Box jedoch $3$ von zwei Flüssen durchflossen. Daraus entstehen die Gleichungssysteme \ref{thermohalin:diffgl_3b2f_temp} und \ref{thermohalin:diffgl_3b2f_salinity}. 
+Aufgrund der Darstellung lassen sich für jede Box die zugehörigen Salinitäts- und Temperaturgleichungen aufstellen. Box $1$ und $3$ haben jeweils einen Fluss in der Gleichung. Im Gegensatz dazu wird Box $3$ jedoch von zwei Flüssen durchflossen. Daraus entstehen die Gleichungssysteme \ref{thermohalin:diffgl_3b2f_temp} und \ref{thermohalin:diffgl_3b2f_salinity}. 
 
 \begin{equation}\label{thermohalin:diffgl_3b2f_temp}
 \begin{aligned}
@@ -46,7 +46,7 @@ Der erste Term auf der rechten Seite
 	c(T_i^*-T_i), \quad d(S_i^*-S_i)
 \end{equation*}
 
-stellt jeweils den Energie- und Salzaustausch mit dem umgebenden Reservoir dar. Als die Übertragungskonstante multipliziert mit der Temperaturdifferenz zwischen Box und Reservoir. Die anderen Terme auf der rechten Seite sind die Flüsse
+stellt jeweils den Energie- und Salzaustausch mit dem umgebenden Reservoir dar. Die Übertragungskonstante wird mit der Temperaturdifferenz zwischen Box und Reservoir multipliziert. Die anderen Terme auf der rechten Seite sind die Flüsse
 
 \begin{equation*}
 	|q_x|(T_i-T_j)
@@ -55,7 +55,7 @@ stellt jeweils den Energie- und Salzaustausch mit dem umgebenden Reservoir dar. 
  welche mit der Temperaturdifferenz der jeweiligen Boxen multipliziert werden um die Effizienz der Übertragung zwischen den Boxen zu berechnen.  
 
 
-Die stärke des Flusses wird aus dem Dichteunterschied zwischen den jeweiligen Boxen berechnet. 
+Die Stärke des Flusses wird aus dem Dichteunterschied zwischen den jeweiligen Boxen berechnet. 
 Die Gleichungen für die Flüsse $q_x$ sind also 
 \begin{equation}
 \begin{aligned}
@@ -65,7 +65,7 @@ Die Gleichungen für die Flüsse $q_x$ sind also
 \end{aligned}.
 \end{equation}
 
-Für $\varrho_i$ wird dann jeweils die Formel \ref{thermohalin:Dichte} eingesetzt um die Dichte aus den jeweiligen Salinitäten und Temperaturen zu berechnen. Daraus folgt
+Für $\varrho_i$ wird dann jeweils die Formel \ref{thermohalin:Dichte} eingesetzt, um die Dichte aus den jeweiligen Salinitäten und Temperaturen zu berechnen. Daraus folgt
 
 \begin{equation}
 \begin{aligned}
@@ -99,7 +99,7 @@ Die so entstandenen Gleichungen lassen sich mit Matlab simulieren und Plotten.
 \subsubsection{Matlab-Code der Simulation}
 
 Die oben aufgestellten Differentialgleichungssysteme (\ref{thermohalin:diffgl_3b2f_temp}) und \ref{thermohalin:diffgl_3b2f_salinity} werden mit Matlab gelöst. Dies wird mit dem Differentialgleichungslöser \texttt{ode45} aus der Matlab Funktionenbibliothek erreicht.
-Um effizienten und leserlichen Code zu schreiben, werden ein Zustandsvektor, ein Zeitvektor und ein Vektor mit den Reservoirkonstanten erstellt.
+Um einen effizienten und leserlichen Code zu schreiben, werden ein Zustandsvektor, ein Zeitvektor und ein Vektor mit den Reservoirkonstanten erstellt.
 \begin{equation*}
 y_0 = \begin{pmatrix}T_{1} \\ T_{2} \\ T_{3} \\ S_{1} \\ S_{2} \\ S_{3}\end{pmatrix}, \quad
 t_{span} = \begin{pmatrix}t_0 \\ t_{end} \end{pmatrix}, \quad
@@ -121,13 +121,13 @@ Die Rückgabewerte werden in einem Array gespeichert und dann geplottet. Um den 
 Da die Flüsse innerhalb der \texttt{ode45}-Funktion berechnet wurden, muss dies nachträglich noch einmal gemacht werden, um die Werte nachher plotten zu können. Dazu werden die jeweiligen Werte aus dem Lösungsvektor extrahiert und die Flüsse wiederholt berechnet.
 \lstinputlisting[style=Matlab]{thermohalin/listings/listing-plot.m}\label{thermohalin:listing:plot}
 
-Die so entstehenden Figuren werden im folgenden Abschnitt ausgewertet und diskutiert. 
+Die so entstandenen Figuren werden im folgenden Abschnitt ausgewertet und diskutiert. 
 
 \subsubsection{Resultate}
 
 
 Die ersten Durchläufe ergaben brauchbare Resultate, welche tatsächlich dem Golfstrom zu ähneln schienen. Wenn jedoch die Temperaturen und Salinitäten der Reservoire ( $S_1^*, T_1^*,\dots$) verändert werden, treten plötzlich unmögliche Phänomene auf.
-Einer der beiden Flüsse wird negativ und ändert seine Richtung. Das resultiert in zwei gegenläufigen Strömen welche in keiner Weise mit dem Golfstrom übereinstimmen. Das führt dazu, dass am Äquator eine Absinkstelle entsteht. In der Realität ist klar zu erkennen, dass Absink- und Aufsteigstellen jeweils nur an den Polen vorhanden sind. 
+Einer der beiden Flüsse wird negativ und ändert seine Richtung. Das resultiert in zwei gegenläufigen Strömen, welche in keiner Weise mit dem Golfstrom übereinstimmen. Das führt dazu, dass am Äquator eine Absinkstelle entsteht. In der Realität ist klar zu erkennen, dass Absink- und Aufsteigstellen jeweils nur an den Polen vorhanden sind. 
 Ein Plot der Simulationsresultate findet sich in Abbildung \ref{thermohalin:simulationsresultate}.
 
 \begin{figure}
@@ -166,16 +166,16 @@ Um zu verhindern, dass in der mittleren Box eine zusätzliche Absinkzone entsteh
 \end{figure}
 
 Wie im vorherigen Modell werden je drei Gleichungen für Temperatur- und Salinitätsänderung der jeweiligen Boxen benötigt.
-Die einzelnen Boxen sind im Gegensatz zu 1. Versuch nur noch  mit einem Fluss verbunden. Das stimmt auch viel besser mit der Realität überein. Folgend ist die Gleichung für Box Nr. 1 dargestellt, um die Zusammenhänge zu erläutern:
+Die einzelnen Boxen sind im Gegensatz zum 1. Versuch nur noch  mit einem Fluss verbunden. Das stimmt auch viel besser mit der Realität überein. Folgend ist die Gleichung für Box Nr. 1 dargestellt, um die Zusammenhänge zu erläutern:
 
 \begin{equation}
 \frac{dT_1}{dt} = c(T_p-T_1)+ \begin{cases} q(T_3-T_1)  \quad q>0 \\ |q|(T_2-T_1)  \quad q<0 \end{cases}
 \end{equation}
 
 Der erste Term beschreibt wie bisher den Temperaturaustausch zwischen Box und Reservoir und wurde in  Abschnitt \ref{thermohalin:3b2f_title} bereits erläutert. Der Flussterm ist jetzt anders, da der Fluss je nach Flussrichtung von anderen Boxen getrieben wird. Die Differenz muss jeweils zwischen der Quellbox und der betrachteten Box berechnet werden, da der Energie- und Salztransport jeweils nur vom Unterschied abhängt.
-Wenn der Fluss positiv ist, also $q>0$, dann wird für die Berechnung Box 3 und die aktuelle Box verwendet, da die dritte Box die Quellbox darstellt. Wenn der Fluss nun negativ wird, ist die Quellbox Box 2 also muss hier die Differenz zwischen der zweiten und der dritten Box berechnet werden. Um die Simulation zu erleichtern, wird im Falle eines negativen Flusses mit dem Absolutbetrag gerechnet. Damit die Resultate trotzdem stimmen werden  bei der Differenzbildung jeweils die Terme vertauscht damit die Richtung trotzdem korrekt ist. 
+Wenn der Fluss positiv ist, also $q>0$, dann wird für die Berechnung Box 3 und die aktuelle Box verwendet, da die dritte Box die Quellbox darstellt. Wenn der Fluss nun negativ wird, ist die Quellbox Box 2 also muss hier die Differenz zwischen der zweiten und der dritten Box berechnet werden. Um die Simulation zu erleichtern, wird im Falle eines negativen Flusses mit dem Absolutbetrag gerechnet. Damit die Resultate trotzdem stimmen, werden bei der Differenzbildung jeweils die Terme vertauscht, damit die Richtung trotzdem korrekt ist. 
 
-Der Fluss $q$ wird ebenfalls anders berechnet, er ist nur vom Dichteunterschied zwischen den jeweiligen Polen abhängig \cite{skript:kaperengler}.
+Der Fluss $q$ wird ebenfalls anders berechnet. Er ist nur vom Dichteunterschied zwischen den jeweiligen Polen abhängig \cite{skript:kaperengler}.
 Wir können also wieder schreiben
 
 \begin{equation}
@@ -221,12 +221,12 @@ q = k[\alpha\Delta T-\beta\Delta S].
 
 
 
-Aufgrund diese Gleichungen kann der neue Matlabcode geschrieben werden, welcher im nächsten Abschnitt erklärt wird.
+Aufgrund diese Gleichungen kann der neue Matlabcode geschrieben werden. Dieser wird im nächsten Abschnitt erklärt.
 
 
 \subsubsection{Matlab-code}
 
-Die Übergabe der Startwerte und Konstanten, der Aufruf des Differentialgleichungslösers und das Plotten der Resultate sind identisch und werden deshalb nicht noch einmal gezeigt ( siehe  \ref{thermohalin:listing:input}). Nur die Funktion wurde verändert. Je nachdem ob der Fluss positiv oder negativ ist muss ein anderer Fall der Gleichungen berechnet werden. Dies wird mit einem \texttt{if}-Statement erreicht, welches in jedem Durchgang neu ausgewertet wird. 
+Die Übergabe der Startwerte und Konstanten, der Aufruf des Differentialgleichungslösers und das Plotten der Resultate sind identisch und werden deshalb nicht noch einmal gezeigt ( siehe  \ref{thermohalin:listing:input}). Nur die Funktion wurde verändert. Je nachdem ob der Fluss positiv oder negativ ist, muss ein anderer Fall der Gleichungen berechnet werden. Dies wird mit einem \texttt{if}-Statement erreicht, welches in jedem Durchgang neu ausgewertet wird. 
 
 \lstinputlisting[style=Matlab]{thermohalin/listings/listing-3b1f-solve.m}
 
@@ -235,7 +235,7 @@ Die Übergabe der Startwerte und Konstanten, der Aufruf des Differentialgleichun
 
 Nach mehrfacher Simulation scheint es so, dass dieses Modell tatsächlich funktioniert. Für Werte, welche realen Werten entsprechen, reagiert die Simulation wie der richtige Golfstrom. Der Golfstrom fliesst vom Süd- zum Nordpol, sinkt dort ab und fliesst am Meeresgrund wieder bis zum Südpol, wo er aufsteigt und so den Kreislauf schliesst. Ein Plot der Resultate ist in Abbildung \ref{thermohalin:3b1f-skript} dargestellt.
 
-Wie die Abbildung zeigt bleiben die Temperaturen ungefähr konstant. Dies liegt daran, dass die Temperaturstartwerte schon den Reservoirwerten angepasst wurden, was bedeutet dass diese Anpassung schon geschehen ist. Beim Salinitätsplot ist klar der Effekt des virtuellen Salzflusses zu sehen, welcher dazu führt, dass die Salinität in der Äquatorregion leicht steigt und in Polnähe dementsprechend abnimmt. Das Resultat stimmt und der Golfstrom fliesst in die uns bekannte Richtung.
+Wie die Abbildung zeigt bleiben die Temperaturen ungefähr konstant. Dies liegt daran, dass die Temperaturstartwerte schon den Reservoirwerten angepasst wurden, was bedeutet, dass diese Anpassung schon geschehen ist. Beim Salinitätsplot ist klar der Effekt des virtuellen Salzflusses zu sehen, welcher dazu führt, dass die Salinität in der Äquatorregion leicht steigt und in Polnähe dementsprechend abnimmt. Das Resultat stimmt und der Golfstrom fliesst in die uns bekannte Richtung.
 
 \begin{figure}
 	\centering
@@ -254,7 +254,7 @@ const = \begin{pmatrix}T_{1}^{*} \\ T_{2}^{*} \\ T_{3}^{*} \\ S_{1}^{*} \\ S_{2}
 
 
 
-Bei einer kleinen Veränderung wird der Strom nur schwächer, je grösser die Abweichungen jedoch sind desto stärker wird der Effekt.
+Bei einer kleinen Veränderung wird der Strom nur schwächer, je grösser die Abweichungen jedoch sind, desto stärker wird der Effekt.
 Bis sich die Richtung des Stromes ändert.
 Das Resultat entspricht also den Erwartungen. 
 
