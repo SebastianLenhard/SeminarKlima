@@ -3,7 +3,9 @@
 #
 # (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
 #
-all:	ein.pdf ein1.pdf halb.pdf total.pdf
+all:	tikzimages 3dimages
+
+tikzimages:	ein.pdf ein1.pdf halb.pdf total.pdf ell2.pdf
 
 ein.pdf:	ein.tex
 	pdflatex ein.tex
@@ -23,4 +25,18 @@ total.pdf:	total.tex insolation.tex
 insolation.tex:	ein.m
 	octave ein.m
 
+ell2.pdf:	ell2.tex elltheta.tex
+	pdflatex ell2.tex
+elltheta.tex:	ell2.m
+	octave ell2.m
+
+3dimages:	earth.png midday.jpg
+
+earth.png:	earth.pov
+	povray +A0.1 -W1920 -H1080 -Oearth.png earth.pov
+
+midday.png:	midday.pov daycommon.inc ball.inc
+	povray +a01. -W1920 -H860 -Omidday.png midday.pov
+midday.jpg:	midday.jpg
+	convert midday.png -density 300 -units PixelsPerInch midday.jpg
 
