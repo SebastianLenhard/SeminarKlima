@@ -119,11 +119,13 @@ In den vereisten Breitengraden wird mehr Sonnenlicht reflektiert, die Albedo ist
 \begin{equation}\label{skript:eis:Albedoverteilung}
 a(\vartheta,\vartheta_\text{iceline})
 =
-\begin{cases}
-	a_\text{Eis}&-\tfrac{\pi}{2}\leq\vartheta\leq-\vartheta_\text{iceline}\quad\text{Südpolarkappe}\\
-	a_\text{Land}&-\vartheta_\text{iceline}\leq\vartheta\leq\vartheta_\text{iceline} \\
-	a_\text{Eis}&\vartheta_\text{iceline}\leq\vartheta\leq\tfrac{\pi}{2}\qquad\>\text{Nordpolarkappe}
-\end{cases},
+\left\{
+\begin{tabular}{lll}
+	$a_\text{Eis}$&$-\tfrac{\pi}{2}\leq\vartheta\leq-\vartheta_\text{iceline}$&$\text{Südpolarkappe}$\\
+	$a_\text{Land}$&$-\vartheta_\text{iceline}\leq\vartheta\leq\vartheta_\text{iceline}$&$\text{Äquatorialzone}$\\
+	$a_\text{Eis}$&$\vartheta_\text{iceline}\leq\vartheta\leq\tfrac{\pi}{2}$&$\text{Nordpolarkappe}$
+\end{tabular}
+\right.,
 \end{equation}
 wobei wir die Parameter $a_\text{Eis}=0.7$ und $a_\text{Land}=0.285$ wählen. Diese Funktion ist in Abbildung \ref{skript:eis:fig:Albedoverteilung} dargestellt.
 \begin{figure}
