@@ -235,21 +235,25 @@ F(x) = P(X {\ge} I ) = \(\sum \limits_{k=I}^n P(X = k))
 
 angeschaut werden.
 
+
 Möchten wir also die Wahrscheinlichkeit wissen, drei oder mehr extreme Ereignisse in den letzten 10 Jahren vorzufinden, müssen die einzelnen Wahrscheinlichkeiten aufsummiert werden:
 
 \begin{align*}
-F(5) &=  P(X {\ge} 5) \\
+F(3) &=  P(X {\ge} 3) \\
 &= P(X = 3) + P(X = 4) + P(X = 5) + P(X = 6) + P(X = 7) \\
 &= 0.0409329 + 0.0046214 + 0.00026340 + 6.87 10^{ -6 } + 6.04 10^{ -8 } \\
-&= 0.045833
+&= 0.045833 \quad  \Rightarrow 4.58\%
 \end{align*}
+
+Drei oder mehr extreme Ereignisse in den letzten 10 Jahren sind mit einer Wahrscheinlichkeit von 4.58\% möglich. 
+
 
 Für unser Beispiel ergeben sich folgende Werte
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.3\textwidth]{extrem/TabExt.pdf}
-\caption{Wahrscheinlichkeit $P(X \ge I)$ aller Ereignisse}
+\caption{Wahrscheinlichkeit $P(X \ge I)$ aller Ereignisse unseres Beispiels. Rosa markiert ist das oben berechnete Beispiel mit drei oder mehr extremen Ereignissen in den letzten 10 Jahren. }
 \label{TabExt}
 \end{figure}
 
@@ -259,6 +263,9 @@ Für unser Beispiel ergeben sich folgende Werte
 \caption{Die komplementäre Verteilfunktion $F(x)$ der hypergeometrischen Verteilung zeigt auf, wie wahrscheinlich es ist mehr als k Ereignisse in den letzten 10 Jahren vorzufinden.}
 \label{HyperExt}
 \end{figure}
+
+Die Wahrscheinlichkeit ein oder zwei extreme Ereignisse in den letzten 10 Jahren zu haben ist mit 64.49\% und 23.30\% relativ hoch. Ab drei oder mehr Ereignissen nimmt die Wahrscheinlichkeit rasant ab. Ohne Äussere Einwirkungen sind drei oder mehr Ereignisse sehr unwahrscheinlich und ab 5 oder mehr nahezu unmöglich.
+
 
 
 \section{Hypothesentest}
