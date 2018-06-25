@@ -153,7 +153,7 @@ Jetzt müssen wir die Insolation noch über die Rotation im Laufe eines
 Tages mitteln.
 Wir erreichen dies, indem wir \eqref{skript:chapter:inspunkt}
 über $\varphi$ über eine volle Umdrehung mitteln:
-\begin{align*}
+\begin{align}
 I(\vartheta)
 &=
 \frac{1}{2\pi}
@@ -162,6 +162,7 @@ I(\vartheta)
 \sqrt{1-
 (\sin\gamma\sin\vartheta\cos\varphi+\cos\gamma\cos\vartheta)^2}
 \,d\varphi
+\notag
 \\
 &=
 \frac{S_0}{2\pi^2}
@@ -170,7 +171,7 @@ I(\vartheta)
 (\sin\gamma\sin\vartheta\cos\varphi+\cos\gamma\cos\vartheta)^2}
 \,d\varphi.
 \label{skript:einstrahlung:mittlereinsolation}
-\end{align*}
+\end{align}
 Das Integral auf der rechten Seite ist nicht in geschlossener
 Form lösbar.
 Die numerische Berechnung mit Octave ergibt den Graphen
