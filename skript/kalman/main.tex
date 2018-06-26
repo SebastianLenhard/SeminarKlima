@@ -14,9 +14,9 @@ Die meteorologische Datenassimilation hat zur Aufgabe, Anfangszust"ande f"ur die
 
 \section{Kalmanfilter}
 \rhead{Kalmanfilter}
-Ein Werkzeug der Datenassimilation ist der Kalmanfilter mit seinen diversen Abwandlungen. In diesem Kapitel wird der Kalmanfilter genauer erkl"art und auf die Parameter eingegangen. Am Lorenzmodell aus dem Jahre 1963 (LM63) kommt eine erweiterte Version zur Anwendung, der sogenannte Extended Kalmanfilter. Dieser ist f"ur nicht-lineare dynamische Systeme erweitert worden und wurde im Zuge der Apollo Mission von Stanley F. Schmidt entwickelt und zur Navigation im Weltraum angewendet.\cite{skript:NASAKalman}\\
+Ein Werkzeug der Datenassimilation ist der Kalmanfilter mit seinen diversen Abwandlungen. In diesem Kapitel wird der Kalmanfilter genauer erkl"art und auf die Parameter eingegangen. Am Lorenzmodell aus dem Jahre 1963 (LM63) kommt eine erweiterte Version zur Anwendung, der sogenannte Extended Kalmanfilter. Dieser ist f"ur nicht-lineare dynamische Systeme erweitert worden und wurde im Zuge der Apollo Mission von Stanley F. Schmidt entwickelt und zur Navigation im Weltraum angewendet.\cite{skript:NASAKalman}
 
-Der Kalmanfilter ist ein rekursives Verfahren zur Filterung von Datens"atzen, bei dem  der zuk"unftige Datenpunkt als Linearkombination der Beobachtung und einer Vorhersage durch ein mathematisches Systemmodell gesch"atzt wird. Voraussetzung f"ur die Beobachtung ist die Messung mindestens einer Systemvariablen mit zugeh"origer Varianz. Im linearen Fall ist f"ur das Modell eine Matrix n"otig, die aus dem alten Zustand auf den neuen schliessen l"asst, es folgt ein detaillierter Einblick.\cite{skript:WRStat}\\
+Der Kalmanfilter ist ein rekursives Verfahren zur Filterung von Datens"atzen, bei dem  der zuk"unftige Datenpunkt als Linearkombination der Beobachtung und einer Vorhersage durch ein mathematisches Systemmodell gesch"atzt wird. Voraussetzung f"ur die Beobachtung ist die Messung mindestens einer Systemvariablen mit zugeh"origer Varianz. Im linearen Fall ist f"ur das Modell eine Matrix n"otig, die aus dem alten Zustand auf den neuen schliessen l"asst.\cite{skript:WRStat}\\
 
 \subsection{Allgemeine Funktionsweise}
 \rhead{Allgemeine Funktionsweise}
@@ -91,7 +91,7 @@ Die Matrix $\phi$ f"ur das nicht-lineare System, wie das LM63, kann nicht auf di
 
 \begin{figure}
 \centering
-\includegraphics[width=3in]{kalman/figures/ablnachAnf2.eps}
+\includegraphics[width=3in]{kalman/figures/ablnachAnf2.pdf}
 \caption{Auschnitt der $x$-Koordinate des LM63: Ver"anderung der Anfangsbedingungen zum Zeitpunkt $k$ und Auswirkung bei $k+1$}
 \label{kalman:AblnachAnf}
 \end{figure}
@@ -245,7 +245,7 @@ Die roten Linien sind jeweils unsere erzeugte Realit"at, die blauen Sterne die s
 
 \begin{figure}
 \centering
-\includegraphics[width=\hsize]{kalman/figures/3dsystemview.eps}
+\includegraphics[width=\hsize]{kalman/figures/3dsystemview.pdf}
 \caption{Beispielhafte Darstellung der drei Achsansichten mit Legende und als 3-D Plot}
 \label{kalman:Oberfl}
 \end{figure}
@@ -256,8 +256,8 @@ Da $P_{k+1|k}=f(\phi, Q)$, $K=f(P,H,R)$ sowie $P_{k}=f(K,H,R)$ im Falle der Posi
 
 \begin{figure}
 \centering
-\includegraphics[width=\hsize]{kalman/figures/H1R10S2XP.eps}
-\includegraphics[width=\hsize]{kalman/figures/H2R10S2XP.eps}
+\includegraphics[width=\hsize]{kalman/figures/H1R10S2XP.pdf}
+\includegraphics[width=\hsize]{kalman/figures/H2R10S2XP.pdf}
 \caption{Filteroutput f"ur die X-Achse mit Kovarianzmatrix $P_{11}$ bei direkter Messung mit $H_{1}$ der Zustandsvariablen (oben) und bei indirekter Messung mit $H_{2}$ (unten)}
 \label{kalman:Kovarianz}
 \end{figure}
@@ -287,9 +287,9 @@ Eine naheliegende Vermutung ist, dass eine genauere Messung, bessere Vorhersagen
 Was ein Vergleich der unteren Bilder deutlich zeigt, ist dass der Mehraufwand an Messgenauigkeit auch dadurch kompensiert werden kann, in dem zu einem g"unstigerem Zeitpunkt gemessen wird. Hierbei zeigt sich deutlich das Chaos des System, wo nicht quantitativ beurteilt werden kann, zu welchen Zeitpunkt welche Genauigkeiten notwendig sind.
 \begin{figure}
 \centering
-\includegraphics[width=\hsize]{kalman/figures/H1R10S1.eps}
-\includegraphics[width=\hsize]{kalman/figures/H1R20S1.eps}
-\includegraphics[width=\hsize]{kalman/figures/H1R10S1aS.eps}
+\includegraphics[width=\hsize]{kalman/figures/H1R10S1.pdf}
+\includegraphics[width=\hsize]{kalman/figures/H1R20S1.pdf}
+\includegraphics[width=\hsize]{kalman/figures/H1R10S1aS.pdf}
 \caption{Messmatrix $H_{1}$ jeweils mit $S=1$ und $F=10$ (oben), $F=20$ (mitte) und $F=10$ (unten), letztere mit versetzter Messung}
 \label{kalman:H1S1}
 \end{figure}
@@ -298,9 +298,9 @@ Abbildung \ref{kalman:H1S2} zeigt das Modell in dem Messungen zweimal pro Oszill
 Um die Relevanz nochmals zu verdeutlichen, eine Vorhersage in die entgegengesetzte Richtung bedeutet, dass die Drehrichtung  der Konvektionsstr"ome falsch gesch"atzt wurde.
 \begin{figure}
 \centering
-\includegraphics[width=\hsize]{kalman/figures/H1R10S2.eps}
-\includegraphics[width=\hsize]{kalman/figures/H1R25S2.eps}
-\includegraphics[width=\hsize]{kalman/figures/H1R10S2aS.eps}
+\includegraphics[width=\hsize]{kalman/figures/H1R10S2.pdf}
+\includegraphics[width=\hsize]{kalman/figures/H1R25S2.pdf}
+\includegraphics[width=\hsize]{kalman/figures/H1R10S2aS.pdf}
 \caption{Messmatrix $H_{1}$ jeweils mit $S=2$ und $F=10$ (oben), $F=25$ (mitte) und $F=10$ (unten), letztere mit versetzter Messung}
 \label{kalman:H1S2}
 \end{figure}
@@ -308,7 +308,7 @@ Um die Relevanz nochmals zu verdeutlichen, eine Vorhersage in die entgegengesetz
 Bei f"unf Messungen pro Oszillation (Abbildung \ref{kalman:H1S5}), trotz niedriger Messgenauigkeit, ist eine exakte Rekonstruktion der simulierten Realit"at m"oglich. Simulierte Zwischenschritte sind meist korrekt, sind aber nur f"ur kurze Intervalle verf"ugbar und damit immer weniger interessant.
 \begin{figure}
 \centering
-\includegraphics[width=\hsize]{kalman/figures/H1R05S5.eps}
+\includegraphics[width=\hsize]{kalman/figures/H1R05S5.pdf}
 \caption{Messmatrix $H_{1}$ mit $S=5$ und $F=5$}
 \label{kalman:H1S5}
 \end{figure}
@@ -318,16 +318,16 @@ Auch die Messrate zu verdoppeln l"ost die Problematik nur bedingt, da nun h"aufi
 
 \begin{figure}
 \centering
-\includegraphics[width=\hsize]{kalman/figures/H2R05S1.eps}
-\includegraphics[width=\hsize]{kalman/figures/H2R20S1.eps}
+\includegraphics[width=\hsize]{kalman/figures/H2R05S1.pdf}
+\includegraphics[width=\hsize]{kalman/figures/H2R20S1.pdf}
 \caption{Messmatrix $H_{2}$ mit $S=1$ und $F=5$ (oben) und $F=20$ (unten)}
 \label{kalman:H2S1}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=\hsize]{kalman/figures/H2R10S2.eps}
-\includegraphics[width=\hsize]{kalman/figures/H2R20S2.eps}
+\includegraphics[width=\hsize]{kalman/figures/H2R10S2.pdf}
+\includegraphics[width=\hsize]{kalman/figures/H2R20S2.pdf}
 \caption{Messmatrix $H_{2}$ mit $S=2$ und $F=10$ (oben) und $F=20$ (unten)}
 \label{kalman:H2S2}
 \end{figure}
@@ -336,8 +336,8 @@ Wird die Messkadenz noch einmal wie in Abbildung \ref{kalman:H2S5} erh"oht, sche
 
 \begin{figure}
 \centering
-\includegraphics[width=\hsize]{kalman/figures/H2R05S5.eps}
-\includegraphics[width=\hsize]{kalman/figures/H2R10S5.eps}
+\includegraphics[width=\hsize]{kalman/figures/H2R05S5.pdf}
+\includegraphics[width=\hsize]{kalman/figures/H2R10S5.pdf}
 \caption{Messmatrix $H_{2}$ mit $S=5$ und $F=5$ (oben) und $F=10$ (unten)}
 \label{kalman:H2S5}
 \end{figure}
@@ -360,16 +360,16 @@ Folglich k"onnen hier mit einer h"oheren Messkadenz bessere Ergebnisse erzielt w
 
 \begin{figure}
 \centering
-\includegraphics[width=\hsize]{kalman/figures/zview.eps}
+\includegraphics[width=\hsize]{kalman/figures/zview.pdf}
 \caption{3-D Lorenz System mit Sicht auf $Z$-Achse}
 \label{kalman:zview}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=\hsize]{kalman/figures/H3R10S1.eps}
-\includegraphics[width=\hsize]{kalman/figures/H3R20S2.eps}
-\includegraphics[width=\hsize]{kalman/figures/H3R05S5.eps}
+\includegraphics[width=\hsize]{kalman/figures/H3R10S1.pdf}
+\includegraphics[width=\hsize]{kalman/figures/H3R20S2.pdf}
+\includegraphics[width=\hsize]{kalman/figures/H3R05S5.pdf}
 \caption{Messmatrix $H_{3}$ mit $S=1$, $F=10$ (oben), $S=2$ und $F=20$ (mitte) und $S=5$ und $F=5$ (unten)}
 \label{kalman:H3}
 \end{figure}
@@ -380,9 +380,9 @@ Die Rekonstruktion der $Z$ Werte scheint unter Umst"anden m"oglich zu sein, da k
 
 \begin{figure}
 \centering
-\includegraphics[width=\hsize]{kalman/figures/H4R10S1.eps}
-\includegraphics[width=\hsize]{kalman/figures/H4R20S2.eps}
-\includegraphics[width=\hsize]{kalman/figures/H4R05S5.eps}
+\includegraphics[width=\hsize]{kalman/figures/H4R10S1.pdf}
+\includegraphics[width=\hsize]{kalman/figures/H4R20S2.pdf}
+\includegraphics[width=\hsize]{kalman/figures/H4R05S5.pdf}
 \caption{Messmatrix $H_{4}$ mit $S=1$ und $F=10$ (oben), $S=2$ und $F=20$ (mitte), $S=5$ und $F=5$ (unten)}
 \label{kalman:H4}
 \end{figure}
