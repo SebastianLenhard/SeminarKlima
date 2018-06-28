@@ -2,6 +2,7 @@
 \rhead{Simulation}
 
 Der erste Schritt ist die Erstellung eines Modells.
+Das Ziel dieser Modelle ist es, den Golfstrom so genau wie möglich nachzubilden und Resultate zu erhalten, welche dem Golfstrom so gut wie möglich entsprechen. Die Simulation soll also, je nach Parameterwahl, genau wie der Golfstrom reagieren.
 Dazu wird der Golfstrom in drei Zonen aufgeteilt. Die jeweiligen Polarregionen und der Äquator werden je zu einer Zone. Diese Zonen werden dann je einer Box zugeordnet. Diese Boxen werden mittels Kanälen verbunden, um so den Strom zu modellieren. 
 Im Laufe des Seminars wurden zwei Modelle erstellt. Der erste Ansatz (siehe Abschnitt \ref{thermohalin:3b2f_title}) war sehr lehrreich, hatte aber schlussendlich nichts mit dem realen Golfstrom gemeinsam. Der zweite Ansatz (siehe Abschnitt \ref{thermohalin:3b1f_title}) war erfolgreicher und der Golfstrom kann mit diesem Modell qualitativ simuliert werden.
 In den folgenden zwei Kapiteln werden diese zwei Modelle vorgestellt und die jeweiligen Resultate diskutiert.
@@ -39,13 +40,12 @@ Aufgrund der Darstellung lassen sich für jede Box die zugehörigen Salinitäts-
 \frac{dS_3}{dt} &= -\frac{H}{2} &+d(S_3^*-S_3)&+ \phantom{+|q_1|(S_1-S_2)}|q_2|(S_2-S_3)
 \end{aligned}
 \end{equation}	
-
 Der erste Term auf der rechten Seite
 
 \begin{equation*}
 	c(T_i^*-T_i), \quad d(S_i^*-S_i)
 \end{equation*}
-stellt jeweils den Energie- und Salzaustausch mit dem umgebenden Reservoir dar. Die Übertragungskonstante wird mit der Temperaturdifferenz zwischen Box und Reservoir multipliziert. Die anderen Terme auf der rechten Seite sind die Flüsse
+stellt jeweils den Energie- und Salzaustausch mit dem umgebenden Reservoir dar. Das Reservoir soll die Umgebung der Box darstellen. Darin sind Einflüsse wie die der Kontinente, der einmündenden Flüsse und des Klimas enthalten. Diese Werten werden in der Simulation konstant gehalten, da sich diese Werte nur über längere Zeit ändern. Die Übertragungskonstante wird mit der Temperaturdifferenz zwischen Box und Reservoir multipliziert. Die anderen Terme auf der rechten Seite sind die Flüsse
 
 \begin{equation*}
 	|q_x|(T_i-T_j),
@@ -123,12 +123,12 @@ Die so entstandenen Figuren werden im folgenden Abschnitt ausgewertet und diskut
 \subsubsection{Resultate}
 
 
-Die ersten Durchläufe ergaben brauchbare Resultate, welche tatsächlich dem Golfstrom zu ähneln schienen. Wenn jedoch die Temperaturen und Salinitäten der Reservoire ( $S_1^*, T_1^*,\dots$) verändert werden, treten plötzlich unmögliche Phänomene auf.
+Die ersten Durchläufe ergaben Resultate, welche tatsächlich dem Golfstrom zu ähneln schienen. Wenn jedoch die Temperaturen und Salinitäten der Reservoire ( $S_1^*, T_1^*,\dots$) verändert werden, treten plötzlich unmögliche Phänomene auf.
 Einer der beiden Flüsse wird negativ und ändert seine Richtung. Das resultiert in zwei gegenläufigen Strömen, welche in keiner Weise mit dem Golfstrom übereinstimmen. Das führt dazu, dass am Äquator eine Absinkstelle entsteht. In der Realität ist klar zu erkennen, dass Absink- und Aufsteigstellen jeweils nur an den Polen vorhanden sind. 
 Ein Plot der Simulationsresultate findet sich in Abbildung \ref{thermohalin:simulationsresultate}.
 
 \begin{figure}
-	\includegraphics[width=14cm]{thermohalin/Code/graphs/result-3b2f-script.eps}
+	\includegraphics[width=14cm]{thermohalin/Code/graphs/result-3b2f-script.pdf}
 	\centering
 	\caption{Simulationsresultate}
 	\label{thermohalin:simulationsresultate}
@@ -213,10 +213,10 @@ Die Gleichungen für die anderen Boxen lassen sich nach dem gleichen Schema erst
 \begin{equation}
 q = k[\alpha\Delta T-\beta\Delta S],
 \end{equation}
-kann der neue Matlabcode geschrieben werden. Dieser wird im nächsten Abschnitt erklärt.
+kann der neue Matlab-Code geschrieben werden. Dieser wird im nächsten Abschnitt erklärt.
 
 
-\subsubsection{Matlab-code}
+\subsubsection{Matlab-Code}
 
 Die Übergabe der Startwerte und Konstanten, der Aufruf des Differentialgleichungslösers und das Plotten der Resultate sind identisch und werden deshalb nicht noch einmal gezeigt ( siehe  \ref{thermohalin:listing:input}). Nur die Funktion wurde verändert. Je nachdem ob der Fluss positiv oder negativ ist, muss ein anderer Fall der Gleichungen berechnet werden. Dies wird mit einem \texttt{if}-Statement erreicht, welches in jedem Durchgang neu ausgewertet wird. 
 
@@ -225,19 +225,19 @@ Die Übergabe der Startwerte und Konstanten, der Aufruf des Differentialgleichun
 
 \subsubsection{Resultate} 
 
-Nach mehrfacher Simulation scheint es so, dass dieses Modell tatsächlich funktioniert. Für Werte, welche realen Werten entsprechen, reagiert die Simulation wie der richtige Golfstrom. Der Golfstrom fliesst vom Süd- zum Nordpol, sinkt dort ab und fliesst am Meeresgrund wieder bis zum Südpol, wo er aufsteigt und so den Kreislauf schliesst. Ein Plot der Resultate ist in Abbildung \ref{thermohalin:3b1f-skript} dargestellt.
+Nach mehrfacher Simulation scheint es so, dass dieses Modell tatsächlich meinen Vorstellungen entsprechende Resultate erzeugt. Für Werte, welche realen Werten entsprechen, reagiert die Simulation wie der richtige Golfstrom. Der Golfstrom fliesst vom Süd- zum Nordpol, sinkt dort ab und fliesst am Meeresgrund wieder bis zum Südpol, wo er aufsteigt und so den Kreislauf schliesst. Ein Plot der Resultate ist in Abbildung \ref{thermohalin:3b1f-skript} dargestellt.
 
 Wie die Abbildung zeigt, bleiben die Temperaturen ungefähr konstant. Dies liegt daran, dass die Temperaturstartwerte schon den Reservoirwerten angepasst wurden, was bedeutet, dass diese Anpassung schon geschehen ist. Beim Salinitätsplot ist klar der Effekt des virtuellen Salzflusses zu sehen, welcher dazu führt, dass die Salinität in der Äquatorregion leicht steigt und in Polnähe dementsprechend abnimmt. Das Resultat stimmt und der Golfstrom fliesst in die uns bekannte Richtung.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=14cm]{thermohalin/Code/graphs/3b1f-skript.eps}
+	\includegraphics[width=14cm]{thermohalin/Code/graphs/3b1f-skript.pdf}
 	\caption{Resultat der Ein-Fluss Simulation ohne Klimawandel}
 	\label{thermohalin:3b1f-skript}
 \end{figure}
 
 Spannend wird es, wenn die Reservoirvariablen so angepasst werden, dass sie eine Klimaerwärmung und deren Folgen darstellen. Wie bereits in Abschnitt \ref{thermohalin:EinflussKlimawandel} erläutert, muss dazu die Salinität am Nordpol und die Temperatur am Äquator erhöht werden. Dies sollte dazu führen, dass der Golfstrom schwächer wird, anhält oder gar seine Richtung ändert. 
-Der Eingabevektor, welcher die Temperaturen und Salinitäten der Reservoire enthält wird also angepasst.
+Der Konstantenvektor, welcher die Temperaturen und Salinitäten der Reservoire enthält wird also angepasst.
 Die Werte von $S_1^*$ ( Salinität Nordpol) und $T_3^*$ (Temperatur Äquator) werden erhöht.
 
 \begin{equation*}
@@ -252,7 +252,7 @@ Das Resultat entspricht also den Erwartungen.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=14cm]{thermohalin/Code/graphs/3b1f-skript-klimawandel.eps}
+	\includegraphics[width=14cm]{thermohalin/Code/graphs/3b1f-skript-klimawandel.pdf}
 	\caption{Resultat der Ein-Fluss Simulation mit Klimawandel}
 	\label{thermohalin:3b1f-skript-klimawandel}
 \end{figure}
