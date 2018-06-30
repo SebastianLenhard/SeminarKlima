@@ -10,7 +10,7 @@
 
 \section{Einleitung}
 \rhead{Einleitung}
-Diese Arbeit befasst sich damit, wie die Anwesenheit von Eis an den Polen modelliert werden kann. Immer wieder hört man, dass das Polareis rasant schmilzt und der Eisschwund ein bedrohliches Ausmass angenommen hat. Als Grund wird jeweils die globale Erwärmung genannt. Das scheint plausibel, denn wie man schon im Modell von Budyko \hl{Verweis auf Skript Budyko} sehen kann, gilt für eine höhere Gleichgewichtstemperatur eine tiefere Albedo $a$, was bedeutet, dass es weniger reflektierendes Eis geben muss. Es sei aber betont, dass die Funktion $a(T)$ \hl{Verweis auf Skript Funkion $a(T)$} sich nur auf die beiden Punkte {\em Snowball earth} ($T=250K$, $a=0.7$) und {\em kein Eis} ($T=280K$, $a=0.3$) stützt und dazwischen mit einer willkürlich gewählten $\tanh$ Funktion modelliert wurde. 
+Diese Arbeit befasst sich damit, wie die Anwesenheit von Eis an den Polen modelliert werden kann. Immer wieder hört man, dass das Polareis rasant schmilzt und der Eisschwund ein bedrohliches Ausmass angenommen hat. Als Grund wird jeweils die globale Erwärmung genannt. Das scheint plausibel, denn wie man schon im Modell von Budyko in Abschnitt \ref{skript:section:bodyko} sehen kann, gilt für eine höhere Gleichgewichtstemperatur eine tiefere Albedo $a$, was bedeutet, dass es weniger reflektierendes Eis geben muss. Es sei aber betont, dass die Funktion $a(T)$, wie sie in Abschnitt \ref{skript:subsection:strahlungsbilanz} gezeigt wurde, sich nur auf die beiden Punkte {\em Snowball earth} ($T=250K$, $a=0.7$) und {\em kein Eis} ($T=280K$, $a=0.3$) stützt und dazwischen mit einer willkürlich gewählten $\tanh$ Funktion modelliert wurde. 
 \subsection{Eisschmelze am Nordpol}
 \rhead{Eisschmelze am Nordpol}
 Um eine Idee über das Ausmass der Eisschmelze in den letzten 25 Jahren zu bekommen, dient Abbildung \ref{skript:eis:fig:NASAohne}.
@@ -50,7 +50,7 @@ Entscheidend für die genannten Prozesse ist nicht die Dicke des Eises, sondern 
 Offensichtlich existiert ein Zusammenhang zwischen der globalen Temperatur und der vorhandenen Eisfläche bzw. der Eislinie. Das Ziel ist, einen mathematischen Zusammenhang zu finden, um Aussagen über zukünftige Entwicklungen zu machen.
 \section{Von Budyko zur zonalen Energiebilanz}
 \rhead{Von Budyko zur zonalen Energiebilanz}
-Budykos Modell konnte die Eisschmelze an den Polen nicht darstellen, bzw. aufgrund der nur geschätzten $a(T)$ \hl{Verweis auf Skript Funktion $a(T)$} Funktion keine präzise Aussage über die vorhandene Eisfläche machen. Das Problem besteht darin, dass in diesem Modell einige globale Annahmen getroffen wurden, die nachfolgend identifiziert und manche verbessert werden.
+Budykos Modell konnte die Eisschmelze an den Polen nicht darstellen, bzw. aufgrund der nur geschätzten $a(T)$ Funktion gemäss Abschnitt \ref{skript:subsection:strahlungsbilanz} keine präzise Aussage über die vorhandene Eisfläche machen. Das Problem besteht darin, dass in diesem Modell einige globale Annahmen getroffen wurden, die nachfolgend identifiziert und manche verbessert werden.
 \begin{itemize}
 	\item Gleichmässige Einstrahlung. In Budykos Modell trifft das Sonnenlicht auf der gesamten Erdoberfläche mit derselben Intensität auf. Diese Annahme entspricht offensichtlich nicht der Realität, weil das Sonnenlicht nicht überall senkrecht auftrifft. Die ortsabhängige Intensität der Sonneneinstrahlung muss deshalb berücksichtigt werden.
 	\item Gleichmässige Eisverteilung. Die grossen Eisflächen konzentrieren sich nur auf die Polargebiete, entsprechend wird nur dort Sonnenlicht reflektiert. Weil die Einstrahlung auch nicht gleichmässig ist, wird wichtig, welche Teile der Erdoberfläche von Eis bedeckt sind. Die Albedo soll deshalb abhängig vom Breitengrad und der Eislinie sein.
@@ -80,7 +80,7 @@ s_{\eta}(\vartheta)
 =
 \frac{2}{\pi^2}\int_{0}^{2\pi}\sqrt{1-(\cos\vartheta\sin\eta \cos\phi-\sin\vartheta \cos\eta)^2}\,d\phi,
 \end{equation}
-welches in Kapitel \hl{Verweis Skript Kap 5} erläutert wurde. Es kann gezeigt werden, dass die Formel \eqref{skript:eis:Energieverteilung Breitengrad} der Spezialfall von \eqref{skript:eis:Energieverteilung Neigung} für eine Neigung von $0^{\circ}$ ist. Zurzeit beträgt die Neigung $\eta=23.4^{\circ}$, damit verändert sich die Energieverteilung, wie in Abbildung \ref{skript:eis:fig:Einstrahlung_abh_mit_und_ohne_Neigung} zu sehen ist.
+gemäss der Gleichung \eqref{skript:einstrahlung:mittlereinsolation}. Es kann gezeigt werden, dass die Formel \eqref{skript:eis:Energieverteilung Breitengrad} der Spezialfall von \eqref{skript:eis:Energieverteilung Neigung} für eine Neigung von $0^{\circ}$ ist. Zurzeit beträgt die Neigung $\eta=23.4^{\circ}$, damit verändert sich die Energieverteilung, wie in Abbildung \ref{skript:eis:fig:Einstrahlung_abh_mit_und_ohne_Neigung} zu sehen ist.
 \begin{figure}
 	\centering
 	\includegraphics[width=10cm]{eis/Einstrahlung_abh_mit_und_ohne_Neigung.jpg}
@@ -149,7 +149,7 @@ E_\text{in}(\vartheta_\text{iceline})
 \frac{Q}{2}\int_{-\pi/2}^{\pi/2}(1-a(\vartheta,\vartheta_\text{iceline}))\cdot\tilde{s}(\vartheta)\cdot\cos\vartheta\,d\vartheta,
 \end{equation}
 wobei $E_\text{in}$ nur noch abhängig von der Eislinie ist, was das Ziel war.
-Um die Gleichgewichtslösungen zu erhalten, setzen wir $E_\text{in}$ mit $E_\text{out}$ gleich wie in \hl{Verweis Skript Budyko} und bekommen
+Um die Gleichgewichtslösungen zu erhalten, setzen wir $E_\text{in}$ mit $E_\text{out}$ gleich, wie in Abschnitt \ref{skript:subsection:strahlungsbilanz}, und bekommen
 \begin{equation}\label{skript:eis:Gleichgewichtsgleichung}
 	E_\text{in}(\vartheta_\text{iceline})
 	=
