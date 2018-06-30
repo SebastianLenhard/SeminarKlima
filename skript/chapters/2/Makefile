@@ -4,7 +4,8 @@
 # (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
 #
 BILDER = lorenz-definition.pdf lorenz-stabil.pdf drehmoment.pdf \
-	green-curves.pdf green-curve.pdf rotation.pdf konvektion.pdf
+	green-curves.pdf green-curve.pdf rotation.pdf konvektion.pdf \
+		upright.pdf downright.pdf
 
 all:	$(BILDER)
 
@@ -30,3 +31,13 @@ rotation.pdf:	rotation.tex
 
 konvektion.pdf:	konvektion.tex
 	pdflatex konvektion.tex
+
+
+up.tex down.tex:	corstat.m
+	octave corstat.m
+
+downright.pdf:	downright.tex down.tex
+	pdflatex downright.tex
+
+upright.pdf:	upright.tex up.tex
+	pdflatex upright.tex
