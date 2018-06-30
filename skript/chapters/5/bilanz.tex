@@ -3,7 +3,7 @@
 %
 % (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{Strahlungsbilanzmodetlle\label{skript:section:bodyko}}
+\section{Strahlungsbilanzmodelle\label{skript:section:bodyko}}
 \rhead{Strahlunbsbilanzmodelle}
 Im Kapitel~\ref{chapter:wetter und klima} haben wir die physikalischen
 Grundlagen der Wetter und Klimaphänomene studiert.
@@ -195,6 +195,83 @@ auch Phasen mit wesentlich höherer Treibhausgaskonzentration als heute
 gegeben haben.
 
 \subsection{Modell von Budyko}
+Bisher haben wir die Ausstrahlung mit Hilfe des Stefan-Boltzmannschen
+Gesetzes für die Strahlung eines schwarzen Körpers modelliert.
+Es ist fraglich, ob dies tatsächlich zutreffend ist.
+Die Ausstrahlung $E_\text{out}(T)$ der Ausstrahlung könnte also durchaus
+eine kompliziertere Funktion sein.
+Sie muss aber so beschaffen sein, dass sich bei der aktuellen
+Mitteltemperatur $T^*$ ein stabiles Gleichgewicht ergibt.
+In der Umgebung des Gleichgewichtes kann die Funktion $E_\text{out}(T)$
+als lineare Funktion
+$E_\text{out}= A+BT$
+dargestellt werden.
+Nahe bei $T^*$ kann die globale Mitteltemperatur also mit einem Modell
+der Form
+\begin{equation}
+C
+\frac{dT}{dt}
+=
+(1-\alpha(T)) Q- (A+BT)
+\end{equation}
+beschrieben werden.
+Das Gleichgewicht erfüllt
+\[
+(1-\alpha(T^*))Q=A+BT^*
+\] 
+und ist stabil, wenn die Steigung der Einstrahlung kleiner ist als die
+Die Steigung der Ausstrahlung, also
+\begin{equation}
+-Q\alpha'(T)
+<
+B.
+\label{skript:budyko:cond}
+\end{equation}
+Dieses Modell wurde schon in den sechziger Jahren von Budyko vorgeschlagen.
+Zahlenwerte für $A$ und $B$ konnte seit der damaligen Zeit durch
+Satellitenmessungen bestimmt werden.
+
+Die Folgen des Treibhauseffektes sind auch in diesem einfacheren Modell
+nachvollziehbar.
+Die Erhöhung der Treibhausgaskonzentration reduziert die Ausstrahlung,
+was sich zum Beispiel in einem kleineren Wert von $B$ äussert.
+Eine Abnahme von $B$ um $\Delta B$ führt zu einer
+Änderung der Gleichgewichtstemperatur um $\Delta T$, die die Gleichung
+\begin{align*}
+(1-\alpha(T^*+\Delta T))Q
+&=
+A + (B-\Delta B)(T^*+\Delta T)
+\\
+\underbrace{(1-\alpha(T^*))Q}_{\displaystyle=A+BT^*}
+-Q\alpha'(T^*)\Delta T
+&=
+A+BT^*
+- T^*\Delta B
++B\Delta T
+\\
+(Q\alpha'(T^*)
++
+B)\Delta T
+&=
+T^*
+\Delta B
+\\
+\Delta T
+&=
+\frac{T^*\Delta B}{Q\alpha'(T^*)+B}
+\end{align*}
+erfüllt.
+Man kann daraus ablesen, dass eine Abnahme von $B$ genau dann zu einer
+Zunahme der Mitteltemperatur, wenn der Nenner positiv ist, also
+\[
+Q\alpha'(T^*)+B > 0
+\qquad\Rightarrow\qquad
+-Q\alpha'(T^*)<B,
+\]
+was die Bedingung
+\eqref{skript:budyko:cond}
+beweist.
+
 
 
 

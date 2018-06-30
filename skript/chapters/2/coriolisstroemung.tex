@@ -43,7 +43,7 @@ Beschleunigung $h$ parallel zur $y$-Richtung beschreiben.
 Unter Verwendung dieser Vereinfachungen können wir die Gleichungen
 \eqref{skript:coriolis:grundgleichung}
 in Komponenten als
-\begin{align*}
+\begin{align}
 \frac{\partial u}{\partial t}
 &=
 -\frac{\partial}{\partial x}u^2
@@ -51,6 +51,7 @@ in Komponenten als
 \frac{\partial}{\partial y}uv
 +
 fv
+\label{skript:coriolis:dudt}
 \\
 \frac{\partial v}{\partial t}
 &=
@@ -61,7 +62,8 @@ fv
 fu
 +
 h
-\end{align*}
+\label{skript:coriolis:dvdt}
+\end{align}
 schreiben.
 Man beachte, dass $f$ eine Funktion nur von $y$ ist und $h$ eine Konstante.
 
@@ -74,8 +76,10 @@ Die Ableitungen nach $x$ verschwinden also ebenfalls.
 Die Funktionen $u$ und $v$ sind also nur noch Funktionen von $y$.
 
 Mit diesen beiden Vereinfachungen werden die
-Gleichungen~\eqref{skript:coriolis:gl} zu den wesentlich einfacheren
-Gleichungen
+Gleichungen~\eqref{skript:coriolis:dudt}
+und
+\eqref{skript:coriolis:dvdt}
+zu den wesentlich einfacheren Gleichungen
 \begin{equation}
 \begin{aligned}
 0&=-u'v-v'u+fv
@@ -172,8 +176,12 @@ Die Strömung wird unter dem Einfluss der Coriolis-Beschleunigung nach
 rechts abgelenkt ($\beta=1.2$, $h=0.1$).
 \label{section:coriolis:simbild}}
 \end{figure}
-Wir lösen das Differentialgleichungssystem \eqref{skript:coriolis:udgl}
-und \eqref{skript:coriolis:vdgl} mit Hilfe von Octave mit der Implementation
+Wie schon angedeutet kann man nicht davon ausgehen, eine analytische
+Lösung des Differentialgleichungssystems~\eqref{skript:coriolis:udgl}
+und \eqref{skript:coriolis:vdgl}
+finden zu können.
+Wir beschränken uns daher auf eine numerische Lösung und lösen
+lösen das Systems mit Hilfe von Octave mit der Implementation
 \lstinputlisting[style=Matlab]{chapters/2/coriolisdgl.m}
 der Differentialgleichung.
 Als Anfangswerte wurde einerseits eine von $y_0=0.2$ ausgehende nordwärts

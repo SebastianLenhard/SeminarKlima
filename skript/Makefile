@@ -31,6 +31,7 @@ CHAPTERS = 								\
 	chapters/zonen.tex						\
 	chapters/2/hydrodynamik.tex					\
 	chapters/2/coriolisstroemung.tex				\
+	chapters/2/2d.tex						\
 	chapters/2/lorenz.tex						\
 	chapters/2/aufgabe1.tex						\
 	chapters/2/aufgabe2.tex						\
