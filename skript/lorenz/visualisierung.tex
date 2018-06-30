@@ -25,7 +25,7 @@ z = arr[i].z + ((x * y) - (beta * z)) * delta;
 		\caption{Code variablen und ihre Werte\label{CodeVariablen}}
 	\end{table}
 	
-Die $ x, y $ Variablen in der 1. Gleichung ist noch mit dem Wert des vorherigen Durchgangs besetzt und deshalb eine Annäherung um den echten Wert. Das Gleiche gilt für alle Werte, die vor der Ausführung noch nicht gesetzt sind. 
+Die $ x, y $ Variablen in der ersten Gleichung ist noch mit dem Wert des vorherigen Durchgangs besetzt und deshalb eine Annäherung um den echten Wert. Das Gleiche gilt für alle Werte, die vor der Ausführung noch nicht gesetzt sind. 
 Beim ersten Durchgang wird 0.1 als Startwert angenommen um zu verhindern, dass das Gleichungssystem gelöst ist. 
 
 Wenn $ \vec{0} $ eingesetzt wird löst sich das Gleichungssystem auf $ \vec{0} $. Da das Ergebnis in der nächsten Runde wieder eingesetzt wird, wird das Gleichungssystem über alle Runden $ \vec{0} $ ausgeben. Um dieses Verhalten zu verhindern, lassen wir den Algorithmus etwas neben $ \vec{0} $ starten, nämlich bei $ \vec{0.1} $.

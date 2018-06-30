@@ -7,9 +7,24 @@ Um die verschiedenen Eigenschaften anhand vom Lorenz-Modell erklären zu können
 \subsection{Empfindlichkeit der Anfangsbedingungen}
 Eine charakteristische Eigenschaft vom Lorenz-Attraktor ist, dass sehr kleine Unterschiede in den Anfangsbedingungen sehr grosse Unterschiede in der Lösungsmenge produzieren. Man nennt dies \textit{sensitive Abhängikeit} und das ist die wesentliche Komponente in chaotischen Systemen. 
 
-So könnte zum Beispiel eine minimale Änderung am Startwert der Lorenz-Gleichungen, den wir als 0.1 definiert haben, die Lösung dazu bewirken, dass sie mit gleichbleibenden Parameter gerade auf der gegenüberliegenden Seite des Flügels im Plot zu liegen kommt. 
+So könnte zum Beispiel eine minimale Änderung am Startwert der Lorenz-Gleichungen die Lösung dazu bewirken, dass sie mit gleichbleibenden Parameter gerade auf der gegenüberliegenden Seite des Flügels im Plot zu liegen kommt. In Abbildung \ref{fig:lorenz-0} ist der Endpunkt gerade sehr nahe am Anfangspunkt (0.9 für x, y und z), wobei der Endpunkt in Abbildung \ref{fig:lorenz-1} auf dem anderen Flügel und durch die vielen anderen Werte überdeckt und deshalb nicht sichtbar ist. 
 
-Es gibt aber auch andere äussere Einwirkungen, die eine Veränderung der Werte auslösen kann. Zum Beispiel kann der Rundungsfehler eines CPU's die Ergebnisse klein wenig von Punkt-zu-Punkt verändern und so werden sich die Fehler kummulieren. Dies führt dazu, dass die Ergebnisse nicht reproduzierbar sind, da solche Einflüsse zwischen Durchläufen variieren.
+%TODO: Get on same line
+\begin{figure}
+\centering
+\includegraphics[width=0.5\linewidth]{lorenz/assets/lorenz-modell/lorenz09}
+\caption{Bahn des Lorenz-Modell mit Startwert 0.9}
+\label{fig:lorenz-0}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=0.5\linewidth]{lorenz/assets/lorenz-modell/lorenz10}
+\caption{Bahn des Lorenz-Modell mit Startwert 1}
+\label{fig:lorenz-1}
+\end{figure}
+
+
+Es gibt aber auch andere äussere Einwirkungen, die eine Veränderung der Werte auslösen kann. Zum Beispiel kann der Rundungsfehler eines CPUs die Ergebnisse klein wenig von Punkt-zu-Punkt verändern und so werden sich die Fehler kumulieren. Dies führt dazu, dass die Ergebnisse nicht reproduzierbar sind, da solche Einflüsse zwischen Durchläufen variieren.
 
 \subsection{Chaostheorie}
 Im Generellen ist die Chaostheorie ein Bereich der Mathematik der sich mit nicht-linearen dynamischen Systemen auseinandersetzt. Wie schon im vorherigen Abschnitt erwähnt ist die wesentliche Komponente eines chaotischen Systems die sensitive Abhängigkeit der Anfangsbedingungen. Sind beliebig kleine Unterschiede darin vorhanden, dann entwickelt sich das System nach einer endlichen Zeit völlig anders. Um das Verhalten eines chaotischen Systems zu einem bestimmten Zeitpunkt zu bestimmen, müssten für die Berechnung unendlich genaue Werte verwendet werden, was praktisch nicht möglich ist. Auch wenn chaotische Systeme deterministisch sind, ist es praktisch oftmals nicht möglich die Resultate an einem gesuchten Zeitpunkt genau zu bestimmen. 

@@ -3,7 +3,7 @@
 
 
 \section{Lorenz-Modell}\label{lorenz-modell}
-Die Gleichungen, welche das Lorenz-Modell beschreiben, enthalten viele physikalische Eigenschaften wie die Dichte, Geschwindigkeit und Temperatur der Atmosphäre und stellen diese physikalischen Werte formalisiert dar. Lorenz wollte aus den bereits existierenden Gleichungen der Hydrodynamik ein Modell zur Wetterprognose erstellen. Basierend auf vorgehenden Werken von Saltzman startete Lorenz mit den hyrodynamischen Gleichungen und verfolgte ein systematisches Näherungsvorgehen, womit er auf die folgenden drei Gleichungen stoss:
+Die Gleichungen, welche das Lorenz-Modell beschreiben, enthalten viele physikalische Eigenschaften wie die Dichte, Geschwindigkeit und Temperatur der Atmosphäre. Lorenz wollte aus den bereits existierenden Gleichungen der Hydrodynamik ein Modell zur Wetterprognose erstellen. Basierend auf vorgehenden Werken von Saltzman startete Lorenz mit den hyrodynamischen Gleichungen und verfolgte ein systematisches Näherungsvorgehen, womit er auf die folgenden drei Gleichungen stoss:
 
 \begin{align}
 \dot{x} &= \sigma(x - y)\\
@@ -16,18 +16,18 @@ Die X-Achse entspricht dabei der hydrodynamischen, räumlichen Durchschnittsgesc
 Wie aus den obigen Gleichungen ersichtlich ist, sind drei Parameter vorhanden. Alle sind immer positiv.
 
 \subsubsection{1. Parameter: $\sigma$}
-$\sigma$ entspricht der dimensionslosen Prandtl Nummer. Diese ist das Verhältnis von \textit{Viskosität} und der \textit{Währmeleitfähigkeit}. Da beide Eigenschaften die Einheit $\frac{m^2}{s}$ haben, resultiert daraus eine dimensionslose Zahl.
+$\sigma$ entspricht der dimensionslosen Prandtl Zahl. Diese ist das Verhältnis von \textit{Viskosität} und der \textit{Wärmeleitfähigkeit}. Da beide Eigenschaften die Einheit $\frac{\text{m}^2}{\text{s}}$ haben, resultiert daraus eine dimensionslose Zahl.
 
 \subsubsection{2. Parameter: $\rho$}
 Dieser Parameter ist nach dem Physiker Baron Rayleigh benannt worden und heisst Rayleigh Zahl. Es entspricht dem Verhältnis von \textit{Wärmeausdehnung} und der \textit{Viskosität}.
 
 \subsubsection{3. Parameter: $\beta$}
-Das $ \beta $ entspricht der Wärmeausdehnung. Dabei handelt es sich um die Veränderung der geometrischen Grössen eines Körpers, die sich mit erhöhter Temperatur vergrössern.
+Das $ \beta $ entspricht der \textit{Wärmeausdehnung}. Dabei handelt es sich um die Veränderung der geometrischen Abmessungen(Länge, Flächeninhalt und Volumen) eines Körpers, die sich mit erhöhter Temperatur vergrössern.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.3\linewidth]{lorenz/assets/lorenz-modell/lorenz-modell}
-	\caption{Lorenz-Modell}
+	\caption{Bahn des Lorenz-Modell mit $\rho = 28$, $\sigma = 10$ und $\beta = \frac{8}{3}$}
 	\label{fig:lorenz-modell}
 \end{figure}
 
@@ -39,9 +39,9 @@ Der zweite Ansatz ist, eine Diskretisierung vorzunehmen und den Computer für je
 
 \subsubsection{Euler-Verfahren}
 
-Wir wählten für die Diskretisierung das \textit{Euler-} oder \textit{Einschritt-Verfahren} zur Annäherung der Werte des Lorenz-Modells. Das resultierende Gleichungssystem besteht aus einfachen Arithmetik-Operationen und ist für den Computer einfach berechenbar. Diese Effizienz erlaubt auch Smartphones die Visualisierung effizient zu berechnen und flüssig anzuzeigen.
+Wir wählten für die Diskretisierung das \textit{Einschritt-Verfahren} zur Annäherung der Werte des Lorenz-Modells. Das resultierende Gleichungssystem besteht aus einfachen Arithmetik-Operationen und ist für den Computer einfach berechenbar. Diese Effizienz erlaubt auch Smartphones die Visualisierung effizient zu berechnen und flüssig anzuzeigen.
 
-Als Basis für dieses Verfahren nahm Euler die lineare Gleichung $ y = a \cdot x + b $. Er setzte das Ergebnis der Differentialgleichung als Steigung $ a $ ein. $x$ wird mit dem Diskretisierungsschritt belegt. Der Diskretisierungsschritt beschreibt den Abstand zweier numerischen Messungen in der Visualisierung. Anders ausgedrückt kontrolliert der Diskretisierungsschritt die Zeit, die zwischen zweien Messungen des Modells vergangen ist. Wenn diese Zahl erhöht wird, dann nimmt der Detailgrad ab, dafür kann eine längere Zeit mit der gleichen Anzahl Messungen das Modell durch die Software aufgezeichnet werden.
+Als Basis für dieses Verfahren nahm Euler die lineare Gleichung $ y = a \cdot x + b $. Er setzte das Ergebnis der Differentialgleichung als Steigung $ a $ ein. $x$ wird mit dem Diskretisierungsschritt belegt. Der Diskretisierungsschritt beschreibt den Abstand zweier numerischen Messungen in der Visualisierung. Anders ausgedrückt kontrolliert der Diskretisierungsschritt die Zeit, die zwischen zwei Messungen des Modells vergangen ist. Wenn dieser Schritt erhöht wird, dann nimmt der Detailgrad ab, dafür kann eine längere Zeit mit der gleichen Anzahl Messungen das Modell durch die Software aufgezeichnet werden.
 
 Der \textit{Y-Achsenabschnitt} des linearen Gleichungssystems $ b $ wird mit dem Ergebnis der vorherigen Rechnungsschritt $ x(t) $ belegt, da der Differentialterm den Abstand vom Wert vorher berechnet.
 
