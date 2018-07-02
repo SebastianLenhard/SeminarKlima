@@ -76,6 +76,15 @@ Dann gilt
 (Abbildung~\ref{skript:green-kurve}).
 \end{satz}
 
+\begin{figure}
+\centering
+\subfigure{}{\includegraphics{chapters/2/pfadc.pdf}}
+\subfigure{}{\includegraphics{chapters/2/pfad.pdf}}
+\caption{Pfad $\gamma(t)$ in der $x$-$y$-Ebene und das vom Pfad eingeschlossen
+Gebiet $D$.
+\label{green:beweis}}
+\end{figure}
+
 Das Integral auf der rechten Seite wird mit Hilfe einer Parametrisierung
 $\gamma\colon [a,b]\to\mathbb R^2$ der Randkurve $C$ definiert.
 \begin{align*}
@@ -102,6 +111,175 @@ Es kann auch vektoriell mit dem Skalarprodukt als
 \oint_C \vec{w}\cdot d\vec{s}
 \]
 geschrieben werden kann.
+Der Weg $\gamma$ und das Gebiet $D$ ist in Abbildung~\ref{green:beweis}
+dargestellt.
+
+\begin{figure}
+\centering
+\subfigure{}{\includegraphics{chapters/2/pfadx.pdf}}
+\subfigure{}{\includegraphics{chapters/2/pfady.pdf}}
+\caption{Das Gebiet $D$ kann einerseits durch die Funktionen
+$y_1(x)$ und $y_2(x)$ in Abhängigkeit von $x$ beschreiben werden,
+andererseits kann es durch die Funktionen
+$x_1(y)$ und $x_2(y)$ in Abhängigkeit von $y$ beschreiben werden.
+\label{green:zweiraender}}
+\end{figure}
+
+
+\begin{proof}[Beweis]
+Wir berechnen das Integral \label{skript:green formel}
+über $D$ für jeden Summanden des Integranden einzeln, wobei
+wir für die Beschreibung des Randes die Funktionen $y_i(x)$ und
+$x_i(y)$ wie in Abbildungen~\ref{green:zweiraender} verwenden.
+
+Das Integral über den ersten Summanden ist
+\begin{align*}
+\int_D
+-\frac{\partial f(x,y)}{\partial y}
+\,dx\,dy
+&=
+\int_{x_1}^{x_2}
+\int_{y_1(\xi)}^{y_2(\xi)}
+-\frac{\partial f(x,y)}{\partial y}
+\,d\eta\,d\xi
+=
+\int_{x_1}^{x_2}
+\biggl[
+-f(\xi,\eta)
+\biggr]_{y_1(\si)}^{y_2(\xi)}
+\,d\xi
+\\
+&=
+\int_{x_1}^{x_2} f(\xi,y_1(\xi))\,d\xi
+-
+\int_{x_1}^{x_2} f(\xi,y_2(\xi))\,d\xi.
+\\
+&=
+\oint_\gamma f(x,y)\,dx
+\\
+\intertext{Analog finden wir}
+\int_D
+\frac{\partial g(x,y)}{\partial x}
+\,dx\,dy
+&=
+\int_{y_1}^{y_2}
+\int_{x_1(\eta)}^{x_2(\eta)}
+\frac{\partial g(\xi,\eta)}{\partial x}
+\,d\xi
+\,d\eta
+\\
+&=
+\int_{y_1}^{y_2}
+g(x_2(\eta),\eta) - g(x_1(\eta),\eta)
+\,d\eta
+\\
+&=
+\oint_\gamma g(x,y)\,dy
+\end{align*}
+Zusammen sind ergeben diese
+\[
+\int_D
+\frac{\partial g(x,y)}{\partial x}
+-
+\frac{\partial f(x,y)}{\partial y}
+\,dx\,dy
+=
+\oint_\gamma
+(
+f(x,y)\,dx
++
+g(x,y)\,dy
+).
+\]
+Damit ist der Satz von Green bewiesen.
+\end{proof}
+
+\begin{satz}
+\label{skript:wegunabhaengigkeit}
+Das Wegintegral 
+\[
+\int_{\gamma}(f(x,y)\,dx + g(x,y)\,dy)
+\]
+ist genau dann unabhängig von der Wahl des Weges zwischen zwei
+festen Punkten $P_0=(x_0,y_0)$ und $P_1=(x_1,y_1)$, wenn gilt
+\[
+0
+=
+\frac{\partial g(x,y)}{\partial x}-\frac{\partial f(x,y)}{\partial y}
+=
+\nabla\cdot
+\begin{pmatrix}-g(x,y)\\\phantom{-}f(x,y)\end{pmatrix}.
+\]
+\end{satz}
+
+\begin{proof}[Beweis]
+Sind $\gamma_1$ und $\gamma_2$ zwei verschiedene Wege von $P_0$ nach
+$P_1$, dann kann man einen geschlossenen Weg $\gamma$ von $P_0$ nach
+$P_0$ konstruieren indem man zuerst den Weg $\gamma_1$ durchläuft und
+anschliessend den Weg $\gamma_2$ in umgekehrter Richtung.
+Das Wegintegral über den Weg $\gamma$ ist
+\begin{align}
+\oint_{\gamma}(f(x,y)\,dx + g(x,y)\,dy)
+&=
+\int_{\gamma_1} (f(x,y)\,dx + g(x,y)\,dy)
+-
+\int_{\gamma_2} (f(x,y)\,dx + g(x,y)\,dy).
+\label{green:integrale}
+\intertext{%
+Sei $D$ das Gebiet, das von $\gamma$ berandet wird,
+dann gilt nach dem Satz von Green andererseits
+}
+&=
+\int_D
+\frac{\partial g(x,y)}{\partial x}-\frac{\partial f(x,y)}{\partial y}
+\,dx\,dy
+=0.
+\end{align}
+Die beiden Integrale in~\eqref{green:integrale} müssen also übereinstimmen.
+
+Sei umgekehrt das Wegintegral zwischen zwei Punkten immer unabhängig
+vom Weg zwischen den Punkten.
+Dann betrachten wir die Wegintegrale zwischen den Ecken
+$(x,y)$ und $(x+\Delta x,y+\Delta y)$ eines Rechtecks $R$.
+Der eine Weg folgt zuerst der unteren Kante des Rechtecks und dann
+der rechten, der andere Weg folgt erst der linken Kante und dann der
+oberen.
+Die beiden Wegintegrale sind gleich, also verschwindet das Wegintegral
+über den Rand des Rechtecks $R$.
+Das Wegintegral über den Rand $\partial R$ von $R$ ist
+\begin{align*}
+0
+&=
+\int_{\partial R} (f(x,y)\,dx + g(x,y)\,dy)
+\\
+&=
+f(x,y)\Delta x
++ g(x+\Delta x,y) \Delta y
+- f(x,y+\Delta y) \Delta x
+- g(x,y) \Delta y
++ o(\Delta x\,\Delta y)
+\\
+&=
+\biggl(
+\frac{f(x,y)-f(x,y+\Delta y)}{\Delta y}
++
+\frac{g(x+\Delta x,y)-g(x,y)}{\Delta }
+\biggr)
+\Delta x\,\Delta y
++ o(\Delta x\,\Delta y)
+\end{align*}
+Dies funktioniert nur, wenn der Klammerterm im Grenzwert $\Delta x\to 0$ und
+$\Delta y\to 0$ verschwindet, also
+\[
+-
+\frac{\partial f(x,y)}{\partial y}
++
+\frac{\partial g(x,y)}{\partial x}
+=0,
+\]
+wie im Satz behauptet.
+\end{proof}
+
 
 \subsection{Stromfunktion}
 Wir wenden den Satz \ref{skript:2dim green} von Green auf die

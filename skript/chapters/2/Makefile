@@ -5,7 +5,7 @@
 #
 BILDER = lorenz-definition.pdf lorenz-stabil.pdf drehmoment.pdf \
 	green-curves.pdf green-curve.pdf rotation.pdf konvektion.pdf \
-		upright.pdf downright.pdf
+	upright.pdf downright.pdf pfad.pdf pfadc.pdf pfadx.pdf pfady.pdf
 
 all:	$(BILDER)
 
@@ -41,3 +41,15 @@ downright.pdf:	downright.tex down.tex
 
 upright.pdf:	upright.tex up.tex
 	pdflatex upright.tex
+
+pfad.pdf:	pfad.tex
+	pdflatex pfad.tex
+
+pfadc.pdf:	pfadc.tex
+	pdflatex pfadc.tex
+
+pfadx.pdf:	pfadx.tex
+	pdflatex pfadx.tex
+
+pfady.pdf:	pfady.tex
+	pdflatex pfady.tex
