@@ -1,0 +1,178 @@
+%
+% pdeloesung.tex -- Loesungsprinzip für partielle Differentialgleichungen
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\section{Lösungen von partiellen Differentialgleichungen}
+In diesem Kapitel haben wir Strömungen mit Hilfe partieller
+Differentialgleichungen beschrieben.
+Funktionenräume sind unendlich dimensional, was sehr erschwert,
+dafür überhaupt eine Lösung zu finden.
+
+\subsection{Diskretisation}
+Der einfachste Ansatz, partielle Differntialgleichungen zu lösen,
+folgt den Verfahren, die auch für gewöhnliche Differentialgleichungen
+\cite{skript:mathsem-dgl} 
+
+\subsection{Basisfunktionen}
+Lineare Differentialgleichungen haben die Eigenschaft, dass 
+mit zwei Lösungen auch deren Linearkombinationen wieder Lösungen sind.
+In der Theorie der gewöhnlichen linearen Differentialgleichungen endlicher
+Ordnung geben die Koeffizienten der Linearkombination die nötige Flexibilität,
+die Anfangsbedingungen zu erfüllen.
+Dasselbe gilt auch für partielle Differentialgleichungen, mit dem Unterschied
+allerdings, dass es meinstens unendlich viele linear unabhängige Lösungen
+gibt.
+Ist $L$ ein linearer Differentialoperator und $u_k$, $k\in\mathbb N$ eine
+Familie von Lösungen der Gleichung $Lu=0$.
+Im besten Fall lässt sich dann jede andere Lösung $u$ in einem noch
+zu definierenden Sinn beliebig genau durch Linearkombinationen
+\[
+u=\sum_{k\in\mathbb N} a_ku_k
+\]
+approximiert werden.
+Wir verzichten darauf, auf die analytischen Details einzugehen.
+
+Bei einer nichtlinearen Differentialgleichung ist es sicher nicht
+mehr möglich, Lösungen durch Linearkombination anderer Lösungen
+zu bilden.
+Aber es spricht nichts dagegen, dass es eine Familie $u_k$, $k=1,\dots,N$,
+von Funktionen gibt, mit der man Lösungen genügend genau approximieren
+kann.
+
+\subsubsection{Die Potenzreihenmethode}
+Diese Idee liegt zum Beispiel der Potenzreihenmethode zu Grunde.
+Dabei nimmt man an, dass die Lösung einer Differentialgleichung als
+Linearkombination der Potenzfunktionen $u_k(x)=x^k, k=0\dots,N$
+approximiert werden kann.
+Als Beispiel betrachten wir die Differentialgleichung
+\[
+y''=-\lambda y.
+\]
+Eine Potenzfunktion $u_k(x)=x^k$ ist offensichtlich keine Lösung.
+Man kann aber die Lösung als eine Linearkombination
+der Potenzfunktionen
+\[
+y(x)
+=
+a_0+a_1x+a_2x^2+a_3x^3+\dots
+\]
+ansetzen und in die Differentialgleichung einsetzen.
+Man erhält
+\[
+2\cdot 1 \cdot a_2
++
+3\cdot 2 \cdot a_3x
++
+4\cdot 3 \cdot a_4x^2
++
+\dots
+=
+-\lambda(
+a_0+a_1x+a_2x^2+a_3x^3+\dots)
+\]
+Man liest daraus die Gleichungen für die Koeffizienten $a_k$ ab:
+\begin{equation*}
+\left.
+\begin{aligned}
+2\cdot 1\cdot a_2&=-\lambda a_0\\
+3\cdot 2\cdot a_3&=-\lambda a_1\\
+4\cdot 3\cdot a_4&=-\lambda a_2\\
+5\cdot 4\cdot a_5&=-\lambda a_3\\
+&\;\vdots
+\end{aligned}
+\right\}
+\qquad\Rightarrow\qquad
+\left\{
+\begin{aligned}
+a_{2k}  &=(-1)^k\frac{\lambda^k}{ 2k!   }a_0\\
+a_{2k+1}&=(-1)^k\frac{\lambda^k}{(2k+1)!}a_1
+\end{aligned}
+\right.
+\end{equation*}
+Daraus kann man erkennen, dass jede Lösung die Form
+\begin{align*}
+u(x)
+&=
+a_0
+\biggl(
+1-\frac{(\sqrt{\lambda}x)^2}{2!} + \frac{(\sqrt{\lambda}x)^4}{4!}-\dots
+\biggr)
++
+\frac{a_1}{\sqrt{\lambda}}
+\biggl(
+\sqrt{\lambda}x
+-
+\frac{(\sqrt{\lambda}x)^3}{3!} + \frac{(\sqrt{\lambda}x)^5}{5!}-\dots
+\biggr)
+\\
+&= a_0 \cos \sqrt{\lambda}x
++ \frac{a_1}{\sqrt{\lambda}} \sin\sqrt{\lambda}x
+\end{align*}
+hat.
+
+\subsubsection{Erfolgsfaktoren}
+Aus dem eben entwickelten Beispiel kann man einige heuristische Regeln ableiten,
+wie die Funktionenfamilie $u_k$ beschaffen sein muss, damit es
+durchführbar ist.
+\begin{enumerate}
+\item Die Ableitungen $u_k'(x)$ der Funktionen können durch
+Linearkombinationen derselben ausgedrückt werden.
+Im Beispiel ist $u'_k(x)=kx^{k-1}=ku_{k-1}(x)$.
+\item Produkte von Funktionen $u_k(x)$ lassen sich durch Linearkombinationen
+approximieren.
+Im Beispiel ist $u_k(x)u_l(x)=x^kx^k = x^{k+l}=u_{k+l}(x)$.
+\item Beim Einsetzen des Ansatzes in die Differentialgleichungen
+entstehen algebraische Gleichungen, aus denen die Koeffizienten
+bestimmt werden können.
+Im Beispiel 
+\end{enumerate}
+
+\subsubsection{Alternative Lösung für das Beispiel}
+
+\subsubsection{Ein etwas komplexeres Beispiel}
+Wir versuchen, diese Idee auf die Lösung der Gleichung von
+Burgers
+\[
+\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x}=0
+\]
+anzuwenden.
+Wir suchen $2\pi$-periodische Lösungen für ebensolche Anfangsbedingung
+$u(0,x)=g(x)$.
+Wie im Kapitel~\ref{chapter:fourier} dargelegt wird, sind die Funktionen
+$\cos kx$ und $\sin kx$ geeignete Basisfunktionen für das skizzierte Verfahren.
+Zur Vereinfachung der Rechnung verwenden wir statt der reellen Funktion
+$\cos kx$ und $\sin kx$ die komplexen Exponentialfunktionen $e^{ikx}$.
+Als Ansatz verwenden wir daher
+\[
+u(x) = \sum_{k\in\mathbb Z} c_k(t) e^{ikx}
+\]
+und setzen dies in die Differentialgleichung ein, die dadurch zu
+\[
+\sum_{k\in\mathbb Z} \dot c_k(t) e^{ikx}
+=
+\sum_{j,l\in\mathbb Z} c_j(t)e^{ijx} c_l(t) le^{ilx}
+=
+\sum_{j,l\in\mathbb Z} c_j(t)c_l(t) le^{i(j+l)x}
+\]
+Daraus lesen wir die Gleichungen
+\begin{equation}
+\dot c_k(t) = \sum_{l} lc_l(t)c_{k-l}(t)
+\label{burgers:gewoedgl}
+\end{equation}
+für die Koeffizienten ab.
+Wir haben also ein System von gewöhnlichen linearen Differentialgleichungen
+erster Ordnung gefunden, und damit das partielle Differentialgleichungssystem
+auf ein einfachers System reduziert.
+Allerdings ist von der rechten Seite der Differentialgleichung
+\eqref{burgers:gewoedgl}
+nicht einmal garantiert, dass diese Summen konvergieren.
+
+Für eine approximative Lösung vernachlässigen wir die Koeffizienten $c_k$
+mit $|k|>N$.
+
+
+\subsection{Separation}
+
+
+
