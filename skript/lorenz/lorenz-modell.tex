@@ -41,7 +41,12 @@ Der zweite Ansatz ist, eine Diskretisierung vorzunehmen und den Computer für je
 
 Wir wählten für die Diskretisierung das \textit{Euler-Verfahren} zur Annäherung der Werte des Lorenz-Modells. Das resultierende Gleichungssystem besteht aus einfachen Arithmetik-Operationen und ist für den Computer einfach berechenbar. Dies erlaubt auch Smartphones die Visualisierung effizient zu berechnen und flüssig anzuzeigen.
 
-Als Basis für dieses Verfahren nahm Euler die lineare Gleichung $ y = a \cdot x + b $. Er setzte das Ergebnis der Differentialgleichung als Steigung $ a $ ein. $x$ wird mit dem Diskretisierungsschritt belegt. Der Diskretisierungsschritt beschreibt den Abstand zweier numerischen Messungen in der Visualisierung. Anders ausgedrückt kontrolliert der Diskretisierungsschritt die Zeit, die zwischen zwei Messungen des Modells vergangen ist. Wenn dieser Schritt erhöht wird, dann nimmt der Detailgrad ab, dafür kann eine längere Zeit mit der gleichen Anzahl Messungen das Modell durch die Software aufgezeichnet werden.
+Das Euler-Verfahren ist ein Algorithmus der Familie der Einschritt-Verfahren. Einschritt-Verfahren sind Algorithmen zur Lösung des Anfangwert-Problems. Differentialgleichungen beschreiben die Steigung des Punktes anhand der Lösung des Punktes. Diese Lösung ist zur Zeit der Berechnung noch nicht bekannt und darum kann das Gleichungssystem nicht gelöst werden. Der numerische Algorithmus eines Einschritt-Verfahrens nähert sich an die korrekte Lösung an, indem er die zuletzt bestimmte Näherung verwendet um die Steigung mit der Modell-Funktion zu berechnen. Das Zurückschauen auf die letzte Näherung gab der Algorithmen-Familie ihren Namen.
+
+Als Basis für das Euler-Verfahren verwenden wir den Differenzenquotient $ \frac{dx}{dt} \approx \frac{x_{n + 1} - x_n}{\Delta t} $. 
+
+
+% Als Basis für dieses Verfahren nahm Euler die lineare Gleichung $ y = a \cdot x + b $. Er setzte das Ergebnis der Differentialgleichung als Steigung $ a $ ein. $x$ wird mit dem Diskretisierungsschritt belegt. Der Diskretisierungsschritt beschreibt den Abstand zweier numerischen Messungen in der Visualisierung. Anders ausgedrückt kontrolliert der Diskretisierungsschritt die Zeit, die zwischen zwei Messungen des Modells vergangen ist. Wenn dieser Schritt erhöht wird, dann nimmt der Detailgrad ab, dafür kann eine längere Zeit mit der gleichen Anzahl Messungen das Modell durch die Software aufgezeichnet werden.
 
 Die \textit{Y-Koordinate} des linearen Gleichungssystems $ b $ wird mit dem Ergebnis der vorherigen Rechnungsschritt $ x(t) $ belegt, da der Differentialterm den Abstand vom Wert vorher berechnet.
 
