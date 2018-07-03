@@ -39,9 +39,9 @@ In den \textit{Schweizer Wetterjahresbücher} und \textit{Analen der Schweizeris
 Der Monatliche Wetterverlauf wurde ab dem Jahr 1911 geführt, extreme Wetterereignisse in Berichten beschrieben und aufgezeichnet (Abbildung \ref{Analen}). Die Analen wurden 2011 durch den Klimareport abgelöst. Seit dem Jahr 2011 sind der Klimabericht wie auch die Analen für die Öffentlichkeit zugänglich und können Online eingesehen werden.
 Mit diesen langen und genauen Klimadaten lässt sich tief in die Vergangenheit des Schweizer Klima blicken. Ein Blick in die Klima-Vergangenheit wird möglich.
 
-\begin{figure}[htbp]
+\begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{extrem/Analen.jpg}
+\includegraphics[width=\hsize]{extrem/Analen.jpg}
 \caption{Originaltext aus den Annalen 1910 zur Hochwasserkathastrophe vom Juni 1910. (Quelle: MeteoSchweiz)}
 \label{Analen}
 \end{figure}
@@ -52,7 +52,7 @@ Um die Klimadaten der letzten 150 Jahren miteinander zu vergleichen, müssen die
 Wenn man den Messstandort verlegt, verändert sich die Höhenlage. Dies wirkt sich auf die Temperaturmessung aus, da sich diese mit der Höhe im Mittel verschiebt. Die Messreihe wird ungenau und ein verfälschtes Bild zeichnet sich ab, welches nichts mit dem Klima zu tun hat.
 Um diese Fehlinterpretationen zu vermeiden, sind in den \textit{Schweizer Wetterjahresbücher} und \textit{Analen der Schweizerischen Meteorologischen Zentralanstalt} sämtliche Messwerte homogenisiert worden. Ein direkter Vergleich wird so möglich.
 
-\begin{figure}[htbp]
+\begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{extrem/Homogen.jpg}
 \caption{Entwicklung der Anzahl Sommertage (Maximum--Temperatur $\ge 25^{\circ}$C ) pro Jahr an der Messstation Zürich/Fluntern seit 1901, gerechnet aus der originalen und homogenen Temperatur--Messreihe. Der geglättete Verlauf ist rot eingezeichnet. (Quelle: MeteoSchweiz)}
@@ -64,7 +64,7 @@ Um diese Fehlinterpretationen zu vermeiden, sind in den \textit{Schweizer Wetter
 Um herauszufinden ob extreme Ereignisse nicht durch den Zufall bestimmt werden, benötigen wir vorerst ein Modell um diese Berechnungen durchführen zu können.
 Hierbei bedienen wir uns dem Glücksspiel, genauer gesagt dem Lotto.
 
-\begin{figure}[htbp]
+\begin{figure}
 \centering
 \includegraphics[width=0.4\textwidth]{extrem/Kiosk.pdf}
 \caption{Unwetterlottoschein exklusiv erhältlich für Mathsem Teilnehmer.}
@@ -73,7 +73,7 @@ Hierbei bedienen wir uns dem Glücksspiel, genauer gesagt dem Lotto.
 
 Exklusiv für die Leserinnen und Leser dieses Seminarbuches steht der Unwetterlottoschein zur Verfügung, welchen man am Zeitungskiosk (Abbildung \ref{Kiosk}) erwerben und statt auf Zahlen auf Unwetterereignisse tippen kann. Auf dem Unwetter-Lotto-Schein (Abbildung \ref{Lottoschein}) kann wie beim normalen Zahlenlotto aus verschiedenen Zahlen ausgewählt und seine Tipps abgeben werden. Danach gibt es eine Unwetterziehung, welche mit den abgegebenen Tipps verglichen werden können.
 
-\begin{figure}[htbp]
+\begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{extrem/Lottoschein.pdf}
 \caption{Unwetterlottoschein.}
@@ -82,16 +82,17 @@ Exklusiv für die Leserinnen und Leser dieses Seminarbuches steht der Unwetterlo
 
 Die Kugeln 1-30 beschreiben alle vorhandenen Ereignisse, welche wir \textcolor{red}{\textbf{N}} nennen. Die fünf Wolken stehen für die Anzahl Kreuze, welche wir machen dürfen. Das heisst, welche Unwetter \textcolor{blue}{\textbf{n}} wir aus den totalen Ereignissen 1-30 auswählen dürfen. Die bei der Unwetterziehung gezogenen Ereignisse \textcolor{green}{\textbf{M}} sind unsere Stichproben aus allen Ereignissen.
 
-Jetzt stellen wir uns die entscheidende Frage: Wie wahrscheinlich ist es, ein 5er im Unwetter-Lotto (Abbildung \ref{WahrscheinlichkeitUnwetterlotto})zu erhalten? Diese Wahrscheinlichkeit bezeichnen wir mit \textcolor{yellow}{\textbf{k}}.
+Jetzt stellen wir uns die entscheidende Frage: 
+Wie wahrscheinlich ist es, ein 5er im Unwetter-Lotto (Abbildung \ref{WahrscheinlichkeitUnwetterlotto})zu erhalten? Diese Wahrscheinlichkeit bezeichnen wir mit \textcolor{yellow}{\textbf{k}}.
 
-\begin{figure}[htbp]
+\begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{extrem/Lottoscheinausgefuellt.pdf}
 \caption{Unwetterlottoschein mit den Variabeln und der Unwetterziehung.}
 \label{Lottoscheinausgefuellt}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{extrem/wkeitlotto.pdf}
 \caption{Wahrscheinlichkeit, einen 5er im Unwetterlotto zu erhalten.}
@@ -120,23 +121,22 @@ Dabei beziehen sich die \textcolor{red}{\textbf{N}} Felder auf dem Lottozettel a
 
 
 Die Frage welche nun beantwortet werden muss lautet:
-
 Wie wahrscheinlich (\textcolor{yellow}{\textbf{k}}) ist es, dass \textcolor{blue}{\textbf{n}} extreme Ereignisse aus einer Messreihe von \textcolor{red}{\textbf{N}} Jahren, in den letzten 10 Jahren (\textcolor{green}{\textbf{M}}) vorkommen?
 
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.8\textwidth]{extrem/Unwettervert.pdf}
-\caption{Unwetterverteilung mit den Ereignissen ergeben die Wahrscheinlichkeit für die Anzahl treffer.}
-\label{UnwetterVerteilung}
-\end{figure}
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.8\textwidth]{extrem/Unwettervert.pdf}
+%\caption{Unwetterverteilung mit den Ereignissen ergeben die Wahrscheinlichkeit %für die Anzahl treffer.}
+%\label{UnwetterVerteilung}
+%\end{figure}
 
 
 Die Unwetter-Verteilung ist somit nichts anderes als die hypergeometrische Verteilung. Die hypergeometrische Verteilung
 
 \begin{align*}
 P(X = k) = 
-\frac{ \binom{M}{k} \binom{N-M}{n-k}}{ \binom{N}{n} }
+\frac{\displaystyle \binom{M}{k} \binom{N-M}{n-k}}{\displaystyle \binom{N}{n} }
 \end{align*}
 
 beschreibt die Wahrscheinlichkeit aus $N$ gegebenen Elementen, mit $n$ Elementen einer speziellen Eigenschaft, und einer Stichprobe aus $M$ Elementen genau $k$ Treffer zu erzielen. 
@@ -160,7 +160,6 @@ k = 3
 \end{align*}
 
 Die Wahrscheinlichkeit P (X = 3) ergibt sich aus:
-
 Anzahl der Möglichkeiten, genau 3 extreme Ereignisse (und damit genau 4 normale) Ereignisse auszuwählen, dividiert durch die Anzahl Möglichkeiten 7 Ereignisse aus allen Ereignissen auszuwählen.
  
 Dabei gibt es
@@ -175,7 +174,6 @@ Zudem gibt es
 \end{align*}
 
 Möglichkeiten, genau 4 normale Ereignisse auszuwählen.
-
 Da jede Möglichkeit 3 extreme Ereignisse mit jeder Möglichkeit 4 normale Ereignisse auszuwählen kombiniert werden kann, ergibt sich
 \begin{align*}
 \binom{M}{k} \cdot \binom{N-M}{n-k} = \binom{10}{3} \cdot \binom{75-10}{7-3} = 120 
@@ -183,20 +181,16 @@ Da jede Möglichkeit 3 extreme Ereignisse mit jeder Möglichkeit 4 normale Ereig
 \end{align*}
 
 Möglichkeiten für genau 3 extreme und 4 normale Ereignisse auszuwählen.
-
-
 Zusätzlich gibt es insgesamt
 \begin{align*}
 \binom{N}{n} = \binom{75}{7} = 1984829850
 \end{align*}
 
 Möglichkeiten, 7 Ereignisse aus allen Ereignissen zu ziehen.
-
-
 Für k = 3 erhalten wir somit die Wahrscheinlichkeit
 \begin{align*}
-P(X = 3) &= \frac{ \binom{M}{k} \binom{N-M}{n-k}}{ \binom{N}{n} }  \\
-&= \frac{ \binom{10}{3} \binom{75-10}{7-3}}{ \binom{75}{7} } \\
+P(X = 3) &= \frac{\displaystyle \binom{M}{k} \binom{N-M}{n-k}}{\displaystyle \binom{N}{n} }  \\
+&= \frac{\displaystyle \binom{10}{3} \binom{75-10}{7-3}}{\displaystyle \binom{75}{7} } \\
 &= \frac{ 120 \cdot 677040}{ 1984829850 } = 0.0409329
 \end{align*}
 
@@ -212,22 +206,22 @@ Die hypergeometrischen Verteilung, sind die Wahrscheinlichkeitswerte für alle P
 
 Für alle $P (X=k)$ ergeben sich folgende Wahrscheinlichkeiten (Abbildung \ref{TabHyper}).
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.2\textwidth]{extrem/TabHyper.pdf}
-\caption{Wahrscheinlichkeiten P (X=k) der verschiedenen Ereignisse.}
-\label{TabHyper}
-\end{figure}
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.2\textwidth]{extrem/TabHyper.pdf}
+%\caption{Wahrscheinlichkeiten P (X=k) der verschiedenen Ereignisse.}
+%\label{TabHyper}
+%\end{figure}
 
 Die Wahrscheinlichkeit beschreibt dabei, wie wahrscheinlich es ist, genau k extreme Ereignisse in den letzten 10 Jahren vor zufinden.
 Beachte, dass die Werte N, M und n das Experiment beschreiben und nicht mehr verändert werden. Die Variable k hingegen kann alle möglichen Ausgänge des Experiments annehmen, in unserem Beispiel also von 0 bis 7.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.8\textwidth]{extrem/Hyper.pdf}
-\caption{Die hypergeometrische Verteilung unseres Beispiels. Sie zeigt auf, wie wahrscheinlich es ist, genau k extreme Ereignisse in den letzten 10 Jahren vorzufinden.}
-\label{Hyper}
-\end{figure}
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.8\textwidth]{extrem/Hyper.pdf}
+%\caption{Die hypergeometrische Verteilung unseres Beispiels. Sie zeigt auf, wie %wahrscheinlich es ist, genau k extreme Ereignisse in den letzten 10 Jahren %vorzufinden.}
+%\label{Hyper}
+%\end{figure}
 
 In Abbildung \ref{Hyper} ist sehr gut ersichtlich, dass die Wahrscheinlichkeit bei genau einem extremen Ereignis in den letzten 10 Jahren am höchsten ist. Wohingegen genau 3 Ereignisse nur noch eine Wahrscheinlichkeit von 4.09\% aufweisen, was bereits sehr unwahrscheinlich ist. Häufungen von Ereignissen, welche die Anzahl 3 überschreiten, sind so unwahrscheinlich, das sie kaum natürlichen Ursprungs sein können.
 
@@ -252,32 +246,29 @@ Möchten wir also die Wahrscheinlichkeit wissen, drei oder mehr extreme Ereignis
 \end{align*}
 
 Drei oder mehr extreme Ereignisse in den letzten 10 Jahren sind mit einer Wahrscheinlichkeit von 4.58\% möglich. 
+Die Wahrscheinlichkeit ein oder zwei extreme Ereignisse in den letzten 10 Jahren zu haben ist mit 64.49\% und 23.30\% relativ hoch. Ab drei oder mehr Ereignissen nimmt die Wahrscheinlichkeit rasant ab. Ohne Äussere Einwirkungen sind drei oder mehr Ereignisse sehr unwahrscheinlich und ab 5 nahezu unmöglich.
 
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.3\textwidth]{extrem/TabExt.pdf}
+%\caption{Wahrscheinlichkeit $P(X \ge I)$ aller Ereignisse unseres Beispiels. %Rosa markiert ist das oben berechnete Beispiel mit drei oder mehr extremen %Ereignissen in den letzten 10 Jahren. }
+%\label{TabExt}
+%\end{figure}
 
-Für unser Beispiel ergeben sich folgende Werte
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.3\textwidth]{extrem/TabExt.pdf}
-\caption{Wahrscheinlichkeit $P(X \ge I)$ aller Ereignisse unseres Beispiels. Rosa markiert ist das oben berechnete Beispiel mit drei oder mehr extremen Ereignissen in den letzten 10 Jahren. }
-\label{TabExt}
-\end{figure}
-
-\begin{figure}[htbp]
+\begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{extrem/HyperExt.pdf}
 \caption{Die komplementäre Verteilfunktion $F(x)$ der hypergeometrischen Verteilung zeigt auf, wie wahrscheinlich es ist mehr als k Ereignisse in den letzten 10 Jahren vorzufinden.}
 \label{HyperExt}
 \end{figure}
 
-Die Wahrscheinlichkeit ein oder zwei extreme Ereignisse in den letzten 10 Jahren zu haben ist mit 64.49\% und 23.30\% relativ hoch. Ab drei oder mehr Ereignissen nimmt die Wahrscheinlichkeit rasant ab. Ohne Äussere Einwirkungen sind drei oder mehr Ereignisse sehr unwahrscheinlich und ab 5 nahezu unmöglich.
 
 
 
 \section{Hypothesentest}
 Hypothesentests werden immer dann durchgeführt, wenn man aus erhobenen Daten etwas nachweisen möchte, zum Beispiel das sich extreme Ereignisse in den letzten Jahren häufen. Der Grundsatz bei allen statistischen Tests ist, das wir das Gegenteil widerlegen müssen - wir müssen also widerlegen, dass extreme Ereignisse in den letzten Jahren zufällig verteilt sind. Das heisst die Häufung von extremen Ereignissen entscheidet der Zufall und kann nicht beeinflusst werden.
 
-Zu vergleichen ist ein Hypothesentest mit einer Gerichtsverhandlung - im Zweifel für den Angeklagten. Es muss davon ausgegangen werden, dass die Hypothese stimmt, auch wenn man es nicht weiss bis das Gegenteil bewiesen werden kann. Hierfür benötigt es genügend Beweise, welche die Schuld oder hier die Hypothese widerlegen, ohne das Zweifel aufkommen können. Falls ungenügend viele Beweise vorliegen, muss davon ausgegangen werden, dass die Hypothese stimmt oder eben der Angeklagte unschuldig ist.
+Zu vergleichen ist ein Hypothesentest mit einer Gerichtsverhandlung. Im Zweifel ist das Gericht für den Angeklagten. Es muss davon ausgegangen werden, dass die Hypothese stimmt, auch wenn man es nicht weiss bis das Gegenteil bewiesen werden kann. Hierfür benötigt es genügend Beweise, welche die Schuld oder hier die Hypothese widerlegen, ohne das Zweifel aufkommen können. Falls ungenügend viele Beweise vorliegen, muss davon ausgegangen werden, dass die Hypothese stimmt oder eben der Angeklagte unschuldig ist.
 Zuerst wird die Nullhypothese aufgestellt, welche das Gegenteil besagt von dem zu beweisenden Ziel.
 
 \subsection{Nullhypothese}
@@ -303,12 +294,12 @@ Das Higgs-Boson ist Elementarteilchen (Benannt nach dem britischen Physiker Pete
 Falls die Nullhypothese richtig ist, darf die Wahrscheinlichkeit dafür, dass sie fälschlicherweise abgelehnt wird, nicht unter 5\% fallen.
 In unserem Beispiel bedeutet das:
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.8\textwidth]{extrem/Signi.pdf}
-\caption{Die komplementäre Verteilfunktion der hypergeometrischen Verteilung mit dem Signifikanzniveau $\alpha = 5%$.}
-\label{Signifikanzniveau}
-\end{figure}
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.8\textwidth]{extrem/Signi.pdf}
+%\caption{Die komplementäre Verteilfunktion der hypergeometrischen Verteilung %mit dem Signifikanzniveau $\alpha = 5%$.}
+%\label{Signifikanzniveau}
+%\end{figure}
 
 Eine Häufung von 3 oder mehr extremen Ereignissen wären nicht mehr durch den Zufall bestimmt. 
 
@@ -318,7 +309,7 @@ Konkret: Wenn von den 7 extremsten Ereignissen der letzten 75 Jahre 3 oder mehr 
 \section{Messpunkte Schweiz} \label{MesspunkteSchweiz}
 Um eine möglichst grosse Vielfalt von Messreihen zu bekommen, werden verschiedene Messpunkte in der Schweiz angeschaut. 
 
-\begin{figure}[htbp]
+\begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{extrem/Schweiz.pdf}
 \caption{Gewählte Messpunkte in der Schweiz.}
@@ -428,7 +419,7 @@ Bei den Gletscherdaten wurde ein Zeitraum von 1881 - 2017 gewählt. Durch die An
 \subsection{Grosser Aletschgletscher}
 Der grosse Aletschgletscher schmilzt, wie man gut auf der (Abbildung \ref{Aletsch}) sehen kann. Jedoch zeigen die Messwerte der letzen 136 Jahren keinen extremen Schwund der Eismassen auf.
 
-\begin{figure}[htbp]
+\begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{extrem/Aletsch.pdf}
 \caption{DBLaBLa}
@@ -437,7 +428,7 @@ Der grosse Aletschgletscher schmilzt, wie man gut auf der (Abbildung \ref{Aletsc
 
 Hier müsste die Messreihe hinterfragt werden. Die Messreihe zeigt nur die Längenänderung pro Jahr auf, wieviel die Gletscherzunge schwindet und nicht die Volumenänderung der Eismasse. Der Gletscher könnte in der Länge nur wenig schwinden würde aber im selben Jahr sehr viel an Volumen verlieren, wäre dies dennoch nicht in der Messreihe ersichtlich.
 
-\begin{figure}[htbp]
+\begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{extrem/Aletsch.jpg}
 \caption{Der grosse Aletschgletscher im Wandel der Zeit. Links im Jahr 2015 und rechts im Jahr 2010.}
@@ -449,7 +440,7 @@ Hier müsste die Messreihe hinterfragt werden. Die Messreihe zeigt nur die Läng
 Beim Morteratschgletscher sieht es anders aus. Die Längenänderung in den letzten 10 Jahren ist massiv. Hier kann aufgrund der extremen Längenänderung auf den Klimawandel geschlossen werden. Dies ist auch deutlich in der (Abbildung \ref{Morteratsch}) ersichtlich.
 
 
-\begin{figure}[htbp]
+\begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{extrem/Morteratsch.pdf}
 \caption{BlaBla}
@@ -457,7 +448,7 @@ Beim Morteratschgletscher sieht es anders aus. Die Längenänderung in den letzt
 \end{figure}
 
 
-\begin{figure}[htbp]
+\begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{extrem/Morteratsch.jpg}
 \caption{Der Morteratschgletscher im Wandel der Zeit. Links im Jahr 2015 und rechts im Jahr 1985.}
@@ -472,14 +463,14 @@ Die Frage lässt sich ganz klar mit "Ja" beantworten. Vor allem bei den Klimaind
 
 
 
-\begin{figure}[htbp]
+\begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{extrem/JMittel.pdf}
 \caption{BLaBLa}
 \label{JMittel}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{extrem/Sommertage.pdf}
 \caption{BLaBLa}
@@ -489,7 +480,7 @@ Die Frage lässt sich ganz klar mit "Ja" beantworten. Vor allem bei den Klimaind
 
 
 
-\begin{figure}[htbp]
+\begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{extrem/Tropennacht.pdf}
 \caption{BLaBLa}
@@ -498,7 +489,7 @@ Die Frage lässt sich ganz klar mit "Ja" beantworten. Vor allem bei den Klimaind
 
 
 
-\begin{figure}[htbp]
+\begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{extrem/Hitzetage.pdf}
 \caption{BLaBLa}
@@ -506,7 +497,7 @@ Die Frage lässt sich ganz klar mit "Ja" beantworten. Vor allem bei den Klimaind
 \end{figure}
 
 
-\begin{figure}[htbp]
+\begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{extrem/Frosttage.pdf}
 \caption{BLaBLa}
@@ -514,14 +505,14 @@ Die Frage lässt sich ganz klar mit "Ja" beantworten. Vor allem bei den Klimaind
 \end{figure}
 
 
-\begin{figure}[htbp]
+\begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{extrem/Jahresniederschlag.pdf}
 \caption{BLaBLa}
 \label{Jahresniederschlag}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{extrem/Eistage.pdf}
 \caption{BLaBLa}
