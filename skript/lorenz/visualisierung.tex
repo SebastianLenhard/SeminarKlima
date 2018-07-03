@@ -14,6 +14,7 @@ z = arr[i].z + ((x * y) - (beta * z)) * delta;
 \end{figure}
 
 	\begin{table}[]
+		\centering
 		\begin{tabular}{| c | c | c | c |}
 			\hline
 			\textbf{Bedeutung} & \textbf{Mathematisches Symbol} & \textbf{Variable im Code} & \textbf{Anfangswert}\\\hline
@@ -22,7 +23,7 @@ z = arr[i].z + ((x * y) - (beta * z)) * delta;
 			Prandtl Zahl & $\varrho $ & \texttt{rho} & 28 \\\hline
 			Wärmeausdehnung & $\beta $ & \texttt{beta}  & $ \frac{8}{3} $ \\\hline
 		\end{tabular}
-		\caption{Code variablen und ihre Werte\label{CodeVariablen}}
+		\caption{Code Variablen und ihre Werte\label{CodeVariablen}}
 	\end{table}
 	
 Die $ x, y $ Variablen in der ersten Gleichung ist noch mit dem Wert des vorherigen Durchgangs besetzt und deshalb eine Annäherung um den echten Wert. Das Gleiche gilt für alle Werte, die vor der Ausführung noch nicht gesetzt sind. 

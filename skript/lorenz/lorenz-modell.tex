@@ -11,7 +11,7 @@ Die Gleichungen, welche das Lorenz-Modell beschreiben, enthalten viele physikali
 \dot{z} &= xy - \beta z
 \end{align}
 
-Die X-Achse entspricht dabei der hydrodynamischen, räumlichen Durchschnittsgeschwindigkeit, also die durchschnittliche Windgeschwindigkeit. Die Y-Achse repräsentiert die Temperatur und die Z-Achse der Temperaturgradient. Also wie schnell sich die Temperatur verändert. 
+Die X-Achse entspricht dabei der hydrodynamischen, räumlichen Durchschnittsgeschwindigkeit, also die durchschnittliche Konvektionsgeschwindigkeit. Die Y-Achse repräsentiert die Temperatur und die Z-Achse der Temperaturgradient. Also wie schnell sich die Temperatur verändert. 
 
 Wie aus den obigen Gleichungen ersichtlich ist, sind drei Parameter vorhanden. Alle sind immer positiv.
 
@@ -22,7 +22,7 @@ $\sigma$ entspricht der dimensionslosen Prandtl Zahl. Diese ist das Verhältnis 
 Dieser Parameter ist nach dem Physiker Baron Rayleigh benannt worden und heisst Rayleigh Zahl. Es entspricht dem Verhältnis von \textit{Wärmeausdehnung} und der \textit{Viskosität}.
 
 \subsubsection{3. Parameter: $\beta$}
-Das $ \beta $ entspricht der \textit{Wärmeausdehnung}. Dabei handelt es sich um die Veränderung der geometrischen Abmessungen(Länge, Flächeninhalt und Volumen) eines Körpers, die sich mit erhöhter Temperatur vergrössern.
+Das $ \beta $ entspricht der \textit{Wärmeausdehnung}. Dabei handelt es sich um die Veränderung der geometrischen Abmessungen (Länge, Flächeninhalt und Volumen) eines Körpers, die sich mit erhöhter Temperatur vergrössern.
 
 \begin{figure}
 	\centering
@@ -39,11 +39,11 @@ Der zweite Ansatz ist, eine Diskretisierung vorzunehmen und den Computer für je
 
 \subsubsection{Euler-Verfahren}
 
-Wir wählten für die Diskretisierung das \textit{Einschritt-Verfahren} zur Annäherung der Werte des Lorenz-Modells. Das resultierende Gleichungssystem besteht aus einfachen Arithmetik-Operationen und ist für den Computer einfach berechenbar. Diese Effizienz erlaubt auch Smartphones die Visualisierung effizient zu berechnen und flüssig anzuzeigen.
+Wir wählten für die Diskretisierung das \textit{Euler-Verfahren} zur Annäherung der Werte des Lorenz-Modells. Das resultierende Gleichungssystem besteht aus einfachen Arithmetik-Operationen und ist für den Computer einfach berechenbar. Dies erlaubt auch Smartphones die Visualisierung effizient zu berechnen und flüssig anzuzeigen.
 
 Als Basis für dieses Verfahren nahm Euler die lineare Gleichung $ y = a \cdot x + b $. Er setzte das Ergebnis der Differentialgleichung als Steigung $ a $ ein. $x$ wird mit dem Diskretisierungsschritt belegt. Der Diskretisierungsschritt beschreibt den Abstand zweier numerischen Messungen in der Visualisierung. Anders ausgedrückt kontrolliert der Diskretisierungsschritt die Zeit, die zwischen zwei Messungen des Modells vergangen ist. Wenn dieser Schritt erhöht wird, dann nimmt der Detailgrad ab, dafür kann eine längere Zeit mit der gleichen Anzahl Messungen das Modell durch die Software aufgezeichnet werden.
 
-Der \textit{Y-Achsenabschnitt} des linearen Gleichungssystems $ b $ wird mit dem Ergebnis der vorherigen Rechnungsschritt $ x(t) $ belegt, da der Differentialterm den Abstand vom Wert vorher berechnet.
+Die \textit{Y-Koordinate} des linearen Gleichungssystems $ b $ wird mit dem Ergebnis der vorherigen Rechnungsschritt $ x(t) $ belegt, da der Differentialterm den Abstand vom Wert vorher berechnet.
 
 \begin{align}
     x(t+ \Delta t) = x(t) + \frac{dx}{dt} \cdot \Delta t\\
