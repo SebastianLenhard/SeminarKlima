@@ -33,10 +33,10 @@ Ein typisches Beispiel für ein chaotisches System ist das Wetter, wie Edward Lo
 In dynamischen Systemen ist ein Attraktor eine Untermenge eines Phasenraums (gewisse Anzahl an Zuständen), zu welchen sich ein dynamisches System im Laufe der Zeit zubewegt und diese Menge das System nicht mehr verlässt\cite{wikiattraktor}. 
 Egal welche Startwerte man in einem Attraktor verwendet, das System entwickelt sich immer auf dieselbe Art und Weise. Im Bezug auf den Lorenz Attraktor ist dies die berühmte Form des Butterflys. 
 
-Das bedeutet, dass wir für eine mathematische Definition zwei wesentliche Charakteristiken abbilden müssen. Zum Einen muss die Charakteristik, die Punkte innerhalb einer Toleranz erscheinen lässt, abgebildet werden. Das heisst, dass es zu einem Punkt des Attraktors $P$ und einer Toleranz $\varepsilon$ eine Zeit $t$ gibt, so dass 
+Das bedeutet, dass wir für eine mathematische Definition zwei wesentliche Eigenschaften abbilden müssen. Zum Einen muss die Eigenschaft, die Punkte innerhalb einer Toleranz erscheinen lässt, abgebildet werden. Das heisst, dass es zu einem Punkt $P$ des Attraktors  und einer Toleranz $\varepsilon$ eine Zeit $t$ gibt, so dass 
 
 \begin{center}
-$|P - x(t)| < \varepsilon$
+	$|P - x(t)| < \varepsilon$
 \end{center}
 wird. Die Bahn geht also zu irgendeinem Zeitpunkt näher als $\varepsilon$ an P vorbei.
 
@@ -49,7 +49,7 @@ ist.
 Die komplette mathematische Definition ist also:
 
 \begin{center}\label{Attraktor}
-$	\exists t < T \text{ wobei } t,T,\varepsilon \in \mathbb{R}, \text{ für die gilt } |P - x(t) |< \varepsilon$
+$\forall P, \forall T \text{ und } \forall \varepsilon \text{ } \exists t > T , \text{ für die gilt } |P - x(t) |< \varepsilon$
 \end{center}
 
 Für jeden Zeitpunkt $T$ existiert ein späterer Zeitpunkt $t$, bei dem sich die Funktion $x$ (Lorenz-Attraktor) so entwickelt, dass der Betrag der Differenz kleiner als die Toleranz $\varepsilon$ wird. 
