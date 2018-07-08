@@ -79,7 +79,7 @@ Man liest daraus die Gleichungen für die Koeffizienten $a_k$ ab:
 3\cdot 2\cdot a_3&=-\lambda a_1\\
 4\cdot 3\cdot a_4&=-\lambda a_2\\
 5\cdot 4\cdot a_5&=-\lambda a_3\\
-&\;\vdots
+&\;\;\vdots
 \end{aligned}
 \right\}
 \qquad\Rightarrow\qquad
@@ -173,6 +173,199 @@ mit $|k|>N$.
 
 
 \subsection{Separation}
+\index{Separation}%
+\subsubsection{Motivation}
+Besonders gut geeignet als Basisfunktionen sind Funktionen, die bereits
+Lösungen einer vereinfachten Variante der partiellen Differentialgleichung
+sind oder die die Randbedingungen leicht wiederzugeben erlauben.
+Zum Beispiel kommt in den Strömungsdifferentialgleichungen häufig der
+Laplace-Operator vor, also könnte es nützlich sein, als Basisfunktionen
+eine Familie von Funktionen $u_n$ heranzuziehen, welche bereits Lösungen
+der Gleichung $\Delta u_n$ sind. In Kapitel~\ref{chapter:lorenz2}) wird
+gezeigt, wie man diese Idee auf das in
+Abschnitt~\label{section:lorenz-modell} vorgestellte Lorenz-Modell
+andwenden kann.
+Wenn man dann die Lösung als Linearkombination $\sum a_nu_n$ dieser Funktionen
+ansetzt, verschwinden alle Terme der Form $\Delta u_n$, was die gewöhnlichen
+Differentialgleichungen für die Koeffizienten $a_n$ dramatisch vereinfachen
+kann.
+In diesem Abschnitt zeigen wir daher an einem Beispiel, wie solche Funktionen
+gefunden werden können. 
 
+\subsubsection{Die Separationsmethode an einem Beispiel}
+Gegeben sei die Differentialgleichung
+\[
+\begin{aligned}
+\Delta u &= \lambda u&&
+\text{auf dem Gebiet $\Omega=\{ (x,y)\,|\, 0<x<a\text{ und }0<y<b\}$}
+\\
+\text{mit}
+\qquad
+u=&0&&\text{auf dem Rand $\partial\Omega$.}
+\end{aligned}
+\]
+Das Gebiet ist ein Rechteck mit Seitenlängen $a$ und $b$.
+Die Relation $\Delta u=\lambda u$ ermöglicht, jedes Vorkommen eines auf
+die Funktion $u$ wirkenden Laplace-Operators durch die Multiplikation
+mit $\lambda$ zu ersetzen, und damit die Differentialgleichung zu vereinfachen.
 
+Die Separationsmethode nimmt jetzt an, dass sich die Lösung der
+Differentialgleichung in der besonders einfachen Form eines Produktes
+$u(x,y)=X(x)\cdot Y(y)$ finden lässt.
+Setzt man diesen Separationsansatz
+\index{Separationsansatz}
+in die Differentialgleichung ein, erhält man
+\[
+\Delta u
+=
+\biggl(
+\frac{\partial^2}{\partial x^2}
++
+\frac{\partial^2}{\partial y^2}
+\biggr)
+X(x)\cdot Y(y)
+=
+X''(x)\cdot Y(y) + X(x)\cdot Y''(y)
+=
+\lambda X(x)\cdot Y(y).
+\]
+Wir interessieren uns für nicht verschwindende Lösungen, wir nehmen daher
+an, dass die Funktionen $X(x)$ und $Y(y)$ nur isolierte Nullstellen haben.
+Ausserhalb dieser Nullstellen ist es erlaubt, durch $X(x)\cdot Y(y)$ zu
+divideren. 
+Damit wird es möglich, die Variablen $x$ und $y$ zu trennen, man
+erhält
+\[
+0
+=
+\frac{X''(x)\cdot Y(y) + X(x)\cdot Y''(y)}{X(x)\cdot Y(y)} - \lambda
+=
+\frac{X''(x)}{X(x)}
++
+\frac{Y''(y)}{Y(y)}
+-
+\lambda
+\qquad\Rightarrow\qquad
+\frac{X''(x)}{X(x)}=-\frac{Y''(y)}{Y(y)}+\lambda.
+\]
+Die linke Seite der Gleichung hängt nur von $x$ ab, die rechte nur von $y$.
+Ändert man $x$ während man $y$ konstant hält, dann kann sich die rechte
+Seite nicht ändern, die linke muss daher auch konstant sein.
+Wenn aber die linke Seite eine konstante ist, dann muss auch die rechte
+eine Konstante sein. 
+Es gibt also eine vorerst noch unbekannte Konstante $\mu$, so dass
+die Funktionen $X(x)$ und $Y(y)$ die Differentialgleichungen
+\begin{equation}
+X''(x) = -\mu X(x)
+\qquad\text{und}\qquad
+Y''(y) = (\lambda+\mu)Y(y)
+\label{skript:separation:gleichungen}
+\end{equation}
+erfüllen.
+Mögliche Werte für $\mu$ werden sich daraus ergeben, welche Werte die
+Differentialgleichungen überhaupt lösbar sind, oder für welche Werte
+sich die gegebenen Randbedinungen erfüllen lassen.
+
+Wir lösen die Differntialgleichungen~\eqref{skript:separation:gleichungen}
+so, dass auch die Randbedingungen $u=0$ auf $\partial\Omega$ erfüllt sind.
+Für die Funktionen $X(x)$ und $Y(y)$ bedeutet dies:
+\[
+\begin{aligned}
+X(0)&=0 & Y(0) &= 0 \\
+X(a)&=0 & Y(b) &= 0.
+\end{aligned}
+\]
+Die linearen Differntialgleichungen~\eqref{skript:separation:gleichungen}
+haben Exponentialfunktionen oder trigonometrische Funktionen als
+Lösungen.
+Da sich mit Exponentialfunktionen die Randbedingungen ohnehin nicht
+einhalten lassen, suchen wir Lösungen als trigonometrische Funktionen.
+Da $X(0)=0$ und $Y(0)=0$ gilt, müssen die Lösungen Sinus-Funktionen sein,
+wir nehmen daher an, dass $X(x)=\sin \kappa x$ und $Y(y)=\sin \nu y$.
+Für diese Funktionen gilt
+\[
+\begin{aligned}
+X''(x) &= -\kappa^2\sin \kappa x = -\kappa^2 X(x)
+&&\text{und}&
+Y''(y) &= -\nu^2\sin \nu x = -\nu^2 Y(y).
+\end{aligned}
+\]
+Die Randbedingungen am rechten Rand sind
+\[
+\begin{aligned}
+X(a) = \sin \kappa a = 0
+&
+Y(b) = \sin \nu b = 0.
+\end{aligned}
+\]
+Da die Sinus-Funktion ihre Nullstellen genau bei den ganzzahligen Vielfachen
+von $\pi$ hat, schliessen wir, dass $\kappa a = k\pi$ und $\nu b = l\pi$
+mit $k,l\in\mathbb Z$ gilt.
+Die Lösungen sind daher von der Form
+\[
+\begin{aligned}
+X(x) &= \sin \frac{xk\pi}{a}
+\qquad \text{und} \qquad
+Y(y) &= \sin\frac{yl\pi}{b}
+\end{aligned}
+\]
+Und damit für die Familie der Lösungesfunktionen
+\[
+u_{kl}(x,y) = \sin \frac{xk\pi}{a} \sin\frac{yl\pi}{b}.
+\]
+Wir berechnen auch noch die Werte von $\mu$ und $\lambda$:
+\begin{align*}
+X''(x)
+&=
+-\mu X(x) = -\frac{k^2\pi^2}{a^2}
+\\
+\Delta u_{kl}
+&=
+-\frac{k^2\pi^2}{a^2} u_{kl}
+-\frac{l^2\pi^2}{b^2} u_{kl}
+=
+-\biggl(\frac{k^2}{a^2}+\frac{l^2}{b^2}\biggr)\pi^2 u_{kl}
+=
+\lambda  u_{kl}
+&&\Rightarrow&
+\lambda_{kl} = - \biggl(\frac{k^2}{a^2}+\frac{l^2}{b^2}\biggr)\pi^2.
+\end{align*}
+Nur ein diskrete Menge von Zahlenwerten $\mu$ sind also möglich, und nur 
+für eine diskrete Menge von Eigenwerten $\lambda$ ist die ursprüngliche 
+Differentialgleichung überhaupt lösbar.
+
+Damit haben wir eine Familie $u_{kl}$, $k,l\in\mathbb Z$ von Funktionen
+gefunden, die Lösungen der Differentialgleichung
+$\Delta u_{kl}=\lambda_{kl} u_{kl}$ sind.
+Das Anfangs gestellt Ziel ist erreicht.
+
+\subsubsection{Verallgemeinerungen}
+Das Beispiel deutet auch an, wie die Methode verallgemeinert werden kann.
+\begin{enumerate}
+\item
+Wenn möglich, wähle ein Koordinatensystem, mit welchem das Definitionsgebiet
+einfach beschrieben werden kann.
+Formuliere die Differentialgleichung in diesen Koordinaten.
+Darstellungen des Laplace-Operator für fast alle wichtigen Koordinatensysteme
+können zum Beispiel in guten Formelsammlungen gefunden werden.
+\item
+Separationsansatz: setze die Lösung als Produkt von Funktionen an,
+jeweils von nur einer Koordinate abhängen, also
+$u(x,y)=X(x)\cdot Y(y)$ in einem $x$-$y$-Koordinatensystem.
+\item
+Setze den Ansatz in die Differentialgleichung ein und versuche die
+Variablen zu trennen. 
+Gesucht ist eine Gleichung, deren linke Seite nur von einer Variablen
+abhängt, die rechte nur von allen anderen.
+Wie im Beispiel folgt, dass beide Seiten konstant sein müssen.
+Damit hat man das Problem darauf reduziert, eine gewöhnliche
+Differentialgleichung für eine Funktion der einen Variable zu lösen.
+Integrationskonstation, die in der Lösung der gewöhnlichen
+Differentialgleichung immer auftreten wird, können oft mit Hilfe
+eines Teils der Randbedingungen eliminiert werden.
+\item
+Durch Iteration von Schritt~3 können Teillösungen $u_n$ gefunden werden,
+die von den Konstanten abhängen, die bei der Separation eingefügt werden
+müssen.
+\end{enumerate}
 
