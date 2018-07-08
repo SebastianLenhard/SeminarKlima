@@ -7,9 +7,9 @@ Das oben erwähnte Gleichungssystem haben wir im Javascript-Code verwendet, um d
 % TODO: Beschreibung warum Durchlauf Unterschied macht, da Rückkopplungen unaufgelöst, und welche Probleme es nicht löst.
 \begin{figure}
 	\begin{lstlisting}[style=C]
-x = arr[i].x + ((sigma * y) - (sigma * x)) * delta;
-y = arr[i].y + ((-x * z) + (rho * x) - y) * delta;
-z = arr[i].z + ((x * y) - (beta * z)) * delta;
+x = arr[i].x + ((sigma * arr[i].y) - (sigma * arr[i].x)) * delta;
+y = arr[i].y + ((-arr[i].x * arr[i].z) + (rho * arr[i].x) - arr[i].y) * delta;
+z = arr[i].z + ((arr[i].x * arr[i].y) - (beta * arr[i].z)) * delta;
 		\end{lstlisting}
 \end{figure}
 
@@ -25,11 +25,6 @@ z = arr[i].z + ((x * y) - (beta * z)) * delta;
 		\end{tabular}
 		\caption{Code Variablen und ihre Werte\label{CodeVariablen}}
 	\end{table}
-	
-Die $ x, y $ Variablen in der ersten Gleichung ist noch mit dem Wert des vorherigen Durchgangs besetzt und deshalb eine Annäherung um den echten Wert. Das Gleiche gilt für alle Werte, die vor der Ausführung noch nicht gesetzt sind. 
-Beim ersten Durchgang wird 0.1 als Startwert angenommen um zu verhindern, dass das Gleichungssystem gelöst ist. 
-
-Wenn $ \vec{0} $ eingesetzt wird löst sich das Gleichungssystem auf $ \vec{0} $. Da das Ergebnis in der nächsten Runde wieder eingesetzt wird, wird das Gleichungssystem über alle Runden $ \vec{0} $ ausgeben. Um dieses Verhalten zu verhindern, lassen wir den Algorithmus etwas neben $ \vec{0} $ starten, nämlich bei $ \vec{0.1} $.
 
 \begin{figure}
 	\begin{lstlisting}[style=C, language=C++]
@@ -45,9 +40,9 @@ calculate(rho = 28, sigma = 10, beta = 8 / 3) {
 	pos.push(new THREE.Vector3(x, y, z));
 	
 	for (let i = 0; i < it; i += 1) {
-		x = pos[i].x + ((sigma * y) - (sigma * x)) * delta;
-		y = pos[i].y + ((-x * z) + (rho * x) - y) * delta;
-		z = pos[i].z + ((x * y) - (beta * z)) * delta;
+		x = arr[i].x + ((sigma * arr[i].y) - (sigma * arr[i].x)) * delta;
+		y = arr[i].y + ((-arr[i].x * arr[i].z) + (rho * arr[i].x) - arr[i].y) * delta;
+		z = arr[i].z + ((arr[i].x * arr[i].y) - (beta * arr[i].z)) * delta;
 		pos.push(new THREE.Vector3(x, y, z));
 	}
 	
@@ -56,7 +51,6 @@ calculate(rho = 28, sigma = 10, beta = 8 / 3) {
 		\end{lstlisting}
 		\caption{Algorithmus für Lorenz-Modell\label{AlgorithmusLorenz}}
 \end{figure}
-
 
 Der Algorithmus \ref{AlgorithmusLorenz} startet mit der Initialisierung der Variablen in Tabelle \ref{CodeVariablen}. Auf Linie 10 wird der Startwert auch in den Ortsvektoren-Array \textit{pos} gespeichert. Die Schleife wird damit einfacher zu programmieren, wenn Sie immer davon ausgehen kann, dass eine Position vorher schon vorhanden ist. Damit können wir eine generelle Schleife programmieren, die sich nicht um den Spezialfall $ length(pos) = 0 $ kümmern muss.
 Die Schleife wird 2500 mal durchlaufen. In welcher er die Werte des Lorenz-Modells in einem Array als 3D-Vektoren abgespeichert. Diese Ortsvektoren stellen die Position der Punkte im drei dimensionalen Raum dar.
