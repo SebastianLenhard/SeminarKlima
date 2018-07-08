@@ -29,24 +29,24 @@ z = arr[i].z + ((arr[i].x * arr[i].y) - (beta * arr[i].z)) * delta;
 \begin{figure}
 	\begin{lstlisting}[style=C, language=C++]
 calculate(rho = 28, sigma = 10, beta = 8 / 3) {
-	const it = 2500;
-	
-	let x = 0.1;
-	let y = 0.1;
-	let z = 0.1;
-	const delta = 0.01;
-	
-	const pos = [];
+  const it = 2500;
+
+  let x = 0.1;
+  let y = 0.1;
+  let z = 0.1;
+  const delta = 0.01;
+
+  const pos = [];
+  pos.push(new THREE.Vector3(x, y, z));
+
+  for (let i = 0; i < it; i += 1) {
+	x = arr[i].x + ((sigma * arr[i].y) - (sigma * arr[i].x)) * delta;
+	y = arr[i].y + ((-arr[i].x * arr[i].z) + (rho * arr[i].x) - arr[i].y) * delta;
+	z = arr[i].z + ((arr[i].x * arr[i].y) - (beta * arr[i].z)) * delta;
 	pos.push(new THREE.Vector3(x, y, z));
-	
-	for (let i = 0; i < it; i += 1) {
-		x = arr[i].x + ((sigma * arr[i].y) - (sigma * arr[i].x)) * delta;
-		y = arr[i].y + ((-arr[i].x * arr[i].z) + (rho * arr[i].x) - arr[i].y) * delta;
-		z = arr[i].z + ((arr[i].x * arr[i].y) - (beta * arr[i].z)) * delta;
-		pos.push(new THREE.Vector3(x, y, z));
-	}
-	
-	return pos;
+  }
+
+  return pos;
 }
 		\end{lstlisting}
 		\caption{Algorithmus für Lorenz-Modell\label{AlgorithmusLorenz}}
