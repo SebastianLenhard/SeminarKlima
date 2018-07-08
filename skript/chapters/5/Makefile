@@ -5,7 +5,8 @@
 #
 all:	tikzimages 3dimages
 
-tikzimages:	ein.pdf ein1.pdf halb.pdf total.pdf ell2.pdf
+tikzimages:	ein.pdf ein1.pdf halb.pdf total.pdf ell2.pdf bilanzmodell.pdf \
+	bifurkation.pdf
 
 ein.pdf:	ein.tex
 	pdflatex ein.tex
@@ -22,6 +23,12 @@ ein.txt:	ein.maxima
 total.pdf:	total.tex insolation.tex
 	pdflatex total.tex
 
+bilanzmodell.pdf:	bilanzmodell.tex
+	pdflatex bilanzmodell.tex
+
+bifurkation.pdf:	bifurkation.tex
+	pdflatex bifurkation.tex
+
 insolation.tex:	ein.m
 	octave ein.m
 
@@ -37,6 +44,6 @@ earth.png:	earth.pov
 
 midday.png:	midday.pov daycommon.inc ball.inc
 	povray +a01. -W1920 -H860 -Omidday.png midday.pov
-midday.jpg:	midday.jpg
+midday.jpg:	midday.png
 	convert midday.png -density 300 -units PixelsPerInch midday.jpg
 
