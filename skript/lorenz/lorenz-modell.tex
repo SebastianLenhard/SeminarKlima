@@ -43,37 +43,26 @@ Wir wählten für die Diskretisierung das \textit{Euler-Verfahren} zur Annäheru
 
 Das Euler-Verfahren ist ein Algorithmus der Familie der Einschritt-Verfahren. Diese Verfahren rechnen schrittweise die Werte von einem Startwert aus. Sie können dies in einer $ O(N) $ Schleife bei welcher die Lösung des vorherigen Durchgangs als neuer Startwert verwendet wird. 
 
-Differentialgleichungen beschreiben die Steigung relativ zu bekanntem Wert. Sie sagen nichts über die X-Achsen-Verschiebung der Werte aus. Aus diesem Grund kennt man die absolute Position dieser Werte nicht und kann auch keine andere Positionen daraus ausrechnen. Der vorhergehend vorgestellte Algorithmus kann lediglich die anderen Werte ausrechnen wenn dieser Startwert im vorhinein bekannt ist. Dieses Hindernis wird das Anfangswert-Problem genannt.
+Differentialgleichungen beschreiben die Steigung relativ zu bekannter Lösung. Sie sagen nichts über die X-Achsen-Verschiebung der Werte aus. Aus diesem Grund kennt man die absolute Position dieser Werte nicht und kann auch keine andere Positionen daraus ausrechnen. Der vorhergehend vorgestellte Algorithmus kann lediglich die anderen Werte ausrechnen wenn dieser Startwert im vorhinein bekannt ist. Dieses Hindernis wird das \textit{Anfangswert-Problem} genannt.
 
 Auch das besprochene Verfahren kann das Anfangswert-Problem nicht lösen, sondern nur schrittweise vom Anfangswert die anderen Punkte ausrechnen. Wir haben diese Problematik im Rahmen dieses Berichtes nicht lösen können und stattdessen den Anfangswert $ P(0.1, 0.1, 0.1) $ angenommen. Dieser Anfangswert war konstant und fester Teil des Algorithmus, den wir modeliert haben.
 
-Wir versuchten zuerst den Anfangswert $ P(0, 0, 0) $ genommen. Dieser Anfangswert ist zugleich eine Lösung des Lorenz-Systems. Aus diesem Grund hat sich das Model auf den Ursprung stabilisiert. Wir haben uns entschieden für den Anfangswert $ P(0.1, 0.1, 0.1) $, der diese Eigenschaft nicht besitzt.
+Wir versuchten zuerst den Anfangswert $ P(0, 0, 0) $ zu nehmen. In den anschliessenden Untersuchungen des Algorithmus stellte sich heraus, dass dieser Anfangswert zugleich eine Lösung des Lorenz-Systems ist. Aus diesem Grund hat sich das Model auf den Ursprung stabilisiert. Unsere Lösung war es den Anfangswert auf $ P(0.1, 0.1, 0.1) $ zu verschieben, der diese Eigenschaft nicht besitzt.
 
-% TODO Beschreibung Euler-Verfahren
-Als Basis seines Verfahren zur Näherung 
-
-Als Basis für das Euler-Verfahren verwenden wir den Differenzenquotient $ \frac{dx}{dt} \approx \frac{x_{n + 1} - x_n}{\Delta t} $. Diese Aussage 
-
-
-% Als Basis für dieses Verfahren nahm Euler die lineare Gleichung $ y = a \cdot x + b $. Er setzte das Ergebnis der Differentialgleichung als Steigung $ a $ ein. $x$ wird mit dem Diskretisierungsschritt belegt. Der Diskretisierungsschritt beschreibt den Abstand zweier numerischen Messungen in der Visualisierung. Anders ausgedrückt kontrolliert der Diskretisierungsschritt die Zeit, die zwischen zwei Messungen des Modells vergangen ist. Wenn dieser Schritt erhöht wird, dann nimmt der Detailgrad ab, dafür kann eine längere Zeit mit der gleichen Anzahl Messungen das Modell durch die Software aufgezeichnet werden.
-
-% Die \textit{Y-Koordinate} des linearen Gleichungssystems $ b $ wird mit dem Ergebnis der vorherigen Rechnungsschritt $ x(t) $ belegt, da der Differentialterm den Abstand vom Wert vorher berechnet.
-
-% TODO Umformung von Differenzenkoeffizient führt zu Basisgleichung
+Als Basis für das Euler-Verfahren verwenden wir den Differenzenquotient $ \frac{dx}{dt} \approx \frac{x_{n + 1} - x_n}{\Delta t} $. \cite{euler1768} Weil wir den nächsten Punkt im 3D-Raum ausrechnen möchten, formen wir die Gleichung zu $ x_{n + 1} $  um und rechnen sie für alle Achsen getrennt aus.
 
 \begin{align}
-    x(t+ \Delta t) = x(t) + \frac{dx}{dt} \cdot \Delta t\\
-    y(t + \Delta t) = y(t) + \frac{dy}{dt} \cdot \Delta t\\
-    z(t + \Delta t) = z(t) + \frac{dz}{dt} \cdot \Delta t
+    x_{n + 1} &= x_n + \frac{dx}{dt} \cdot \Delta t\\
+    y_{n + 1} &= y_n + \frac{dy}{dt} \cdot \Delta t\\
+    z_{n + 1} &= z_n + \frac{dz}{dt} \cdot \Delta t
 \end{align}
 
 % TODO Neuschreiben, detailhafter
-Wir können nun die Gleichungen des Lorenz-Modells einsetzen. Dadurch entstehen die folgenden einfachen Gleichungen mit nur arithmetischen Operationen.
-
+Wir können nun die Gleichungen des Lorenz-Modells einsetzen. Die Variablen $ x, y, z $ haben wir ausserdem zu Iterationsvariablen 
 \begin{align}
-    x(t + \Delta t) = x(t) + \sigma(x - y) \cdot \Delta t\\
-    y(t + \Delta t) = y(t) + x(\rho - z) - y \cdot \Delta t\\
-    z(t + \Delta t) = z(t) + xy - \beta z \cdot \Delta t
+    x_{n + 1} &= x_n + \sigma(x_n - y_n) \cdot \Delta t\\
+    y_{n + 1} &= y_n + x_n(\rho - z_n) - y_n \cdot \Delta t\\
+    z_{n + 1} &= z_n + (x_n \cdot y_n - \beta \cdot z_n) \cdot \Delta t
 \end{align}
 
 Dieses System entspricht dem Code der Visualisierung unterhalb. Im Differentialterm wurde die Differentialgleichung des Lorenz-Modells eingesetzt.
